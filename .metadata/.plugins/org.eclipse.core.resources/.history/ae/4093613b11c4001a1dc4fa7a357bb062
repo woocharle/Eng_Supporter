@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> Chapter_5</title>
+		<link rel="stylesheet" href="class_main.css">
+		<style>
+			*{
+				margin:0; padding: 0;
+			}
+			body{
+				font-family: sans-serif;
+			}
+			li{
+				list-style: none;
+			}
+			a {
+				text-decoration: none;
+			}
+			img{
+				border: 0; 
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="main-header">
+			<div id="title">
+				<h1> Rint Development </h1>
+				<h2> HTML5 + CSS3 Basic </h2>
+			</div>
+			<nav id = "main_gnb">
+				<ul>
+					<li><a href = "#"> Web </a></li>
+					<li><a href = "#"> Mobile </a></li>
+					<li><a href = "#"> Game </a></li>				
+					<li><a href = "#"> Simulation </a></li>
+					<li><a href = "#"> Data </a></li>
+				</ul>
+			</nav>
+			<nav id = "main_lnb">
+				<ul>
+					<li><a href = "#"> HTML5 </a></li>
+					<li><a href = "#"> CSS3 </a></li>
+					<li><a href = "#"> JavaScript </a></li>				
+					<li><a href = "#"> Query </a></li>
+					<li><a href = "#"> Node.js </a></li>
+				</ul>
+			</nav>
+		</div>
+		<div id="content">
+			<section id="main_section">
+				<article class="main_article">
+					<p>Unit Converter</p><br>
+					<p>단위환산은.... </p>
+				</article>
+				
+				<article class="main_article">
+					<p>Calculation </p><br>
+					<p>계산은.... </p>
+				</article>
+				
+				<article class="main_article">
+					<p>Price of Petroleum </p><br>
+					<p>석유가격은.... </p>
+				</article>
+
+			</section>
+			<aside id="main_aside">
+				<input id="first" type="radio" name="tab" checked="checked" />
+				<input id="second" type="radio" name="tab" />
+				<section class="buttons">
+					<label for="first"> First </label>
+					<label for="second"> Second </label>
+				</section>
+				<div class="tab_item">
+					<ul>
+						<li><a href="#">
+							<div class="thumbnail">
+								<img src="../images/45x45.png">
+							</div>
+							<div class="description">
+								
+							</div>							
+						</a></li>
+
+					
+					</ul>
+				</div>
+				
+			</aside>
+		</div>
+		
+		
+	</body>
+</html>
