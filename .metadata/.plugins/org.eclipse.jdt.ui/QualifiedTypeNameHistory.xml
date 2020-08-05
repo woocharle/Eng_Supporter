@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="com.ict.model.Command"/>
+<fullyQualifiedTypeName name="com.ict.model.Login0_cmd"/>
+<fullyQualifiedTypeName name="com.ict.model.UnitCvt_cmd"/>
+<fullyQualifiedTypeName name="com.ict.model.Main_cmd"/>
+</qualifiedTypeNameHistroy>
