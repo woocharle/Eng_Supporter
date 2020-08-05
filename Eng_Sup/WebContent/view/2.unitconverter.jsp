@@ -9,7 +9,13 @@
 	<title>Insert title here</title>
 	<style type="text/css">
 		.unit {margin: 0px auto; width: 1500px;}
-		
+		.unit > h2{
+			position: relative;
+			left: 100px;
+			font-size: 40px; 
+			margin: 20px 0px 80px 0px;
+		}
+		.unit > p{margin: 90px 0px;}
 		.unit>form>input {width: 180px;font-size: 20px;}
 		
 		#add_chart {
@@ -24,47 +30,73 @@
 			bottom: 5px;
 		}
 		
-		#unitcvt{margin: 0px auto; width: 1200px; border: 1px solid black;}
+		#unitcvt{
+			margin: 0px auto; 
+			width: 1200px; 
+			height: 400px;
+			border: 1px solid black;
+		}
 		
-	
+		#section1{
+			position: relative;
+			left: 50px;
+			top: 45px;
+		}
+		
+		#choice{width:200px; height: 30px; font-size: 18px;}
 	</style>
+	<script type="text/javascript">
+					
+						
+					
+	</script>
 </head>
 <body>
 
 	<jsp:include page="0.header.jsp" />
+
 	<br><br>
 	<div class ="unit">
+		<h2> Unit Converter</h2>
 		<form method="post">
 			<input id="add_chart" type="button" value="Add Chart" onclick="">
 			<input id="del_chart" type="button" value="Delete Chart" onclick="Add_go(this)">
 		</form>
-
+		<p></p>
+	</div>
+	
+	
+	<div class ="unit">
+		<c:forEach var="i"  begin="1" end="${table}">
+			<div id="unitcvt">
+				<form method="post">
+				<div id="section1"> 
+					<span style="font-size: 20px;">거주지 :&nbsp;&nbsp;</span> 
+					<select id="choice"> <!-- 하나만 선택 -->
+	  	  			   <option value="len" selected>길이 (Length)</option>
+		               <option value="vel"> 속도 (Velocity)</option>		  	
+	  	 			   <option value="temp"> 온도 (Temperature)</option>
+	  	 			   <option value="press">압력 (Pressure)</option>
+	  	 			   <option value="weight">무게 (Weight)</option>
+			  		 </select>
+			  	</div>
+				</form>
+				
+				<div>
+					<%
+						page
+					%>
+										
+				
+				</div>
+				
+			</div>
+			<br><br><br><br>
+		</c:forEach>		
 	</div>
 	
 	<br><br>
 	
-	<div class ="unit">
-		<div id="unitcvt">
-			<p> ${table} </p>
-			<p id=> 거주지 : <select name="addr"> <!-- 하나만 선택 -->
-		  	  			   <option>::선택하세요::</option>
-			               <option value="1">서울</option>		  	
-		  	 			   <option >경기</option>
-		  	 			   <option>제주</option>
-		  	 			   <option>해외</option>	
-		  				 </select>
-		  	</p>
-	
-		</div>
-	</div>
-
-
-	<%-- 
-	<c:forEach >
-		일단 테이블 만들기, MVC 패턴으로 만들기, 추가 및 삭제시 DB를 따로 만들것.
-	</c:forEach>
-	--%>	
-
 	<jsp:include page="0.footer.jsp"/>
 </body>
 </html>

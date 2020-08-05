@@ -90,11 +90,15 @@
 		}
 		
 		function Mypage() {
-			location.href="/Controller?cmd=main";
+			location.href="#";
 		}
 		
 		function Unit_go(){
 			location.href="/Controller?cmd=unit"
+		}
+		
+		function Home_go(){
+			location.href="/Controller?cmd=main"
 		}
 		
 	</script>
@@ -123,7 +127,7 @@
 </header>
 <div id="main_body">
 	<ul>
-		<li><a onclick="">Home</a></li>
+		<li><a onclick="Home_go()">Home</a></li>
 		<li><a onclick="Unit_go()">Unit Converter</a></li>
 		<li><a>Price of Petroleum</a></li>
 		<li><a>Calculation</a></li>
