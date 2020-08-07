@@ -18,8 +18,8 @@ public class UnitCvt_cmd implements Command{
 		
 		for (int i = 0; i < table; i++) {
 			VO1 vo1 = new VO1();
-			vo1.setIdx(i + 1);
-			vo1.setScala(String.valueOf(i + 1));
+			vo1.setIdx(i+1);
+			vo1.setScala(String.valueOf(1));
 			vo1.setList(Scala.getList(vo1.getScala()));
 			slist.add(vo1);
 		}
