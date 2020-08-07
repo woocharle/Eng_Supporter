@@ -88,18 +88,21 @@
 	
 	
 	<div class ="unit">
-		<c:forEach var="i"  begin="1" end="${table}">
+		<c:forEach var="n"  items="${slist}">
 			<div id="unitcvt">
 				<form method="post">
 				<div id="section1"> 
 					<span style="font-size:30px;">단위 :&nbsp;&nbsp;</span> 
-					<select name="scala" id="choice" onchange="scala_go(this.form)"> <!-- 하나만 선택 -->
-	  	  			   <option value="1" <c:if test="${name eq '1'}"> selected </c:if>> 길이 (Length)</option>					
-		               <option value="2" <c:if test="${name eq '2'}"> selected </c:if>> 속도 (Velocity)</option>		  	
-	  	 			   <option value="3" <c:if test="${name eq '3'}"> selected </c:if>> 온도 (Temperature)</option>
-	  	 			   <option value="4" <c:if test="${name eq '4'}"> selected </c:if>> 압력 (Pressure)</option>
-	  	 			   <option value="5" <c:if test="${name eq '5'}"> selected </c:if>> 무게 (Weight)</option>
+					<select name="c_scala" id="choice" onchange="scala_go(this.form)"> <!-- 하나만 선택 -->
+	  	  			   <option value="1" <c:if test="${n.scala eq '1'}"> selected </c:if>> 길이 (Length)</option>					
+		               <option value="2" <c:if test="${n.scala eq '2'}"> selected </c:if>> 속도 (Velocity)</option>		  	
+	  	 			   <option value="3" <c:if test="${n.scala eq '3'}"> selected </c:if>> 온도 (Temperature)</option>
+	  	 			   <option value="4" <c:if test="${n.scala eq '4'}"> selected </c:if>> 압력 (Pressure)</option>
+	  	 			   <option value="5" <c:if test="${n.scala eq '5'}"> selected </c:if>> 무게 (Weight)</option>
 			  		 </select>
+			  		  <input type="hidden" name="num" value="${n.idx}">
+			  		  <input type="hidden" name="table" value="${table}">
+				  
 			  	</div>
 				</form>
 				
@@ -117,7 +120,7 @@
 
 				<div>
 					<select name="scala1" id="choice1" size="8">
-						<c:forEach var="k" items="${list}" >
+						<c:forEach var="k" items="${n.list}" >
 							
 							<option value="${k}">${k}</option>
 						
@@ -125,7 +128,7 @@
 					</select>
 					
 					<select name="scala2" id="choice2" size="8">
-						<c:forEach var="k" items="${list}" >
+						<c:forEach var="k" items="${n.list}" >
 							
 							<option value="${k}">${k}</option>
 						
