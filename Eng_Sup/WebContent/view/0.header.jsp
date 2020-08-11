@@ -97,6 +97,10 @@
 			location.href="/Controller?cmd=unit"
 		}
 		
+		function Petro_go(){
+			location.href="/Controller?cmd=petro"
+		}
+		
 		function Home_go(){
 			location.href="/Controller?cmd=main"
 		}
@@ -129,7 +133,7 @@
 	<ul>
 		<li><a onclick="Home_go()">Home</a></li>
 		<li><a onclick="Unit_go()">Unit Converter</a></li>
-		<li><a>Price of Petroleum</a></li>
+		<li><a onclick="Petro_go()">Petroleum</a></li>
 		<li><a>Calculation</a></li>
 	</ul>
 </div>

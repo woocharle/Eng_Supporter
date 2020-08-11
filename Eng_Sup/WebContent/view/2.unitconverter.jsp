@@ -8,15 +8,14 @@
 	<meta charset="UTF-8">
 	<title> Engineering Support </title>
 	<style type="text/css">
-		.unit {margin: 0px auto; width: 1500px;}
+		.unit {margin: 0px auto; width: 1500px; margin-bottom: 10px;}
 		.unit > h2{
 			position: relative;
 			left: 100px;
 			font-size: 40px; 
 			margin: 20px 0px 80px 0px;
 		}
-		.unit > p{margin-top: 60px;}
-		.unit>form>input {width: 180px;font-size: 20px;}
+		.unit>form>input {width: 180px; height: 35px; font-size: 20px;}
 		
 		#add_chart {
 			position: relative;
@@ -67,6 +66,16 @@
 		function scala_go(f){
 			f.action = "/Controller?cmd=unit1"
 			f.submit();
+		}	
+		
+		function add_go(f){
+			f.action = "/Controller?cmd=unit2"
+			f.submit();
+		}					
+		
+		function del_go(f){
+			f.action = "/Controller?cmd=unit3"
+			f.submit();
 		}					
 		
 		
@@ -79,11 +88,12 @@
 	<br><br>
 	<div class ="unit">
 		<h2> Unit Converter</h2>
-		<form method="post">
-			<input id="add_chart" type="button" value="Add Chart" onclick="">
-			<input id="del_chart" type="button" value="Delete Chart" onclick="Add_go(this)">
+		<form method="post">	
+			<input type="hidden" name="table_1" value="${table}">
+			<input id="add_chart" type="button" value="Add Chart" onclick="add_go(this.form)">
+			<input id="del_chart" type="button" value="Delete Chart" onclick="del_go(this.form)">
 		</form>
-		<p></p>
+		<br>
 	</div>
 	
 	

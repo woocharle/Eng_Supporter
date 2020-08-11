@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.ict.model.Command;
 import com.ict.model.Login0_cmd;
 import com.ict.model.Main_cmd;
+import com.ict.model.Petro_cmd;
 import com.ict.model.UnitCvt1_cmd;
+import com.ict.model.UnitCvt2_cmd;
+import com.ict.model.UnitCvt3_cmd;
 import com.ict.model.UnitCvt_cmd;
 
 
@@ -37,6 +40,9 @@ public class Controller extends HttpServlet {
 			case "login0": comm = new Login0_cmd(); break;
 			case "unit": comm = new UnitCvt_cmd(); break;
 			case "unit1": comm = new UnitCvt1_cmd(); break;
+			case "unit2": comm = new UnitCvt2_cmd(); break;
+			case "unit3": comm = new UnitCvt3_cmd(); break;
+			case "petro": comm = new Petro_cmd(); break;
 			
 		}
 		

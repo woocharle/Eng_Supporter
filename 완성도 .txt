@@ -1,6 +1,45 @@
 
-main 화면: 완성
+main 화면
 
-unitconvert: 진행중, 입력시 환산되는 기능 추가, DB 구축 필요. UnitConverter참고
+1) login/out 기능 완성 (4th)
+
+* spring 배우고 난 뒤 완성할 것.
+
+unitconvert
+
+1) 입력시 환산되는 기능 추가, UnitConverter참고 (3rd), 
+
+2) 단위환산 할 시 Ajax기능 적용할 것. 그 것이 도움이 안 될 경우 class에서 배열과 MAP으로 해결
 
 
+
+#) CSS 다듬기.
+
+
+price of Patroluem
+
+1) 화면 구성하기 (1st_완료)
+
+2) db와 연동 guestbook적용. (jstl)
+
+3) 이미지 넣기
+
+#) CSS 다듬기. 
+
+
+Calculator 
+
+1) 화면 구성하기 (2nd)
+
+2) 각 화면마다 계산할 분야 java model과 연동하기
+
+3) 이미지 넣기
+
+4) admin을 통해 db처리. [option]
+
+#) CSS 다듬기. 
+
+
+admin
+
+1) petro 관리하는 MVC패턴 구축

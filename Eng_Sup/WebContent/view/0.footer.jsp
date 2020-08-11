@@ -6,7 +6,6 @@
 	<meta charset="UTF-8">
 	<title> Engineering Support </title>
 	<style type="text/css">
-	
 		#main_footer  {margin: 0 auto ; width:1500px;}	
 		#main_footer > p {position:relative; left: 50px;}
 		

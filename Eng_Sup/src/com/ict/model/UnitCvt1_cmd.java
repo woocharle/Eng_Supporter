@@ -15,12 +15,9 @@ public class UnitCvt1_cmd implements Command {
 		int table = Integer.parseInt(request.getParameter("table"));
 		ArrayList<VO1> slist0 = (ArrayList<VO1>)request.getSession().getAttribute("slist");
 		VO1[] b_slist = slist0.toArray(new VO1[slist0.size()]);
-		
+			
 		ArrayList<VO1> slist = new ArrayList<VO1>();
-		
-		
-		System.out.println(num);
-		
+				
 		for (int i = 0; i < table; i++) {
 			VO1 vo1 = new VO1();
 			vo1.setIdx(i + 1);
@@ -33,11 +30,6 @@ public class UnitCvt1_cmd implements Command {
 			vo1.setList(Scala.getList(vo1.getScala()));
 			slist.add(vo1);
 		}
-		
-		for (VO1 vo1 : slist) {
-			System.out.println(vo1.getScala());
-		}
-		
 	
 		request.getSession().setAttribute("slist", slist);
 
@@ -45,5 +37,7 @@ public class UnitCvt1_cmd implements Command {
 		
 		
 	}
+
+	
 }
 

@@ -1,0 +1,31 @@
+
+
+CREATE TABLE petro(
+	idx INT NOT NULL PRIMARY KEY,
+	unit VARCHAR(50),
+	img VARCHAR(20),
+	content LONGTEXT
+);
+
+
+
+create sequence petro_seq
+increment by 1
+start with 1;
+
+
+INSERT INTO petro
+VALUES(NEXT VALUE FOR petro_seq, 'Intro', 'null' , 'null');
+
+
+INSERT INTO petro
+VALUES(NEXT VALUE FOR petro_seq, 'Crude Oil', 'xxx.jpg' , 'Crude Crude');
+
+
+INSERT INTO petro
+VALUES(NEXT VALUE FOR petro_seq, 'Heating Oil', 'xxx.jpg' , 'Heating Oil Heating Oil');
+
+
+INSERT INTO petro
+VALUES(NEXT VALUE FOR petro_seq, 'Natural Gas', 'xxx.jpg' , 'Natural Gas');
+
