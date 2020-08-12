@@ -22,7 +22,7 @@ price of Patroluem
 
 2) db와 연동 guestbook적용. (jstl)
 
-3) 이미지 넣기
+   - 이미지 넣기 (db연동에 포함.)
 
 #) CSS 다듬기. 
 

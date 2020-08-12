@@ -1,5 +1,8 @@
 
 
+1. 테이블 및 시퀀스 생성 
+
+
 CREATE TABLE petro(
 	idx INT NOT NULL PRIMARY KEY,
 	unit VARCHAR(50),
@@ -13,6 +16,8 @@ create sequence petro_seq
 increment by 1
 start with 1;
 
+
+2. Data입력
 
 INSERT INTO petro
 VALUES(NEXT VALUE FOR petro_seq, 'Intro', 'null' , 'null');
@@ -29,3 +34,7 @@ VALUES(NEXT VALUE FOR petro_seq, 'Heating Oil', 'xxx.jpg' , 'Heating Oil Heating
 INSERT INTO petro
 VALUES(NEXT VALUE FOR petro_seq, 'Natural Gas', 'xxx.jpg' , 'Natural Gas');
 
+
+3.컬럼추가 및 순서 변경
+
+ALTER TABLE petro ADD content_s LONGTEXT;

@@ -26,12 +26,19 @@
 		 #price > h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}
 		 #price ul{list-style-type: none; height:1350px; border-right: 1px dashed black;}
 		 #price li{font-size: 20px; font-weight: bold; margin: 30px 0px 30px 30px;}
+		 
+		 #content_s{
+			white-space: pre-wrap; /* CSS3*/
+			white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+			white-space: -pre-wrap; /* Opera 4-6 */
+			white-space: -o-pre-wrap; /* Opera 7 */
+			word-wrap: break-all; /* Internet Explorer 5.5+ */ 
+		 }
 		
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		function find_go(f) {
-			alert(f.unit.value);
-		}
+		
 		
 	</script>
 	
@@ -44,11 +51,11 @@
 			
 		<div id="price">
 			<h3>Price of Products</h3>		
-			<ul>			
+			<ul id="petro">			
 				<c:forEach var="k" items="${plist}">
 					<form method="post">
 						<li>
-							<a href="#">${k.unit} </a>
+							<span>${k.unit} </span>
 							<input type="hidden" name="unit"  value="${k.unit}">
 						</li>
 					</form>
@@ -61,79 +68,17 @@
 	<c:when test="${unit eq 'Intro'}">
 		<div class="intro" >
 			<h3>Introduce of Products</h3>
+			<c:forEach var="k" items="${plist}">
+			<c:choose>
+			<c:when test="${k.unit ne 'Intro'}">
 			<article class="browser">
-				<h3>Crude Oil</h3>
-				<p>
-					Unit(단위)은 물리량을 표시하는 문자 및 기호다. 각 국가 마다 달랐지만 글로벌 <br>
-					화 가 되면서 많은 국가들이 국제표준(SI)에 따른다. 하지만, 영연방 국가, 미국 <br>
-					등 영국에 영향을 받은 국가들은 British 단위를 지금도 쓰고 있기 때문에 설계를 <br>
-					할 때 트러블이 생기지 않도록 단위환산을 해줘야한다. 
-				</p>
+				<h3>${k.unit}</h3>
+				<pre id="content_s">${k.content_s}</pre>
 			
 			</article>
-			<article class="browser">
-				<h3>Heating Oil</h3>
-				<p>
-					Unit(단위)은 물리량을 표시하는 문자 및 기호다. 각 국가 마다 달랐지만 글로벌화가 되면서 많은 국가들이 국제표준(SI)에 따른다. <br>
-					하지만, 영연방 국가, 미국 등 영국에 영향을 받은 국가들은 British 단위를 지금도 쓰고 있기 때문에 설계를 할 때 트러블이 생기지 <br>
-					않도록 단위환산을 해줘야한다. 
-				</p>
-			
-			</article>
-			<article class="browser">
-				<h3>Natural Gas</h3>
-				<p>
-					Unit(단위)은 물리량을 표시하는 문자 및 기호다. 각 국가 마다 달랐지만 글로벌화가 되면서 많은 국가들이 국제표준(SI)에 따른다. <br>
-					하지만, 영연방 국가, 미국 등 영국에 영향을 받은 국가들은 British 단위를 지금도 쓰고 있기 때문에 설계를 할 때 트러블이 생기지 <br>
-					않도록 단위환산을 해줘야한다. 
-				</p>
-			
-			</article>
-			<article class="browser">
-				<h3> Naphtha</h3>
-				<p>
-					Unit(단위)은 물리량을 표시하는 문자 및 기호다. 각 국가 마다 달랐지만 글로벌화가 되면서 많은 국가들이 국제표준(SI)에 따른다. <br>
-					하지만, 영연방 국가, 미국 등 영국에 영향을 받은 국가들은 British 단위를 지금도 쓰고 있기 때문에 설계를 할 때 트러블이 생기지 <br>
-					않도록 단위환산을 해줘야한다. 
-				</p>
-			
-			</article>
-			<article class="browser">
-				<h3>Ethylene</h3>
-				<p>
-					Unit(단위)은 물리량을 표시하는 문자 및 기호다. 각 국가 마다 달랐지만 글로벌화가 되면서 많은 국가들이 국제표준(SI)에 따른다. <br>
-					하지만, 영연방 국가, 미국 등 영국에 영향을 받은 국가들은 British 단위를 지금도 쓰고 있기 때문에 설계를 할 때 트러블이 생기지 <br>
-					않도록 단위환산을 해줘야한다. 
-				</p>
-			
-			</article>
-			<article class="browser">
-				<h3>Propylene</h3>
-				<p>
-					Unit(단위)은 물리량을 표시하는 문자 및 기호다. 각 국가 마다 달랐지만 글로벌화가 되면서 많은 국가들이 국제표준(SI)에 따른다. <br>
-					하지만, 영연방 국가, 미국 등 영국에 영향을 받은 국가들은 British 단위를 지금도 쓰고 있기 때문에 설계를 할 때 트러블이 생기지 <br>
-					않도록 단위환산을 해줘야한다. 
-				</p>
-			
-			</article>
-			<article class="browser">
-				<h3>HDPE</h3>
-				<p>
-					Unit(단위)은 물리량을 표시하는 문자 및 기호다. 각 국가 마다 달랐지만 글로벌화가 되면서 많은 국가들이 국제표준(SI)에 따른다. <br>
-					하지만, 영연방 국가, 미국 등 영국에 영향을 받은 국가들은 British 단위를 지금도 쓰고 있기 때문에 설계를 할 때 트러블이 생기지 <br>
-					않도록 단위환산을 해줘야한다. 
-				</p>
-			
-			</article>
-			<article class="browser">
-				<h3>PP</h3>
-				<p>
-					Unit(단위)은 물리량을 표시하는 문자 및 기호다. 각 국가 마다 달랐지만 글로벌화가 되면서 많은 국가들이 국제표준(SI)에 따른다. <br>
-					하지만, 영연방 국가, 미국 등 영국에 영향을 받은 국가들은 British 단위를 지금도 쓰고 있기 때문에 설계를 할 때 트러블이 생기지 <br>
-					않도록 단위환산을 해줘야한다. 
-				</p>
-			
-			</article>
+			</c:when>
+			</c:choose>
+			</c:forEach>
 			<article class="browser">
 				<h3>참고문헌</h3>
 				<p>

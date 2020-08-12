@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title> Engineering Support </title>
+	<title> Engineering Support_Admin </title>
 	<style type="text/css">
 		/*헤더*/
 		#main_header>div {
@@ -88,36 +88,29 @@
 			document.getElementById("mypage").style.display= "none";
 		}
 		
-		function Mypage() {
-			location.href="#";
+		function member_go() {
+			location.href="/Controller?cmd=member";
 		}
 		
-		function Unit_go(){
-			location.href="/Controller?cmd=unit"
-		}
+		function petro_go() {
+			location.href="/Controller?cmd=petro_a"	
+		} 
 		
-		function Petro_go(){
-			location.href="/Controller?cmd=petro"
-		}
 		
-		function Home_go(){
-			location.href="/Controller?cmd=main"
-		}
-		
+
 	</script>
 </head>
 <body>
 <header>
 <div id="main_header" >
 		<div>
-			<h1>Engineering Support</h1>
+			<h1> Administrator </h1>
 		</div>
 		<div class="member">
 			<c:choose>
 				<c:when test="${login=='ok'}">
 					<p> ${mvo.m_name}님 환영합니다.</p>
 					<button id ="logout" onclick="log_out()" style="display: none;">Logout </button> 			
-					<button id ="mypage" onclick="MyPage()" style="display: none;">MyPage </button> 
 				</c:when>
 				<c:otherwise>
 					<button id ="login" onclick="log_in()">Login </button> 	

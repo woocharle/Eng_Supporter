@@ -15,10 +15,21 @@ public class DAO {
 		return ss;
 	}
 	
-	public static List<VO2> getList(){
+	public static List<VO2> getPlist(){
 		List<VO2> list = null;
 		list = getSession().selectList("plist");
 		return list;
+	}
+	
+	public static VO2 getOnepick(String idx) {
+		VO2 vo = null;
+		
+		//vo = getSession().selectOne("mapper의 id");
+		//vo= getSession().selectOne("mapper의 id", "파라미터");	
+		
+		vo = getSession().selectOne("onepick", idx);
+		
+		return vo;
 	}
 	
 }

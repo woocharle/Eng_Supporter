@@ -15,7 +15,9 @@
 <fullyQualifiedTypeName name="com.ict.model.UnitCvt3_cmd"/>
 <fullyQualifiedTypeName name="com.ict.model.Petro_cmd"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
-<fullyQualifiedTypeName name="com.ict.db.DAO"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.ict.model.Padmin_cmd"/>
+<fullyQualifiedTypeName name="com.ict.model.Ponepick_cmd"/>
+<fullyQualifiedTypeName name="com.ict.db.DAO"/>
 <fullyQualifiedTypeName name="com.ict.db.VO2"/>
 </qualifiedTypeNameHistroy>

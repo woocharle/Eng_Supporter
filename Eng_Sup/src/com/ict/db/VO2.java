@@ -6,14 +6,15 @@ package com.ict.db;
 
 
 public class VO2 {
-	private String idx, unit, content, img;
+	private String idx, unit, content, img, content_s;
 	
 	public VO2() {}
 
-	public VO2(String idx, String unit, String content, String img) {
+	public VO2(String idx, String unit, String content, String content_s, String img) {
 		super();
 		this.idx = idx;
 		this.unit = unit;
+		this.content_s = content_s;
 		this.content = content;
 		this.img = img;
 	}
@@ -49,9 +50,14 @@ public class VO2 {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	
-	
-	
-	
+
+	public String getContent_s() {
+		return content_s;
+	}
+
+	public void setContent_s(String content_s) {
+		this.content_s = content_s;
+	}
+
 	
 }

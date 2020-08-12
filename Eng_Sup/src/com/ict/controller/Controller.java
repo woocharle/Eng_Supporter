@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.ict.model.Command;
 import com.ict.model.Login0_cmd;
 import com.ict.model.Main_cmd;
+import com.ict.model.Padmin_cmd;
 import com.ict.model.Petro_cmd;
+import com.ict.model.Ponepick_cmd;
 import com.ict.model.UnitCvt1_cmd;
 import com.ict.model.UnitCvt2_cmd;
 import com.ict.model.UnitCvt3_cmd;
@@ -36,6 +38,7 @@ public class Controller extends HttpServlet {
 		String cmd = request.getParameter("cmd");
 		
 		switch (cmd) {
+			//for user
 			case "main": comm = new Main_cmd(); break;
 			case "login0": comm = new Login0_cmd(); break;
 			case "unit": comm = new UnitCvt_cmd(); break;
@@ -44,6 +47,10 @@ public class Controller extends HttpServlet {
 			case "unit3": comm = new UnitCvt3_cmd(); break;
 			case "petro": comm = new Petro_cmd(); break;
 			
+			//admin
+			case "petro_a": comm = new Padmin_cmd(); break;
+			case "onepick": comm = new Ponepick_cmd(); break;
+
 		}
 		
 		String path = comm.exec(request, response);

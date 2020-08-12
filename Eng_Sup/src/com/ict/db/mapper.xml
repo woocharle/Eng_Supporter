@@ -8,6 +8,8 @@
 		select * from petro order by idx
 	</select>
 	
-
+	<select id="onepick" parameterType="String" resultType="com.ict.db.VO2">
+		select * from petro where idx=#{idx}
+	</select>
 	
 </mapper>
