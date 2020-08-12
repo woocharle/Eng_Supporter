@@ -24,12 +24,26 @@ public class DAO {
 	public static VO2 getOnepick(String idx) {
 		VO2 vo = null;
 		
-		//vo = getSession().selectOne("mapper의 id");
-		//vo= getSession().selectOne("mapper의 id", "파라미터");	
+		//vo = getSession().selectOne("mapper�쓽 id");
+		//vo= getSession().selectOne("mapper�쓽 id", "�뙆�씪誘명꽣");	
 		
 		vo = getSession().selectOne("onepick", idx);
 		
 		return vo;
+	}
+	
+	public static int getIDU(VO2 pvo, String mth) {
+		int result = 0;
+		
+		switch (mth) {
+			case "Insert": result = getSession().insert("pinsert", pvo); break;
+			case "Update": result = getSession().update("pupdate", pvo); break;
+			case "Delete": result = getSession().delete("pdelete", pvo); break;
+			
+		}
+		
+		return result;
+		
 	}
 	
 }

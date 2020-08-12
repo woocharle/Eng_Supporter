@@ -12,4 +12,21 @@
 		select * from petro where idx=#{idx}
 	</select>
 	
+	<insert id="pinsert" parameterType="com.ict.db.VO2">
+		insert into 
+		values()
+	
+	</insert>
+	
+	<update id="pupdate" parameterType="com.ict.db.VO2">
+		update petro
+		set	unit=#{unit}, 
+		where idx =#{idx}
+	</update>
+	
+	<delete id="pdelete" parameterType="com.ict.db.VO2">
+		delete from petro
+		where idx = #{idx}
+	</delete>
+	
 </mapper>

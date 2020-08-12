@@ -13,8 +13,11 @@ import com.ict.model.Command;
 import com.ict.model.Login0_cmd;
 import com.ict.model.Main_cmd;
 import com.ict.model.Padmin_cmd;
+import com.ict.model.Pdelete_cmd;
 import com.ict.model.Petro_cmd;
 import com.ict.model.Ponepick_cmd;
+import com.ict.model.Pupdate_cmd;
+import com.ict.model.Pwrite_cmd;
 import com.ict.model.UnitCvt1_cmd;
 import com.ict.model.UnitCvt2_cmd;
 import com.ict.model.UnitCvt3_cmd;
@@ -47,9 +50,12 @@ public class Controller extends HttpServlet {
 			case "unit3": comm = new UnitCvt3_cmd(); break;
 			case "petro": comm = new Petro_cmd(); break;
 			
-			//admin
-			case "petro_a": comm = new Padmin_cmd(); break;
+			//petro for admin 
+			case "petro_list": comm = new Padmin_cmd(); break;
 			case "onepick": comm = new Ponepick_cmd(); break;
+			case "pwrite": comm = new Pwrite_cmd(); break;
+			case "pupdate": comm = new Pupdate_cmd(); break;
+			case "pdelete": comm = new Pdelete_cmd(); break;
 
 		}
 		

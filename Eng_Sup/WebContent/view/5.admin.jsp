@@ -93,7 +93,7 @@
 		}
 		
 		function petro_go() {
-			location.href="/Controller?cmd=petro_a"	
+			location.href="/Controller?cmd=petro_list"	
 		} 
 		
 		

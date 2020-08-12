@@ -33,30 +33,29 @@
 	<div align="center">
 		<h2> 방명록 : 내용 화면 </h2>
 		<hr>
-		<p>[ <a href ="/Controller?cmd=petro_a">목록으로 이동 </a>]</p>
+		<p>[ <a href ="/Controller?cmd=petro_list">목록으로 이동 </a>]</p>
 		<form method="post">
 			<table>
 				<tbody>
 					<tr align="center">
 						<td bgcolor="#99ccff">제품</td>
-						<td>${vo.unit}</td>
+						<td>${pvo.unit}</td>
 					</tr>
 					<tr align="center">
 						<td bgcolor="#99ccff">간단한 설명</td>
 						<td style="padding:15px">
-							<textarea style="width: 1000px;" rows="10" name="content_s">${vo.content_s}</textarea>
+							<textarea style="width: 1000px;" rows="10" name="content_s" readonly="readonly">${pvo.content_s}</textarea>
 						</td>
 					</tr>					
 					<tr align="center">
 						<td bgcolor="#99ccff">첨부파일</td>
 						<c:choose>
-							<c:when test="${empty vo.img}">
+							<c:when test="${empty pvo.img}">
 								<td> <b>이미지 파일 없음..</b></td>
 							</c:when>
 							<c:otherwise>
 								<td>
-									<img src="upload/${vo.img}" style="width: 150px">
-									<a href="/Controller?cmd=down&path=upload&filename=${vo.img}">${vo.img}</a>
+									<img src="upload/${vo.img}" style="width: 150px"><a>${pvo.img}</a>
 								</td>
 							</c:otherwise>
 						</c:choose>
@@ -66,7 +65,7 @@
 					</tr>
 					<tr>
 						<td colspan="2" style="padding:15px">
-							<textarea style="width: 1000px;"rows="20"  name="content">${vo.content}</textarea>
+							<textarea style="width: 1000px;"rows="20"  name="content">${pvo.content}</textarea>
 						</td>
 					</tr>
 				</tbody>
@@ -76,7 +75,7 @@
 						    <input type="button" value="수정" onclick="update_go(this.form)" />
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="button" value="삭제" onclick="delete_go(this.form)" />
-							<input type="hidden" name="idx" value="${vo.idx}"/>
+							<input type="hidden" name="idx" value="${pvo.idx}"/>
 						</td>
 					</tr>
 				</tfoot>

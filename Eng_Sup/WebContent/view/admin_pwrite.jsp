@@ -14,20 +14,17 @@
 		.tb{background-color: #99ccff;}
 	</style>
 	<script type="text/javascript">
-		function update_ok(f) {
-			f.action="/Controller?cmd=pupdate";
+		function save_ok(f) {
+			f.action="/Controller?cmd=pwrite";
 			f.submit();
 		}
 		
-		function update_no(f){
-			f.action="/Controller?cmd=onepick&idx=${pvo.idx}"
-			f.submit();
-		}
+
 	</script>
 </head>
 <body>
 	<div align="center">
-	<h2>방명록 : 수정화면</h2>
+	<h2>방명록 : 작성화면</h2>
 	<hr>
 	<p>[<a href="/Controller?cmd=petro_list">목록으로 이동</a>]</p>
 	<form method="post" enctype="multipart/form-data">
@@ -35,32 +32,30 @@
 			<tbody>
 				<tr>
 					<td class="tb">제 품</td>
-					<td><input type="text" name="unit" size="20" value="${pvo.unit}"></td>
+					<td><input type="text" name="unit" size="20" ></td>
 				</tr>
 					<tr align="center">
 						<td bgcolor="#99ccff">간단한 설명</td>
 						<td style="padding:15px">
-							<textarea style="width: 1000px;" rows="10" name="content_s">${pvo.content_s}</textarea>
+							<textarea style="width: 1000px;" rows="10" name="content_s"></textarea>
 						</td>
 					</tr>	
 				<tr>
 					<td class="tb">첨부파일</td>
-					<td><input type="file" name="img" size="20">${pvo.img}</td>
+					<td><input type="file" name="img" size="20"></td>
 				</tr>	
 				<tr>
 					<td colspan="2" style="padding:15px">
-						<textarea style="width: 1000px;"rows="20"  name="content">${pvo.content}</textarea>
+						<textarea style="width: 1000px;"rows="20"  name="content"></textarea>
 					</td>
 				</tr>
 			</tbody>
 			<tfoot>
 				<tr>
 					<td colspan="2">
-						<input type="button" value="수정" onclick="update_ok(this.form)"/>
+						<input type="button" value="저장" onclick="save_ok(this.form)"/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="button" value="취소" onclick="update_no(this.form)"/>
-						<input type="hidden" name="idx" value="${pvo.idx}"/>
-						<input type="hidden" name="img0" value="${pvo.img}"/>
+						<input type="reset" value="취소"/>
 					</td>
 				</tr>
 			</tfoot>
