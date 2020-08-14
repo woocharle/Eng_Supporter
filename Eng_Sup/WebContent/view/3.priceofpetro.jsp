@@ -34,11 +34,16 @@
 			white-space: -o-pre-wrap; /* Opera 7 */
 			word-wrap: break-all; /* Internet Explorer 5.5+ */ 
 		 }
+		 
+		 #petro{text-decoration:none;}
+		 #petro:link {color: black;}
+		 #petro:visited {color: black;}
+		 #petro:hover {color: black; text-decoration: underline;}
 		
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		
+
 		
 	</script>
 	
@@ -50,18 +55,16 @@
 		<h2> Petroleum </h2>
 			
 		<div id="price">
-			<h3>Price of Products</h3>		
-			<ul id="petro">			
+			<h3>Price of Products</h3>	
+			<form method="post">	
+			<ul>			
 				<c:forEach var="k" items="${plist}">
-					<form method="post">
-						<li>
-							<span>${k.unit} </span>
-							<input type="hidden" name="unit"  value="${k.unit}">
-						</li>
-					</form>
+					<li>	
+						<a id="petro" href="/Controller?cmd=petro&unit=${k.unit}">${k.unit} </a>						
+					</li>
 				</c:forEach>
 			</ul>
-		
+			</form>
 		</div>
 	
 	<c:choose>
@@ -82,17 +85,20 @@
 			<article class="browser">
 				<h3>참고문헌</h3>
 				<p>
-					Unit(단위)은 물리량을 표시하는 문자 및 기호다. 각 국가 마다 달랐지만 글로벌화가 되면서 많은 국가들이 국제표준(SI)에 따른다. <br>
-					하지만, 영연방 국가, 미국 등 영국에 영향을 받은 국가들은 British 단위를 지금도 쓰고 있기 때문에 설계를 할 때 트러블이 생기지 <br>
-					않도록 단위환산을 해줘야한다. 
+					한국석유공사 (https://www.knoc.co.kr/)
 				</p>
 			
 			</article>
 		</div>
 	</c:when>
 	<c:otherwise>
-		<div class="intro" >
+		<div class="intro" >			
+			<h3>${unit}</h3>
+			<article class="browser">
+			<img src="upload/${pvo.img}" style="width: 150px">
 			
+			<pre id="content">${pvo.content}</pre>
+			</article>
 		</div>
 	</c:otherwise>
 		

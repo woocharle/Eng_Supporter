@@ -13,14 +13,14 @@
 	</select>
 	
 	<insert id="pinsert" parameterType="com.ict.db.VO2">
-		insert into 
-		values()
+		insert into petro
+		values(NEXT VALUE FOR petro_seq, #{unit}, #{content_s}, #{img}, #{content})
 	
 	</insert>
 	
 	<update id="pupdate" parameterType="com.ict.db.VO2">
 		update petro
-		set	unit=#{unit}, 
+		set	unit=#{unit}, content_s=#{content_s}, img = #{img}, content=#{content}
 		where idx =#{idx}
 	</update>
 	

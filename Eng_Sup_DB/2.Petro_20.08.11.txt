@@ -19,8 +19,8 @@ start with 1;
 
 2. Data입력
 
-INSERT INTO petro
-VALUES(NEXT VALUE FOR petro_seq, 'Intro', 'null' , 'null');
+insert into petro
+values(NEXT VALUE FOR petro_seq, #{unit}, #{content_s}, #{img}, #{content})
 
 
 INSERT INTO petro

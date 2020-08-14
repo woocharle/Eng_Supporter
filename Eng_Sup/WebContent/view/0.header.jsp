@@ -93,6 +93,10 @@
 			location.href="#";
 		}
 		
+		function Home_go(){
+			location.href="/Controller?cmd=main"
+		}
+		
 		function Unit_go(){
 			location.href="/Controller?cmd=unit"
 		}
@@ -101,9 +105,11 @@
 			location.href="/Controller?cmd=petro"
 		}
 		
-		function Home_go(){
-			location.href="/Controller?cmd=main"
+		function Cal_go(){
+			location.href="/Controller?cmd=cal"
 		}
+		
+
 		
 	</script>
 </head>
@@ -134,7 +140,7 @@
 		<li><a onclick="Home_go()">Home</a></li>
 		<li><a onclick="Unit_go()">Unit Converter</a></li>
 		<li><a onclick="Petro_go()">Petroleum</a></li>
-		<li><a>Calculation</a></li>
+		<li><a onclick="Cal_go()">Calculation</a></li>
 	</ul>
 </div>
 </body>

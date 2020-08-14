@@ -12,7 +12,7 @@
 			width: 1500px;
 		}
 		
-		#main_header>div>button {
+		#main_header button {
 			width: 100px;
 			font-size: 20px;
 		}

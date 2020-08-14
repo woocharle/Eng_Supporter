@@ -16,7 +16,7 @@
 	<div align = "center">
 		<h2> Petroleum </h2>
 		<hr>
-		<p>[ <a href ="view/write.jsp"> 석유화학제품 추가 </a>]</p>
+		<p>[ <a href ="view/admin_pwrite.jsp"> 석유화학제품 추가 </a>]</p>
 		<form method = "post">
 			<table>
 				<thead>

@@ -1,9 +1,43 @@
 
-main 화면
 
-1) login/out 기능 완성 (4th)
+8월 10일 ~ 8월 14일
 
-* spring 배우고 난 뒤 완성할 것.
+
+
+
+price of Patroluem
+
+1) 화면 구성하기 (완료)
+
+2) db와 연동 (완료)
+
+3) guestbook적용  (완료)
+
+   - 이미지 넣기 (db연동에 포함.)
+
+   - ul li click 기능 완료 
+
+
+Calculator 
+
+1) 화면 구성하기 (진행중)
+
+- hydraulic 계산, heat transfer 계산은 구글 스프레트 시트의 엑셀로 칸수를 파악하고 
+  table과 scroll로 짤 것. 이용할 것.
+
+
+
+admin
+
+1) petro 관리하는 MVC패턴 구축
+
+
+제출
+
+화면: petrolium관리자, 
+
+8월 17일 ~ 8월 21일 
+
 
 unitconvert
 
@@ -11,25 +45,30 @@ unitconvert
 
 2) 단위환산 할 시 Ajax기능 적용할 것. 그 것이 도움이 안 될 경우 class에서 배열과 MAP으로 해결
 
-
-
 #) CSS 다듬기.
+
+
+
+main 화면
+
+1) login/out 기능 완성 (4th)
+
+* spring 배우고 난 뒤 완성할 것.
 
 
 price of Patroluem
 
-1) 화면 구성하기 (1st_완료)
+1) CSS 다듬기. 
+  
+   - 설명창의 pre 글자 간격 및 font-size 조정 (질문)
 
-2) db와 연동 guestbook적용. (jstl)
+2) 자료 채워넣기
 
-   - 이미지 넣기 (db연동에 포함.)
-
-#) CSS 다듬기. 
 
 
 Calculator 
 
-1) 화면 구성하기 (2nd)
+1) 화면 구성하기 
 
 2) 각 화면마다 계산할 분야 java model과 연동하기
 
@@ -38,8 +77,3 @@ Calculator
 4) admin을 통해 db처리. [option]
 
 #) CSS 다듬기. 
-
-
-admin
-
-1) petro 관리하는 MVC패턴 구축

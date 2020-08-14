@@ -10,7 +10,6 @@
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="com.ict.db.VO1"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.ict.model.UnitCvt2_cmd"/>
 <fullyQualifiedTypeName name="com.ict.model.UnitCvt3_cmd"/>
 <fullyQualifiedTypeName name="com.ict.model.Petro_cmd"/>
@@ -19,5 +18,7 @@
 <fullyQualifiedTypeName name="com.ict.model.Padmin_cmd"/>
 <fullyQualifiedTypeName name="com.ict.model.Ponepick_cmd"/>
 <fullyQualifiedTypeName name="com.ict.db.DAO"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.ict.db.VO2"/>
+<fullyQualifiedTypeName name="com.ict.model.Cal_cmd"/>
 </qualifiedTypeNameHistroy>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ict.model.Cal_cmd;
 import com.ict.model.Command;
 import com.ict.model.Login0_cmd;
 import com.ict.model.Main_cmd;
@@ -49,6 +50,7 @@ public class Controller extends HttpServlet {
 			case "unit2": comm = new UnitCvt2_cmd(); break;
 			case "unit3": comm = new UnitCvt3_cmd(); break;
 			case "petro": comm = new Petro_cmd(); break;
+			case "cal":	comm = new Cal_cmd(); break;
 			
 			//petro for admin 
 			case "petro_list": comm = new Padmin_cmd(); break;
