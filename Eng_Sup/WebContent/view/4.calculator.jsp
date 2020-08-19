@@ -22,7 +22,7 @@
 		
 		 .intro{width: 75%; height: 1400px; position: relative; left: 400px; bottom: 1430px;}
 		 .intro h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}
-		 .intro table{position: relative; left: 60px; font-size: 20px; margin-bottom: 50px; width:600px}
+		 .intro table{position: relative; left: 60px; font-size: 20px; margin-bottom: 50px;}
 		
 		 #list{width: 25%; height: 1400px; position: relative; left:10px;}
 		 #list > h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}
@@ -35,7 +35,6 @@
 		 #list a:visited {color: black;}
 		 #list a:hover {color: black; text-decoration: underline;}
 
-		
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -46,221 +45,219 @@
 	
 </head>
 <body>
-	<jsp:include page="0.header.jsp"/>
-	<div class="all-browsers">
-		<h2> Calculation </h2>
+<jsp:include page="0.header.jsp"/>
+<div class="all-browsers">
+	<h2> Calculation </h2>
+		
+	<div id="list">	
+		<ul id="list1">					
+			<li><a href="/Controller?cmd=cal&cal=Intro"> Intro </a>	</li>
 			
-		<div id="list">	
-			<ul id="list1">					
-				<li><a href="/Controller?cmd=cal&cal=Intro"> Intro </a>	</li>
-				
-				<li><a href="/Controller?cmd=cal&cal=simcal"> Simple Calculation </a></li>
-				<li>Hydraulic 
-					<ul class="list2">
-						<li><a href="/Controller?cmd=cal&cal=linehyd"> Line Hydraulic </a></li>
-						<li><a href="/Controller?cmd=cal&cal=pumphyd"> Pump Hydraulic </a></li>
-						<li><a href="/Controller?cmd=cal&cal=psvhyd"> PSV Hydraulic </a></li>
-					</ul>
-				</li>
-				<li>Heat Transfer
-					<ul class="list2">
-						<li><a href="/Controller?cmd=cal&cal=phtrans"> Pipe Heat Transfer </a></li>
-						<li><a href="/Controller?cmd=cal&cal=thtrans"> Tank Heat Transfer </a></li>
-					</ul>
-				
-				</li>	
-			</ul>
-		
-		</div>
-		
-		<c:if test="${cal eq 'Intro'}">
-			<div class="intro" >
-				<h3>Introduce </h3>
+			<li><a href="/Controller?cmd=cal&cal=simcal"> Simple Calculation </a></li>
+			<li>Hydraulic 
+				<ul class="list2">
+					<li><a href="/Controller?cmd=cal&cal=linehyd"> Line Hydraulic </a></li>
+					<li><a href="/Controller?cmd=cal&cal=pumphyd"> Pump Hydraulic </a></li>
+					<li><a href="/Controller?cmd=cal&cal=psvhyd"> PSV Hydraulic </a></li>
+				</ul>
+			</li>
+			<li>Heat Transfer
+				<ul class="list2">
+					<li><a href="/Controller?cmd=cal&cal=phtrans"> Pipe Heat Transfer </a></li>
+					<li><a href="/Controller?cmd=cal&cal=thtrans"> Tank Heat Transfer </a></li>
+				</ul>
+			
+			</li>	
+		</ul>
 	
-				<article class="browser">
-					<h3>Simple Calculation</h3>
+	</div>
+	
+	<c:if test="${cal eq 'Intro'}">
+		<div class="intro" >
+			<h3>Introduce </h3>
+
+			<article class="browser">
+				<h3>Simple Calculation</h3>
+				<p>
+					구와 원통의 부피와 넓이를....
+				</p>
+			
+			</article>
+			
+			<article class="browser">
+				<h3>Hydraulic</h3>
+				<h4>Line Hydraulic</h4>
 					<p>
-						구와 원통의 부피와 넓이를....
+						
 					</p>
-				
-				</article>
-				
-				<article class="browser">
-					<h3>Hydraulic</h3>
-					<h4>Line Hydraulic</h4>
-						<p>
-							
-						</p>
-				
-					<h4>Pump Hydraulic</h4>
-						<p>
-							
-						</p>
-					
-					<h4>PSV Hydraulic</h4>
-						<p>
-							
-						</p>
-					
-				</article>
-				
-				<article class="browser">
-					<h3>Heat Transfer</h3>
-					<h4>Pipe Heat Transfer</h4>
-						<p>
-							
-						</p>
-					<h4>Tank Heat Transfer</h4>
-						<p>
-							
-						</p>
-				
-				</article>
-
-
-				<article class="browser">
-					<h3>참고문헌</h3>
+			
+				<h4>Pump Hydraulic</h4>
 					<p>
 						
 					</p>
 				
-				</article>
-			</div>
-		</c:if>
-		
-		<c:if test="${cal eq 'simcal'}">
-			<div class="intro" >
-				<h3>Simple Calculation </h3>
-				<form method="post">
-				<table>
-					
-					<tbody>
-						<tr>
-							<td> Sphere </td><td colspan="2">Input</td>
-						</tr>
-						<tr>
-							<td rowspan="5" style="width:100px;"><img alt="sphere" src="../upload/sphere.png"></td>
-							<td>Diameter</td><td><input type="number">m</td>
-						</tr>
-						<tr>
-							<td>Wet Length</td><td><input type="number">m</td>
-						</tr>
-						<tr>
-							<td>Output</td><td></td>
-						</tr>
-						<tr>
-							<td>Area</td><td><input type="number">m<sup>2</sup></td>
-						</tr>
-						<tr>
-							<td>Wetted Area</td><td><input type="number">m<sup>2</sup></td>
-						</tr>
-						<tr>
-							<td rowspan="2"><input type="button" value="calculate">
-							<td>Volumn</td>
-							<td><input type="number">m<sup>3</sup></td>
-						</tr>
-						<tr>
-							<td>Wetted Volumn</td><td><input type="number">m<sup>3</sup></td>
-						</tr>
+				<h4>PSV Hydraulic</h4>
+					<p>
+						
+					</p>
+				
+			</article>
 			
-					</tbody>
-					
-				</table>
-				</form>
-				<br><br>
-		
-				<form method="post">
-				<table>
-					<thead>
-						<tr>
-							<th style="width:40%"></th><th></th><th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td> Cylinder </td><td colspan="2">Input</td>
-						</tr>
-						<tr>
-							<td rowspan="5"><img alt="sphere" src="../upload/cylinder.png"></td>
-							<td>Diameter</td><td><input type="number">m</td>
-						</tr>
-						<tr>
-							<td>Wet Length</td><td><input type="number">m</td>
-						</tr>
-						<tr>
-							<td>Output</td><td></td>
-						</tr>
-						<tr>
-							<td>Area</td><td><input type="number">m<sup>2</sup></td>
-						</tr>
-						<tr>
-							<td>Wetted Area</td><td><input type="number">m<sup>2</sup></td>
-						</tr>
-						<tr>
-							<td rowspan="2"><input type="button" value="calculate">
-							<td>Volumn</td>
-							<td><input type="number">m<sup>3</sup></td>
-						</tr>
-						<tr>
-							<td>Wetted Volumn</td><td><input type="number">m<sup>3</sup></td>
-						</tr>
+			<article class="browser">
+				<h3>Heat Transfer</h3>
+				<h4>Pipe Heat Transfer</h4>
+					<p>
+						
+					</p>
+				<h4>Tank Heat Transfer</h4>
+					<p>
+						
+					</p>
 			
-					</tbody>
+			</article>
+
+
+			<article class="browser">
+				<h3>참고문헌</h3>
+				<p>
 					
-				</table>
-				</form>
-
-				
-			</div>
-		</c:if>
-		<c:if test="${cal eq 'linehyd'}">
-			<div class="intro" >
-				<h3>Line Hydraulic </h3>
-
-				
-				
-			</div>
-		</c:if>
-		
-		<c:if test="${cal eq 'pumphyd'}">
-			<div class="intro" >
-				<h3>Pump Hydraulic </h3>
+				</p>
+			
+			</article>
+		</div>
+	</c:if>
 	
-
-				
-			</div>
-		</c:if>
+	<c:if test="${cal eq 'simcal'}">
+		<div class="intro" >
+			<h3>Simple Calculation </h3>
+			<form method="post">
+			<table style="width:600px;">
+				<tbody>
+					<tr>
+						<td> Sphere </td><td colspan="2">Input</td>
+					</tr>
+					<tr>
+						<td rowspan="5" style="width:100px;"><img alt="sphere" src="../upload/sphere.png"></td>
+						<td>Diameter</td><td><input type="number">m</td>
+					</tr>
+					<tr>
+						<td>Wet Length</td><td><input type="number">m</td>
+					</tr>
+					<tr>
+						<td>Output</td><td></td>
+					</tr>
+					<tr>
+						<td>Area</td><td><input type="number">m<sup>2</sup></td>
+					</tr>
+					<tr>
+						<td>Wetted Area</td><td><input type="number">m<sup>2</sup></td>
+					</tr>
+					<tr>
+						<td rowspan="2"><input type="button" value="calculate">
+						<td>Volumn</td>
+						<td><input type="number">m<sup>3</sup></td>
+					</tr>
+					<tr>
+						<td>Wetted Volumn</td><td><input type="number">m<sup>3</sup></td>
+					</tr>
 		
-		<c:if test="${cal eq 'psvhyd'}">
-			<div class="intro" >
-				<h3>PSV Hydraulic </h3>
+				</tbody>
+				
+			</table>
+			</form>
+			<br><br>
 	
-
-				
-			</div>
-		</c:if>
+			<form method="post">
+			<table style="width:600px;">
+				<thead>
+					<tr>
+						<th style="width:40%"></th><th></th><th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td> Cylinder </td><td colspan="2">Input</td>
+					</tr>
+					<tr>
+						<td rowspan="5"><img alt="sphere" src="../upload/cylinder.png"></td>
+						<td>Diameter</td><td><input type="number">m</td>
+					</tr>
+					<tr>
+						<td>Wet Length</td><td><input type="number">m</td>
+					</tr>
+					<tr>
+						<td>Output</td><td></td>
+					</tr>
+					<tr>
+						<td>Area</td><td><input type="number">m<sup>2</sup></td>
+					</tr>
+					<tr>
+						<td>Wetted Area</td><td><input type="number">m<sup>2</sup></td>
+					</tr>
+					<tr>
+						<td rowspan="2"><input type="button" value="calculate">
+						<td>Volumn</td>
+						<td><input type="number">m<sup>3</sup></td>
+					</tr>
+					<tr>
+						<td>Wetted Volumn</td><td><input type="number">m<sup>3</sup></td>
+					</tr>
 		
-		<c:if test="${cal eq 'phtrans'}">
-			<div class="intro" >
-				<h3> Pipe Heat Transfer </h3>
+				</tbody>
+				
+			</table>
+			</form>
+
+			
+		</div>
+	</c:if>
 	
+	<c:if test="${cal eq 'linehyd'}">
 
-				
-			</div>
-		</c:if>
-		
-		<c:if test="${cal eq 'thtrans'}">
-			<div class="intro" >
-				<h3>Tank Heat Transfer </h3>
+		<jsp:include page="4.linehyd.jsp"/>
 
-				
-			</div>
-		</c:if>
+	</c:if>
+	
+	<c:if test="${cal eq 'pumphyd'}">
+		<div class="intro" >
+			<h3>Pump Hydraulic </h3>
+
+
+			
+		</div>
+	</c:if>
+	
+	<c:if test="${cal eq 'psvhyd'}">
+		<div class="intro" >
+			<h3>PSV Hydraulic </h3>
+
+
+			
+		</div>
+	</c:if>
+	
+	<c:if test="${cal eq 'phtrans'}">
+		<div class="intro" >
+			<h3> Pipe Heat Transfer </h3>
+
+
+			
+		</div>
+	</c:if>
+	
+	<c:if test="${cal eq 'thtrans'}">
+		<div class="intro" >
+			<h3>Tank Heat Transfer </h3>
+
+			
+		</div>
+	</c:if>
 
 
 </div>
 
-
+<br><br>
+	
 <jsp:include page="0.footer.jsp"/> 
 
 
