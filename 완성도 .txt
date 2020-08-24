@@ -3,8 +3,6 @@
 8월 10일 ~ 8월 14일
 
 
-
-
 price of Patroluem
 
 1) 화면 구성하기 (완료)
@@ -70,6 +68,9 @@ Calculator
 
 1) 화면 구성하기 
 
+   - line, pump, psv hydraulic: 스토리 보드와 다르게 설정
+
+   
 2) 각 화면마다 계산할 분야 java model과 연동하기
 
 3) 이미지 넣기
@@ -77,3 +78,10 @@ Calculator
 4) admin을 통해 db처리. [option]
 
 #) CSS 다듬기. 
+
+
+
+
+8/31 ~ 9/5
+
+* annotation까지 숙지를 하면 여태까지 한 것 spring MVC패턴에 적용

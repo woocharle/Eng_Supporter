@@ -11,7 +11,7 @@
 		.all-browsers {
 		  	padding: 5px;
 		  	width:1500px;
-		  	height: 1550px;
+		  	height: 1500px;
 			margin: 20px auto; 
 			clear: none;
 			
@@ -212,20 +212,9 @@
 		</div>
 	</c:if>
 	
-	<c:if test="${cal eq 'linehyd'}">
-
-		<jsp:include page="4.linehyd.jsp"/>
-
-	</c:if>
+	<c:if test="${cal eq 'linehyd'}"><jsp:include page="4.linehyd.jsp"/></c:if>
 	
-	<c:if test="${cal eq 'pumphyd'}">
-		<div class="intro" >
-			<h3>Pump Hydraulic </h3>
-
-
-			
-		</div>
-	</c:if>
+	<c:if test="${cal eq 'pumphyd'}"><jsp:include page="4.pumphyd.jsp"/></c:if>
 	
 	<c:if test="${cal eq 'psvhyd'}">
 		<div class="intro" >
@@ -256,7 +245,7 @@
 
 </div>
 
-<br><br>
+<br>
 	
 <jsp:include page="0.footer.jsp"/> 
 

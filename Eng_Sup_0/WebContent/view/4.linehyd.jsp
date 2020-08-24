@@ -5,9 +5,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Engineering Support</title>
 	<style type="text/css">
-		.intro{width: 75%; height: 1400px; position: relative; left: 400px; bottom: 1430px;}
+		.intro{width: 75%; height: 1400px; position: relative; left: 400px; bottom: 1430px; overflow: auto;}
 		.intro h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}
 		.intro table{position: relative; left: 60px; font-size: 20px; margin-bottom: 50px;}
 	
@@ -17,7 +17,7 @@
 	</style>
 	<script type="text/javascript">
 		function add_go(f) {
-			f.action="/Controller?cmd=line";
+			f.action="/Controller?cmd=line&obj=add";
 			f.submit();
 		}
 	
@@ -26,7 +26,6 @@
 <body>
 	<div class="intro">
 		<h3>Line Hydraulic</h3>
-		<c:forEach var="i" begin="1" end="${num}">
 		
 		<div>
 			<form method="post">
@@ -34,6 +33,8 @@
 				<input type="hidden" name ="cal" value="${cal}">
 				<input type="hidden" name = "num" value="${num}">
 				<br><br>
+				
+				<c:forEach var="i" begin="1" end="${num}">
 				<div id="lhyd">
 					<table style="position: relative; left: 30px; margin-top: 20px; width: 1500px;">
 						<thead>
@@ -53,15 +54,14 @@
 							<tr style="font-size: 20px;"> <!-- 2 -->
 								<td>Process</td>
 								<td>Phase</td>
-								<td colspan="2"><select>
+								<td>
+									<select>
 										<option>Liquid</option>
-										<option>Vapor</option>
-										<option>2 Phase (1)</option>
-										<option>2 Phase (2)</option>
-										<option>2 Phase (3)</option>
-								</select></td>
+										<option>Vapor </option>
+									</select>
+								</td>
 								<td>Press</td>
-								<td colspan="7" style="text-align: left;">
+								<td colspan="8" style="text-align: left;">
 									<input type="radio" id="Inlet"name="press" value="Inlet" onclick=""> 
 									<label for="Inlet">Inlet</label>
 									<input type="radio" id="Outlet" name="press" value="Outlet" onclick="">
@@ -302,12 +302,14 @@
 							</tr>
 							
 						</tbody>
+						
 					</table>
+					
 				</div>
+				<br><br>
+				</c:forEach>
 			</form>
 		</div>
-		<br><br>
-		</c:forEach>
 	</div>		
 	
 </body>
