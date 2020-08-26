@@ -29,7 +29,7 @@
 		#login {
 			position: relative;
 			left: 1400px;
-			bottom: 5px;
+			bottom: 50px;
 		}
 		
 		#logout {
@@ -103,8 +103,8 @@
 <body>
 <header>
 <div id="main_header" >
-		<div>
-			<h1> Administrator </h1>
+	<div>
+		<h1> Administrator </h1>
 		</div>
 		<div class="member">
 			<c:choose>
