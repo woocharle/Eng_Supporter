@@ -60,42 +60,42 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>Item No.</td><td><input type="text" name="item1" class="pspec1" value="" onkeyup="pumprev_go(this.form)"></td><td></td>
-						<td>Net Suction Press</td><td><input type="text" name="psuc" class="pspec2" value="" readonly> </td><td>kg/cm2</td>
+						<td>Item No.</td><td><input type="text" name="item1" value="${hvo2.item1}" class="pspec1"  onkeyup="pumprev_go(this.form)"></td><td></td>
+						<td>Net Suction Press</td><td><input type="text" name="psuc" value="${hvo2.psuc}" class="pspec2"  readonly> </td><td>kg/cm2</td>
 					</tr>
 					<tr>
-						<td>Rev No.</td><td><input type="text" name="rev" class="pspec1" value=""></td><td></td>
-						<td>NPSH Available</td><td><input type="number" name="npsh" class="pspec2" value="" readonly> </td><td>kg/cm2</td>
+						<td>Rev No.</td><td><input type="text" name="rev"  value="${hvo2.rev}" class="pspec1" onkeyup="pumprev_go(this.form)"></td><td></td>
+						<td>NPSH Available</td><td><input type="number" name="npsh" value="${hvo2.npsh}" class="pspec2" readonly> </td><td>kg/cm2</td>
 					</tr>
 					<tr>
-						<td>Component.</td><td><input type="text" name="comp" class="pspec1" value=""></td><td></td>
-						<td>Discharge Press</td><td><input type="text" name="pdis" class="pspec2" value="" readonly> </td><td>kg/cm2</td>
+						<td>Component.</td><td><input type="text" name="comp" class="pspec1" value="${hvo2.comp}" onkeyup="pumprev_go(this.form)"></td><td></td>
+						<td>Discharge Press</td><td><input type="text" name="pdis" class="pspec2" value="${hvo2.pdis}" readonly> </td><td>kg/cm2</td>
 					</tr>
 					<tr>
 						<td>Type.</td>
 						<td>
 							<select name="ptype" id="combo1" onchange="pumprev_go(this.form)">
-								<option value="centri" <c:if test="${pvo2.ptype eq 'centri'}"> selected </c:if>> Centrifugal </option>					
-			               		<option value="rotary" <c:if test="${pvo2.ptype eq 'rotary'}"> selected </c:if>> Rotary</option>		  	
+								<option value="centri" <c:if test="${hvo2.ptype eq 'centri'}"> selected </c:if>> Centrifugal </option>					
+			               		<option value="rotary" <c:if test="${hvo2.ptype eq 'rotary'}"> selected </c:if>> Rotary</option>		  	
 							</select>
 						</td>
 						<td></td>
-						<td>Differential Press</td><td><input type="number" name="pdiff" class="pspec2" value="" > </td><td>kg/cm2</td>
+						<td>Differential Press</td><td><input type="number" name="pdiff" class="pspec2" value="${hvo2.pdiff}" readonly > </td><td>kg/cm2</td>
 					</tr>
 					<tr>
 						<td>Condition</td>
 						<td>
-							<input type="radio" id="Inlet"name="cdtn" value="Inlet" onclick="" checked> 
+							<input type="radio" id="Inlet"name="cdtn" value="Inlet" onclick="pumprev_go(this.form)" checked> 
 							<label for="Exist">Exist</label>
-							<input type="radio" id="Outlet" name="cdtn" value="Outlet" onclick="">
+							<input type="radio" id="Outlet" name="cdtn" value="Outlet" onclick="pumprev_go(this.form)">
 							<label for="New">New</label>						
 						</td>
 						<td></td>
-						<td>Differential Head</td><td><input type="number" name="hdiff" class="pspec2" value="" > </td><td>kg/cm2</td>
+						<td>Differential Head</td><td><input type="number" name="hdiff" class="pspec2" value="${hvo2.hdiff}" readonly> </td><td>kg/cm2</td>
 					</tr>
 					<tr>
 						<td colspan="3"></td>
-						<td>Hydraulic Power</td><td><input type="number" name="hp" class="pspec2" value="" > </td><td>kg/cm2</td>
+						<td>Hydraulic Power</td><td><input type="number" name="hp" class="pspec2" value="${hvo2.hp}" readonly> </td><td>kg/cm2</td>
 					</tr>
 				</tbody>
 			</table>
@@ -109,7 +109,8 @@
 				<thead>
 						<td style="width:20%;">Depart (Suction)</td>
 						<td style="width:25%;"><span style="position: relative; left:100px">Equip Item No.</span></td><td></td>
-						<td style="width:200px;"><input type="text" name="item2" class="pspec1" value=""></td><td style="width:130px;"></td><td></td>
+						<td style="width:200px;"><input type="text" name="item2" class="pspec1" value="${hvo2.item2}" onkeyup="pumprev_go(this.form)"></td>
+						<td style="width:130px;"></td><td></td>
 				</thead>
 				<tbody>
 					<tr>
@@ -117,20 +118,23 @@
 						<td colspan="4"></td>
 					</tr>
 					<tr>
-						<td>Operating Press</td><td><input type="number" name="op1" class="pspec1" value="">&nbsp;&nbsp;&nbsp;kg/cm2G</td><td></td>
-						<td>Min.Static Head</td><td><input type="number" name="minh" class="pspec2" value="" ></td><td>m</td>
+						<td>Operating Press</td>
+						<td><input type="number" name="op1" class="pspec1" value="${hvo2.op1}" onkeyup="pumprev_go(this.form)">&nbsp;&nbsp;&nbsp;kg/cm2G</td><td></td>
+						<td>Min.Static Head</td><td><input type="number" name="minh" class="pspec2" value="${hvo2.minh}" onkeyup="pumprev_go(this.form)"></td><td>m</td>
 					</tr>
 					<tr>
-						<td>Desing press</td><td><input type="number" name="dp1" class="pspec1" value="">&nbsp;&nbsp;&nbsp;kg/cm2G</td><td></td>
-						<td>Max.Static Head</td><td><input type="number" name="maxh" class="pspec2" value="" > </td><td>m</td>
+						<td>Design press</td>
+						<td><input type="number" name="dp1" class="pspec1" value="${hvo2.dp1}" onkeyup="pumprev_go(this.form)">&nbsp;&nbsp;&nbsp;kg/cm2G</td><td></td>
+						<td>Max.Static Head</td><td><input type="number" name="maxh" class="pspec2" value="${hvo2.maxh}" onkeyup="pumprev_go(this.form)"></td><td>m</td>
 					</tr>
 					<tr>
-						<td>Strainer</td><td><input type="number" name="strainer" class="pspec1" value="">&nbsp;&nbsp;&nbsp;kg/cm2G</td><td></td>
-						<td>Pump Shaft Level</td><td><input type="number" name="plevel" class="pspec2" value="" > </td><td>m</td>
+						<td>Strainer</td>
+						<td><input type="number" name="strainer" class="pspec1" value="${hvo2.strainer}" onkeyup="pumprev_go(this.form)">&nbsp;&nbsp;&nbsp;kg/cm2G</td><td></td>
+						<td>Pump Shaft Level</td><td><input type="number" name="plevel" class="pspec2" value="${hvo2.plevel}" onkeyup="pumprev_go(this.form)"> </td><td>m</td>
 					</tr>
 					<tr>
-						<td>Vapor Pressure</td><td><input type="number" name="vaporpress" class="pspec1" value="">&nbsp;&nbsp;&nbsp;kg/cm2G</td><td></td>
-						<td>Elevation change</td><td><input type="number" name="elsuc" class="pspec2" value="" > </td><td>m</td>
+						<td>Vapor Pressure</td><td><input type="number" name="vppress" class="pspec1" value="${hvo2.vppress}" onkeyup="pumprev_go(this.form)">&nbsp;&nbsp;&nbsp;kg/cm2G</td><td></td>
+						<td>Elevation change</td><td><input type="number" name="elsuc" class="pspec2" value="${hvo2.elsuc}" readonly> </td><td>m</td>
 					</tr>
 				</tbody>
 			</table>
@@ -139,27 +143,32 @@
 				<thead>
 						<td style="width:20%;">Arrival (Discharge)</td>
 						<td style="width:25%;"><span style="position: relative; left:100px">Equip Item No.</span></td><td></td>
-						<td style="width:200px;"><input type="text" name="item2" class="pspec1" value=""></td><td style="width:130px;"></td><td></td>
+						<td style="width:200px;"><input type="text" name="item2" class="pspec1" value="${hvo2.item2}" onkeyup="pumprev_go(this.form)"></td>
+						<td style="width:130px;"></td><td></td>
 				</thead>
 				<tbody>
 					<tr>
-						<td>Elevation change</td><td><input type="text" name="elmax" class="pspec1" value="" readonly></td><td></td>
-						<td>Operating Press</td><td><input type="number" name="op2" class="pspec2" value="" ></td><td>m</td>
+						<td>Elevation change</td><td><input type="text" name="elmax" class="pspec1" value="${hvo2.elmax}" readonly></td><td></td>
+						<td>Operating Press</td><td><input type="number" name="op2" class="pspec2" value="${hvo2.op2}" onkeyup="pumprev_go(this.form)"></td><td>m</td>
 					</tr>
 					<tr>
 						<td>Control Valve</td>
 						<td>
-							<input type="radio" id="Inlet"name="cvalve" value="Inlet" onclick="" checked> 
+							<input type="radio" id="Inlet"name="cvalve" value="Exist" onclick="pumprev_go(this.form)" checked> 
 							<label for="Exist">Exist</label>
-							<input type="radio" id="Outlet" name="cvalve" value="Outlet" onclick="">
+							<input type="radio" id="Outlet" name="cvalve" value="New" onclick="pumprev_go(this.form)">
 							<label for="New">New</label>						
 						</td>
 						<td></td>
-						<td>- Item.No</td><td><input type="text" name="citem" class="pspec2" value="" ></td><td>kg/cm2G</td>
+						<td>- Item.No</td><td><input type="text" name="citem" class="pspec2" value="${hvo2.citem}" onkeyup="pumprev_go(this.form)"></td><td>kg/cm2G</td>
 					</tr>
 					<tr>
 						<td colspan="3"></td>
-						<td>- Press Drop</td><td><input type="number" name="cvp" class="pspec2" <c:if test="${pvo2.cvalve eq 'New'}"> readonly </c:if>> </td><td>kg/cm2</td>
+						<td>- Press Drop</td>
+						<td><input type="number" name="cvp" class="pspec2" <c:if test="${pvo2.cvalve eq 'New'}"> readonly </c:if>
+							<c:if test="${pvo2.cvalve eq 'Exist'}"> onkeyup='pumprev_go(this.form)' </c:if>> </td>
+						
+						<td>kg/cm2</td>
 					</tr>
 				</tbody>
 			</table>
