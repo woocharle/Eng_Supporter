@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="plevel"/>
+		<item key="selection" value="var=&quot;k&quot; items=&quot;${pslist}&quot;"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="var=&quot;i&quot; begin=&quot;1&quot; end=&quot;4&quot;"/>
+			<item value="hvo2"/>
 			<item value="plevel"/>
 			<item value="#suction"/>
 			<item value="&quot;text&quot;"/>
@@ -21,10 +23,10 @@
 			<item value="relative"/>
 			<item value="section"/>
 			<item value="li"/>
-			<item value="td"/>
-			<item value="HTML_5 Canvas"/>
 		</list>
 		<list key="replacehistory">
+			<item value="var=&quot;k&quot; items=&quot;${pslist}&quot;"/>
+			<item value="pvo1"/>
 			<item value="#discharge"/>
 			<item value="&quot;number&quot;"/>
 			<item value="find_"/>
