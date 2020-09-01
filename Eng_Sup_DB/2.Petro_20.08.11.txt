@@ -24,15 +24,15 @@ values(NEXT VALUE FOR petro_seq, #{unit}, #{content_s}, #{img}, #{content})
 
 
 INSERT INTO petro
-VALUES(NEXT VALUE FOR petro_seq, 'Crude Oil', 'xxx.jpg' , 'Crude Crude');
+VALUES(NEXT VALUE FOR petro_seq, 'Crude Oil', 'Crude Oil은...', 'xxx.jpg', 'Crude Crude');
 
 
 INSERT INTO petro
-VALUES(NEXT VALUE FOR petro_seq, 'Heating Oil', 'xxx.jpg' , 'Heating Oil Heating Oil');
+VALUES(NEXT VALUE FOR petro_seq, 'Heating Oil', 'Heating Oil은...', 'xxx.jpg',  'Heating Oil Heating Oil');
 
 
 INSERT INTO petro
-VALUES(NEXT VALUE FOR petro_seq, 'Natural Gas', 'xxx.jpg' , 'Natural Gas');
+VALUES(NEXT VALUE FOR petro_seq, 'Natural Gas', 'Natural Gas은...', 'xxx.jpg', 'Natural Gas');
 
 
 3.컬럼추가 및 순서 변경

@@ -37,11 +37,11 @@
 
     <script type="text/javascript">
 		function pumprev_go(f) {
-			alert("테스트성공");
+			//alert("테스트성공");
 			
-			/* 			
+					
 			f.action="/Controller?cmd=line&obj=rev";
-			f.submit(); */
+			f.submit();
 		}
 	
 	</script>
