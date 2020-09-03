@@ -14,3 +14,21 @@ CREATE TABLE member(
 create sequence m1
 	increment by 1
 	start with 1;
+
+
+ALTER TABLE member ADD m_name VARCHAR(20);
+
+ALTER TABLE member ADD m_phone VARCHAR(20);
+
+ALTER TABLE member ADD req_del VARCHAR(20);
+
+INSERT INTO member
+VALUES(NEXT VALUE FOR member_seq, 'admin', 'mycompany', '010-xxxx-xxxx',
+'silvershots@naver.com', 'admin', '1111', null);
+
+
+
+
+INSERT INTO member
+VALUES(NEXT VALUE FOR member_seq, 'test', 'mycompany', '010-xxxx-xxxx',
+'test@naver.com', 'test', '1111', null);

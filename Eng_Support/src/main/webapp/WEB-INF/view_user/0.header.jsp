@@ -8,42 +8,17 @@
 	<title> Engineering Support </title>
 	<style type="text/css">
 		/*헤더*/
-		#main_header>div {
-			margin: 0 auto;
-			width: 1500px;
-		}
-		
-		#main_header>div>button {
-			width: 100px;
-			font-size: 20px;
-		}
-		
-		#main_header>div>h1 {
-			font-size: 50px
-		}
+		#main_header>div {margin: 0 auto; width: 1500px;}
+		#main_header>div>button {width: 100px; font-size: 20px;}
+		#main_header>div>h1 {font-size: 50px}
 		
 		/*메인화면: 회원관리*/
-		.member {
-			height: 30px;
-		}
+		.member {height: 30px; }
 		
-		#login {
-			position: relative;
-			left: 1400px;
-			bottom: 5px;
-		}
-		
-		#logout {
-			position: relative;
-			left: 1280px;
-			bottom: 5px;
-		}
-		
-		#mypage {
-			position: relative;
-			left: 1400px;
-			bottom: 34.5px;
-		}
+		#greet{position: relative; left: 980px;  top: 6px; font-size: 20px;}
+		#login {position: relative; left: 1350px; }
+		#logout {position: relative; left: 1200px; bottom: 40px;}
+		#mypage {position: relative; left: 1250px; bottom: 40px;}
 		
 		/*메인화면: 메뉴판*/
 		
@@ -55,28 +30,20 @@
 			font-size: 25px;
 			width: 1500px;
 			color: white;
-			margin: 15px auto;
+			margin: 30px auto;
 			padding-inline-start: 0px;
 		}
 		
-		#main_body>ul>li {
-			float: left;
-			width: 25%;
-		}
+		#main_body>ul>li {float: left; width: 25%;}
+		#main_body>ul>li a {display: block; padding: 14px 0px;}
+		#main_body>ul>li a:hover {background-color: #111111;}
+			
 		
-		#main_body>ul>li a {
-			display: block;
-			padding: 14px 0px;
-		}
-		
-		#main_body>ul>li a:hover {
-			background-color: #111111;
-		}
 
 	</style>
 	<script type="text/javascript">
 		function log_in() {
-			location="/Controller?cmd=login0";
+			location.href="login.do";
 			
 			document.getElementById("login").style.display= "none";
 			document.getElementById("logout").style.display= "block";
@@ -84,13 +51,15 @@
 		}
 		
 		function log_out() {
+			location.href="logout_member.do"
+			
 			document.getElementById("login").style.display= "block";
 			document.getElementById("logout").style.display= "none";
 			document.getElementById("mypage").style.display= "none";
 		}
 		
 		function Mypage() {
-			location.href="#";
+			location.href="mypage.do";
 		}
 		
 		function Home_go(){
@@ -121,10 +90,10 @@
 		</div>
 		<div class="member">
 			<c:choose>
-				<c:when test="${login=='ok'}">
-					<p> ${mvo.m_name}님 환영합니다.</p>
-					<button id ="logout" onclick="log_out()" style="display: none;">Logout </button> 			
-					<button id ="mypage" onclick="MyPage()" style="display: none;">MyPage </button> 
+				<c:when test="${mvo.m_name ne null}">
+					<p id="greet"> ${mvo.m_name}님 환영합니다.</p>
+					<button id ="logout" onclick="log_out()">Logout </button> 			
+					<button id ="mypage" onclick="MyPage()">MyPage </button> 
 				</c:when>
 				<c:otherwise>
 					<button id ="login" onclick="log_in()">Login </button> 	

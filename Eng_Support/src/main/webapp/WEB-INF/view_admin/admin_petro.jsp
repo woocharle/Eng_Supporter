@@ -16,7 +16,8 @@
 	<div align = "center">
 		<h2> Petroleum </h2>
 		<hr>
-		<p>[ <a href ="view/admin_pwrite.jsp"> 석유화학제품 추가 </a>]</p>
+		<h3>[ <a href ="admin_main.do">메인메뉴로 이동 </a>]</h3>
+		<p>[ <a href ="pwrite.do"> 석유화학제품 추가 </a>]</p>
 		<form method = "post">
 			<table>
 				<thead>
@@ -28,14 +29,14 @@
 					<c:choose>
 						<c:when test="${empty plist}">
 							<tr>
-								<td colspan="2"> <h2 style="text-align: center"> 원하는 자료가 존재하지 않습니다. </h2></td>
+								<td colspan="2"> <h2 style="text-align: center"> 자료가 존재하지 않습니다. </h2></td>
 							</tr>
 						</c:when>
 						<c:otherwise>
 							<c:forEach var="k" items="${plist}" varStatus="vs">
 								<tr>
 									<td>${vs.count}</td>
-									<td><a href="/Controller?cmd=onepick&idx=${k.idx}">${k.unit}</a></td>
+									<td><a href="ponelist.do?idx=${k.idx}">${k.unit}</a></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>

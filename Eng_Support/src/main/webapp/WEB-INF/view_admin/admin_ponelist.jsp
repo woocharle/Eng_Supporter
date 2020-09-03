@@ -13,13 +13,13 @@
 	</style>
 	<script type="text/javascript">
 		function update_go(f){
-			f.action = "view/admin_pupdate.jsp"
+			f.action = "pupdate.do"
 			f.submit();
 		}
 		function delete_go(f){		
 			var chk = confirm("정말 삭제할까요?");
 			if(chk){
-				f.action="/Controller?cmd=pdelete";
+				f.action="pdelete.do";
 				f.submit();
 			} else {
 				
@@ -33,7 +33,7 @@
 	<div align="center">
 		<h2> 방명록 : 내용 화면 </h2>
 		<hr>
-		<p>[ <a href ="/Controller?cmd=petro_list">목록으로 이동 </a>]</p>
+		<p>[ <a href ="plist_go.do">목록으로 이동 </a>]</p>
 		<form method="post">
 			<table>
 				<tbody>

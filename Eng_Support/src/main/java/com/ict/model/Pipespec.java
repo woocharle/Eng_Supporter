@@ -15,10 +15,14 @@ public class Pipespec {
 
 	public List<String> getSize() {
 		List<String> list = null;
-
 		list = size;
-
 		return list;
 	}
 
+	public List<String> getSch(){
+		List<String> list = null;
+		list = schedule;
+		return list;
+	}
+	
 }

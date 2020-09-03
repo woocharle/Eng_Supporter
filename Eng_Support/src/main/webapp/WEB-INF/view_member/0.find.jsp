@@ -6,23 +6,18 @@
 	<meta charset="UTF-8">
 	<title> Engineering Support </title>
 	<style type="text/css">
-		table{
-			margin:0px auto;
-			width:300px;
-		}
+		table{margin:0px auto; width:400px;}
+		td{margin: 0px auto; text-align: center;}
+		
+		#mydiv{margin-top: 60px;}
 	
 	</style>
 	<script type="text/javascript">
-		function login_go(f){
-			f.action="/MyController?cmd=login";
+		function send_go(f){
+			f.action="send_mail.do";
 			f.submit();
 		}
-		
-		function join_go(f){
-			f.action="";
-			f.submit();
-		}
-	
+			
 	</script>
 </head>
 <body>
@@ -31,24 +26,18 @@
 			<table>
 				<thead>
 					<tr>
-						<th colspan="2"><h2>LogIn</h2></th>
+						<th colspan="2"><h2>이메일을 입력하시오.</h2></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<th>아이디</th>
-						<td><input type="text" name="m_id"></td>
-					</tr>	
-					<tr>
-						<th>패스워드</th>
-						<td><input type="text" name="m_id"></td>
+						<td colspan="2"><input type="text" name="m_email"></td>
 					</tr>	
 				</tbody>
 				<tfoot>
-					<tr>
+					<tr style="height: 40px;">
 						<td colspan="2">
-							<input type="button" value="로그인" onclick="login_go(this.form)">
-							<input type="button" value="회원가입" onclick="join_go(this.form)">
+							<input type="button" value="확인" onclick="send_go(this.form)">
 						</td>
 					</tr>
 				</tfoot>

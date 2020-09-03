@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.db.DAO;
+import com.ict.db.HVO;
 import com.ict.db.PVO1;
 import com.ict.db.PVO2;
 import com.ict.db.VO1;
@@ -91,7 +92,26 @@ public class Main_Controller {
 		switch (cal) {
 			case "linehyd":
 				num = 1;
-				request.setAttribute("num", num);
+				List<HVO> list = new ArrayList<HVO>();
+				
+				for (int i = 0; i < num; i++) {
+					HVO hvo = new HVO();
+					Pipespec pipespec = new Pipespec();
+					
+					hvo.setIdx(String.valueOf(i+1));
+					hvo.setPhase("liquid");
+					hvo.setPress("Inlet");
+					hvo.setCfactor("fitting");
+					hvo.setDout("6");
+					hvo.setDlist(pipespec.getSize());
+					hvo.setSch("STD");
+					hvo.setSlist(pipespec.getSch());
+					
+					list.add(hvo);
+					
+				}
+				
+				request.getSession().setAttribute("list", list);
 						
 			break;
 			
@@ -109,8 +129,8 @@ public class Main_Controller {
 					pvo2.setIdx(String.valueOf(i+1));
 					
 					pvo2.setDout("6");
-					//pvo2.setSize(pipespec.getSize());
-					//pvo2.setSchedule(pipespec.getSize());
+					pvo2.setSize(pipespec.getSize());
+					pvo2.setSchedule(pipespec.getSch());
 					
 					pslist.add(pvo2);
 					pdlist.add(pvo2);

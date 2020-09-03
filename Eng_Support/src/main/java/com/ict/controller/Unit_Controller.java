@@ -61,9 +61,7 @@ public class Unit_Controller {
 		ModelAndView mv = new ModelAndView();
 		
 		int table = Integer.parseInt(request.getParameter("table_1"));
-		System.out.println(table);
 		List<VO1> slist0 = (List<VO1>)request.getSession().getAttribute("slist");
-		System.out.println(slist0);
 		VO1[] b_slist = slist0.toArray(new VO1[slist0.size()]);
 		
 		List<VO1> slist = new ArrayList<VO1>();

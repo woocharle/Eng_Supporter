@@ -15,7 +15,7 @@
 	</style>
 	<script type="text/javascript">
 		function save_ok(f) {
-			f.action="/Controller?cmd=pwrite";
+			f.action="pwrite_ok.do";
 			f.submit();
 		}
 		

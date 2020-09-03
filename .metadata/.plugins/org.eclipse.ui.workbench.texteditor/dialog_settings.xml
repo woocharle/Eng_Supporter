@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Bend"/>
+		<item key="selection" value="k"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="num"/>
 			<item value="bend"/>
 			<item value="list2"/>
 			<item value="plevel"/>
@@ -15,7 +16,6 @@
 			<item value="&quot;text&quot;"/>
 			<item value="lhyd"/>
 			<item value="4.calulator.jsp"/>
-			<item value="list"/>
 		</list>
 		<list key="replacehistory">
 			<item value="#discharge"/>
