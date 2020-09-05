@@ -4,7 +4,7 @@ import java.util.List;
 
 public class PVO2 {
 	//General
-	private String idx, lineno, pin, pout, temp, den, vis, flow, per, cfactor, dout, schd, din, plen, wall, elchange;
+	private String idx, lineno, pin, pout, temp, den, vis, flow, per, cfactor, dout, schd, din, plen, wall, elchange, eqvlen;
 	private String elbow90_1, elbow90_2, elbow90_3, elbow90_4, elbow90_5, elbow90_6, elbow90_7, elbow90_8, elbow90_9;
 	private String elbow45_1, elbow45_2, bend_1, bend_2, bend_3;
 	private String tee_1, tee_2, tee_3, tee_4, tee_5, tee_6, tee_7, tee_8;
@@ -16,7 +16,7 @@ public class PVO2 {
 	public PVO2() {}
 
 	public PVO2(String idx, String lineno, String pin, String pout, String temp, String den, String vis, String flow,
-			String per, String cfactor, String dout, String schd, String din, String plen, String wall, String elchange,
+			String per, String cfactor, String dout, String schd, String din, String plen, String wall, String elchange, String eqvlen,
 			String elbow90_1, String elbow90_2, String elbow90_3, String elbow90_4, String elbow90_5, String elbow90_6,
 			String elbow90_7, String elbow90_8, String elbow90_9, String elbow45_1, String elbow45_2, String bend_1,
 			String bend_2, String bend_3, String tee_1, String tee_2, String tee_3, String tee_4, String tee_5,
@@ -42,6 +42,7 @@ public class PVO2 {
 		this.plen = plen;
 		this.wall = wall;
 		this.elchange = elchange;
+		this.eqvlen = eqvlen;
 		this.elbow90_1 = elbow90_1;
 		this.elbow90_2 = elbow90_2;
 		this.elbow90_3 = elbow90_3;
@@ -209,6 +210,14 @@ public class PVO2 {
 
 	public void setElchange(String elchange) {
 		this.elchange = elchange;
+	}
+
+	public String getEqvlen() {
+		return eqvlen;
+	}
+
+	public void setEqvlen(String eqvlen) {
+		this.eqvlen = eqvlen;
 	}
 
 	public String getElbow90_1() {

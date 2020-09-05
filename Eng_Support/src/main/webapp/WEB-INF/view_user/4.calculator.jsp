@@ -213,35 +213,10 @@
 	</c:if>
 	
 	<c:if test="${cal eq 'linehyd'}"><jsp:include page="4.linehyd.jsp"/></c:if>
-	
 	<c:if test="${cal eq 'pumphyd'}"><jsp:include page="4.pumphyd.jsp"/></c:if>
-	
-	<c:if test="${cal eq 'psvhyd'}">
-		<div class="intro" >
-			<h3>PSV Hydraulic </h3>
-
-
-			
-		</div>
-	</c:if>
-	
-	<c:if test="${cal eq 'phtrans'}">
-		<div class="intro" >
-			<h3> Pipe Heat Transfer </h3>
-
-
-			
-		</div>
-	</c:if>
-	
-	<c:if test="${cal eq 'thtrans'}">
-		<div class="intro" >
-			<h3>Tank Heat Transfer </h3>
-
-			
-		</div>
-	</c:if>
-
+	<c:if test="${cal eq 'psvhyd'}"><jsp:include page="4.psvhyd.jsp"/></c:if>
+	<c:if test="${cal eq 'phtrans'}"></c:if>
+	<c:if test="${cal eq 'thtrans'}"></c:if>
 
 </div>
 

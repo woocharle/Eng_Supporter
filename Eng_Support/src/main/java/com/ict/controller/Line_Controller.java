@@ -136,7 +136,6 @@ public class Line_Controller {
 		HVO[] b_list = list0.toArray(new HVO[list0.size()]);
 		List<HVO> list = new ArrayList<HVO>();
 		
-		System.out.println(idx);
 		int n = 1;
 		
 		for (int i = 0; i < b_list.length; i++) {
@@ -239,7 +238,6 @@ public class Line_Controller {
 		ModelAndView mv = new ModelAndView();
 		String cal = request.getParameter("cal");
 		String idx = request.getParameter("idx");
-		System.out.println(idx);
 		
 		List<HVO> list = (List<HVO>)request.getSession().getAttribute("list");
 		
@@ -286,7 +284,7 @@ public class Line_Controller {
 				k.setElbow90_9(request.getParameter("elbow90_9"));
 				
 				k.setElbow45_1(request.getParameter("elbow45_1"));
-				k.setElbow45_2(request.getParameter("elbow45_1"));
+				k.setElbow45_2(request.getParameter("elbow45_2"));
 				
 				k.setBend_1(request.getParameter("bend_1"));
 				k.setBend_2(request.getParameter("bend_2"));

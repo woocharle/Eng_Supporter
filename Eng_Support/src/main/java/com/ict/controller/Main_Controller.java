@@ -15,6 +15,7 @@ import com.ict.db.DAO;
 import com.ict.db.HVO;
 import com.ict.db.PVO1;
 import com.ict.db.PVO2;
+import com.ict.db.PVO3;
 import com.ict.db.VO1;
 import com.ict.db.VO2;
 import com.ict.model.Pipespec;
@@ -87,7 +88,7 @@ public class Main_Controller {
 		String cal = request.getParameter("cal");
 		int num = 0;
 		
-		request.setAttribute("cal", cal);
+		request.getSession().setAttribute("cal", cal);
 		
 		switch (cal) {
 			case "linehyd":
@@ -117,30 +118,47 @@ public class Main_Controller {
 			
 			case "pumphyd":
 				int pnum = 4;
+				int pnum2 = 4;
 				PVO1 pvo1 = new PVO1();
 
 				List<PVO2> pslist = new ArrayList<PVO2>();
-				List<PVO2> pdlist = new ArrayList<PVO2>();
+				List<PVO3> pdlist = new ArrayList<PVO3>();
 
+				pvo1.setCdtn("Exist");
+				pvo1.setCvalve("Exist");
+				
 				for (int i = 0; i < pnum; i++) {
 					PVO2 pvo2 = new PVO2();
+					PVO3 pvo3 = new PVO3();
 					Pipespec pipespec = new Pipespec();
 					
 					pvo2.setIdx(String.valueOf(i+1));
+					pvo3.setIdx_2(String.valueOf(i+1));
 					
-					pvo2.setDout("6");
 					pvo2.setSize(pipespec.getSize());
 					pvo2.setSchedule(pipespec.getSch());
 					
+					pvo3.setSize(pipespec.getSize());
+					pvo3.setSchedule(pipespec.getSch());
+					
 					pslist.add(pvo2);
-					pdlist.add(pvo2);
+					pdlist.add(pvo3);
 				}
-				
 				
 				request.getSession().setAttribute("pvo1", pvo1);
 				request.getSession().setAttribute("pslist", pslist);
+				request.getSession().setAttribute("pdlist", pdlist);
 				request.getSession().setAttribute("pnum", pnum);				
+				request.getSession().setAttribute("pnum2", pnum2);		
+			
 			break;
+			
+			case "psvhyd":
+				
+				
+			break;
+			
+			
 		} 
 		
 		mv.setViewName("view_user/4.calculator");

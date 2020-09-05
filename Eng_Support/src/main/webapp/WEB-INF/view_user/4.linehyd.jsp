@@ -36,12 +36,6 @@
 			f.submit();
 		}
 		
-		function rev1_go(f){
-			f.action="linerev.do";
-			f.submit();
-		
-		}
-		
 		function cal_go(f){
 			f.action="linerev.do";
 			f.submit();
@@ -67,7 +61,7 @@
 						<tr> <!--1  -->
 							<td style="width: 170px;">Line.No</td>
 							<td colspan="2">
-								<input type="text" name="lineno" value="${n.lineno}" onkeyup="if(event.keyCode==13){rev1_go(this.form);}" style="width: 150px">
+								<input type="text" name="lineno" value="${n.lineno}" onkeyup="if(event.keyCode==13){rev_go(this.form);}" style="width: 150px">
 								<input type="hidden" name ="cal" value="${cal}">
 								<input type="hidden" name="idx" value="${n.idx}"/>
 								&nbsp;&nbsp;&nbsp;&nbsp;
@@ -85,22 +79,17 @@
 							<td>Process</td>
 							<td>Phase</td>
 							<td style="width:190px;">
-								<input type="hidden" name ="cal" value="${cal}">
-								<input type="hidden" name="idx" value="${n.idx}"/>
 								<select style="width: 100px; font-size: 16px;" name="phase" onchange="rev_go(this.form)">
 									<option value="liquid" <c:if test="${n.phase eq 'liquid'}">selected </c:if>>Liquid</option>
 									<option value="vapor" <c:if test="${n.phase eq 'vapor'}">selected </c:if>>Vapor </option>
 								</select>
 							</td>
 							<td colspan="3">							
-								Press &nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="hidden" name ="cal" value="${cal}">
-								<input type="hidden" name="idx" value="${n.idx}"/>
-								<input type="radio" id="Inlet" name="press" onclick="rev_go(this.form)" value="Inlet" 
+								<input type="radio" id="Inlet" name="press"  value="Inlet" onclick="rev_go(this.form)"
 								<c:if test="${n.press eq 'Inlet'}">checked </c:if>> 
 								<label for="Inlet">Inlet</label>
 								&nbsp;&nbsp;
-								<input type="radio" id="Outlet" name="press" onclick="rev_go(this.form)" value="Outlet" 
+								<input type="radio" id="Outlet" name="press" value="Outlet" onclick="rev_go(this.form)" 
 								<c:if test="${n.press eq 'Outlet'}">checked </c:if>>
 								<label for="Outlet">Outlet</label>
 							</td>

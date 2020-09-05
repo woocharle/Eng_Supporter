@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="k"/>
+		<item key="selection" value="del1"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="del2"/>
+			<item value="pum2"/>
+			<item value="&lt;/form"/>
+			<item value="form"/>
+			<item value="eq"/>
+			<item value="pumprev_go"/>
 			<item value="num"/>
 			<item value="bend"/>
-			<item value="list2"/>
-			<item value="plevel"/>
-			<item value="#suction"/>
-			<item value="&quot;text&quot;"/>
-			<item value="lhyd"/>
-			<item value="4.calulator.jsp"/>
 		</list>
 		<list key="replacehistory">
+			<item value="rev_go"/>
 			<item value="#discharge"/>
 			<item value="&quot;number&quot;"/>
 			<item value="find_"/>
@@ -25,7 +26,6 @@
 			<item value="article"/>
 			<item value="td"/>
 			<item value="li"/>
-			<item value="CSS3 Transitions"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
