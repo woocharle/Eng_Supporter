@@ -133,7 +133,7 @@ public class Main_Controller {
 					Pipespec pipespec = new Pipespec();
 					
 					pvo2.setIdx(String.valueOf(i+1));
-					pvo3.setIdx_2(String.valueOf(i+1));
+					pvo3.setIdx_d(String.valueOf(i+1));
 					
 					pvo2.setSize(pipespec.getSize());
 					pvo2.setSchedule(pipespec.getSch());
