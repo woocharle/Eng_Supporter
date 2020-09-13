@@ -13,6 +13,8 @@ public class PVO3 {
 	
 	private List<String> size, schedule;
 	
+	private String reynold_d, mol_d, cmpz_d, cpcv_d;
+	
 	public PVO3() {}
 
 	public PVO3(String idx_d, String lineno_d, String pin_d, String pout_d, String temp_d, String den_d, String vis_d,
@@ -24,67 +26,69 @@ public class PVO3 {
 			String tee_5_d, String tee_6_d, String tee_7_d, String tee_8_d, String gtvalve_d, String gbvalve_d,
 			String bvalve_d, String cvalve_1_d, String cvalve_2_d, String avalve_1_d, String avalve_2_d,
 			String pvalve_1_d, String pvalve_2_d, String pvalve_3_d, String dvalve_d, String redd_d, String redth_d,
-			String expd_d, String expth_d, List<String> size, List<String> schedule) {
-			
-			super();
-			this.idx_d = idx_d;
-			this.lineno_d = lineno_d;
-			this.pin_d = pin_d;
-			this.pout_d = pout_d;
-			this.temp_d = temp_d;
-			this.den_d = den_d;
-			this.vis_d = vis_d;
-			this.flow_d = flow_d;
-			this.per_d = per_d;
-			this.cfactor_d = cfactor_d;
-			this.dout_d = dout_d;
-			this.schd_d = schd_d;
-			this.din_d = din_d;
-			this.plen_d = plen_d;
-			this.wall_d = wall_d;
-			this.elchange_d = elchange_d;
-			this.eqvlen_d = eqvlen_d;
-			this.elbow90_1_d = elbow90_1_d;
-			this.elbow90_2_d = elbow90_2_d;
-			this.elbow90_3_d = elbow90_3_d;
-			this.elbow90_4_d = elbow90_4_d;
-			this.elbow90_5_d = elbow90_5_d;
-			this.elbow90_6_d = elbow90_6_d;
-			this.elbow90_7_d = elbow90_7_d;
-			this.elbow90_8_d = elbow90_8_d;
-			this.elbow90_9_d = elbow90_9_d;
-			this.elbow45_1_d = elbow45_1_d;
-			this.elbow45_2_d = elbow45_2_d;
-			this.bend_1_d = bend_1_d;
-			this.bend_2_d = bend_2_d;
-			this.bend_3_d = bend_3_d;
-			this.tee_1_d = tee_1_d;
-			this.tee_2_d = tee_2_d;
-			this.tee_3_d = tee_3_d;
-			this.tee_4_d = tee_4_d;
-			this.tee_5_d = tee_5_d;
-			this.tee_6_d = tee_6_d;
-			this.tee_7_d = tee_7_d;
-			this.tee_8_d = tee_8_d;
-			this.gtvalve_d = gtvalve_d;
-			this.gbvalve_d = gbvalve_d;
-			this.bvalve_d = bvalve_d;
-			this.cvalve_1_d = cvalve_1_d;
-			this.cvalve_2_d = cvalve_2_d;
-			this.avalve_1_d = avalve_1_d;
-			this.avalve_2_d = avalve_2_d;
-			this.pvalve_1_d = pvalve_1_d;
-			this.pvalve_2_d = pvalve_2_d;
-			this.pvalve_3_d = pvalve_3_d;
-			this.dvalve_d = dvalve_d;
-			this.redd_d = redd_d;
-			this.redth_d = redth_d;
-			this.expd_d = expd_d;
-			this.expth_d = expth_d;
-			this.size = size;
-			this.schedule = schedule;
-			
-			
+			String expd_d, String expth_d, List<String> size, List<String> schedule, String reynold_d, String mol_d,
+			String cmpz_d, String cpcv_d) {
+		super();
+		this.idx_d = idx_d;
+		this.lineno_d = lineno_d;
+		this.pin_d = pin_d;
+		this.pout_d = pout_d;
+		this.temp_d = temp_d;
+		this.den_d = den_d;
+		this.vis_d = vis_d;
+		this.flow_d = flow_d;
+		this.per_d = per_d;
+		this.cfactor_d = cfactor_d;
+		this.dout_d = dout_d;
+		this.schd_d = schd_d;
+		this.din_d = din_d;
+		this.plen_d = plen_d;
+		this.wall_d = wall_d;
+		this.elchange_d = elchange_d;
+		this.eqvlen_d = eqvlen_d;
+		this.elbow90_1_d = elbow90_1_d;
+		this.elbow90_2_d = elbow90_2_d;
+		this.elbow90_3_d = elbow90_3_d;
+		this.elbow90_4_d = elbow90_4_d;
+		this.elbow90_5_d = elbow90_5_d;
+		this.elbow90_6_d = elbow90_6_d;
+		this.elbow90_7_d = elbow90_7_d;
+		this.elbow90_8_d = elbow90_8_d;
+		this.elbow90_9_d = elbow90_9_d;
+		this.elbow45_1_d = elbow45_1_d;
+		this.elbow45_2_d = elbow45_2_d;
+		this.bend_1_d = bend_1_d;
+		this.bend_2_d = bend_2_d;
+		this.bend_3_d = bend_3_d;
+		this.tee_1_d = tee_1_d;
+		this.tee_2_d = tee_2_d;
+		this.tee_3_d = tee_3_d;
+		this.tee_4_d = tee_4_d;
+		this.tee_5_d = tee_5_d;
+		this.tee_6_d = tee_6_d;
+		this.tee_7_d = tee_7_d;
+		this.tee_8_d = tee_8_d;
+		this.gtvalve_d = gtvalve_d;
+		this.gbvalve_d = gbvalve_d;
+		this.bvalve_d = bvalve_d;
+		this.cvalve_1_d = cvalve_1_d;
+		this.cvalve_2_d = cvalve_2_d;
+		this.avalve_1_d = avalve_1_d;
+		this.avalve_2_d = avalve_2_d;
+		this.pvalve_1_d = pvalve_1_d;
+		this.pvalve_2_d = pvalve_2_d;
+		this.pvalve_3_d = pvalve_3_d;
+		this.dvalve_d = dvalve_d;
+		this.redd_d = redd_d;
+		this.redth_d = redth_d;
+		this.expd_d = expd_d;
+		this.expth_d = expth_d;
+		this.size = size;
+		this.schedule = schedule;
+		this.reynold_d = reynold_d;
+		this.mol_d = mol_d;
+		this.cmpz_d = cmpz_d;
+		this.cpcv_d = cpcv_d;
 	}
 
 	public String getIdx_d() {
@@ -534,5 +538,38 @@ public class PVO3 {
 	public void setSchedule(List<String> schedule) {
 		this.schedule = schedule;
 	}
+
+	public String getReynold_d() {
+		return reynold_d;
+	}
+
+	public void setReynold_d(String reynold_d) {
+		this.reynold_d = reynold_d;
+	}
+
+	public String getMol_d() {
+		return mol_d;
+	}
+
+	public void setMol_d(String mol_d) {
+		this.mol_d = mol_d;
+	}
+
+	public String getCmpz_d() {
+		return cmpz_d;
+	}
+
+	public void setCmpz_d(String cmpz_d) {
+		this.cmpz_d = cmpz_d;
+	}
+
+	public String getCpcv_d() {
+		return cpcv_d;
+	}
+
+	public void setCpcv_d(String cpcv_d) {
+		this.cpcv_d = cpcv_d;
+	}
+
 	
 }

@@ -73,7 +73,7 @@ public class Pump_Controller {
 				pvo2.setPlen(request.getParameter("plen".concat(String.valueOf(i+1))));
 				pvo2.setWall(request.getParameter("wall".concat(String.valueOf(i+1))));
 				pvo2.setElchange(request.getParameter("elchange".concat(String.valueOf(i+1))));
-				
+				pvo2.setReynold(request.getParameter("reynold".concat(String.valueOf(i+1))));
 				
 				//fitting
 				pvo2.setElbow90_1(request.getParameter("elbow90_1".concat(String.valueOf(i+1))));
@@ -181,7 +181,7 @@ public class Pump_Controller {
 			k.setPlen(request.getParameter("plen".concat(k.getIdx())));
 			k.setWall(request.getParameter("wall".concat(k.getIdx())));
 			k.setElchange(request.getParameter("elchange".concat(k.getIdx())));
-			
+			k.setReynold(request.getParameter("reynold".concat(k.getIdx())));
 			
 			//fitting
 			k.setElbow90_1(request.getParameter("elbow90_1".concat(k.getIdx())));
@@ -262,7 +262,7 @@ public class Pump_Controller {
 				pvo2.setPlen(b_pslist[i].getPlen());
 				pvo2.setWall(b_pslist[i].getWall());
 				pvo2.setElchange(b_pslist[i].getElchange());
-				
+				pvo2.setReynold(b_pslist[i].getReynold());
 				
 				//fitting
 				pvo2.setElbow90_1(b_pslist[i].getElbow90_1());
@@ -340,7 +340,7 @@ public class Pump_Controller {
 			k.setPlen_d(request.getParameter("plen_d".concat(k.getIdx_d())));
 			k.setWall_d(request.getParameter("wall_d".concat(k.getIdx_d())));
 			k.setElchange_d(request.getParameter("elchange_d".concat(k.getIdx_d())));
-			
+			k.setReynold_d(request.getParameter("reynold_d".concat(k.getIdx_d())));
 			
 			//fitting
 			k.setElbow90_1_d(request.getParameter("elbow90_1_d".concat(k.getIdx_d())));
@@ -475,7 +475,7 @@ public class Pump_Controller {
 			k.setPlen(request.getParameter("plen".concat(k.getIdx())));
 			k.setWall(request.getParameter("wall".concat(k.getIdx())));
 			k.setElchange(request.getParameter("elchange".concat(k.getIdx())));
-			
+			k.setReynold(request.getParameter("reynold".concat(k.getIdx())));
 			
 			//fitting
 			k.setElbow90_1(request.getParameter("elbow90_1".concat(k.getIdx())));
@@ -560,7 +560,7 @@ public class Pump_Controller {
 				pvo3.setPlen_d(request.getParameter("plen_d".concat(String.valueOf(i+1))));
 				pvo3.setWall_d(request.getParameter("wall_d".concat(String.valueOf(i+1))));
 				pvo3.setElchange_d(request.getParameter("elchange_d".concat(String.valueOf(i+1))));
-				
+				pvo3.setReynold_d(request.getParameter("reynold_d".concat(String.valueOf(i+1))));
 				
 				//fitting
 				pvo3.setElbow90_1_d(request.getParameter("elbow90_1_d".concat(String.valueOf(i+1))));
@@ -672,7 +672,7 @@ public class Pump_Controller {
 			k.setPlen_d(request.getParameter("plen_d".concat(k.getIdx_d())));
 			k.setWall_d(request.getParameter("wall_d".concat(k.getIdx_d())));
 			k.setElchange_d(request.getParameter("elchange_d".concat(k.getIdx_d())));
-			
+			k.setReynold_d(request.getParameter("reynold".concat(k.getIdx_d())));
 			
 			//fitting
 			k.setElbow90_1_d(request.getParameter("elbow90_1_d".concat(k.getIdx_d())));
@@ -755,7 +755,7 @@ public class Pump_Controller {
 				pvo3.setPlen_d(b_pdlist[i].getPlen_d());
 				pvo3.setWall_d(b_pdlist[i].getWall_d());
 				pvo3.setElchange_d(b_pdlist[i].getElchange_d());
-				
+				pvo3.setReynold_d(b_pdlist[i].getReynold_d());
 				
 				//fitting
 				pvo3.setElbow90_1_d(b_pdlist[i].getElbow90_1_d());
@@ -834,7 +834,7 @@ public class Pump_Controller {
 			k.setPlen(request.getParameter("plen".concat(k.getIdx())));
 			k.setWall(request.getParameter("wall".concat(k.getIdx())));
 			k.setElchange(request.getParameter("elchange".concat(k.getIdx())));
-			
+			k.setReynold(request.getParameter("reynold".concat(k.getIdx())));
 			
 			//fitting
 			k.setElbow90_1(request.getParameter("elbow90_1".concat(k.getIdx())));
@@ -969,7 +969,7 @@ public class Pump_Controller {
 			k.setPlen(request.getParameter("plen".concat(k.getIdx())));
 			k.setWall(request.getParameter("wall".concat(k.getIdx())));
 			k.setElchange(request.getParameter("elchange".concat(k.getIdx())));
-			
+			k.setReynold(request.getParameter("reynold".concat(k.getIdx())));
 			
 			//fitting
 			k.setElbow90_1(request.getParameter("elbow90_1".concat(k.getIdx())));
@@ -1043,7 +1043,7 @@ public class Pump_Controller {
 			k.setPlen_d(request.getParameter("plen_d".concat(k.getIdx_d())));
 			k.setWall_d(request.getParameter("wall_d".concat(k.getIdx_d())));
 			k.setElchange_d(request.getParameter("elchange_d".concat(k.getIdx_d())));
-			
+			k.setReynold_d(request.getParameter("reynold".concat(k.getIdx_d())));
 			
 			//fitting
 			k.setElbow90_1_d(request.getParameter("elbow90_1_d".concat(k.getIdx_d())));

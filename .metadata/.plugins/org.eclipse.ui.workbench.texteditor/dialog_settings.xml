@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="cpcv"/>
+		<item key="selection" value="pdlist"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="rey"/>
+			<item value="psv psv = new psv();"/>
+			<item value="pvo1"/>
+			<item value="plinedel"/>
+			<item value="equival"/>
 			<item value="cpcv"/>
 			<item value="_d_d"/>
 			<item value="rev"/>
-			<item value="del2"/>
-			<item value="discharge"/>
-			<item value="pum2"/>
-			<item value="&lt;/form"/>
-			<item value="form"/>
 		</list>
 		<list key="replacehistory">
+			<item value="PVO1 psv = new PVO1();"/>
+			<item value="psv"/>
+			<item value="psvlinedel"/>
 			<item value="_2_d"/>
 			<item value="rev_go"/>
 			<item value="#discharge"/>
 			<item value="&quot;number&quot;"/>
 			<item value="find_"/>
-			<item value="absolute"/>
-			<item value="article"/>
-			<item value="td"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

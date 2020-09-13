@@ -11,7 +11,7 @@
 		.intro table{margin-bottom: 20px;}
 		.intro h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}	
 		.intro h4{position: relative; left: 60px; font-size: 25px; margin-bottom: 20px; font-weight: normal;}	
-		#pspec{position: relative; left: 10px; width: 1000px; height: 270px;}
+		#pspec{position: relative; left: 10px; width: 1000px;}
 		#pspec td {position: relative; left: 60px; padding: 0.5px; font-size: 20px;}
 		#pbasis1{position: relative; left: 10px; width: 1000px; height: 220px;}
 		#pbasis1 td {position: relative; left: 60px; padding: 0.5px; font-size: 20px;}
@@ -86,8 +86,8 @@
 			<table id="pspec">
 				<thead>
 					<tr>
-						<th>Item No. (PSV)</th><th><input type="text" name="item1" value="${psv1.item1}" class="pspec1" ></th>
-						<th>Rev No.</th><th><input type="text" name="item1" value="${psv1.item1}" class="pspec1" ></th>
+						<th>Item No. (PSV)</th><th><input type="text" name="item1" value="${psv.item1}" class="pspec1" ></th>
+						<th>Rev No.</th><th><input type="text" name="rev" value="${psv.rev}" class="pspec1" ></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -96,18 +96,22 @@
 						<td colspan="2">Discharge</td><td></td>
 					<tr>
 					<tr>
-						<td>Item No.(Depart)</td><td><input type="text" name="item1" value="${psv1.item2}" class="pspec1" ></td><td></td>
-						<td>Item No.(Arrive)</td><td><input type="text" name="psuc" value="${psv1.item2}" class="pspec2"  readonly> </td><td>kg/cm2</td>
+						<td>Item No.(Depart)</td><td><input type="text" name="item1" value="${psv.item2}" class="pspec1" ></td><td></td>
+						<td>Item No.(Arrive)</td><td><input type="text" name="psuc" value="${psv.item3}" class="pspec2"  readonly> </td><td></td>
 					</tr>
 					<tr>
 					</tr>
 					<tr>
-						<td>Set. Press</td><td><input type="text" name="comp" class="pspec1" value="${pvo1.comp}" ></td><td>kg/cm2</td>
-						<td>Operating press</td><td><input type="text" name="pdis" class="pspec2" value="${pvo1.pdis}" readonly> </td><td>kg/cm2</td>
+						<td>Set. Press</td><td><input type="number" name="setpress" class="pspec1" value="${psv.setpress}" ></td><td>kg/cm2</td>
+						<td>Operating press</td><td><input type="number" name="op" class="pspec2" value="${psv.op}" readonly> </td><td>kg/cm2</td>
 					</tr>
 					<tr>
-						<td>Limit of Press. Drop</td><td><input type="text" name="comp" class="pspec1" value="${pvo1.comp}" ></td><td>%</td>
+						<td>Limit of Press. Drop</td><td><input type="number" name="limitdp" class="pspec1" value="${psv.limitdp}" ></td><td>%</td>
 						<td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td>Suction Press</td><td><input type="number" name="psuc" class="pspec1" value="${psv.psuc}" ></td><td>kg/cm2</td>
+						<td>discharge Press</td><td><input type="number" name="pdis" class="pspec2" value="${psv.pdis}" readonly> </td><td>kg/cm2</td>
 					</tr>
 				</tbody>
 			</table>
@@ -254,6 +258,11 @@
 					<tr><td>Equivalent Length</td><td>m</td>
 						<c:forEach var="k" items="${pslist}">
 							<td><input type="number" name="eqvlen${k.idx}" value="${k.eqvlen}"  disabled="disabled"></td>
+						</c:forEach>					
+					</tr>
+					<tr><td>Reynold.no</td><td>m</td>
+						<c:forEach var="k" items="${pslist}">
+							<td><input type="number" name="reynold${k.idx}" value="${k.reynold}"  ></td>
 						</c:forEach>					
 					</tr>
 					<tr><td>Fitting</td><td></td></tr>
@@ -602,18 +611,18 @@
 						</c:forEach>					
 					</tr>
 					<tr><td>Molecular</td><td></td> 	 <!-- 6 -->
-						<c:forEach var="k" items="${pslist}">
-							<td><input type="number" name="mol_d${k.idx}" value="${k.mol}" ></td>				
+						<c:forEach var="k" items="${pdlist}">
+							<td><input type="number" name="mol_d${k.idx_d}" value="${k.mol_d}" ></td>				
 						</c:forEach>					
 					</tr>
 					<tr><td>Compress fact.(z)</td><td></td> 	 <!-- 6 -->
-						<c:forEach var="k" items="${pslist}">
-							<td><input type="number" name="cmpz_d${k.idx}" value="${k.cmpz}" ></td>				
+						<c:forEach var="k" items="${pdlist}">
+							<td><input type="number" name="cmpz_d${k.idx_d}" value="${k.cmpz_d}" ></td>				
 						</c:forEach>					
 					</tr>
 					<tr><td>Cp/Cv</td><td></td> 	 <!-- 6 -->
-						<c:forEach var="k" items="${pslist}">
-							<td><input type="number" name="cpcv_d${k.idx}" value="${k.cpcv}" ></td>				
+						<c:forEach var="k" items="${pdlist}">
+							<td><input type="number" name="cpcv_d${k.idx_d}" value="${k.cpcv_d}" ></td>				
 						</c:forEach>					
 					</tr>
 					<tr><td>Flow rate</td><td>kg/hr</td>  <!-- 7 -->
@@ -687,6 +696,11 @@
 					<tr><td>Equivalent Length</td><td>m</td>
 						<c:forEach var="k" items="${pdlist}">
 							<td><input type="number" name="eqvlen_d${k.idx_d}" value="${k.eqvlen_d}"  ></td>
+						</c:forEach>					
+					</tr>
+					<tr><td>Reynold.no</td><td>m</td>
+						<c:forEach var="k" items="${pdlist}">
+							<td><input type="number" name="reynold_d${k.idx_d}" value="${k.reynold_d}"  ></td>
 						</c:forEach>					
 					</tr>
 					<tr><td>Fitting</td><td colspan="${pnum2 + 1}"></td></tr>

@@ -332,6 +332,11 @@
 							<td><input type="number" name="eqvlen${k.idx}" value="${k.eqvlen}"  disabled="disabled"></td>
 						</c:forEach>					
 					</tr>
+					<tr><td>Reynold.no</td><td>m</td>
+						<c:forEach var="k" items="${pslist}">
+							<td><input type="number" name="reynold${k.idx}" value="${k.reynold}"  ></td>
+						</c:forEach>					
+					</tr>					
 					<tr><td>Fitting</td><td></td></tr>
 					<tr><td>90 Elbow</td><td></td></tr>
 					<tr><td style="position: relative; left:10px">- Threaded 
@@ -750,6 +755,11 @@
 							<td><input type="number" name="eqvlen_d${k.idx_d}" value="${k.eqvlen_d}"  ></td>
 						</c:forEach>					
 					</tr>
+					<tr><td>Reynold.no</td><td>m</td>
+						<c:forEach var="k" items="${pdlist}">
+							<td><input type="number" name="reynold${k.idx_d}" value="${k.reynold_d}"  ></td>
+						</c:forEach>					
+					</tr>	
 					<tr><td>Fitting</td><td colspan="${pnum2 + 1}"></td></tr>
 					<tr><td>90 Elbow</td><td colspan="${pnum2 + 1}"></td></tr>
 					<tr><td style="position: relative; left:10px">- Threaded 
