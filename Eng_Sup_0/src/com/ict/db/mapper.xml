@@ -8,7 +8,11 @@
 		select * from petro order by idx
 	</select>
 	
-	<select id="onepick" parameterType="String" resultType="com.ict.db.VO2">
+	<select id="onelist_u" parameterType="String" resultType="com.ict.db.VO2">
+		select * from petro where unit=#{unit}
+	</select>
+	
+	<select id="onelist_i" parameterType="String" resultType="com.ict.db.VO2">
 		select * from petro where idx=#{idx}
 	</select>
 	

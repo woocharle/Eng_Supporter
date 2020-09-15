@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.io.PrintWriter"/>
-<fullyQualifiedTypeName name="com.ict.model.Command"/>
-<fullyQualifiedTypeName name="com.ict.model.Login0_cmd"/>
-<fullyQualifiedTypeName name="com.ict.model.UnitCvt_cmd"/>
-<fullyQualifiedTypeName name="com.ict.model.Main_cmd"/>
-<fullyQualifiedTypeName name="com.ict.model.UnitCvt1_cmd"/>
-<fullyQualifiedTypeName name="com.ict.db.VO1"/>
-<fullyQualifiedTypeName name="com.ict.model.UnitCvt2_cmd"/>
-<fullyQualifiedTypeName name="com.ict.model.UnitCvt3_cmd"/>
-<fullyQualifiedTypeName name="com.ict.model.Petro_cmd"/>
-<fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
-<fullyQualifiedTypeName name="com.ict.model.Padmin_cmd"/>
-<fullyQualifiedTypeName name="com.ict.model.Ponepick_cmd"/>
-<fullyQualifiedTypeName name="com.ict.db.DAO"/>
-<fullyQualifiedTypeName name="com.ict.db.VO2"/>
-<fullyQualifiedTypeName name="com.ict.model.Cal_cmd"/>
-<fullyQualifiedTypeName name="com.ict.model.Line_cmd"/>
-<fullyQualifiedTypeName name="com.ict.db.HVO2"/>
-<fullyQualifiedTypeName name="com.ict.db.PVO1"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="com.ict.db.PVO2"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.ict.model.Pipespec"/>
-<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.ict.model.Scala"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 </qualifiedTypeNameHistroy>

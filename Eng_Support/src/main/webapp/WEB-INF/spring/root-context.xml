@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<context:annotation-config/>
+	<context:component-scan base-package="com.ict.model"></context:component-scan>
+	
+	<!-- mariadb -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="org.mariadb.jdbc.Driver"></property>
+		<property name="url"  value="jdbc:mariadb://localhost:3306/mydb"></property>
+		<property name="username" value="wootool"></property>
+		<property name="password" value="1112"></property>	
+	</bean>
+		
+	<!-- mybatis -->	
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mapperLocations"  value="classpath*:com/ict/db/mapper.xml"></property>
+	</bean>
+		
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"></constructor-arg>
+	</bean>
+	
+	<bean id="dao" class="com.ict.db.DAO">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
+	</bean>
+	
+	<bean id="scala" class="com.ict.model.Scala"></bean>
+	
+	<bean id="piping" class="com.ict.model.Pipespec"></bean>
+	
+	
+
+	
+	<!-- 파일 I/O -->
+	<bean id="multipartResolver" 
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		  <property name="defaultEncoding" value="UTF-8"></property>
+		  <property name="maxUploadSize" value="104857600"></property>
+	
+	</bean>
+		
+</beans>

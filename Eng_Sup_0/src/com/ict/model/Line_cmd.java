@@ -14,6 +14,8 @@ public class Line_cmd implements Command{
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		
 		String cal =  request.getParameter("cal");
+		
+		System.out.println(cal);
 		String obj = request.getParameter("obj");
 		
 		System.out.println(cal);

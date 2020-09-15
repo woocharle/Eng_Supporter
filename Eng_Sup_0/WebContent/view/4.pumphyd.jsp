@@ -38,20 +38,19 @@
 
     <script type="text/javascript">
 		function pumprev_go(f) {
-			
-	       if (window.event.keyCode == 13 || window.event.keyCode == 9) {
-	    	   
-	             // 엔터키가 눌렸을 때 실행할  onkeyup하면 무조건 변경 
-	    	   	alert("테스트성공");
-				
-				/* 			
-				f.action="/Controller?cmd=line&obj=rev";
-				f.submit(); */
-				
-	        }
-
-		}
+		       if (window.event.keyCode == 13 || window.event.keyCode == 9) {
+		    	   
+		             // 엔터키가 눌렸을 때 실행할  onkeyup하면 무조건 변경 
+		    	   	alert("테스트성공");
+					
+					/* 			
+					f.action="/Controller?cmd=line&obj=rev";
+					f.submit(); */
 	
+		        }
+				//alert("테스트성공");
+			}
+
 	</script>
 </head>
 <body>

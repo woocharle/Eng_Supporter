@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="eng_support">
+	
+	<!-- member -->
+
+	<select id="mlist" resultType="com.ict.db.MVO">
+		select * from member order by idx
+	</select>
+
+	<select id="monelist" parameterType="String" resultType="com.ict.db.MVO">
+		select * from member where idx = #{idx}
+	</select>
+
+	<select id="onelist_m" parameterType="String" resultType="com.ict.db.MVO">
+		select * from member where m_id = #{m_id}
+	</select>
+	
+
+	<!--회원가입 -->
+	<insert id="minsert" parameterType="com.ict.db.MVO">
+		insert into member
+		values(NEXT VALUE FOR member_seq, #{m_name}, #{m_com}, #{m_phone}, #{m_email},
+			#{m_id}, #{m_pw}, null)
+	</insert>
+
+	<!--회원갱신 -->
+	<update id="mupdate" parameterType="com.ict.db.VO2">
+		update petro
+		set	unit=#{unit}, content_s=#{content_s}, img = #{img}, content=#{content}
+		where idx =#{idx}
+	</update>
+	
+	<!--회원탈퇴 -->
+	<delete id="mdelete" parameterType="com.ict.db.VO2"> 
+		delete from member
+		where idx = #{idx}
+	</delete>	
+
+	<!-- petroleum -->
+	<select id="plist" resultType="com.ict.db.VO2">
+		select * from petro order by idx
+	</select>
+	
+	<select id="onelist_u" parameterType="String" resultType="com.ict.db.VO2">
+		select * from petro where unit=#{unit}
+	</select>
+	
+	<select id="onelist_i" parameterType="String" resultType="com.ict.db.VO2">
+		select * from petro where idx=#{idx}
+	</select>
+	
+	<insert id="pinsert" parameterType="com.ict.db.VO2">
+		insert into petro
+		values(NEXT VALUE FOR petro_seq, #{unit}, #{content_s}, #{img}, #{content})
+	
+	</insert>
+	
+	<update id="pupdate" parameterType="com.ict.db.VO2">
+		update petro
+		set	unit=#{unit}, content_s=#{content_s}, img = #{img}, content=#{content}
+		where idx =#{idx}
+	</update>
+	
+	<delete id="pdelete" parameterType="com.ict.db.VO2">
+		delete from petro
+		where idx = #{idx}
+	</delete>
+	
+</mapper>

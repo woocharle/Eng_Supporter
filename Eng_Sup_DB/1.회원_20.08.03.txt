@@ -3,14 +3,29 @@
 
 CREATE TABLE member(
 	idx INT NOT NULL PRIMARY KEY,
-	m_com VARCHAR(50),
-	m_email VARCHAR(50),
 	m_id VARCHAR(50),
+	m_com VARCHAR(50),
+	m_phone VARCHAR(20),
+	m_email VARCHAR(50),
+	m_name VARCHAR(20);
 	m_pw VARCHAR(50),
 	m_content text
 );
 
 
-create sequence m1
+create sequence member_seq
 	increment by 1
 	start with 1;
+
+ALTER TABLE member ADD req_del VARCHAR(10);
+
+ALTER TABLE member ADD req_find VARCHAR(10);
+
+INSERT INTO member
+VALUES(NEXT VALUE FOR member_seq, 'admin', 'mycompany', '010-xxxx-xxxx',
+'silvershots@naver.com', 'admin', '1111', null, null, null);
+
+
+INSERT INTO member
+VALUES(NEXT VALUE FOR member_seq, 'test', 'mycompany', '010-xxxx-xxxx',
+'test@naver.com', 'test', '1111', null, null, null);
