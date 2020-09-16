@@ -22,7 +22,7 @@
 				f.action="pdelete.do";
 				f.submit();
 			} else {
-				
+				return;
 			}
 
 		}
@@ -33,13 +33,13 @@
 	<div align="center">
 		<h2> 방명록 : 내용 화면 </h2>
 		<hr>
-		<p>[ <a href ="plist_go.do">목록으로 이동 </a>]</p>
+		<p>[ <a href ="plist_go.do?cPage=${cPage}">목록으로 이동 </a>]</p>
 		<form method="post">
 			<table>
 				<tbody>
 					<tr align="center">
 						<td bgcolor="#99ccff">제품</td>
-						<td>${pvo.unit}</td>
+						<td><input type="text" name="unit" value="${vo2.unit}" size="20"></td>
 					</tr>
 					<tr align="center">
 						<td bgcolor="#99ccff">간단한 설명</td>
@@ -50,22 +50,26 @@
 					<tr align="center">
 						<td bgcolor="#99ccff">첨부파일</td>
 						<c:choose>
-							<c:when test="${empty pvo.img}">
+							<c:when test="${empty vo2.img}">
 								<td> <b>이미지 파일 없음..</b></td>
 							</c:when>
 							<c:otherwise>
 								<td>
-									<img src="upload/${vo.img}" style="width: 150px"><a>${pvo.img}</a>
+									<img src="upload/${vo2.img}" style="width: 150px"><a>${vo2.img}</a>
 								</td>
 							</c:otherwise>
 						</c:choose>
+					</tr>
+					<tr align="center">
+						<td bgcolor="#99ccff">첨부파일 변경</td>
+						<td><input type="file" name="file" size="20"></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="padding:15px"> 가격동향 및 자세한 설명 </td>
 					</tr>
 					<tr>
 						<td colspan="2" style="padding:15px">
-							<textarea style="width: 1000px;"rows="20"  name="content">${pvo.content}</textarea>
+							<textarea style="width: 1000px;"rows="20"  name="content">${vo2.content}</textarea>
 						</td>
 					</tr>
 				</tbody>
@@ -75,7 +79,9 @@
 						    <input type="button" value="수정" onclick="update_go(this.form)" />
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="button" value="삭제" onclick="delete_go(this.form)" />
-							<input type="hidden" name="idx" value="${pvo.idx}"/>
+							<input type="hidden" name="idx" value="${vo2.idx}"/>
+							<input type="hidden" name="img" value="${vo2.img}"/>
+							<input type="hidden" name="cPage" value="${cPage}"/>
 						</td>
 					</tr>
 				</tfoot>

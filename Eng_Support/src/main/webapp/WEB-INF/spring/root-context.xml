@@ -36,7 +36,7 @@
 	
 	<bean id="piping" class="com.ict.model.Pipespec"></bean>
 	
-	
+	<bean id="paging" class="com.ict.model.Paging"></bean>
 
 	
 	<!-- 파일 I/O -->

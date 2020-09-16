@@ -4,7 +4,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="eng_support">
 	
-	<!-- member -->
+	<!-- 1. member 관리 -->
 
 	<select id="mlist" resultType="com.ict.db.MVO">
 		select * from member order by idx
@@ -39,16 +39,31 @@
 		where idx = #{idx}
 	</delete>	
 
-	<!-- petroleum -->
-	<select id="plist" resultType="com.ict.db.VO2">
-		select * from petro order by idx
+
+	<!-- 2. petroleum -->
+	
+	<select id="plist_u" resultType="com.ict.db.VO2">
+		select * from petro order by idx;
 	</select>
+	
+	<select id="plist_a" parameterType="Map" resultType="com.ict.db.VO2">		
+		select *from(
+			select ROW_NUMBER() OVER() AS r_no , a.*from (
+				select * from petro order by idx) AS a
+			) AS TB
+		where TB.r_no BETWEEN #{begin} AND #{end}; 
+	</select>
+	
+	<select id="pcount" resultType="Int">
+		select count(*) from petro
+	</select>
+	
 	
 	<select id="onelist_u" parameterType="String" resultType="com.ict.db.VO2">
 		select * from petro where unit=#{unit}
 	</select>
 	
-	<select id="onelist_i" parameterType="String" resultType="com.ict.db.VO2">
+	<select id="onelist_a" parameterType="String" resultType="com.ict.db.VO2">
 		select * from petro where idx=#{idx}
 	</select>
 	

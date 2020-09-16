@@ -1,22 +1,21 @@
 package com.ict.db;
 
-//Unit 
-//마리아와 연동
-//Admin을 통해서 수정, guestbook 적용. 
-
+import org.springframework.web.multipart.MultipartFile;
 
 public class VO2 {
 	private String idx, unit, content, img, content_s;
+	private MultipartFile file;
 	
 	public VO2() {}
 
-	public VO2(String idx, String unit, String content, String content_s, String img) {
+	public VO2(String idx, String unit, String content, String img, String content_s, MultipartFile file) {
 		super();
 		this.idx = idx;
 		this.unit = unit;
-		this.content_s = content_s;
 		this.content = content;
 		this.img = img;
+		this.content_s = content_s;
+		this.file = file;
 	}
 
 	public String getIdx() {
@@ -59,5 +58,12 @@ public class VO2 {
 		this.content_s = content_s;
 	}
 
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	
 }

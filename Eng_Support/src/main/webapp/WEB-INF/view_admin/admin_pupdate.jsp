@@ -35,21 +35,21 @@
 			<tbody>
 				<tr>
 					<td class="tb">제 품</td>
-					<td><input type="text" name="unit" size="20" value="${pvo.unit}"></td>
+					<td><input type="text" name="unit" size="20" value="${vo2.unit}"></td>
 				</tr>
 					<tr align="center">
 						<td bgcolor="#99ccff">간단한 설명</td>
 						<td style="padding:15px">
-							<textarea style="width: 1000px;" rows="10" name="content_s">${pvo.content_s}</textarea>
+							<textarea style="width: 1000px;" rows="10" name="content_s">${vo2.content_s}</textarea>
 						</td>
 					</tr>	
 				<tr>
 					<td class="tb">첨부파일</td>
-					<td><input type="file" name="img" size="20">${pvo.img}</td>
+					<td><input type="file" name="img" size="20">${vo2.img}</td>
 				</tr>	
 				<tr>
 					<td colspan="2" style="padding:15px">
-						<textarea style="width: 1000px;"rows="20"  name="content">${pvo.content}</textarea>
+						<textarea style="width: 1000px;"rows="20"  name="content">${vo2.content}</textarea>
 					</td>
 				</tr>
 			</tbody>
@@ -59,8 +59,8 @@
 						<input type="button" value="수정" onclick="update_ok(this.form)"/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" value="취소" onclick="update_no(this.form)"/>
-						<input type="hidden" name="idx" value="${pvo.idx}"/>
-						<input type="hidden" name="img0" value="${pvo.img}"/>
+						<input type="hidden" name="idx" value="${vo2.idx}"/>
+						<input type="hidden" name="img0" value="${vo2.img}"/>
 					</td>
 				</tr>
 			</tfoot>

@@ -43,6 +43,8 @@ public class Main_Controller {
 	}
 
 
+	// jsp의 *.do 
+	
 	@RequestMapping(value="home.do", method=RequestMethod.GET)
 	public ModelAndView home_Cmd() {
 		return new ModelAndView("view_user/1.main");
@@ -79,10 +81,10 @@ public class Main_Controller {
 		
 		String unit = request.getParameter("unit");
 		
-		List<VO2> plist = dao.getlist();
+		List<VO2> plist = dao.getPlist();
 		
 		if(!unit.equals("Intro")) {
-			vo2 = dao.getOnelist(unit);
+			vo2 = dao.getPonelist(unit);
 			request.setAttribute("vo2", vo2);
 		} 
 		
@@ -98,15 +100,14 @@ public class Main_Controller {
 	public ModelAndView cal_Cmd(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String cal = request.getParameter("cal");
+		request.getSession().setAttribute("cal", cal);
+		
 		int num = 0;
 		int pnum = 0;
 		int pnum2 = 0;
-		//pipespec = new Pipespec();
-		
-		request.getSession().setAttribute("cal", cal);
+
 		List<PVO2> pslist;
 		List<PVO3> pdlist;
-		
 		
 		switch (cal) {
 			case "linehyd":

@@ -26,7 +26,7 @@
 	<div align="center">
 	<h2>방명록 : 작성화면</h2>
 	<hr>
-	<p>[<a href="/Controller?cmd=petro_list">목록으로 이동</a>]</p>
+	<p>[<a href="plist_go.do">목록으로 이동</a>]</p>
 	<form method="post" enctype="multipart/form-data">
 		<table>
 			<tbody>
@@ -42,7 +42,7 @@
 					</tr>	
 				<tr>
 					<td class="tb">첨부파일</td>
-					<td><input type="file" name="img" size="20"></td>
+					<td><input type="file" name="file" size="20"></td>
 				</tr>	
 				<tr>
 					<td colspan="2" style="padding:15px">
