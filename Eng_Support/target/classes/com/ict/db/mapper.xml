@@ -5,9 +5,17 @@
 <mapper namespace="eng_support">
 	
 	<!-- 1. member 관리 -->
+	<select id="mcount" resultType="Int">
+		select count(*) from member
+	</select>
 
-	<select id="mlist" resultType="com.ict.db.MVO">
-		select * from member order by idx
+
+	<select id="mlist" parameterType="Map" resultType="com.ict.db.MVO">
+		select *from(
+			select ROW_NUMBER() OVER() AS r_no , a.*from (
+				select * from member order by idx) AS a
+			) AS TB
+		where TB.r_no BETWEEN #{begin} AND #{end}; 
 	</select>
 
 	<select id="monelist" parameterType="String" resultType="com.ict.db.MVO">

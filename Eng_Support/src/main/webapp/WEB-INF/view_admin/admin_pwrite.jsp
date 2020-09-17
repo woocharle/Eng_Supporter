@@ -7,11 +7,11 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style type="text/css">
-		table{width: 500px; border-collapse: collapse;}
-		table > thead{background-color: #99ccff; border: 1px solid black; text-align: center;}
-		table, tr, td, th{border: 1px solid black; text-align: center;}
-		table > tr {margin: auto;}
-		.tb{background-color: #99ccff;}
+		table{width: 1000px; border-collapse: collapse;}
+		td {border: 1px solid black; text-align: center;}
+		table tr {margin: auto;}
+		textarea{width:800px; font-size: 18px;}
+		.tb{background-color: #99ccff; width:30%;}
 	</style>
 	<script type="text/javascript">
 		function save_ok(f) {
@@ -32,22 +32,19 @@
 			<tbody>
 				<tr>
 					<td class="tb">제 품</td>
-					<td><input type="text" name="unit" size="20" ></td>
+					<td><input type="text" name="unit"></td>
 				</tr>
 					<tr align="center">
 						<td bgcolor="#99ccff">간단한 설명</td>
-						<td style="padding:15px">
-							<textarea style="width: 1000px;" rows="10" name="content_s"></textarea>
-						</td>
+						<td><textarea rows="10" name="content_s"></textarea></td>
 					</tr>	
 				<tr>
 					<td class="tb">첨부파일</td>
 					<td><input type="file" name="file" size="20"></td>
 				</tr>	
 				<tr>
-					<td colspan="2" style="padding:15px">
-						<textarea style="width: 1000px;"rows="20"  name="content"></textarea>
-					</td>
+					<td bgcolor="#99ccff">자세한 설명</td>
+					<td><textarea rows="20"  name="content"></textarea></td>
 				</tr>
 			</tbody>
 			<tfoot>

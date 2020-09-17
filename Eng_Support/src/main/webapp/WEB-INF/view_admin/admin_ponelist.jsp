@@ -13,9 +13,18 @@
 	</style>
 	<script type="text/javascript">
 		function update_go(f){
-			f.action = "pupdate.do"
-			f.submit();
+			if(f.pwd.value == f.admin_pass.value){
+				f.action = "pupdate.do"
+				f.submit();
+			} else{
+				alert("비밀번호가 일치하지 않습니다.");
+				f.pwd.value = "";
+				f.pwd.focus();
+				return;
+			}
+
 		}
+		
 		function delete_go(f){		
 			var chk = confirm("정말 삭제할까요?");
 			if(chk){
@@ -34,7 +43,7 @@
 		<h2> 방명록 : 내용 화면 </h2>
 		<hr>
 		<p>[ <a href ="plist_go.do?cPage=${cPage}">목록으로 이동 </a>]</p>
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 			<table>
 				<tbody>
 					<tr align="center">
@@ -44,7 +53,7 @@
 					<tr align="center">
 						<td bgcolor="#99ccff">간단한 설명</td>
 						<td style="padding:15px">
-							<textarea style="width: 1000px;" rows="10" name="content_s" readonly="readonly">${pvo.content_s}</textarea>
+							<textarea style="width: 1000px;" rows="10" name="content_s">${vo2.content_s}</textarea>
 						</td>
 					</tr>					
 					<tr align="center">
@@ -55,14 +64,14 @@
 							</c:when>
 							<c:otherwise>
 								<td>
-									<img src="upload/${vo2.img}" style="width: 150px"><a>${vo2.img}</a>
+									<img src="resources/upload/${vo2.img}" style="width: 150px"><a>${vo2.img}</a>
 								</td>
 							</c:otherwise>
 						</c:choose>
 					</tr>
 					<tr align="center">
 						<td bgcolor="#99ccff">첨부파일 변경</td>
-						<td><input type="file" name="file" size="20"></td>
+						<td><input type="file" name="file"></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="padding:15px"> 가격동향 및 자세한 설명 </td>
@@ -72,6 +81,15 @@
 							<textarea style="width: 1000px;"rows="20"  name="content">${vo2.content}</textarea>
 						</td>
 					</tr>
+					<tr align="center">
+						<td bgcolor="#99ccff">비밀번호 입력</td>
+						<td>
+							<input type="password" name="pwd">
+							<input type="hidden" name="admin_pass" value="${admin_pass}">
+						</td>
+					</tr>
+					
+					
 				</tbody>
 				<tfoot>
 					<tr align="center">

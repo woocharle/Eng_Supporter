@@ -33,10 +33,8 @@ public class Admin_Controller {
 		this.paging = paging;
 	}
 
-	
-	
-	
 
+	// 메인 화면
 	@RequestMapping(value="admin_main.do", method=RequestMethod.GET)
 	public ModelAndView main_Cmd() {
 		return new ModelAndView("view_admin/admin_main");
@@ -51,9 +49,39 @@ public class Admin_Controller {
 	@RequestMapping(value="mlist_go.do", method=RequestMethod.GET)
 	public ModelAndView mlist_Cmd(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
+
+		int su = dao.getPcount();
+		paging.setTotalPage(su);
 		
-		List<MVO> mlist = dao.getmlist();
+		if(paging.getTotalRecord() <= paging.getNumPerpage()) {
+			paging.setTotalPage(1);
+		} else {
+			paging.setTotalPage(paging.getTotalRecord() / paging.getNumPerpage());
+			if (paging.getTotalRecord() % paging.getNumPerpage() != 0) {
+				paging.setTotalPage(paging.getTotalPage() + 1);
+			}
+		}
+
+		String cPage = request.getParameter("cPage");
+		if(cPage == null) {
+			paging.setNowPage(1);
+		}else {
+			paging.setNowPage(Integer.parseInt(cPage));
+		}
+		
+		paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerpage() + 1);
+		paging.setEnd((paging.getBegin() - 1) + paging.getNumPerpage());
+		
+		paging.setBeginBlock((int)((paging.getNowPage() - 1)/paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+		paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+		
+		if(paging.getEndBlock() > paging.getTotalPage()) {
+			paging.setEndBlock(paging.getTotalPage());
+		}
+		
+		List<MVO> mlist = dao.getmlist(paging);
 		request.setAttribute("mlist", mlist);
+		request.setAttribute("paging", paging);
 		
 		mv.setViewName("view_admin/admin_member");
 		
@@ -125,12 +153,11 @@ public class Admin_Controller {
 	public ModelAndView ponelist_Cmd(VO2 vo2, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String idx = request.getParameter("idx");
-	
+		
 		vo2 = dao.getPonelist2(idx);
 		
 		request.getSession().setAttribute("vo2", vo2);
-		
-		mv.addObject("cPage", request.getParameter("cPage"));
+		request.getSession().setAttribute("cPage", request.getParameter("cPage"));
 		mv.setViewName("view_admin/admin_ponelist");
 		
 		return mv;
@@ -161,7 +188,7 @@ public class Admin_Controller {
 				vo2.setImg(vo2.getFile().getOriginalFilename());
 			}
 			
-			result = dao.getIDU(vo2, "Insert");
+			result = dao.getpIDU(vo2, "Insert");
 			file.transferTo(new File(path+File.separator +vo2.getImg()));
 			
 		} catch (Exception e) {
@@ -183,7 +210,7 @@ public class Admin_Controller {
 		String cPage = String.valueOf(paging.getTotalPage());
 		
 		if(result > 0) {
-			mv.setViewName("redirect: plist.do?cPage="+cPage);
+			mv.setViewName("redirect: plist_go.do?cPage="+cPage);
 		} else {
 			mv.setViewName("redirect: pwrite.do");
 		}
@@ -197,7 +224,7 @@ public class Admin_Controller {
 		int result = 0;
 		MultipartFile file = null;
 		String path = null;
-		String cPage = request.getParameter("cPage");
+		
 
 		try {
 			path = request.getSession().getServletContext().getRealPath("/resources/upload");
@@ -207,21 +234,19 @@ public class Admin_Controller {
 				vo2.setImg(vo2.getImg());
 			} else {
 				vo2.setImg(vo2.getFile().getOriginalFilename());
+				file.transferTo(new File(path+File.separator +vo2.getImg()));
 			}
 			
-			result = dao.getIDU(vo2, "Update");
-			file.transferTo(new File(path+File.separator +vo2.getImg()));
+			result = dao.getpIDU(vo2, "Update");
+			
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		
-		if(result > 0) {
-			mv.setViewName("redirect: plist.do?cPage="+cPage);
-		} else {
-			mv.setViewName("redirect: pwrite.do");
-		}
-		
+		String cPage = (String) request.getSession().getAttribute("cPage");
+		mv.setViewName("redirect: onelist.do?b_idx="+vo2.getIdx()+"&cPage="+cPage);
+
 		return mv;		
 	}
 	
@@ -243,14 +268,28 @@ public class Admin_Controller {
 					file.delete();
 				}
 
-			result = dao.getIDU(vo2, "Delete");
+			result = dao.getpIDU(vo2, "Delete");
 			
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 		} 	
 		
-		mv.setViewName("redirect:list.do");
+		int su = dao.getPcount();
+		paging.setTotalPage(su);
+		
+		if(paging.getTotalRecord() <= paging.getNumPerpage()) {
+			paging.setTotalPage(1);
+		} else {
+			paging.setTotalPage(paging.getTotalRecord() / paging.getNumPerpage());
+			if (paging.getTotalRecord() % paging.getNumPerpage() != 0) {
+				paging.setTotalPage(paging.getTotalPage() + 1);
+			}
+		}
+		
+		String cPage = String.valueOf(paging.getTotalPage());
+		
+		mv.setViewName("redirect: plist_go.do?cPage="+cPage);
 
 		return mv;		
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,15 +19,16 @@
 			f.submit();
 		}
 		
-		function join_no(f){
-			f.action="join_no.do";
-			f.submit();
-		}
-	
 	</script>
 </head>
 <body>
 	<div id="mydiv">
+		<h3>[ <a href ="login.do">이전화면으로 이동 </a>]</h3>
+		<br>
+		<c:if test="${finish eq 'ok'}">
+			<h3> 가입이 완료 되었습니다. 로그인 화면으로 이동해주십시오.</h3>
+		</c:if>
+		
 		<form method="post">
 			<table>
 				<thead>
@@ -65,7 +67,7 @@
 						<td colspan="2">
 							<input type="button" value="회원가입" onclick="join_ok(this.form)">
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="button" value="취소" onclick="join_no(this.form)">
+							<input type="reset" value="취소">
 						</td>
 					</tr>
 				</tfoot>

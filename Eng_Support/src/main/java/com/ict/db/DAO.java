@@ -23,12 +23,23 @@ public class DAO {
 	}
 
 	
+	public int getMcount() {
+		int count = sqlSessionTemplate.selectOne("mcount");
+ 		return count;
+	}
+		
 	// member_admin 
-	public List<MVO> getmlist() {
-		List<MVO> mlist = sqlSessionTemplate.selectList("mlist");
+	public List<MVO> getmlist(Paging paging) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("begin", paging.getBegin());
+		map.put("end", paging.getEnd());
+		
+		List<MVO> mlist = sqlSessionTemplate.selectList("mlist", map);
+		
 		return mlist;
 	}
 
+	
 	public MVO getMonelist(String idx) {
 		MVO mvo = sqlSessionTemplate.selectOne("monelist", idx);
 		return mvo;
@@ -40,6 +51,20 @@ public class DAO {
 		MVO mvo = sqlSessionTemplate.selectOne("onelist_m", m_id);
 		return mvo;
 	}
+	
+	// 회원가입
+	public int getmIDU(MVO mvo, String mth) {
+		int result = 0;
+		
+		switch (mth) {
+			case "Insert": result = sqlSessionTemplate.insert("pinsert", mvo); break;
+			case "Update": result = sqlSessionTemplate.update("pupdate", mvo); break;
+			case "Delete": result = sqlSessionTemplate.delete("pdelete", mvo); break;
+		}
+	
+		return result;
+	}
+	
 	
 	
 	//Petroleum
@@ -75,13 +100,13 @@ public class DAO {
 		return vo2;
 	}
 
-	public int getIDU(VO2 vo2, String mth) {
+	public int getpIDU(VO2 vo2, String mth) {
 		int result = 0;
 		
 		switch (mth) {
 			case "Insert": result = sqlSessionTemplate.insert("pinsert", vo2); break;
-			case "Update": result = sqlSessionTemplate.insert("pupdate", vo2); break;
-			case "Delete": result = sqlSessionTemplate.insert("pdelete", vo2); break;
+			case "Update": result = sqlSessionTemplate.update("pupdate", vo2); break;
+			case "Delete": result = sqlSessionTemplate.delete("pdelete", vo2); break;
 		}
 	
 		return result;

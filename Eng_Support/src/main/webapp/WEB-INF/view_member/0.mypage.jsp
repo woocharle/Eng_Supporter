@@ -53,149 +53,22 @@
 		<ul id="list1">					
 			<li><a href="cal.do?cal=Intro"> FAQ </a></li>
 			
-			<li><a href="cal.do?cal=simcal"> Simple Calculation </a></li>
-			<li><a href="cal.do?cal=linehyd">Hydraulic</a> </li>
+			<li><a href="cal.do?cal=simcal"> 개인정보 수정 </a></li>
+			
+			<li><a href="cal.do?cal=linehyd"> 비고 </a> </li>
 		</ul>
 	
 	</div>
 	
 	<c:if test="${cal eq 'Intro'}">
 		<div class="intro" >
-			<h3>Introduce </h3>
 
-			<article class="browser">
-				<h3>Simple Calculation</h3>
-				<p>
-					구와 원통의 부피와 넓이를....
-				</p>
-			
-			</article>
-			
-			<article class="browser">
-				<h3>Hydraulic</h3>
-				<h4>Line Hydraulic</h4>
-					<p>
-						
-					</p>
-			
-				<h4>Pump Hydraulic</h4>
-					<p>
-						
-					</p>
-				
-				<h4>PSV Hydraulic</h4>
-					<p>
-						
-					</p>
-				
-			</article>
-			
-			<article class="browser">
-				<h3>Heat Transfer</h3>
-				<h4>Pipe Heat Transfer</h4>
-					<p>
-						
-					</p>
-				<h4>Tank Heat Transfer</h4>
-					<p>
-						
-					</p>
-			
-			</article>
-
-
-			<article class="browser">
-				<h3>참고문헌</h3>
-				<p>
-					
-				</p>
-			
-			</article>
 		</div>
 	</c:if>
 	
 	<c:if test="${cal eq 'simcal'}">
 		<div class="intro" >
-			<h3>Simple Calculation </h3>
-			<form method="post">
-			<table style="width:600px;">
-				<tbody>
-					<tr>
-						<td> Sphere </td><td colspan="2">Input</td>
-					</tr>
-					<tr>
-						<td rowspan="5" style="width:100px;"><img alt="sphere" src="/resources/upload/sphere.png"></td>
-						<td>Diameter</td><td><input type="number">m</td>
-					</tr>
-					<tr>
-						<td>Wet Length</td><td><input type="number">m</td>
-					</tr>
-					<tr>
-						<td>Output</td><td></td>
-					</tr>
-					<tr>
-						<td>Area</td><td><input type="number">m<sup>2</sup></td>
-					</tr>
-					<tr>
-						<td>Wetted Area</td><td><input type="number">m<sup>2</sup></td>
-					</tr>
-					<tr>
-						<td rowspan="2"><input type="button" value="calculate">
-						<td>Volumn</td>
-						<td><input type="number">m<sup>3</sup></td>
-					</tr>
-					<tr>
-						<td>Wetted Volumn</td><td><input type="number">m<sup>3</sup></td>
-					</tr>
-		
-				</tbody>
-				
-			</table>
-			</form>
-			<br><br>
-	
-			<form method="post">
-			<table style="width:600px;">
-				<thead>
-					<tr>
-						<th style="width:40%"></th><th></th><th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td> Cylinder </td><td colspan="2">Input</td>
-					</tr>
-					<tr>
-						<td rowspan="5"><img alt="cylinder" src="/resources/upload/cylinder.png"></td>
-						<td>Diameter</td><td><input type="number">m</td>
-					</tr>
-					<tr>
-						<td>Wet Length</td><td><input type="number">m</td>
-					</tr>
-					<tr>
-						<td>Output</td><td></td>
-					</tr>
-					<tr>
-						<td>Area</td><td><input type="number">m<sup>2</sup></td>
-					</tr>
-					<tr>
-						<td>Wetted Area</td><td><input type="number">m<sup>2</sup></td>
-					</tr>
-					<tr>
-						<td rowspan="2"><input type="button" value="calculate">
-						<td>Volumn</td>
-						<td><input type="number">m<sup>3</sup></td>
-					</tr>
-					<tr>
-						<td>Wetted Volumn</td><td><input type="number">m<sup>3</sup></td>
-					</tr>
-		
-				</tbody>
-				
-			</table>
-			</form>
 
-			
 		</div>
 	</c:if>
 	

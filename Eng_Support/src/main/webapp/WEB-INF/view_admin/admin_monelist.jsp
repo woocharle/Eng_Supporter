@@ -12,14 +12,22 @@
 		table,th,td{border: 1px solid black; padding: 3px}
 	</style>
 	<script type="text/javascript">
-		function delete_go(f){		
-			var chk = confirm("정말 삭제할까요?");
-			if(chk){
-				f.action="pdelete.do";
-				f.submit();
-			} else {
+		function delete_go(f){	
+			if(f.pwd.value == f.admin_pass.value){
+				var chk = confirm("정말 삭제할까요?");
+				if(chk){
+					f.action="pdelete.do";
+					f.submit();
+				} else {
+					return;
+				}
+			} else{
+				alert("비밀번호가 일치하지 않습니다.");
+				f.pwd.value = "";
+				f.pwd.focus();
 				return;
-			}
+			} 
+
 
 		}
 		
@@ -66,14 +74,22 @@
 							</c:choose>
 						</td>		
 					</tr>
+					
 				</tbody>
 				<tfoot>
+					<tr align="center">
+						<td bgcolor="#99ccff">비밀번호 입력</td>
+						<td>
+							<input type="password" name="pwd">
+							<input type="hidden" name="admin_pass" value="${admin_pass}">
+						</td>
+					</tr>
 					<tr align="center">
 						<td colspan="2"> 
 						    <input type="button" value="삭제" onclick="delete_go(this.form)" />
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="button" value="아이디/비번 전송" onclick="send_go(this.form)" />
-							<input type="hidden" name="idx" value="${pvo.idx}"/>
+							<input type="hidden" name="idx" value="${mvo.idx}"/>
 						</td>
 					</tr>
 				</tfoot>

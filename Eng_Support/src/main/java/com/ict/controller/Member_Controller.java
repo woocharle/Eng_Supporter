@@ -1,5 +1,7 @@
 package com.ict.controller;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.PageContext;
 
@@ -7,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.db.DAO;
 import com.ict.db.MVO;
+import com.ict.db.VO2;
 
 @Controller
 public class Member_Controller {
@@ -66,6 +70,7 @@ public class Member_Controller {
 		if(m_pw.equals(m_pw0)) {
 			if (m_id.equals("admin")) {
 				mv.setViewName("view_admin/admin_main");
+				request.getSession().setAttribute("admin_pass", mvo.getM_pw());
 				
 			}else {
 				mvo.setReq_find(null);
@@ -84,9 +89,20 @@ public class Member_Controller {
 			
 		}
 		
-		return mv;
+		return mv;		
 		
 	}
 	
+	@RequestMapping(value="join_ok.do", method=RequestMethod.POST)
+	public ModelAndView join_Cmd(MVO mvo, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		int result = dao.getmIDU(mvo, "Insert");
+		String finish = "ok"; 
+		
+		mv.addObject("finish", finish);
+		mv.setViewName("view_member/0.join");
+
+		return mv;
+	}
 	
 }

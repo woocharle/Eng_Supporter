@@ -27,6 +27,7 @@
 </head>
 <body>
 	<div id="mydiv">
+		<h3>[ <a href ="home.do">메인 메뉴로 이동 </a>]</h3>
 		<form method="post">
 			<table>
 				<thead>
