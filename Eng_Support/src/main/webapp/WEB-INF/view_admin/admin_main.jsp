@@ -10,29 +10,33 @@
 		#main_header>div {margin: 0 auto; width: 1500px;}
 		#main_header button {width: 100px;font-size: 20px;}
 		#main_header>div>h1 {font-size: 50px}
-
+		#main_header p{text-align:center; font-size: 28px; }
+		
 		/*메인화면: 회원관리*/
-		.member {height: 30px;}
+		.member {height: 50px;}
 				
 		#logout {position: relative; left: 1350px; bottom: 40px;}
 			
 		/*메인화면: 메뉴판*/
+		
+		#main_body{margin-top: 100px;}
 		
 		#main_body>ul {
 			overflow: hidden;
 			list-style-type: none;
 			background-color: #333;
 			text-align: center;
-			font-size: 25px;
-			width: 1500px;
+			font-size: 35px;
+			width: 550px;
 			color: white;
 			margin: 25px auto;
 			padding-inline-start: 0px;
 		}
 		
-		#main_body>ul>li {float: left; width: 25%;}
-		#main_body>ul>li a {display: block;  padding: 14px 0px;}
+		#main_body>ul>li {height: 25%;}
+		#main_body>ul>li a {display: block;  padding: 24px 0px;}
 		#main_body>ul>li a:hover {background-color: #111111;}
+		
 	</style>
 	<script type="text/javascript">
 		function log_out() {

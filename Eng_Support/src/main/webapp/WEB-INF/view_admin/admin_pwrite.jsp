@@ -26,7 +26,7 @@
 	<div align="center">
 	<h2>방명록 : 작성화면</h2>
 	<hr>
-	<p>[<a href="plist_go.do">목록으로 이동</a>]</p>
+	<p>[<a href="plist_go.do?cPage=${cPage}">목록으로 이동</a>]</p>
 	<form method="post" enctype="multipart/form-data">
 		<table>
 			<tbody>

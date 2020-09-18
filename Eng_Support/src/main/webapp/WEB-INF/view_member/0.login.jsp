@@ -9,7 +9,7 @@
 		table{margin:0px auto; width:400px;}
 		td{margin: 0px auto; text-align: center;}
 		
-		#mydiv{margin-top: 60px;}
+		#mydiv{margin-top: 60px; text-align: center;}
 	
 	</style>
 	<script type="text/javascript">
