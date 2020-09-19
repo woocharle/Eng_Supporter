@@ -215,8 +215,8 @@
 	<c:if test="${cal eq 'linehyd'}"><jsp:include page="4.linehyd.jsp"/></c:if>
 	<c:if test="${cal eq 'pumphyd'}"><jsp:include page="4.pumphyd.jsp"/></c:if>
 	<c:if test="${cal eq 'psvhyd'}"><jsp:include page="4.psvhyd.jsp"/></c:if>
-	<c:if test="${cal eq 'phtrans'}"></c:if>
-	<c:if test="${cal eq 'thtrans'}"></c:if>
+	<c:if test="${cal eq 'phtrans'}"><jsp:include page="4.pipeheat.jsp"/></c:if>
+	<c:if test="${cal eq 'thtrans'}"><jsp:include page="4.tankheat.jsp"/></c:if>
 
 </div>
 

@@ -21,7 +21,7 @@
 		
 	</style>
 	<script type="text/javascript">
-		function add_go(f) {
+/* 		function add_go(f) {
 			f.action="lineadd.do";
 			f.submit();
 		}
@@ -39,7 +39,7 @@
 		function cal_go(f){
 			f.action="linerev.do";
 			f.submit();
-		}
+		} */
 		
 	</script>
 </head>
@@ -82,6 +82,7 @@
 								<select style="width: 100px; font-size: 16px;" name="phase" onchange="rev_go(this.form)">
 									<option value="liquid" <c:if test="${n.phase eq 'liquid'}">selected </c:if>>Liquid</option>
 									<option value="vapor" <c:if test="${n.phase eq 'vapor'}">selected </c:if>>Vapor </option>
+									<option value="2phase" <c:if test="${n.phase eq '2phase'}">selected </c:if>>2Phase </option>
 								</select>
 							</td>
 							<td colspan="3">							
@@ -359,6 +360,7 @@
 			</div>
 			<br><br>
 			</form>
+
 			</c:forEach>
 
 	</div>
