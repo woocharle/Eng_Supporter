@@ -8,70 +8,38 @@
 	<title>Engineering Support</title>
 	<style type="text/css">
 		.intro{width: 75%; height: 1400px; position: relative; left: 400px; bottom: 1430px; overflow: auto;}
-		.intro table{margin-bottom: 20px;}
+		.intro table{width:700px; margin-bottom: 20px;}
 		.intro h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}	
 		.intro h4{position: relative; left: 60px; font-size: 25px; margin-bottom: 20px; font-weight: normal;}	
-		#pspec{position: relative; left: 10px; width: 1000px;}
-		#pspec td {position: relative; left: 60px; padding: 0.5px; font-size: 20px;}
-		#pbasis1{position: relative; left: 10px; width: 1000px; height: 220px;}
-		#pbasis1 td {position: relative; left: 60px; padding: 0.5px; font-size: 20px;}
-		#pbasis2{position: relative; left: 10px; width: 1000px; height: 170px;}
-		#pbasis2 td {position: relative; left: 60px; padding: 0.5px; font-size: 20px;}
-		
-		#suction{position: relative; left: 60px; overflow: scroll; height:475px; width: 1000px; border: 1px solid black;}
-		#suction table{position: relative; left: 20px; padding: 0px; font-size: 20px; margin:5px;}
-		#suction td {padding:2px; width:120px;}
-		#suction td > input {align: middle; width: 70px; text-align: center; display: block; margin: auto; font-size: 16px;} 
-			
-		#discharge{position: relative; left: 60px; overflow: scroll; height:475px; width: 1000px; border: 1px solid black;}
-		#discharge table{position: relative; left: 20px; padding: 0px; font-size: 20px; margin:5px;}
-		#discharge td {padding:2px; width:120px;}
-		#discharge td > input {align: middle; width: 60px; text-align: center; display: block; margin: auto;} 
-		
-		.pspec1{width:120px;}
-		.pspec2{width: 90px;}
-		#combo1{width:100px; font-size: 20px;}
-		#section1{font-size: 18px; margin: 0px auto;}
-		
+
+
 	</style>
 
     <script type="text/javascript">
 		function rev_go(f) {
-			f.action="psvrev.do";
+			f.action="pipeheat_rev.do";
 			f.submit(); 
 		}
 		
-		function add1_go(f) {
-			f.action="psvlineadd1.do";
+		function add_go(f) {
+			f.action="pipeheat_add.do";
 			f.submit(); 
 		}
-		
-		function add2_go(f) {
-			f.action="psvlineadd2.do";
-			f.submit(); 
-		}
-		
-		function del1_go(f) {
+				
+		function del_go(f) {
 			if(f.section1.value == 0){
 				alert("section값을 선택하시오.");
 				return;
 		
 			} else {
-				f.action="psvlinedel1.do";
+				f.action="pipeheat_del.do";
 				f.submit(); 
 			}
 
 		}
 		
-		function del2_go(f) {
-			if(f.section2.value == 0){
-				alert("section값을 선택하시오.");
-				return;
-		
-			} else {
-				f.action="psvlinedel2.do";
-				f.submit(); 
-			}
+		function cal_go(f) {
+			alert("작업중");
 		}
 		
 	
@@ -79,7 +47,7 @@
 </head>
 <body>
 	<div class="intro">
-		<h3>Line Hydraulic</h3>
+		<h3> Pipe Heat Transfer </h3>
 		
 		<form method="post">
 			<input id="add_chart1" type="button" value="Add" onclick="add_go(this.form)"> 
@@ -95,7 +63,7 @@
 					<tr> <!--1  -->
 						<td style="width: 170px;">Line.No</td>
 						<td colspan="2">
-							<input type="text" name="lineno" value="${n.lineno}" onkeyup="if(event.keyCode==13){rev_go(this.form);}" style="width: 150px">
+							<input type="text" name="lineno" value="${n.lineno}" style="width: 150px">
 							<input type="hidden" name ="cal" value="${cal}">
 							<input type="hidden" name="idx" value="${n.idx}"/>
 							&nbsp;&nbsp;&nbsp;&nbsp;
@@ -110,8 +78,7 @@
 						<!-- delete 버튼은 기능 설정 쯤 개시 -->
 					</tr>
 					<tr style="font-size: 20px;"> <!-- 2 -->
-						<td>Process</td>
-						<td>Phase</td>
+						<td colspan="2">Phase</td>
 						<td style="width:190px;">
 							<select style="width: 100px; font-size: 16px;" name="phase" onchange="rev_go(this.form)">
 								<option value="liquid" <c:if test="${n.phase eq 'liquid'}">selected </c:if>>Liquid</option>
@@ -120,63 +87,130 @@
 							</select>
 						</td>
 						<td colspan="3">							
-							<input type="radio" id="Inlet" name="press"  value="Inlet" onclick="rev_go(this.form)"
-							<c:if test="${n.press eq 'Inlet'}">checked </c:if>> 
+							<input type="radio" name="ev"  value="Bare" onclick="rev_go(this.form)"<c:if test="${n.ev eq 'Bare'}">checked </c:if>> 
 							<label for="Inlet">Inlet</label>
 							&nbsp;&nbsp;
-							<input type="radio" id="Outlet" name="press" value="Outlet" onclick="rev_go(this.form)" 
-							<c:if test="${n.press eq 'Outlet'}">checked </c:if>>
-							<label for="Outlet">Outlet</label>
+							<input type="radio" name="ev" value="Buried" onclick="rev_go(this.form)" <c:if test="${n.ev eq 'Buried'}">checked </c:if>>
+							<label for="Outlet">Buried</label>
 						</td>
-						<td colspan="3"></td>
+						<td colspan="8"></td>
 
 						<!-- jstl로 readonly 지정  -->
-					</tr>
-					<tr class="process"> <!-- 3 -->
-						<td>Flow rate (kg/hr)  </td>
-						<td><input type="number" name="flow" value="${n.flow}" onkeyup="rev_go(this.form)"> </td>								
-						<td>Inlet Press (kg/cm<sup>2</sup>G)</td>
-						<td><input type="number" name="pin" value="${n.pin}" onkeyup="rev_go(this.form)"> </td>
-						<td>Temperature (C)</td>
-						<td style="width:90px; "><input type="number" name="temp" value="${n.temp}" onkeyup="rev_go(this.form)"> </td>
-						<td>Viscosity (cP)</td>
-						<td><input type="number" name="vis" value="${n.vis}" onkeyup="rev_go(this.form)"> </td>
-						<td>Compress fact (Z)</td>
-						<td><input type="number" name="compress" value="${n.compress}" onkeyup="rev_go(this.form)"> </td>								
-
+					</tr>					
+					
+					<tr class="process"> <!-- 3 --> 
+						<td colspan="2">Property  </td>  
+						<td>Liquid</td>
+						<td>Vapor</td>
+						<td colspan="3">Process</td>
+						<td>Type of Surface</td>
+						<td colspan="3">
+							<select name="stype">
+								<option value="centri" <c:if test="${n.stype eq 'common'}"> selected </c:if>> Commonly used </option>					
+			               		<option value="rotary" <c:if test="${n.stype eq '-'}"> selected </c:if>> - </option>		  	
+							</select>
+						</td>												
+						<td>Air Temp </td>
+						<td>F</td>
+						<td style="width:90px; "><input type="number" name="temp_air" value="${n.temp_air}" > </td> <!--14 -->
 
 					</tr>
 					<tr class="process"> <!-- 4 -->
-						<td>Over Design (%)</td>
-						<td><input type="number" name="over" value="${n.over}" onkeyup="rev_go(this.form)"> </td>
-						<td>Outlet Press (kg/cm<sup>2</sup>G)</td>
-						<td><input type="number" name="pout" value="${n.pout}" onkeyup="rev_go(this.form)"> </td>
-						<td>Density (kg/m<sup>3</sup>)</td>
-						<td><input type="number" name="den" value="${n.den}" onkeyup="rev_go(this.form)"> </td>
-						<td>Molecular</td>
-						<td><input type="number" name="mol" value="${n.mol}" onkeyup="rev_go(this.form)"> </td>
-						<td>Cp/Cv</td>
-					    <td><input type="number" name="cpcv" value="${n.cpcv}" onkeyup="rev_go(this.form)"> </td>	
-				
-
+						<td>Temperature </td>
+						<td>C </td>
+						<td><input type="number" name="temp" value="${n.temp_liq}" > </td>								
+						<td><input type="number" name="temp" value="${n.temp_vapor}" > </td>
+						<td>Flow rate</td>
+						<td>kg/h</td>
+						<td style="width:90px; "><input type="number" name="flow" value="${n.flow}" > </td>
+						<td>Emissivity</td>
+						<td colspan="3"><input type="number" name="em" value="${n.em}" ></td>
+						<td>Wind Velocity</td>
+						<td>mph</td>
+						<td><input type="number" name="wind_vel" value="${n.wind_vel}"> </td>
 					</tr>
-					<tr id="dp"> 
-						<td>Press drop (kg/cm<sup>2</sup>G)</td>
-						<td>Total: </td>
-						<td><input type="number" name="tdp" value="${n.tdp}" disabled="disabled"></td>
-						<td colspan="7">	
-							Friction: &nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="number" name="fdp" value="${n.fdp}" disabled="disabled">
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							Gravity: &nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="number" name="gdp" value="${n.gdp}" disabled="disabled">
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							press/100m: &nbsp;&nbsp;&nbsp;
-							<input type="number" name="dplen" value="${n.dplen}" disabled="disabled"> 
+					<tr class="process"> <!-- 4 -->
+						<td>Density</td>
+						<td>kg/m<sup>3</sup></td>
+						<td><input type="number" name="den_liq" value="${n.den_liq}" > </td>
+						<td><input type="number" name="den_vapor" value="${n.den_vapor}" > </td>
+						<td>OverDesign</td>
+						<td>%</td>
+						<td style="width:90px; "><input type="number" name="over" value="${n.over}" > </td>
+						<td colspan="4">Shape & Condition </td>
+						<td>Season</td>
+					    <td colspan="2">
+							<select style="width: 100px; font-size: 16px;" name="season" onchange="rev_go(this.form)">
+								<option value="liquid" <c:if test="${n.season eq 'Spring'}">selected </c:if>>Spring</option>
+								<option value="vapor" <c:if test="${n.season eq 'Summer'}">selected </c:if>>Summer </option>
+								<option value="2phase" <c:if test="${n.season eq 'Autumn'}">selected </c:if>>Autumn </option>
+							</select>					    
+					    </td>	
+					</tr>
+					<tr id="process"> 
+						<td>Viscosity</td>
+						<td>cP</td>
+						<td><input type="number" name="vis_liq" value="${n.vis_liq}" > </td>
+						<td><input type="number" name="vis_vapor" value="${n.vis_vapor}" > </td>
+						<td colspan="2">vapor fraction</td>
+						<td><input type="number" name="vapor_fr" value="${n.vapor_fr}" <c:if test="${n.phase eq '2phase'}">readonly </c:if>> </td>
+						<td colspan="4">
+							<select style="width: 100px; font-size: 16px;" name="condition" onchange="rev_go(this.form)">
+								<option value="liquid" <c:if test="${n.condition eq 'Spring'}">selected </c:if>>Spring</option>
+								<option value="vapor" <c:if test="${n.condition eq 'Summer'}">selected </c:if>>Summer </option>
+								<option value="2phase" <c:if test="${n.condition eq 'Autumn'}">selected </c:if>>Autumn </option>
+							</select>							
 						</td>
+						<td>Burial Depth</td>
+						<td>inch</td>
+						<td><input type="number" name="depth" value="${n.depth}"> </td>
 
 					</tr>
-					<tr><td colspan="10">Pipe Spec.</td></tr>
+					<tr id="process"> 
+						<td>Heat Capacity</td>
+						<td>Btu/lb F</td>
+						<td><input type="number" name="heat_liq" value="${n.heat_liq}" > </td>
+						<td><input type="number" name="heat_vapor" value="${n.heat_vapor}" > </td>
+						<td>&nbsp;- Flow rate (liquid)</td>
+						<td>kg/h</td>
+						<td><input type="number" name="flow_liq" value="${n.flow_liq}" <c:if test="${n.phase eq 'vapor'}">readonly </c:if>> </td>
+						<td colspan="3">Convection Equation</td>
+						<td><input type="number" name="convection" value="${n.convection}" > </td>	
+						<td colspan="2">Soil Conductivity</td>
+						<td rowspan="2"><input type="number" name="soil" value="${n.soil}"> </td>
+
+					</tr>
+					<tr id="process"> 
+						<td colspan="2">Thermal Conductivity</td>
+						<td rowspan="2"><input type="number" name="thcon_liq" value="${n.thcon_liq}" > </td>
+						<td rowspan="2"><input type="number" name="thcon_vapor" value="${n.thcon_vapor}" > </td>
+						<td>&nbsp;- Flow rate (vapor)</td>
+						<td>kg/h</td>
+						<td><input type="number" name="flow_vapor" value="${n.flow_vapor}" <c:if test="${n.phase eq 'liquid'}">readonly </c:if>> </td>
+						<td colspan="4"></td>
+						<td>Heated Soil Dia</td>
+						<td>inch</td>
+						<td><input type="number" name="heat_dia" value="${n.heat_dia}"> </td>
+					</tr>
+					<tr id="process"> 
+						<td colspan="2">(Btu/ft h F)</td>
+						<td colspan="10"></td>
+					</tr>
+				</tbody>
+			</table>
+			<table>
+				<tbody>
+					<tr>
+						<td colspan="2">Pipe Spec.</td>
+						<td>Insulation</td>
+						<td>-Thickness</td>
+						<td>inch</td>
+						<td><input type="number" name="insul_thick" value="${n.insul_thick}" ></td>
+						<td>-Conductivity</td>
+						<td>Btu/lb F ft</td>
+						<td><input type="number" name="insul_con" value="${n.insul_con}" ></td>
+						<td></td>
+					</tr>
 					<tr class="process"> 
 						<td>Complex Factor</td>
 						<td colspan="2">
@@ -190,9 +224,9 @@
 							</select>
 						</td>
 						<td colspan="2">
-							Equivalent Length
+							Reynold Number
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="number" name="eqvlen" value="${n.eqvlen}" disabled="disabled">
+							<input type="number" name="re" value="${n.re}" disabled="disabled">
 						</td>
 						<td colspan="4"></td>
 					</tr>
@@ -221,10 +255,8 @@
 							</select>
 						</td>
 						<td>Length of Pipe (m)</td>
-						<td><input type="number" name="pipelen" value="${n.pipelen}" onkeyup="rev_go(this.form)"></td>	
-						<td>Elevation Change</td>					
-						<td><input type="number" name="ellen" value="${n.ellen}" disabled="disabled"></td>						
-						<td colspan="4"></td>
+						<td><input type="number" name="pipelen" value="${n.pipelen}" onkeyup="rev_go(this.form)"></td>						
+						<td colspan="6"></td>
 					</tr>
 					
 					<c:if test="${n.cfactor eq 'fitting'}">
@@ -386,15 +418,68 @@
 						</td>
 					</tr>	
 					</c:if>			
-
-				</tbody>
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr><td colspan="8">Result</td></tr>
+				<tr>
+					<td>Equivalent Length</td>
+					<td>m</td>
+					<td><input type="number" name="eql_len" value="${n.eql_len}" ></td>
+					<td></td>
+					<td>Soil Thermal Coefficient</td>
+					<td>Btu/lb F ft<sup>2</sup></td>
+					<td><input type="number" name="soil_temp" value="${n.soil_temp}" ></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Inside Flim Coefficient</td>
+					<td>Btu/lb F ft<sup>2</sup></td>
+					<td><input type="number" name="in_coeff" value="${n.in_coeff}" ></td>
+					<td></td>
+					<td>Ground Temperature</td>
+					<td>F</td>
+					<td><input type="number" name="g_temp" value="${n.g_temp}" ></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Outside Flim Coefficient</td>
+					<td>Btu/lb F ft<sup>2</sup></td>
+					<td><input type="number" name="out_coeff" value="${n.out_coeff}" ></td>
+					<td></td>
+					<td>Outlet Temperature</td>
+					<td>F</td>
+					<td><input type="number" name="out_temp" value="${n.out_temp}" ></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>&nbsp;- by convection</td>
+					<td>Btu/lb F ft<sup>2</sup></td>
+					<td><input type="number" name="in_coeff_1" value="${n.in_coeff_1}" ></td>
+					<td></td>
+					<td>Surface Temperature</td>
+					<td>F</td>
+					<td><input type="number" name="sur_temp" value="${n.sur_temp}" ></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>&nbsp;- by convection</td>
+					<td>Btu/lb F ft<sup>2</sup></td>
+					<td><input type="number" name="in_coeff_2" value="${n.in_coeff_2}" ></td>
+					<td></td>
+					<td>Diff Temperature</td>
+					<td>F</td>
+					<td><input type="number" name="diff_temp" value="${n.diff_temp}" ></td>
+					<td></td>
+				</tr>
 				
-			</table>
 			
+			</tbody>
+		</table>
 		</div>
 		<br><br>
 		</form>
-
 		</c:forEach>
 
 	</div>

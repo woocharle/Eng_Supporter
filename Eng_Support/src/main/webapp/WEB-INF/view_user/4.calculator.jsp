@@ -64,7 +64,7 @@
 			<li>Heat Transfer
 				<ul class="list2">
 					<li><a href="cal.do?cal=phtrans"> Pipe Heat Transfer </a></li>
-					<li><a href="cal.do?al=thtrans"> Tank Heat Transfer </a></li>
+					<li><a href="cal.do?cal=thtrans"> Tank Heat Transfer </a></li>
 				</ul>
 			
 			</li>	
