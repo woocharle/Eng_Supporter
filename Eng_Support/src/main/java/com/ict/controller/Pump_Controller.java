@@ -87,7 +87,9 @@ public class Pump_Controller {
 				pvo2.setElbow90_9(request.getParameter("elbow90_9".concat(String.valueOf(i+1))));
 				
 				pvo2.setElbow45_1(request.getParameter("elbow45_1".concat(String.valueOf(i+1))));
-				pvo2.setElbow45_2(request.getParameter("elbow45_d".concat(String.valueOf(i+1))));
+				pvo2.setElbow45_2(request.getParameter("elbow45_2".concat(String.valueOf(i+1))));
+				pvo2.setElbow45_3(request.getParameter("elbow45_3".concat(String.valueOf(i+1))));
+				pvo2.setElbow45_4(request.getParameter("elbow45_4".concat(String.valueOf(i+1))));
 				
 				pvo2.setBend_1(request.getParameter("bend_1".concat(String.valueOf(i+1))));
 				pvo2.setBend_2(request.getParameter("bend_d".concat(String.valueOf(i+1))));
@@ -100,7 +102,6 @@ public class Pump_Controller {
 				pvo2.setTee_5(request.getParameter("tee_5".concat(String.valueOf(i+1))));
 				pvo2.setTee_6(request.getParameter("tee_6".concat(String.valueOf(i+1))));
 				pvo2.setTee_7(request.getParameter("tee_7".concat(String.valueOf(i+1))));
-				pvo2.setTee_8(request.getParameter("tee_8".concat(String.valueOf(i+1))));
 				
 				pvo2.setGtvalve(request.getParameter("gtvalve".concat(String.valueOf(i+1))));
 				pvo2.setBvalve(request.getParameter("bvalve".concat(String.valueOf(i+1))));
@@ -195,7 +196,9 @@ public class Pump_Controller {
 			k.setElbow90_9(request.getParameter("elbow90_9".concat(k.getIdx())));
 			
 			k.setElbow45_1(request.getParameter("elbow45_1".concat(k.getIdx())));
-			k.setElbow45_2(request.getParameter("elbow45_d".concat(k.getIdx())));
+			k.setElbow45_2(request.getParameter("elbow45_2".concat(k.getIdx())));
+			k.setElbow45_3(request.getParameter("elbow45_3".concat(k.getIdx())));
+			k.setElbow45_4(request.getParameter("elbow45_4".concat(k.getIdx())));
 			
 			k.setBend_1(request.getParameter("bend_1".concat(k.getIdx())));
 			k.setBend_2(request.getParameter("bend_d".concat(k.getIdx())));
@@ -208,7 +211,6 @@ public class Pump_Controller {
 			k.setTee_5(request.getParameter("tee_5".concat(k.getIdx())));
 			k.setTee_6(request.getParameter("tee_6".concat(k.getIdx())));
 			k.setTee_7(request.getParameter("tee_7".concat(k.getIdx())));
-			k.setTee_8(request.getParameter("tee_8".concat(k.getIdx())));
 			
 			k.setGtvalve(request.getParameter("gtvalve".concat(k.getIdx())));
 			k.setBvalve(request.getParameter("bvalve".concat(k.getIdx())));
@@ -277,6 +279,8 @@ public class Pump_Controller {
 				
 				pvo2.setElbow45_1(b_pslist[i].getElbow45_1());
 				pvo2.setElbow45_2(b_pslist[i].getElbow45_2());
+				pvo2.setElbow45_3(b_pslist[i].getElbow45_3());
+				pvo2.setElbow45_4(b_pslist[i].getElbow45_4());
 				
 				pvo2.setBend_1(b_pslist[i].getBend_1());
 				pvo2.setBend_2(b_pslist[i].getBend_2());
@@ -289,7 +293,6 @@ public class Pump_Controller {
 				pvo2.setTee_5(b_pslist[i].getTee_5());
 				pvo2.setTee_6(b_pslist[i].getTee_6());
 				pvo2.setTee_7(b_pslist[i].getTee_7());
-				pvo2.setTee_8(b_pslist[i].getTee_8());
 				
 				pvo2.setGtvalve(b_pslist[i].getGtvalve());
 				pvo2.setBvalve(b_pslist[i].getBvalve());
@@ -355,6 +358,8 @@ public class Pump_Controller {
 			
 			k.setElbow45_1_d(request.getParameter("elbow45_1_d".concat(k.getIdx_d())));
 			k.setElbow45_2_d(request.getParameter("elbow45_2_d".concat(k.getIdx_d())));
+			k.setElbow45_3_d(request.getParameter("elbow45_3_d".concat(k.getIdx_d())));
+			k.setElbow45_4_d(request.getParameter("elbow45_4_d".concat(k.getIdx_d())));
 			
 			k.setBend_1_d(request.getParameter("bend_1_d".concat(k.getIdx_d())));
 			k.setBend_2_d(request.getParameter("bend_2_d".concat(k.getIdx_d())));
@@ -367,7 +372,6 @@ public class Pump_Controller {
 			k.setTee_5_d(request.getParameter("tee_5_d".concat(k.getIdx_d())));
 			k.setTee_6_d(request.getParameter("tee_6_d".concat(k.getIdx_d())));
 			k.setTee_7_d(request.getParameter("tee_7_d".concat(k.getIdx_d())));
-			k.setTee_8_d(request.getParameter("tee_8_d".concat(k.getIdx_d())));
 			
 			k.setGtvalve_d(request.getParameter("gtvalve_d".concat(k.getIdx_d())));
 			k.setBvalve_d(request.getParameter("bvalve_d".concat(k.getIdx_d())));
@@ -489,7 +493,9 @@ public class Pump_Controller {
 			k.setElbow90_9(request.getParameter("elbow90_9".concat(k.getIdx())));
 			
 			k.setElbow45_1(request.getParameter("elbow45_1".concat(k.getIdx())));
-			k.setElbow45_2(request.getParameter("elbow45_d".concat(k.getIdx())));
+			k.setElbow45_2(request.getParameter("elbow45_2".concat(k.getIdx())));
+			k.setElbow45_3(request.getParameter("elbow45_3".concat(k.getIdx())));
+			k.setElbow45_4(request.getParameter("elbow45_4".concat(k.getIdx())));
 			
 			k.setBend_1(request.getParameter("bend_1".concat(k.getIdx())));
 			k.setBend_2(request.getParameter("bend_d".concat(k.getIdx())));
@@ -502,7 +508,6 @@ public class Pump_Controller {
 			k.setTee_5(request.getParameter("tee_5".concat(k.getIdx())));
 			k.setTee_6(request.getParameter("tee_6".concat(k.getIdx())));
 			k.setTee_7(request.getParameter("tee_7".concat(k.getIdx())));
-			k.setTee_8(request.getParameter("tee_8".concat(k.getIdx())));
 			
 			k.setGtvalve(request.getParameter("gtvalve".concat(k.getIdx())));
 			k.setBvalve(request.getParameter("bvalve".concat(k.getIdx())));
@@ -575,6 +580,8 @@ public class Pump_Controller {
 				
 				pvo3.setElbow45_1_d(request.getParameter("elbow45_1_d".concat(String.valueOf(i+1))));
 				pvo3.setElbow45_2_d(request.getParameter("elbow45_2_d".concat(String.valueOf(i+1))));
+				pvo3.setElbow45_3_d(request.getParameter("elbow45_3_d".concat(String.valueOf(i+1))));
+				pvo3.setElbow45_4_d(request.getParameter("elbow45_4_d".concat(String.valueOf(i+1))));
 				
 				pvo3.setBend_1_d(request.getParameter("bend_1_d".concat(String.valueOf(i+1))));
 				pvo3.setBend_2_d(request.getParameter("bend_2_d".concat(String.valueOf(i+1))));
@@ -587,7 +594,6 @@ public class Pump_Controller {
 				pvo3.setTee_5_d(request.getParameter("tee_5_d".concat(String.valueOf(i+1))));
 				pvo3.setTee_6_d(request.getParameter("tee_6_d".concat(String.valueOf(i+1))));
 				pvo3.setTee_7_d(request.getParameter("tee_7_d".concat(String.valueOf(i+1))));
-				pvo3.setTee_8_d(request.getParameter("tee_8_d".concat(String.valueOf(i+1))));
 				
 				pvo3.setGtvalve_d(request.getParameter("gtvalve_d".concat(String.valueOf(i+1))));
 				pvo3.setBvalve_d(request.getParameter("bvalve_d".concat(String.valueOf(i+1))));
@@ -687,6 +693,8 @@ public class Pump_Controller {
 			
 			k.setElbow45_1_d(request.getParameter("elbow45_1_d".concat(k.getIdx_d())));
 			k.setElbow45_2_d(request.getParameter("elbow45_2_d".concat(k.getIdx_d())));
+			k.setElbow45_3_d(request.getParameter("elbow45_3_d".concat(k.getIdx_d())));
+			k.setElbow45_4_d(request.getParameter("elbow45_4_d".concat(k.getIdx_d())));
 			
 			k.setBend_1_d(request.getParameter("bend_1_d".concat(k.getIdx_d())));
 			k.setBend_2_d(request.getParameter("bend_2_d".concat(k.getIdx_d())));
@@ -699,7 +707,6 @@ public class Pump_Controller {
 			k.setTee_5_d(request.getParameter("tee_5_d".concat(k.getIdx_d())));
 			k.setTee_6_d(request.getParameter("tee_6_d".concat(k.getIdx_d())));
 			k.setTee_7_d(request.getParameter("tee_7_d".concat(k.getIdx_d())));
-			k.setTee_8_d(request.getParameter("tee_8_d".concat(k.getIdx_d())));
 			
 			k.setGtvalve_d(request.getParameter("gtvalve_d".concat(k.getIdx_d())));
 			k.setBvalve_d(request.getParameter("bvalve_d".concat(k.getIdx_d())));
@@ -770,6 +777,8 @@ public class Pump_Controller {
 				
 				pvo3.setElbow45_1_d(b_pdlist[i].getElbow45_1_d());
 				pvo3.setElbow45_2_d(b_pdlist[i].getElbow45_2_d());
+				pvo3.setElbow45_3_d(b_pdlist[i].getElbow45_3_d());
+				pvo3.setElbow45_4_d(b_pdlist[i].getElbow45_4_d());
 				
 				pvo3.setBend_1_d(b_pdlist[i].getBend_1_d());
 				pvo3.setBend_2_d(b_pdlist[i].getBend_2_d());
@@ -782,7 +791,6 @@ public class Pump_Controller {
 				pvo3.setTee_5_d(b_pdlist[i].getTee_5_d());
 				pvo3.setTee_6_d(b_pdlist[i].getTee_6_d());
 				pvo3.setTee_7_d(b_pdlist[i].getTee_7_d());
-				pvo3.setTee_8_d(b_pdlist[i].getTee_8_d());
 				
 				pvo3.setGtvalve_d(b_pdlist[i].getGtvalve_d());
 				pvo3.setBvalve_d(b_pdlist[i].getBvalve_d());
@@ -848,7 +856,9 @@ public class Pump_Controller {
 			k.setElbow90_9(request.getParameter("elbow90_9".concat(k.getIdx())));
 			
 			k.setElbow45_1(request.getParameter("elbow45_1".concat(k.getIdx())));
-			k.setElbow45_2(request.getParameter("elbow45_d".concat(k.getIdx())));
+			k.setElbow45_2(request.getParameter("elbow45_2".concat(k.getIdx())));
+			k.setElbow45_3(request.getParameter("elbow45_3".concat(k.getIdx())));
+			k.setElbow45_4(request.getParameter("elbow45_4".concat(k.getIdx())));
 			
 			k.setBend_1(request.getParameter("bend_1".concat(k.getIdx())));
 			k.setBend_2(request.getParameter("bend_d".concat(k.getIdx())));
@@ -861,7 +871,6 @@ public class Pump_Controller {
 			k.setTee_5(request.getParameter("tee_5".concat(k.getIdx())));
 			k.setTee_6(request.getParameter("tee_6".concat(k.getIdx())));
 			k.setTee_7(request.getParameter("tee_7".concat(k.getIdx())));
-			k.setTee_8(request.getParameter("tee_8".concat(k.getIdx())));
 			
 			k.setGtvalve(request.getParameter("gtvalve".concat(k.getIdx())));
 			k.setBvalve(request.getParameter("bvalve".concat(k.getIdx())));
@@ -983,7 +992,9 @@ public class Pump_Controller {
 			k.setElbow90_9(request.getParameter("elbow90_9".concat(k.getIdx())));
 			
 			k.setElbow45_1(request.getParameter("elbow45_1".concat(k.getIdx())));
-			k.setElbow45_2(request.getParameter("elbow45_d".concat(k.getIdx())));
+			k.setElbow45_2(request.getParameter("elbow45_2".concat(k.getIdx())));
+			k.setElbow45_3(request.getParameter("elbow45_3".concat(k.getIdx())));
+			k.setElbow45_4(request.getParameter("elbow45_4".concat(k.getIdx())));
 			
 			k.setBend_1(request.getParameter("bend_1".concat(k.getIdx())));
 			k.setBend_2(request.getParameter("bend_d".concat(k.getIdx())));
@@ -996,7 +1007,6 @@ public class Pump_Controller {
 			k.setTee_5(request.getParameter("tee_5".concat(k.getIdx())));
 			k.setTee_6(request.getParameter("tee_6".concat(k.getIdx())));
 			k.setTee_7(request.getParameter("tee_7".concat(k.getIdx())));
-			k.setTee_8(request.getParameter("tee_8".concat(k.getIdx())));
 			
 			k.setGtvalve(request.getParameter("gtvalve".concat(k.getIdx())));
 			k.setBvalve(request.getParameter("bvalve".concat(k.getIdx())));
@@ -1058,6 +1068,8 @@ public class Pump_Controller {
 			
 			k.setElbow45_1_d(request.getParameter("elbow45_1_d".concat(k.getIdx_d())));
 			k.setElbow45_2_d(request.getParameter("elbow45_2_d".concat(k.getIdx_d())));
+			k.setElbow45_3_d(request.getParameter("elbow45_3_d".concat(k.getIdx_d())));
+			k.setElbow45_4_d(request.getParameter("elbow45_4_d".concat(k.getIdx_d())));
 			
 			k.setBend_1_d(request.getParameter("bend_1_d".concat(k.getIdx_d())));
 			k.setBend_2_d(request.getParameter("bend_2_d".concat(k.getIdx_d())));
@@ -1070,7 +1082,6 @@ public class Pump_Controller {
 			k.setTee_5_d(request.getParameter("tee_5_d".concat(k.getIdx_d())));
 			k.setTee_6_d(request.getParameter("tee_6_d".concat(k.getIdx_d())));
 			k.setTee_7_d(request.getParameter("tee_7_d".concat(k.getIdx_d())));
-			k.setTee_8_d(request.getParameter("tee_8_d".concat(k.getIdx_d())));
 			
 			k.setGtvalve_d(request.getParameter("gtvalve_d".concat(k.getIdx_d())));
 			k.setBvalve_d(request.getParameter("bvalve_d".concat(k.getIdx_d())));

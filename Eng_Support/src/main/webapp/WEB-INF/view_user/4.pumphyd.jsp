@@ -409,7 +409,7 @@
 							</td>
 						</c:forEach>	
 					</tr>
-					<tr><td>45 Elbow</td><td></td><td colspan="${pnum + 1}"></td></tr>				
+					<tr><td>45 Elbow, Threaded</td></tr>				
 					<tr><td style="position: relative; left:10px">- Threaded <span style="position: relative; left:10px">Std</span></td>
 						<td>(R/D=1)</td>
 						<c:forEach var="k" items="${pslist}">
@@ -421,6 +421,22 @@
 					<tr><td style="position: relative; left:127px">Long</td><td>(R/D=1.5)</td>
 						<c:forEach var="k" items="${pslist}">
 							<td><input type="number" name="elbow45_2${k.idx}" value="${k.elbow45_2}"  
+								<c:if test="${k.cfactor ne 'fitting'}"> disabled </c:if>>
+							</td>
+						</c:forEach>
+					<tr>
+					<tr><td>45 Elbow Mitered</td></tr>				
+					<tr><td style="position: relative; left:10px">- Threaded <span style="position: relative; left:10px">Std</span></td>
+						<td>(R/D=1)</td>
+						<c:forEach var="k" items="${pslist}">
+							<td><input type="number" name="elbow45_3${k.idx}" value="${k.elbow45_3}"  
+								<c:if test="${k.cfactor ne 'fitting'}"> disabled </c:if>>
+							</td>
+						</c:forEach>
+					</tr>
+					<tr><td style="position: relative; left:127px">Long</td><td>(R/D=1.5)</td>
+						<c:forEach var="k" items="${pslist}">
+							<td><input type="number" name="elbow45_4${k.idx}" value="${k.elbow45_4}"  
 								<c:if test="${k.cfactor ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>
@@ -449,35 +465,33 @@
 					</tr>
 					<tr><td colspan="2">Tee (branch as Elbow)</td>
 						<c:forEach var="k" items="${pslist}">
-							<td><input type="number" name="tee_1${k.idx}" value="${k.tee_1}"  
-								<c:if test="${k.cfactor ne 'fitting'}"> disabled </c:if>>
-							</td>
+							<td></td>
 						</c:forEach>				
 					</tr>
 					<tr><td style="position: relative; left:10px">- Threaded</td><td>(R/D=1)</td>
 						<c:forEach var="k" items="${pslist}">
-							<td><input type="number" name="tee_2${k.idx}" value="${k.tee_2}" 
+							<td><input type="number" name="tee_1${k.idx}" value="${k.tee_1}" 
 								<c:if test="${k.cfactor ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>				
 					</tr>
 					<tr><td style="position: relative; left:10px">- Threaded</td><td>(R/D=1.5)</td>
 						<c:forEach var="k" items="${pslist}">
-							<td><input type="number" name="tee_3${k.idx}" value="${k.tee_3}" 
+							<td><input type="number" name="tee_2${k.idx}" value="${k.tee_2}" 
 								<c:if test="${k.cfactor ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>					
 					</tr>
 					<tr><td style="position: relative; left:10px">- Flanged</td><td>(R/D=1)</td>
 						<c:forEach var="k" items="${pslist}">
-							<td><input type="number" name="tee_4${k.idx}" value="${k.tee_4}" 
+							<td><input type="number" name="tee_3${k.idx}" value="${k.tee_3}" 
 								<c:if test="${k.cfactor ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>					
 					<tr>
 					<tr><td colspan="2" style="position: relative; left:10px">- Stub-in branch</td>
 						<c:forEach var="k" items="${pslist}">
-							<td><input type="number" name="tee_5${k.idx}" value="${k.tee_5}" 
+							<td><input type="number" name="tee_4${k.idx}" value="${k.tee_3}" 
 								<c:if test="${k.cfactor ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>				
@@ -485,21 +499,21 @@
 					<tr><td colspan="2">Tee (Run-Through)</td></tr>
 					<tr><td style="position: relative; left:10px">- Threaded</td><td>(R/D=1)</td>
 						<c:forEach var="k" items="${pslist}">
-							<td><input type="number" name="tee_6${k.idx}" value="${k.tee_6}" 
+							<td><input type="number" name="tee_5${k.idx}" value="${k.tee_5}" 
 								<c:if test="${k.cfactor ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>				
 					</tr>
 					<tr><td style="position: relative; left:10px">- Flanged</td><td>(R/D=1)</td>
 						<c:forEach var="k" items="${pslist}">
-							<td><input type="number" name="tee_7${k.idx}" value="${k.tee_7}" 
+							<td><input type="number" name="tee_6${k.idx}" value="${k.tee_6}" 
 								<c:if test="${k.cfactor ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>				
 					<tr>
 					<tr><td colspan="2" style="position: relative; left:10px">- Stub-in branch</td>
 						<c:forEach var="k" items="${pslist}">
-							<td><input type="number" name="tee_8${k.idx}" value="${k.tee_8}" 
+							<td><input type="number" name="tee_7${k.idx}" value="${k.tee_7}" 
 								<c:if test="${k.cfactor ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>				
@@ -850,6 +864,22 @@
 							</td>
 						</c:forEach>					
 					<tr>
+					<tr><td>45 Elbow Mitered</td></tr>				
+					<tr><td style="position: relative; left:10px">- Threaded <span style="position: relative; left:10px">Std</span></td>
+						<td>(R/D=1)</td>
+						<c:forEach var="k" items="${pdlist}">
+							<td><input type="number" name="elbow45_3_d${k.idx_d}" value="${k.elbow45_3_d}"  
+								<c:if test="${k.cfactor_d ne 'fitting'}"> disabled </c:if>>
+							</td>
+						</c:forEach>
+					</tr>
+					<tr><td style="position: relative; left:127px">Long</td><td>(R/D=1.5)</td>
+						<c:forEach var="k" items="${pdlist}">
+							<td><input type="number" name="elbow45_4_d${k.idx_d}" value="${k.elbow45_4_d}"  
+								<c:if test="${k.cfactor_d ne 'fitting'}"> disabled </c:if>>
+							</td>
+						</c:forEach>
+					<tr>				
 					<tr><td>180 Bend</td><td></td><td colspan="${pnum + 1}"></td></tr>		
 					<tr><td style="position: relative; left:10px">- Threaded</td><td>(R/D=1)</td>
 						<c:forEach var="k" items="${pdlist}">
@@ -872,37 +902,31 @@
 							</td>
 						</c:forEach>					
 					</tr>
-					<tr><td colspan="2">Tee (branch as Elbow)</td>
-						<c:forEach var="k" items="${pdlist}">
-							<td><input type="number" name="tee_1_d${k.idx_d}" value="${k.tee_1_d}"    
-								<c:if test="${k.cfactor_d ne 'fitting'}"> disabled </c:if>>
-							</td>
-						</c:forEach>				
-					</tr>
+					<tr><td colspan="2">Tee (branch as Elbow)</td></tr>
 					<tr><td style="position: relative; left:10px">- Threaded</td><td>(R/D=1)</td>
 						<c:forEach var="k" items="${pdlist}">
-							<td><input type="number" name="tee_2_d${k.idx_d}" value="${k.tee_2_d}"   
+							<td><input type="number" name="tee_1_d${k.idx_d}" value="${k.tee_1_d}"   
 								<c:if test="${k.cfactor_d ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>				
 					</tr>
 					<tr><td style="position: relative; left:10px">- Threaded</td><td>(R/D=1.5)</td>
 						<c:forEach var="k" items="${pdlist}">
-							<td><input type="number" name="tee_3_d${k.idx_d}" value="${k.tee_3_d}"    
+							<td><input type="number" name="tee_2_d${k.idx_d}" value="${k.tee_2_d}"    
 								<c:if test="${k.cfactor_d ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>					
 					</tr>
 					<tr><td style="position: relative; left:10px">- Flanged</td><td>(R/D=1)</td>
 						<c:forEach var="k" items="${pdlist}">
-							<td><input type="number" name="tee_4_d${k.idx_d}" value="${k.tee_4_d}"   
+							<td><input type="number" name="tee_3_d${k.idx_d}" value="${k.tee_3_d}"   
 								<c:if test="${k.cfactor_d ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>					
 					<tr>
 					<tr><td colspan="2" style="position: relative; left:10px">- Stub-in branch</td>
 						<c:forEach var="k" items="${pdlist}">
-							<td><input type="number" name="tee_5_d${k.idx_d}" value="${k.tee_5_d}"    
+							<td><input type="number" name="tee_4_d${k.idx_d}" value="${k.tee_4_d}"    
 								<c:if test="${k.cfactor_d ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>				
@@ -910,21 +934,21 @@
 					<tr><td colspan="2">Tee (Run-Through)</td></tr>
 					<tr><td style="position: relative; left:10px">- Threaded</td><td>(R/D=1)</td>
 						<c:forEach var="k" items="${pdlist}">
-							<td><input type="number" name="tee_6_d${k.idx_d}" value="${k.tee_6_d}"    
+							<td><input type="number" name="tee_5_d${k.idx_d}" value="${k.tee_5_d}"    
 								<c:if test="${k.cfactor_d ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>				
 					</tr>
 					<tr><td style="position: relative; left:10px">- Flanged</td><td>(R/D=1)</td>
 						<c:forEach var="k" items="${pdlist}">
-							<td><input type="number" name="tee_7_d${k.idx_d}" value="${k.tee_7_d}"   
+							<td><input type="number" name="tee_6_d${k.idx_d}" value="${k.tee_6_d}"   
 								<c:if test="${k.cfactor_d ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>				
 					<tr>
 					<tr><td colspan="2" style="position: relative; left:10px">- Stub-in branch</td>
 						<c:forEach var="k" items="${pdlist}">
-							<td><input type="number" name="tee_8_d${k.idx_d}" value="${k.tee_8_d}"   
+							<td><input type="number" name="tee_7_d${k.idx_d}" value="${k.tee_7_d}"   
 								<c:if test="${k.cfactor_d ne 'fitting'}"> disabled </c:if>>
 							</td>
 						</c:forEach>				

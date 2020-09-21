@@ -21,7 +21,7 @@
 		
 	</style>
 	<script type="text/javascript">
-		function add_go(f) {
+ 		function add_go(f) {
 			f.action="lineadd.do";
 			f.submit();
 		}
@@ -40,7 +40,6 @@
 			f.action="linerev.do";
 			f.submit();
 		}
-		
 	</script>
 </head>
 <body>
@@ -61,7 +60,7 @@
 						<tr> <!--1  -->
 							<td style="width: 170px;">Line.No</td>
 							<td colspan="2">
-								<input type="text" name="lineno" value="${n.lineno}" onkeyup="if(event.keyCode==13){rev_go(this.form);}" style="width: 150px">
+								<input type="text" name="lineno" value="${n.lineno}" style="width: 150px">
 								<input type="hidden" name ="cal" value="${cal}">
 								<input type="hidden" name="idx" value="${n.idx}"/>
 								&nbsp;&nbsp;&nbsp;&nbsp;
@@ -99,15 +98,15 @@
 						</tr>
 						<tr class="process"> <!-- 3 -->
 							<td>Flow rate (kg/hr)  </td>
-							<td><input type="number" name="flow" value="${n.flow}" onkeyup="rev_go(this.form)"> </td>								
+							<td><input type="number" name="flow" value="${n.flow}" > </td>								
 							<td>Inlet Press (kg/cm<sup>2</sup>G)</td>
-							<td><input type="number" name="pin" value="${n.pin}" onkeyup="rev_go(this.form)"> </td>
+							<td><input type="number" name="pin" value="${n.pin}" > </td>
 							<td>Temperature (C)</td>
-							<td style="width:90px; "><input type="number" name="temp" value="${n.temp}" onkeyup="rev_go(this.form)"> </td>
+							<td style="width:90px; "><input type="number" name="temp" value="${n.temp}" > </td>
 							<td>Viscosity (cP)</td>
-							<td><input type="number" name="vis" value="${n.vis}" onkeyup="rev_go(this.form)"> </td>
+							<td><input type="number" name="vis" value="${n.vis}" > </td>
 							<td>Compress fact (Z)</td>
-							<td><input type="number" name="compress" value="${n.compress}" onkeyup="rev_go(this.form)"> </td>								
+							<td><input type="number" name="compress" value="${n.compress}"> </td>								
 
 
 						</tr>
@@ -359,6 +358,7 @@
 			</div>
 			<br><br>
 			</form>
+
 			</c:forEach>
 
 	</div>

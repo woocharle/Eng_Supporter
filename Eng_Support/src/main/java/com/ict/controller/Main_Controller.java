@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.db.DAO;
 import com.ict.db.HVO;
+import com.ict.db.HVO2;
 import com.ict.db.PVO1;
 import com.ict.db.PVO2;
 import com.ict.db.PVO3;
@@ -97,7 +98,7 @@ public class Main_Controller {
 	}
 	
 	@RequestMapping(value="cal.do", method = RequestMethod.GET)
-	public ModelAndView cal_Cmd(HttpServletRequest request) {
+	public ModelAndView cal_Cmd(HVO hvo, HVO2 hvo2, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String cal = request.getParameter("cal");
 		request.getSession().setAttribute("cal", cal);
@@ -105,17 +106,19 @@ public class Main_Controller {
 		int num = 0;
 		int pnum = 0;
 		int pnum2 = 0;
-
+		List<HVO> list = null;
+		List<HVO2> hlist = null;
+		
 		List<PVO2> pslist;
 		List<PVO3> pdlist;
 		
 		switch (cal) {
 			case "linehyd":
 				num = 1;
-				List<HVO> list = new ArrayList<HVO>();
+				list = new ArrayList<HVO>();
 				
 				for (int i = 0; i < num; i++) {
-					HVO hvo = new HVO();
+					hvo = new HVO();
 						
 					hvo.setIdx(String.valueOf(i+1));
 					hvo.setPhase("liquid");
@@ -200,6 +203,24 @@ public class Main_Controller {
 				
 			break;
 			
+			case "phtrans": 
+				hlist = new ArrayList<HVO2>();
+				
+				hvo2 = new HVO2();
+					
+				hvo2.setIdx(String.valueOf(1));
+				hvo2.setPhase("liquid");
+				hvo2.setCfactor("fitting");
+				hvo2.setDout("6");
+				hvo2.setDlist(pipespec.getSize());
+				hvo2.setSch("STD");
+				hvo2.setSlist(pipespec.getSch());
+				
+				hlist.add(hvo2);
+		
+				request.getSession().setAttribute("list", hlist);				
+				
+			break;
 			
 		} 
 		

@@ -15,15 +15,15 @@ import com.ict.db.HVO;
 import com.ict.model.Pipespec;
 
 @Controller
-public class Line_Controller {	
-	private Pipespec pipespec;
-	
+public class LIntheat_Controller {
 	@Autowired
+	private Pipespec pipespec;
+
 	public void setPipespec(Pipespec pipespec) {
 		this.pipespec = pipespec;
 	}
-
-	@RequestMapping(value="lineadd.do", method=RequestMethod.POST)
+	
+	@RequestMapping(value="pipeheat_add.do", method=RequestMethod.POST)
 	public ModelAndView lineadd_Cmd(HVO hvo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String cal = request.getParameter("cal");
@@ -74,9 +74,6 @@ public class Line_Controller {
 				hvo.setSlist(pipespec.getSch());
 				hvo.setPipelen(b_list[i].getPipelen());
 				hvo.setEllen(b_list[i].getEllen());
-				hvo.setRe(b_list[i].getRe());
-				
-				
 				//fitting
 				hvo.setElbow90_1(b_list[i].getElbow90_1());
 				hvo.setElbow90_2(b_list[i].getElbow90_2());
@@ -90,8 +87,6 @@ public class Line_Controller {
 				
 				hvo.setElbow45_1(b_list[i].getElbow45_1());
 				hvo.setElbow45_2(b_list[i].getElbow45_2());
-				hvo.setElbow45_3(b_list[i].getElbow45_1());
-				hvo.setElbow45_4(b_list[i].getElbow45_2());
 				
 				hvo.setBend_1(b_list[i].getBend_1());
 				hvo.setBend_2(b_list[i].getBend_2());
@@ -137,7 +132,7 @@ public class Line_Controller {
 		return mv;
 	}
 	
-	@RequestMapping(value="linedel.do", method=RequestMethod.POST)
+	@RequestMapping(value="pipeheat_del.do", method=RequestMethod.POST)
 	public ModelAndView linedel_Cmd(HVO hvo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String cal = request.getParameter("cal");
@@ -182,9 +177,6 @@ public class Line_Controller {
 				hvo.setSlist(pipespec.getSch());
 				hvo.setPipelen(b_list[i].getPipelen());
 				hvo.setEllen(b_list[i].getEllen());
-				hvo.setRe(b_list[i].getRe());
-				
-				
 				//fitting
 				hvo.setElbow90_1(b_list[i].getElbow90_1());
 				hvo.setElbow90_2(b_list[i].getElbow90_2());
@@ -198,8 +190,6 @@ public class Line_Controller {
 				
 				hvo.setElbow45_1(b_list[i].getElbow45_1());
 				hvo.setElbow45_2(b_list[i].getElbow45_2());
-				hvo.setElbow45_3(b_list[i].getElbow45_1());
-				hvo.setElbow45_4(b_list[i].getElbow45_2());
 				
 				hvo.setBend_1(b_list[i].getBend_1());
 				hvo.setBend_2(b_list[i].getBend_2());
@@ -247,7 +237,7 @@ public class Line_Controller {
 		
 	}
 	
-	@RequestMapping(value="linerev.do", method=RequestMethod.POST)
+	@RequestMapping(value="pipeheat_rev.do", method=RequestMethod.POST)
 	public ModelAndView linerev_Cmd(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String cal = request.getParameter("cal");
@@ -284,9 +274,6 @@ public class Line_Controller {
 				k.setSlist(pipespec.getSch());
 				k.setPipelen(request.getParameter("pipelen"));
 				k.setEllen(request.getParameter("ellen"));
-				k.setRe(request.getParameter("re"));
-				
-				
 				//fitting
 				k.setElbow90_1(request.getParameter("elbow90_1"));
 				k.setElbow90_2(request.getParameter("elbow90_2"));
@@ -300,8 +287,6 @@ public class Line_Controller {
 				
 				k.setElbow45_1(request.getParameter("elbow45_1"));
 				k.setElbow45_2(request.getParameter("elbow45_2"));
-				k.setElbow45_3(request.getParameter("elbow45_1"));
-				k.setElbow45_4(request.getParameter("elbow45_2"));
 				
 				k.setBend_1(request.getParameter("bend_1"));
 				k.setBend_2(request.getParameter("bend_2"));

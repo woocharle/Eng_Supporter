@@ -4,95 +4,16 @@ import java.util.List;
 
 public class HVO {
 	private String idx, lineno, phase, press, flow, pin, temp,  vis, compress, over, pout, den, mol, cpcv;
-	private String tdp, fdp, gdp, dplen, cfactor, eqvlen, dout, sch, din, pipelen, wall, ellen;
+	private String tdp, fdp, gdp, dplen, cfactor, eqvlen, dout, sch, din, pipelen, wall, ellen, re;
 	private String elbow90_1, elbow90_2, elbow90_3, elbow90_4, elbow90_5, elbow90_6, elbow90_7, elbow90_8, elbow90_9;
-	private String elbow45_1, elbow45_2, bend_1, bend_2, bend_3;
-	private String tee_1, tee_2, tee_3, tee_4, tee_5, tee_6, tee_7, tee_8;
+	private String elbow45_1, elbow45_2, elbow45_3, elbow45_4, bend_1, bend_2, bend_3;
+	private String tee_1, tee_2, tee_3, tee_4, tee_5, tee_6, tee_7;
 	private String gtvalve, gbvalve, bvalve, cvalve_1, cvalve_2, avalve_1, avalve_2, pvalve_1, pvalve_2, pvalve_3;
 	private String dvalve, redd, redth, expd, expth;
 	
 	private List<String> dlist, slist;
 
 	public HVO() {}
-	
-	public HVO(String idx, String lineno, String phase, String press, String flow, String pin, String temp, String vis,
-			String compress, String over, String pout, String den, String mol, String cpcv, String tdp, String fdp,
-			String gdp, String dplen, String cfactor, String eqvlen, String dout, String sch, String din,
-			String pipelen, String wall, String ellen, String elbow90_1, String elbow90_2, String elbow90_3,
-			String elbow90_4, String elbow90_5, String elbow90_6, String elbow90_7, String elbow90_8, String elbow90_9,
-			String elbow45_1, String elbow45_2, String bend_1, String bend_2, String bend_3, String tee_1, String tee_2,
-			String tee_3, String tee_4, String tee_5, String tee_6, String tee_7, String tee_8, String gtvalve,
-			String gbvalve, String bvalve, String cvalve_1, String cvalve_2, String avalve_1, String avalve_2,
-			String pvalve_1, String pvalve_2, String pvalve_3, String dvalve, String redd, String redth, String expd,
-			String expth, List<String> dlist, List<String> slist) {
-		
-		super();
-		this.idx = idx;
-		this.lineno = lineno;
-		this.phase = phase;
-		this.press = press;
-		this.flow = flow;
-		this.pin = pin;
-		this.temp = temp;
-		this.vis = vis;
-		this.compress = compress;
-		this.over = over;
-		this.pout = pout;
-		this.den = den;
-		this.mol = mol;
-		this.cpcv = cpcv;
-		this.tdp = tdp;
-		this.fdp = fdp;
-		this.gdp = gdp;
-		this.dplen = dplen;
-		this.cfactor = cfactor;
-		this.eqvlen = eqvlen;
-		this.dout = dout;
-		this.sch = sch;
-		this.din = din;
-		this.pipelen = pipelen;
-		this.wall = wall;
-		this.ellen = ellen;
-		this.elbow90_1 = elbow90_1;
-		this.elbow90_2 = elbow90_2;
-		this.elbow90_3 = elbow90_3;
-		this.elbow90_4 = elbow90_4;
-		this.elbow90_5 = elbow90_5;
-		this.elbow90_6 = elbow90_6;
-		this.elbow90_7 = elbow90_7;
-		this.elbow90_8 = elbow90_8;
-		this.elbow90_9 = elbow90_9;
-		this.elbow45_1 = elbow45_1;
-		this.elbow45_2 = elbow45_2;
-		this.bend_1 = bend_1;
-		this.bend_2 = bend_2;
-		this.bend_3 = bend_3;
-		this.tee_1 = tee_1;
-		this.tee_2 = tee_2;
-		this.tee_3 = tee_3;
-		this.tee_4 = tee_4;
-		this.tee_5 = tee_5;
-		this.tee_6 = tee_6;
-		this.tee_7 = tee_7;
-		this.tee_8 = tee_8;
-		this.gtvalve = gtvalve;
-		this.gbvalve = gbvalve;
-		this.bvalve = bvalve;
-		this.cvalve_1 = cvalve_1;
-		this.cvalve_2 = cvalve_2;
-		this.avalve_1 = avalve_1;
-		this.avalve_2 = avalve_2;
-		this.pvalve_1 = pvalve_1;
-		this.pvalve_2 = pvalve_2;
-		this.pvalve_3 = pvalve_3;
-		this.dvalve = dvalve;
-		this.redd = redd;
-		this.redth = redth;
-		this.expd = expd;
-		this.expth = expth;
-		this.dlist = dlist;
-		this.slist = slist;
-	}
 
 	public String getIdx() {
 		return idx;
@@ -302,6 +223,14 @@ public class HVO {
 		this.ellen = ellen;
 	}
 
+	public String getRe() {
+		return re;
+	}
+
+	public void setRe(String re) {
+		this.re = re;
+	}
+
 	public String getElbow90_1() {
 		return elbow90_1;
 	}
@@ -390,6 +319,22 @@ public class HVO {
 		this.elbow45_2 = elbow45_2;
 	}
 
+	public String getElbow45_3() {
+		return elbow45_3;
+	}
+
+	public void setElbow45_3(String elbow45_3) {
+		this.elbow45_3 = elbow45_3;
+	}
+
+	public String getElbow45_4() {
+		return elbow45_4;
+	}
+
+	public void setElbow45_4(String elbow45_4) {
+		this.elbow45_4 = elbow45_4;
+	}
+
 	public String getBend_1() {
 		return bend_1;
 	}
@@ -468,14 +413,6 @@ public class HVO {
 
 	public void setTee_7(String tee_7) {
 		this.tee_7 = tee_7;
-	}
-
-	public String getTee_8() {
-		return tee_8;
-	}
-
-	public void setTee_8(String tee_8) {
-		this.tee_8 = tee_8;
 	}
 
 	public String getGtvalve() {

@@ -1,64 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-<<<<<<< HEAD
-		<item key="selection" value="discharge"/>
-=======
-		<item key="selection" value="pdlist"/>
->>>>>>> c9c02b10443c2d1686a5a82451ccd8ab8c322fde
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="pvalve_3"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
-<<<<<<< HEAD
-			<item value="suction"/>
-			<item value="combo2"/>
-			<item value="bend3"/>
-			<item value="alltype"/>
-			<item value="all type"/>
-			<item value="var=&quot;i&quot; begin=&quot;1&quot; end=&quot;4&quot;"/>
-			<item value="hvo2"/>
-			<item value="plevel"/>
-			<item value="#suction"/>
-			<item value="&quot;text&quot;"/>
-			<item value="lhyd"/>
-			<item value="4.calulator.jsp"/>
-			<item value="list"/>
-			<item value="id=&quot;pet"/>
-			<item value="name=&quot;uni"/>
+			<item value="pvalve_3"/>
+			<item value="pvalve"/>
+			<item value="bend_3"/>
+			<item value="tee_8"/>
+			<item value="45 elbow"/>
+			<item value="elbow"/>
+			<item value="reynol"/>
+			<item value="setEllen("/>
+			<item value="setRe("/>
+			<item value="setElbow45"/>
+			<item value="tee"/>
+			<item value="class=&quot;process&quot;"/>
+			<item value="class"/>
+			<item value="/td"/>
+			<item value="&lt;td&gt;"/>
 		</list>
 		<list key="replacehistory">
-			<item value="discharge"/>
 			<item value=""/>
-			<item value="var=&quot;k&quot; items=&quot;${pslist}&quot;"/>
-			<item value="pvo1"/>
-=======
-			<item value="rey"/>
-			<item value="psv psv = new psv();"/>
-			<item value="pvo1"/>
-			<item value="plinedel"/>
-			<item value="equival"/>
-			<item value="cpcv"/>
-			<item value="_d_d"/>
-			<item value="rev"/>
-		</list>
-		<list key="replacehistory">
-			<item value="PVO1 psv = new PVO1();"/>
-			<item value="psv"/>
-			<item value="psvlinedel"/>
-			<item value="_2_d"/>
-			<item value="rev_go"/>
->>>>>>> c9c02b10443c2d1686a5a82451ccd8ab8c322fde
-			<item value="#discharge"/>
-			<item value="&quot;number&quot;"/>
-			<item value="find_"/>
+			<item value="/th"/>
+			<item value="&lt;th&gt;"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1144"/>
-		<item key="DIALOG_Y_ORIGIN" value="268"/>
+		<item key="DIALOG_X_ORIGIN" value="1881"/>
+		<item key="DIALOG_Y_ORIGIN" value="481"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

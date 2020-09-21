@@ -64,7 +64,7 @@
 			<li>Heat Transfer
 				<ul class="list2">
 					<li><a href="cal.do?cal=phtrans"> Pipe Heat Transfer </a></li>
-					<li><a href="cal.do?al=thtrans"> Tank Heat Transfer </a></li>
+					<li><a href="cal.do?cal=thtrans"> Tank Heat Transfer </a></li>
 				</ul>
 			
 			</li>	
@@ -137,7 +137,7 @@
 						<td> Sphere </td><td colspan="2">Input</td>
 					</tr>
 					<tr>
-						<td rowspan="5" style="width:100px;"><img alt="sphere" src="/resources/upload/sphere.png"></td>
+						<td rowspan="5" style="width:100px;"><img alt="sphere" src="resources/upload/sphere.png"></td>
 						<td>Diameter</td><td><input type="number">m</td>
 					</tr>
 					<tr>
@@ -179,7 +179,7 @@
 						<td> Cylinder </td><td colspan="2">Input</td>
 					</tr>
 					<tr>
-						<td rowspan="5"><img alt="cylinder" src="/resources/upload/cylinder.png"></td>
+						<td rowspan="5"><img alt="cylinder" src="resources/upload/cylinder.png"></td>
 						<td>Diameter</td><td><input type="number">m</td>
 					</tr>
 					<tr>
@@ -215,8 +215,8 @@
 	<c:if test="${cal eq 'linehyd'}"><jsp:include page="4.linehyd.jsp"/></c:if>
 	<c:if test="${cal eq 'pumphyd'}"><jsp:include page="4.pumphyd.jsp"/></c:if>
 	<c:if test="${cal eq 'psvhyd'}"><jsp:include page="4.psvhyd.jsp"/></c:if>
-	<c:if test="${cal eq 'phtrans'}"></c:if>
-	<c:if test="${cal eq 'thtrans'}"></c:if>
+	<c:if test="${cal eq 'phtrans'}"><jsp:include page="4.pipeheat.jsp"/></c:if>
+	<c:if test="${cal eq 'thtrans'}"><jsp:include page="4.tankheat.jsp"/></c:if>
 
 </div>
 

@@ -2,23 +2,25 @@ package com.ict.db;
 
 import java.util.List;
 
-public class PVO2 {
-	//General
-	private String idx, lineno, pin, pout, temp, den, vis, flow, per, cfactor, dout, schd, din, plen, wall, elchange, eqvlen;
+public class HVO2 {
+	private String idx, lineno, phase, ev, stype, temp_air, temp_liq, temp_vapor, flow, em, wind_vel;
+	private String den_liq, den_vapor, over, season, vis_liq, vis_vapor, vapor_fr, condition, depth;
+	private String heat_liq, heat_vapor, flow_liq, convection, soil, thcon_liq, thcon_vapor, flow_vapor, heat_dia;
+	private String insul_thick, insul_con, cfactor, re, dout, sch, din, pipelen, wall;
+	
+	//fitting
 	private String elbow90_1, elbow90_2, elbow90_3, elbow90_4, elbow90_5, elbow90_6, elbow90_7, elbow90_8, elbow90_9;
 	private String elbow45_1, elbow45_2, elbow45_3, elbow45_4, bend_1, bend_2, bend_3;
 	private String tee_1, tee_2, tee_3, tee_4, tee_5, tee_6, tee_7;
 	private String gtvalve, gbvalve, bvalve, cvalve_1, cvalve_2, avalve_1, avalve_2, pvalve_1, pvalve_2, pvalve_3;
 	private String dvalve, redd, redth, expd, expth;
-	
-	private List<String> size, schedule;
-	//추가
-	private String reynold, mol, cmpz, cpcv;
+	private String eql_len, g_temp, in_coeff, soil_temp, out_coeff, out_temp, in_coeff_1, sur_temp, in_coeff_2, diff_temp;
 	
 	
-	public PVO2() {}
+	private List<String> dlist, slist;
 
-
+	public HVO2() {}
+	
 	public String getIdx() {
 		return idx;
 	}
@@ -39,53 +41,63 @@ public class PVO2 {
 	}
 
 
-	public String getPin() {
-		return pin;
+	public String getPhase() {
+		return phase;
 	}
 
 
-	public void setPin(String pin) {
-		this.pin = pin;
+	public void setPhase(String phase) {
+		this.phase = phase;
 	}
 
 
-	public String getPout() {
-		return pout;
+	public String getEv() {
+		return ev;
 	}
 
 
-	public void setPout(String pout) {
-		this.pout = pout;
+	public void setEv(String ev) {
+		this.ev = ev;
 	}
 
 
-	public String getTemp() {
-		return temp;
+	public String getStype() {
+		return stype;
 	}
 
 
-	public void setTemp(String temp) {
-		this.temp = temp;
+	public void setStype(String stype) {
+		this.stype = stype;
 	}
 
 
-	public String getDen() {
-		return den;
+	public String getTemp_air() {
+		return temp_air;
 	}
 
 
-	public void setDen(String den) {
-		this.den = den;
+	public void setTemp_air(String temp_air) {
+		this.temp_air = temp_air;
 	}
 
 
-	public String getVis() {
-		return vis;
+	public String getTemp_liq() {
+		return temp_liq;
 	}
 
 
-	public void setVis(String vis) {
-		this.vis = vis;
+	public void setTemp_liq(String temp_liq) {
+		this.temp_liq = temp_liq;
+	}
+
+
+	public String getTemp_vapor() {
+		return temp_vapor;
+	}
+
+
+	public void setTemp_vapor(String temp_vapor) {
+		this.temp_vapor = temp_vapor;
 	}
 
 
@@ -99,13 +111,223 @@ public class PVO2 {
 	}
 
 
-	public String getPer() {
-		return per;
+	public String getEm() {
+		return em;
 	}
 
 
-	public void setPer(String per) {
-		this.per = per;
+	public void setEm(String em) {
+		this.em = em;
+	}
+
+
+	public String getWind_vel() {
+		return wind_vel;
+	}
+
+
+	public void setWind_vel(String wind_vel) {
+		this.wind_vel = wind_vel;
+	}
+
+
+	public String getDen_liq() {
+		return den_liq;
+	}
+
+
+	public void setDen_liq(String den_liq) {
+		this.den_liq = den_liq;
+	}
+
+
+	public String getDen_vapor() {
+		return den_vapor;
+	}
+
+
+	public void setDen_vapor(String den_vapor) {
+		this.den_vapor = den_vapor;
+	}
+
+
+	public String getOver() {
+		return over;
+	}
+
+
+	public void setOver(String over) {
+		this.over = over;
+	}
+
+
+	public String getSeason() {
+		return season;
+	}
+
+
+	public void setSeason(String season) {
+		this.season = season;
+	}
+
+
+	public String getVis_liq() {
+		return vis_liq;
+	}
+
+
+	public void setVis_liq(String vis_liq) {
+		this.vis_liq = vis_liq;
+	}
+
+
+	public String getVis_vapor() {
+		return vis_vapor;
+	}
+
+
+	public void setVis_vapor(String vis_vapor) {
+		this.vis_vapor = vis_vapor;
+	}
+
+
+	public String getVapor_fr() {
+		return vapor_fr;
+	}
+
+
+	public void setVapor_fr(String vapor_fr) {
+		this.vapor_fr = vapor_fr;
+	}
+
+
+	public String getCondition() {
+		return condition;
+	}
+
+
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
+
+
+	public String getDepth() {
+		return depth;
+	}
+
+
+	public void setDepth(String depth) {
+		this.depth = depth;
+	}
+
+
+	public String getHeat_liq() {
+		return heat_liq;
+	}
+
+
+	public void setHeat_liq(String heat_liq) {
+		this.heat_liq = heat_liq;
+	}
+
+
+	public String getHeat_vapor() {
+		return heat_vapor;
+	}
+
+
+	public void setHeat_vapor(String heat_vapor) {
+		this.heat_vapor = heat_vapor;
+	}
+
+
+	public String getFlow_liq() {
+		return flow_liq;
+	}
+
+
+	public void setFlow_liq(String flow_liq) {
+		this.flow_liq = flow_liq;
+	}
+
+
+	public String getConvection() {
+		return convection;
+	}
+
+
+	public void setConvection(String convection) {
+		this.convection = convection;
+	}
+
+
+	public String getSoil() {
+		return soil;
+	}
+
+
+	public void setSoil(String soil) {
+		this.soil = soil;
+	}
+
+
+	public String getThcon_liq() {
+		return thcon_liq;
+	}
+
+
+	public void setThcon_liq(String thcon_liq) {
+		this.thcon_liq = thcon_liq;
+	}
+
+
+	public String getThcon_vapor() {
+		return thcon_vapor;
+	}
+
+
+	public void setThcon_vapor(String thcon_vapor) {
+		this.thcon_vapor = thcon_vapor;
+	}
+
+
+	public String getFlow_vapor() {
+		return flow_vapor;
+	}
+
+
+	public void setFlow_vapor(String flow_vapor) {
+		this.flow_vapor = flow_vapor;
+	}
+
+
+	public String getHeat_dia() {
+		return heat_dia;
+	}
+
+
+	public void setHeat_dia(String heat_dia) {
+		this.heat_dia = heat_dia;
+	}
+
+
+	public String getInsul_thick() {
+		return insul_thick;
+	}
+
+
+	public void setInsul_thick(String insul_thick) {
+		this.insul_thick = insul_thick;
+	}
+
+
+	public String getInsul_con() {
+		return insul_con;
+	}
+
+
+	public void setInsul_con(String insul_con) {
+		this.insul_con = insul_con;
 	}
 
 
@@ -119,6 +341,16 @@ public class PVO2 {
 	}
 
 
+	public String getRe() {
+		return re;
+	}
+
+
+	public void setRe(String re) {
+		this.re = re;
+	}
+
+
 	public String getDout() {
 		return dout;
 	}
@@ -129,13 +361,13 @@ public class PVO2 {
 	}
 
 
-	public String getSchd() {
-		return schd;
+	public String getSch() {
+		return sch;
 	}
 
 
-	public void setSchd(String schd) {
-		this.schd = schd;
+	public void setSch(String sch) {
+		this.sch = sch;
 	}
 
 
@@ -149,13 +381,13 @@ public class PVO2 {
 	}
 
 
-	public String getPlen() {
-		return plen;
+	public String getPipelen() {
+		return pipelen;
 	}
 
 
-	public void setPlen(String plen) {
-		this.plen = plen;
+	public void setPipelen(String pipelen) {
+		this.pipelen = pipelen;
 	}
 
 
@@ -166,26 +398,6 @@ public class PVO2 {
 
 	public void setWall(String wall) {
 		this.wall = wall;
-	}
-
-
-	public String getElchange() {
-		return elchange;
-	}
-
-
-	public void setElchange(String elchange) {
-		this.elchange = elchange;
-	}
-
-
-	public String getEqvlen() {
-		return eqvlen;
-	}
-
-
-	public void setEqvlen(String eqvlen) {
-		this.eqvlen = eqvlen;
 	}
 
 
@@ -569,65 +781,124 @@ public class PVO2 {
 	}
 
 
-	public List<String> getSize() {
-		return size;
+	public String getEql_len() {
+		return eql_len;
 	}
 
 
-	public void setSize(List<String> size) {
-		this.size = size;
+	public void setEql_len(String eql_len) {
+		this.eql_len = eql_len;
 	}
 
 
-	public List<String> getSchedule() {
-		return schedule;
+	public String getG_temp() {
+		return g_temp;
 	}
 
 
-	public void setSchedule(List<String> schedule) {
-		this.schedule = schedule;
+	public void setG_temp(String g_temp) {
+		this.g_temp = g_temp;
 	}
 
 
-	public String getReynold() {
-		return reynold;
+	public String getIn_coeff() {
+		return in_coeff;
 	}
 
 
-	public void setReynold(String reynold) {
-		this.reynold = reynold;
+	public void setIn_coeff(String in_coeff) {
+		this.in_coeff = in_coeff;
 	}
 
 
-	public String getMol() {
-		return mol;
+	public String getSoil_temp() {
+		return soil_temp;
 	}
 
 
-	public void setMol(String mol) {
-		this.mol = mol;
+	public void setSoil_temp(String soil_temp) {
+		this.soil_temp = soil_temp;
 	}
 
 
-	public String getCmpz() {
-		return cmpz;
+	public String getOut_coeff() {
+		return out_coeff;
 	}
 
 
-	public void setCmpz(String cmpz) {
-		this.cmpz = cmpz;
+	public void setOut_coeff(String out_coeff) {
+		this.out_coeff = out_coeff;
 	}
 
 
-	public String getCpcv() {
-		return cpcv;
+	public String getOut_temp() {
+		return out_temp;
 	}
 
 
-	public void setCpcv(String cpcv) {
-		this.cpcv = cpcv;
+	public void setOut_temp(String out_temp) {
+		this.out_temp = out_temp;
 	}
 
-	
+
+	public String getIn_coeff_1() {
+		return in_coeff_1;
+	}
+
+
+	public void setIn_coeff_1(String in_coeff_1) {
+		this.in_coeff_1 = in_coeff_1;
+	}
+
+
+	public String getSur_temp() {
+		return sur_temp;
+	}
+
+
+	public void setSur_temp(String sur_temp) {
+		this.sur_temp = sur_temp;
+	}
+
+
+	public String getIn_coeff_2() {
+		return in_coeff_2;
+	}
+
+
+	public void setIn_coeff_2(String in_coeff_2) {
+		this.in_coeff_2 = in_coeff_2;
+	}
+
+
+	public String getDiff_temp() {
+		return diff_temp;
+	}
+
+
+	public void setDiff_temp(String diff_temp) {
+		this.diff_temp = diff_temp;
+	}
+
+
+	public List<String> getDlist() {
+		return dlist;
+	}
+
+
+	public void setDlist(List<String> dlist) {
+		this.dlist = dlist;
+	}
+
+
+	public List<String> getSlist() {
+		return slist;
+	}
+
+
+	public void setSlist(List<String> slist) {
+		this.slist = slist;
+	}
+
+
 }
-	
