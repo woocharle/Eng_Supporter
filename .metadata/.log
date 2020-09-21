@@ -13140,3 +13140,12 @@ Binding(CTRL+SHIFT+C,
 
 !ENTRY org.eclipse.wst.html.ui 1 1 2020-09-18 18:12:01.733
 !MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-09-18 18:14:44.696
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-09-18 18:14:44.696
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@5816fd13[org.springframework.tooling.boot.ls:1.20.0.202007271426(id=1065)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-09-18 18:14:44.711
+!MESSAGE SpringBootLanguageServer exists!
