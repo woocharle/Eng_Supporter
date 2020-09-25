@@ -278,9 +278,10 @@ public class Main_Controller {
 			}		
 
 			List<VO3> list = dao.getflist(paging);
-
+				
 			mv.addObject("list", list);
 			mv.addObject("paging", paging);
+			mv.addObject("cPage", cPage);
 			mv.setViewName("list");
 			
 		}

@@ -35,7 +35,7 @@
 							<c:forEach var="k" items="${mlist}" varStatus="vs">
 								<c:if test="${k.m_id ne 'admin'}">
 								<tr>
-									<td>${((paging.nowPage-1)*paging.numPerpage + vs.index)+1}</td>
+									<td>${((paging.nowPage-1)*paging.numPerpage + vs.index)}</td>
 									<td><a href="monelist.do?idx=${k.idx}&cPage=${paging.nowPage}">${k.m_id}</a></td>
 									<td>${k.m_id}</td>
 									<td>${k.m_com}</td>

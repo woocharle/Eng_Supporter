@@ -42,22 +42,38 @@ public class Member_Controller {
 		String m_pw0 = request.getParameter("m_pw");
 		String msg = null;
 		
-		MVO mvo = dao.getMember(m_id);
-
-		String m_pw = mvo.getM_pw();
+		String check = dao.getCheck(m_id);
 		
-		if(m_pw.equals(m_pw0)) {
-			if (m_id.equals("admin")) {
-				request.getSession().setAttribute("admin_pass", mvo.getM_pw());		
+		if(check != null) {
+			MVO mvo = dao.getMember(m_id);
+
+			String m_pw = mvo.getM_pw();
+			
+			if(m_pw.equals(m_pw0)) {
+				if (m_id.equals("admin")) {
+					request.getSession().setAttribute("admin_pass", mvo.getM_pw());		
+					
+				}else {
+					mvo.setReq_find(null);
+					int result = dao.getmIDU(mvo, "Find");
+				}
+				
+				request.getSession().setAttribute("mvo", mvo);
+				mv.setViewName("view_user/1.main");
 				
 			}else {
-				mvo.setReq_find(null);
-				int result = dao.getmIDU(mvo, "Find");
+				String id = m_id;
+				String finish ="ok"; 
+
+				mv.addObject("finish", finish);
+				msg = "아이디가 없거나 비밀번호를 잘못 입력하셨습니다.";
+				
+				request.setAttribute("id", id);
+				request.setAttribute("msg", msg);
+				
+				mv.setViewName("view_member/0.login");
+				
 			}
-			
-			request.getSession().setAttribute("mvo", mvo);
-			mv.setViewName("view_user/1.main");
-			
 		}else {
 			String id = m_id;
 			String finish ="ok"; 
@@ -68,10 +84,9 @@ public class Member_Controller {
 			request.setAttribute("id", id);
 			request.setAttribute("msg", msg);
 			
-			mv.setViewName("view_member/0.login");
-			
+			mv.setViewName("view_member/0.login");			
 		}
-		
+	
 		return mv;		
 		
 	}
