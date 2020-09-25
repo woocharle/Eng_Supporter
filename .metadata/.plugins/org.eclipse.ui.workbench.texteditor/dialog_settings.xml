@@ -4,35 +4,41 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="pvalve_3"/>
+		<item key="selection" value="login_ok"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
-			<item value="pvalve_3"/>
-			<item value="pvalve"/>
-			<item value="bend_3"/>
-			<item value="tee_8"/>
-			<item value="45 elbow"/>
-			<item value="elbow"/>
-			<item value="reynol"/>
-			<item value="setEllen("/>
-			<item value="setRe("/>
-			<item value="setElbow45"/>
-			<item value="tee"/>
-			<item value="class=&quot;process&quot;"/>
-			<item value="class"/>
-			<item value="/td"/>
-			<item value="&lt;td&gt;"/>
+			<item value="login_ok"/>
+			<item value="style=&quot;width: 30%; text-align: left;&quot;"/>
+			<item value="getMember"/>
+			<item value="getCheck"/>
+			<item value="check"/>
+			<item value="(&quot;"/>
+			<item value="request.getParameter"/>
+			<item value=".concat(String.valueOf(i+1))"/>
+			<item value=".concat(idx)"/>
+			<item value="del"/>
+			<item value="String.valueOf(i+1)"/>
+			<item value="hvo2."/>
+			<item value="bvalve"/>
+			<item value="gbvalve"/>
+			<item value="tee_1"/>
 		</list>
 		<list key="replacehistory">
+			<item value="class=&quot;tb&quot;"/>
+			<item value="b_list[i]"/>
 			<item value=""/>
+			<item value=".concat(k.getIdx())"/>
+			<item value="idx"/>
+			<item value="k."/>
+			<item value="hvo2."/>
 			<item value="/th"/>
 			<item value="&lt;th&gt;"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1881"/>
-		<item key="DIALOG_Y_ORIGIN" value="481"/>
+		<item key="DIALOG_X_ORIGIN" value="1536"/>
+		<item key="DIALOG_Y_ORIGIN" value="450"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

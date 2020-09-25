@@ -176,7 +176,13 @@
 		    <version>2.0.5</version>
 		</dependency>
 		
-		   
+		<!-- mail 보내주기 -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>	
+	   
 	</dependencies>
     <build>
         <plugins>

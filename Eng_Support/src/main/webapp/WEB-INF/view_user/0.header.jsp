@@ -17,7 +17,7 @@
 		
 		#greet{position: relative; left: 980px;  top: 6px; font-size: 20px;}
 		#login {position: relative; left: 1350px; }
-		#logout {position: relative; left: 1200px; bottom: 40px;}
+		#logout {position: relative; left: 1215px; bottom: 40px;}
 		#mypage {position: relative; left: 1250px; bottom: 40px;}
 		
 		/*메인화면: 메뉴판*/
@@ -58,8 +58,8 @@
 			document.getElementById("mypage").style.display= "none";
 		}
 		
-		function Mypage() {
-			location.href="mypage.do";
+		function MyPage() {
+			location.href="mypage.do?page=faq";
 		}
 		
 		function Home_go(){

@@ -6,7 +6,7 @@ public class HVO2 {
 	private String idx, lineno, phase, ev, stype, temp_air, temp_liq, temp_vapor, flow, em, wind_vel;
 	private String den_liq, den_vapor, over, season, vis_liq, vis_vapor, vapor_fr, condition, depth;
 	private String heat_liq, heat_vapor, flow_liq, convection, soil, thcon_liq, thcon_vapor, flow_vapor, heat_dia;
-	private String insul_thick, insul_con, cfactor, re, dout, sch, din, pipelen, wall;
+	private String insul_thick, insul_con, cfactor, re, dia, dout, sch, din, pipelen, wall;
 	
 	//fitting
 	private String elbow90_1, elbow90_2, elbow90_3, elbow90_4, elbow90_5, elbow90_6, elbow90_7, elbow90_8, elbow90_9;
@@ -350,6 +350,15 @@ public class HVO2 {
 		this.re = re;
 	}
 
+	
+	public String getDia() {
+		return dia;
+	}
+
+	
+	public void setDia(String dia) {
+		this.dia = dia;
+	}
 
 	public String getDout() {
 		return dout;

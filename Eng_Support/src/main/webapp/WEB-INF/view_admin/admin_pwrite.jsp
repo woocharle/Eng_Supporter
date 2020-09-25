@@ -11,7 +11,7 @@
 		td {border: 1px solid black; text-align: center;}
 		table tr {margin: auto;}
 		textarea{width:800px; font-size: 18px;}
-		.tb{background-color: #99ccff; width:30%;}
+		.tb{background-color: #333; color: white; width:30%;}
 	</style>
 	<script type="text/javascript">
 		function save_ok(f) {
@@ -34,16 +34,16 @@
 					<td class="tb">제 품</td>
 					<td><input type="text" name="unit"></td>
 				</tr>
-					<tr align="center">
-						<td bgcolor="#99ccff">간단한 설명</td>
-						<td><textarea rows="10" name="content_s"></textarea></td>
-					</tr>	
+				<tr align="center">
+					<td class="tb">간단한 설명</td>
+					<td><textarea rows="10" name="content_s"></textarea></td>
+				</tr>	
 				<tr>
 					<td class="tb">첨부파일</td>
 					<td><input type="file" name="file" size="20"></td>
 				</tr>	
 				<tr>
-					<td bgcolor="#99ccff">자세한 설명</td>
+					<td class="tb">자세한 설명</td>
 					<td><textarea rows="20"  name="content"></textarea></td>
 				</tr>
 			</tbody>

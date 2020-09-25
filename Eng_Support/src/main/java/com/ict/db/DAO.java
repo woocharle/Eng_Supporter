@@ -28,6 +28,8 @@ public class DAO {
  		return count;
 	}
 		
+	
+	// 1.회원관리
 	// member_admin 
 	public List<MVO> getmlist(Paging paging) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
@@ -46,10 +48,25 @@ public class DAO {
 	}
 	
 	// login
-	
 	public MVO getMember(String m_id) {
 		MVO mvo = sqlSessionTemplate.selectOne("onelist_m", m_id);
 		return mvo;
+	}
+	
+	public String getCheck(String m_id) {
+		String idx = sqlSessionTemplate.selectOne("findidx", m_id);
+		return idx;
+	}
+	
+	
+	public String getSearch1(String m_email) {
+		String m_id = sqlSessionTemplate.selectOne("findid", m_email);
+		return m_id;
+	}
+	
+	public String getSearch2(String m_email) {
+		String m_pw = sqlSessionTemplate.selectOne("findpass", m_email);
+		return m_pw;
 	}
 	
 	// 회원가입
@@ -57,17 +74,18 @@ public class DAO {
 		int result = 0;
 		
 		switch (mth) {
-			case "Insert": result = sqlSessionTemplate.insert("pinsert", mvo); break;
-			case "Update": result = sqlSessionTemplate.update("pupdate", mvo); break;
-			case "Delete": result = sqlSessionTemplate.delete("pdelete", mvo); break;
+			case "Insert": result = sqlSessionTemplate.insert("minsert", mvo); break;
+			case "Update": result = sqlSessionTemplate.update("mupdate", mvo); break;
+			case "Update2": result = sqlSessionTemplate.update("mupdate2", mvo); break;
+			case "Delete": result = sqlSessionTemplate.delete("mdelete", mvo); break;
+			case "Find": result = sqlSessionTemplate.delete("mfind", mvo); break;
 		}
 	
 		return result;
 	}
 	
-	
-	
-	//Petroleum
+
+	//2.Petroleum
 	
 	public List<VO2> getPlist(){
 		List<VO2> list = sqlSessionTemplate.selectList("plist_u");
@@ -112,7 +130,24 @@ public class DAO {
 		return result;
 	}
 	
-
+	
+	// 3.Faq
+	
+	public int getFcount() {
+		int count = sqlSessionTemplate.selectOne("mcount");
+ 		return count;
+	}
+	
+	public List<VO3> getflist(Paging paging) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("begin", paging.getBegin());
+		map.put("end", paging.getEnd());
+		
+		List<VO3> flist = sqlSessionTemplate.selectList("flist", map);
+		
+		return flist;
+	}
+	
 	
 }
 

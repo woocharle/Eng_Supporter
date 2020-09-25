@@ -10,6 +10,7 @@
 		a { text-decoration: underline;}
 		table{width: 1150px; border-collapse:collapse; text-align: center;}
 		table,th,td{border: 1px solid black; padding: 3px}
+		.tb{background-color: #333; color: white; width:30%;}
 	</style>
 	<script type="text/javascript">
 		function update_go(f){
@@ -47,17 +48,17 @@
 			<table>
 				<tbody>
 					<tr align="center">
-						<td bgcolor="#99ccff">제품</td>
+						<td class="tb">제품</td>
 						<td><input type="text" name="unit" value="${vo2.unit}" size="20"></td>
 					</tr>
 					<tr align="center">
-						<td bgcolor="#99ccff">간단한 설명</td>
+						<td class="tb">간단한 설명</td>
 						<td style="padding:15px">
 							<textarea style="width: 1000px;" rows="10" name="content_s">${vo2.content_s}</textarea>
 						</td>
 					</tr>					
 					<tr align="center">
-						<td bgcolor="#99ccff">첨부파일</td>
+						<td class="tb">첨부파일</td>
 						<c:choose>
 							<c:when test="${empty vo2.img}">
 								<td> <b>이미지 파일 없음..</b></td>
@@ -70,11 +71,11 @@
 						</c:choose>
 					</tr>
 					<tr align="center">
-						<td bgcolor="#99ccff">첨부파일 변경</td>
+						<td class="tb">첨부파일 변경</td>
 						<td><input type="file" name="file"></td>
 					</tr>
 					<tr>
-						<td colspan="2" style="padding:15px"> 가격동향 및 자세한 설명 </td>
+						<td colspan="2" class="tb"> 가격동향 및 자세한 설명 </td>
 					</tr>
 					<tr>
 						<td colspan="2" style="padding:15px">
@@ -82,7 +83,7 @@
 						</td>
 					</tr>
 					<tr align="center">
-						<td bgcolor="#99ccff">비밀번호 입력</td>
+						<td class="tb">비밀번호 입력</td>
 						<td>
 							<input type="password" name="pwd">
 							<input type="hidden" name="admin_pass" value="${admin_pass}">

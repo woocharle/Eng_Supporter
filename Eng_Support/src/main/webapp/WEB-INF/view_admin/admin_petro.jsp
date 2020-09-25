@@ -21,7 +21,7 @@
 		<form method = "post">
 			<table>
 				<thead>
-					<tr bgcolor="#99ccff">
+					<tr style="background-color: #333; color: white;">
 						<td>번호</td><td>제품</td>
 					</tr>
 				</thead>
@@ -42,7 +42,7 @@
 												${k.unit}
 											</c:when>
 											<c:otherwise>
-												<a href="ponelist.do?idx=${k.idx}cPage=${paging.nowPage}">${k.unit}</a>
+												<a href="ponelist.do?idx=${k.idx}&cPage=${paging.nowPage}">${k.unit}</a>
 											</c:otherwise>
 										</c:choose>
 									</td>

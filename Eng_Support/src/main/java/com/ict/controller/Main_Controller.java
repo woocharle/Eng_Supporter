@@ -19,6 +19,8 @@ import com.ict.db.PVO2;
 import com.ict.db.PVO3;
 import com.ict.db.VO1;
 import com.ict.db.VO2;
+import com.ict.db.VO3;
+import com.ict.model.Paging;
 import com.ict.model.Pipespec;
 import com.ict.model.Scala;
 
@@ -27,6 +29,7 @@ public class Main_Controller {
 	private DAO dao;
 	private Scala scala;
 	private Pipespec pipespec;
+	private Paging paging; 
 	
 	@Autowired
 	public void setDao(DAO dao) {
@@ -42,7 +45,12 @@ public class Main_Controller {
 	public void setPipespec(Pipespec pipespec) {
 		this.pipespec = pipespec;
 	}
-
+	
+	@Autowired
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
+	
 
 	// jsp의 *.do 
 	
@@ -228,6 +236,61 @@ public class Main_Controller {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value="mypage.do", method=RequestMethod.GET)
+	public ModelAndView mypage_Cmd(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		String page = request.getParameter("page");
+		request.getSession().setAttribute("page", page);
+			
+		if(page.equals("faq")) {
+			int su = dao.getFcount();
+			paging.setTotalRecord(su);
+			
+			// tuple의 개수를 구한 뒤 한 페이지당 보여줄 tuple 개수를 나누어 전체 페이지수 구하기 
+			if(paging.getTotalRecord() <= paging.getNumPerpage()) {
+				paging.setTotalPage(1);
+			} else {
+				paging.setTotalPage(paging.getTotalRecord() / paging.getNumPerpage());
+				// 나머지가 있으면 한 페이지 추가.
+				if(paging.getTotalRecord() % paging.getNumPerpage() != 0) {
+					paging.setTotalPage(paging.getTotalPage()+1);
+				}
+				
+			}			
+			
+			String cPage = request.getParameter("cPage");
+
+			if(cPage == null) {
+				paging.setNowPage(1);
+			}else {
+				paging.setNowPage(Integer.parseInt(cPage));
+			}
+			
+			paging.setBegin((paging.getNowPage() - 1) * paging.getNumPerpage() + 1);
+			paging.setEnd((paging.getBegin() - 1) + paging.getNumPerpage());
+			
+			paging.setBeginBlock((int)((paging.getNowPage() - 1)/paging.getPagePerBlock()) * paging.getPagePerBlock() + 1);
+			paging.setEndBlock(paging.getBeginBlock() + paging.getPagePerBlock() - 1);
+			
+			if(paging.getEndBlock() > paging.getTotalPage()){
+				paging.setEndBlock(paging.getTotalPage());
+			}		
+
+			List<VO3> list = dao.getflist(paging);
+
+			mv.addObject("list", list);
+			mv.addObject("paging", paging);
+			mv.setViewName("list");
+			
+		}
+		
+		mv.setViewName("view_member/0.mypage");
+		
+		return mv;
+	}
+	
+	
 	
 	
 }

@@ -64,7 +64,8 @@ public class Admin_Controller {
 
 		String cPage = request.getParameter("cPage");
 		if(cPage == null) {
-			paging.setNowPage(1);
+			cPage = "1";
+			paging.setNowPage(Integer.parseInt(cPage));
 		}else {
 			paging.setNowPage(Integer.parseInt(cPage));
 		}
@@ -92,10 +93,11 @@ public class Admin_Controller {
 	public ModelAndView monelist_Cmd(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String idx = request.getParameter("idx");
+		String cPage = request.getParameter("cPage");
 		MVO mvo = dao.getMonelist(idx);
 		
 		request.getSession().setAttribute("mvo", mvo);
-		
+		request.getSession().setAttribute("cPage", cPage);
 		mv.setViewName("view_admin/admin_monelist");
 		
 		return mv;
@@ -124,7 +126,8 @@ public class Admin_Controller {
 		
 		String cPage = request.getParameter("cPage");
 		if(cPage == null) {
-			paging.setNowPage(1);
+			cPage = "1";
+			paging.setNowPage(Integer.parseInt(cPage));
 		}else {
 			paging.setNowPage(Integer.parseInt(cPage));
 		}
@@ -153,11 +156,12 @@ public class Admin_Controller {
 	public ModelAndView ponelist_Cmd(VO2 vo2, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String idx = request.getParameter("idx");
+		String cPage = request.getParameter("cPage");
 		
 		vo2 = dao.getPonelist2(idx);
 		
 		request.getSession().setAttribute("vo2", vo2);
-		request.getSession().setAttribute("cPage", request.getParameter("cPage"));
+		request.getSession().setAttribute("cPage", cPage);
 		mv.setViewName("view_admin/admin_ponelist");
 		
 		return mv;

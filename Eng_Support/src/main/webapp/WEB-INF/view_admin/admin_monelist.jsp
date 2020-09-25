@@ -42,27 +42,27 @@
 			<table>
 				<tbody>
 					<tr align="center">
-						<td bgcolor="#99ccff" style="width:30%">회원이름 / 아이디</td>
+						<td style="width:30%; background-color:#333; color: white;">회원이름 / 아이디</td>
 						<td>${mvo.m_name}&nbsp;&nbsp;/&nbsp;&nbsp; ${mvo.m_id}</td>
 					</tr>
 					<tr align="center">
-						<td bgcolor="#99ccff">비밀번호</td>
+						<td style="color: white; background-color:#333;">비밀번호</td>
 						<td>${mvo.m_pw}</td>
 					</tr>	
 					<tr align="center">
-						<td bgcolor="#99ccff">소속</td>
+						<td style="color: white; background-color:#333;">소속</td>
 						<td>${mvo.m_com}</td>
 					</tr>					
 					<tr align="center">
-						<td bgcolor="#99ccff">전화번호</td>
+						<td style="color: white; background-color:#333;">전화번호</td>
 						<td>${mvo.m_phone}</td>			
 					</tr>
 					<tr>
-						<td bgcolor="#99ccff">이메일</td>
+						<td style="color: white; background-color:#333;">이메일</td>
 						<td>${mvo.m_email}</td>		
 					</tr>
 					<tr>
-						<td bgcolor="#99ccff">요청사항 (삭제 / 분실)</td>
+						<td style="color: white; background-color:#333;">요청사항 (삭제 / 분실)</td>
 						<td>
 							<c:choose> 
 								<c:when test="${mvo.req_del ne null}">O</c:when>
@@ -78,14 +78,14 @@
 				</tbody>
 				<tfoot>
 					<tr align="center">
-						<td bgcolor="#99ccff">비밀번호 입력</td>
+						<td style="color: white; background-color:#333;">비밀번호 입력</td>
 						<td>
 							<input type="password" name="pwd">
 							<input type="hidden" name="admin_pass" value="${admin_pass}">
 						</td>
 					</tr>
 					<tr align="center">
-						<td colspan="2"> 
+						<td style="color: white; background-color:#333;" colspan="2"> 
 						    <input type="button" value="삭제" onclick="delete_go(this.form)" />
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="button" value="아이디/비번 전송" onclick="send_go(this.form)" />
