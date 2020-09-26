@@ -73,7 +73,7 @@
 	<ul>
 		<li><a onclick="member_go()">회원관리</a></li>
 		<li><a onclick="petro_go()">Petroleum 정보</a></li>
-		<li><a onclick="#">관리자 페이지</a></li>
+		<li><a onclick="#">관리자 개인정보</a></li>
 		<li><a>공란</a></li>
 	</ul>
 </div>

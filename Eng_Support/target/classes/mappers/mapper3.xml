@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="faq">
+
+	 <select id="fcount" resultType="int">
+	 	select count(*) from faq
+	 </select>
+	 
+	 <select id="flist" parameterType="Map" resultType="com.ict.db.VO1">
+	 	select * 
+	 		from (select row_number() over() as r_no, a.* 
+	 			from (select * from faq order by b_idx) as a ) as tb 
+	 	where tb.r_no between #{begin} and #{end}
+	 </select>
+	 
+	 <select id="fonelist" parameterType="String" resultType="com.ict.db.VO1">
+	 	select * from faq
+	 	where b_idx = #{b_idx}
+	 </select>
+	 
+	 <insert id="finsert" parameterType="com.ict.db.VO1">
+	 	insert into faq
+	 	values (NEXT VALUE FOR faq_seq, #{subject}, #{writer}, #{content}, #{filename}, #{pwd}, sysdate(), 0)
+	 </insert>
+	 
+	 <update id="fupdate" parameterType="com.ict.db.VO1">
+	 	update faq
+	 	set subject= #{subject}, content=#{content}, filename=#{filename}
+	 	where b_idx=#{b_idx}
+	 </update>
+	 
+	 <delete id="fdelete" parameterType="com.ict.db.VO1">
+	 	delete from faq
+	 	where b_idx=#{b_idx}
+	 </delete>
+	
+
+</mapper>

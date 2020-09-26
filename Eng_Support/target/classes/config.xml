@@ -7,11 +7,13 @@
  	<typeAliases>
  		<typeAlias type="com.ict.db.MVO" alias="mvo"/>
  		<typeAlias type="com.ict.db.VO2" alias="vo2"/>
+ 		<typeAlias type="com.ict.db.VO3" alias="vo3"/>
  	</typeAliases>
  
  	<mappers>
  		<mapper resource="mappers/mapper1.xml"/>
  		<mapper resource="mappers/mapper2.xml"/>
+ 		<mapper resource="mappers/mapper3.xml"/>
  	</mappers>
  
  </configuration>

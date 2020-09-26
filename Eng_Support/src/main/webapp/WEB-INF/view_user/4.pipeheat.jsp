@@ -17,6 +17,7 @@
 		#pheat td {height: 40px;  font-size: 24px; vertical-align: middle; padding: 3px;}
 		#lineno {width:200px; font-size:20px;}
 		#calculation{width: 100px; font-size:20px;}
+		#savedata{position: relative; right: 20px; width: 120px; font-size:20px;}
 		#delete{width: 100px; font-size:20px;}
 		#phase{width:180px; font-size: 22px;}	
 		
@@ -53,13 +54,13 @@
 		}
 				
 		function del_go(f) {
-			if(f.section1.value == 0){
-				alert("section값을 선택하시오.");
-				return;
-		
-			} else {
+			var chk = confirm("정말 삭제할까요?")
+			if(chk){
 				f.action="pipeheat_del.do";
 				f.submit(); 
+		
+			} else {
+				return;
 			}
 
 		}
@@ -75,14 +76,17 @@
 	<div class="pipeheat">
 		<h3> Pipe Heat Transfer </h3>
 		
+		
+
 		<form method="post">
-			<input id="add_chart1" type="button" value="Add" onclick="add_go(this.form)"> 
-			<input type="hidden" name ="cal" value="${cal}">
-
+			<input id="add_chart1" type="button" value="Add" onclick="add_go(this.form)">
 			<br><br>
-			<c:forEach var="n" items="${list}">
-			<div id="pheat">
+		</form>
 
+		<c:forEach var="n" items="${list}">	
+		<form method="post">
+			<input type="hidden" name ="cal" value="${cal}">		
+			<div id="pheat">
 				<table id="pheat1">
 					<thead>
 						<tr>
@@ -98,14 +102,15 @@
 								<input type="hidden" name="idx" value="${n.idx}"/>
 							</td>
 							<td><input type="button" id="calculation" value="Calculate" onclick="cal_go(this.form)"></td>
-							<td><c:if test="${n.idx ne '1'}"><input type="button" value="Delete" onclick="del_go(this.form)"></c:if></td>	
-							<td colspan="8"></td>
+							<td><input type="button" id="savedata" value="Save Data" onclick="rev_go(this.form)"></td>
+							<td><c:if test="${n.idx ne '1'}"><input type="button" id="delete" value="Delete" onclick="del_go(this.form)"></c:if></td>	
+							<td colspan="7"></td>
 							<!-- delete 버튼은 기능 설정 쯤 개시 -->
 						</tr>
 						<tr> <!-- 2 -->
 							<td colspan="2">Phase</td>
 							<td colspan="2">
-								<select name="phase" id="phase" onchange="rev_go(this.form)">
+								<select name="phase${n.idx}" id="phase" onchange="rev_go(this.form)">
 									<option value="liquid" <c:if test="${n.phase eq 'liquid'}">selected </c:if>>Liquid</option>
 									<option value="vapor" <c:if test="${n.phase eq 'vapor'}">selected </c:if>>Vapor </option>
 									<option value="2phase" <c:if test="${n.phase eq '2phase'}">selected </c:if>>2Phase </option>
@@ -113,14 +118,14 @@
 							</td>
 							<td >Environment:</td>
 							<td colspan="5">							
-								<input type="radio" name="ev"  value="Bare" onclick="rev_go(this.form)"<c:if test="${n.ev eq 'Bare'}">checked </c:if>> 
+								<input type="radio" name="ev${n.idx}"  value="Bare" onclick="rev_go(this.form)"<c:if test="${n.ev eq 'Bare'}">checked </c:if>> 
 								<label for="Bare">Bare</label>
 								&nbsp;&nbsp;
-								<input type="radio" name="ev" value="Buried" onclick="rev_go(this.form)" <c:if test="${n.ev eq 'Buried'}">checked </c:if>>
+								<input type="radio" name="ev${n.idx}" value="Buried" onclick="rev_go(this.form)" <c:if test="${n.ev eq 'Buried'}">checked </c:if>>
 								<label for="Buried">Buried</label>
 							</td>
 							<td>Over Design:</td>
-							<td><input type="number" name="over" style="width: 100px; font-size:20px;" value="${n.over}" ></td>
+							<td><input type="number" name="over${n.idx}" style="width: 100px; font-size:20px;" value="${n.over}" ></td>
 							<td>%</td>
 						</tr>	
 					</tbody>
@@ -141,41 +146,41 @@
 							<td colspan="3">Process</td>
 							<td >Type of Surface</td>
 							<td colspan="3">
-								<select style="font-size:20px;" name="stype">
+								<select style="font-size:20px;" name="stype${n.idx}">
 									<option value="centri" <c:if test="${n.stype eq 'common'}"> selected </c:if>> Commonly used </option>					
 				               		<option value="rotary" <c:if test="${n.stype eq '-'}"> selected </c:if>> - </option>		  	
 								</select>
 							</td>												
 							<td>Air Temp </td>
 							<td style="font-size: 18px;" >F</td>
-							<td style="width:90px; "><input type="number" name="temp_air" value="${n.temp_air}" > </td> <!--14 -->
+							<td style="width:90px; "><input type="number" name="temp_air${n.idx}" value="${n.temp_air}" > </td> <!--14 -->
 	
 						</tr>
 						<tr> <!-- 4 -->
 							<td>Temperature </td>
 							<td style="font-size: 18px; vertical-align: middle;">&deg;C </td>
-							<td style="text-align: center;"><input type="number" name="temp" value="${n.temp_liq}" > </td>								
-							<td style="text-align: center;"><input type="number" name="temp" value="${n.temp_vapor}" > </td>
+							<td style="text-align: center;"><input type="number" name="temp_liq${n.idx}" value="${n.temp_liq}" > </td>								
+							<td style="text-align: center;"><input type="number" name="temp_vapor${n.idx}" value="${n.temp_vapor}" > </td>
 							<td>Flow rate</td>
 							<td style="font-size: 18px;" >kg/h</td>
-							<td style="text-align: center;"><input type="number" name="flow" value="${n.flow}" > </td>
+							<td style="text-align: center;"><input type="number" name="flow${n.idx}" value="${n.flow}" > </td>
 							<td>Emissivity</td>
-							<td colspan="3"><input type="number" name="em" value="${n.em}" ></td>
+							<td colspan="3"><input type="number" name="em${n.idx}" value="${n.em}" ></td>
 							<td>Wind Velocity</td>
 							<td style="font-size: 18px;" >mph</td>
-							<td><input type="number" name="wind_vel" value="${n.wind_vel}"> </td>
+							<td><input type="number" name="wind_vel${n.idx}" value="${n.wind_vel}"> </td>
 						</tr>
 						<tr> <!-- 4 -->
 							<td>Density</td>
 							<td style="font-size: 18px; vertical-align: middle;">kg/m<sup>3</sup></td>
-							<td style="text-align: center;"><input type="number" name="den_liq" value="${n.den_liq}" > </td>
-							<td style="text-align: center;"><input type="number" name="den_vapor" value="${n.den_vapor}" > </td>
+							<td style="text-align: center;"><input type="number" name="den_liq${n.idx}" value="${n.den_liq}" > </td>
+							<td style="text-align: center;"><input type="number" name="den_vapor${n.idx}" value="${n.den_vapor}" > </td>
 							<td colspan="2">vapor fraction</td>
-							<td style="text-align: center;"><input type="number" name="vapor_fr" value="${n.vapor_fr}" <c:if test="${n.phase eq '2phase'}">readonly </c:if>> </td>
+							<td style="text-align: center;"><input type="number" name="vapor_fr${n.idx}" value="${n.vapor_fr}" <c:if test="${n.phase eq '2phase'}">readonly </c:if>> </td>
 							<td colspan="4">Shape & Condition </td>
 							<td colspan="2">Season</td>
 						    <td>
-								<select id="season" name="season" onchange="rev_go(this.form)">
+								<select id="season" name="season${n.idx}" onchange="rev_go(this.form)">
 									<option value="liquid" <c:if test="${n.season eq 'Spring'}">selected </c:if>>Spring</option>
 									<option value="vapor" <c:if test="${n.season eq 'Summer'}">selected </c:if>>Summer </option>
 									<option value="2phase" <c:if test="${n.season eq 'Autumn'}">selected </c:if>>Autumn </option>
@@ -185,13 +190,13 @@
 						<tr> 
 							<td>Viscosity</td>
 							<td style="font-size: 18px; vertical-align: middle;">cP</td>
-							<td style="text-align: center;"><input type="number" name="vis_liq" value="${n.vis_liq}" > </td>
-							<td style="text-align: center;"><input type="number" name="vis_vapor" value="${n.vis_vapor}" > </td>
+							<td style="text-align: center;"><input type="number" name="vis_liq${n.idx}" value="${n.vis_liq}" > </td>
+							<td style="text-align: center;"><input type="number" name="vis_vapor${n.idx}" value="${n.vis_vapor}" > </td>
 							<td>&nbsp;- Flow rate (liquid)</td>
 							<td style="font-size: 18px;">kg/h</td>
-							<td style="text-align: center;"><input type="number" name="flow_liq" value="${n.flow_liq}" <c:if test="${n.phase eq 'vapor'}">readonly </c:if>> </td>
+							<td style="text-align: center;"><input type="number" name="flow_liq${n.idx}" value="${n.flow_liq}" <c:if test="${n.phase eq 'vapor'}">readonly </c:if>> </td>
 							<td colspan="4">
-								<select style="width:320px; font-size:20px;"  name="condition" onchange="rev_go(this.form)">
+								<select style="width:320px; font-size:20px;"  name="condition${n.idx}" onchange="rev_go(this.form)">
 									<option value="liquid" <c:if test="${n.condition eq 'Spring'}">selected </c:if>>Spring</option>
 									<option value="vapor" <c:if test="${n.condition eq 'Summer'}">selected </c:if>>Summer </option>
 									<option value="2phase" <c:if test="${n.condition eq 'Autumn'}">selected </c:if>>Autumn </option>
@@ -199,33 +204,33 @@
 							</td>
 							<td>Burial Depth</td>
 							<td style="font-size: 18px;" >inch</td>
-							<td><input type="number" name="depth" value="${n.depth}"> </td>
+							<td><input type="number" name="depth${n.idx}" value="${n.depth}"> </td>
 	
 						</tr>
 						<tr> 
 							<td>Heat Capacity</td>
 							<td style="font-size: 18px; vertical-align: middle;">Btu/lb F</td>
-							<td style="text-align: center;"><input type="number" name="heat_liq" value="${n.heat_liq}" > </td>
-							<td style="text-align: center;"><input type="number" name="heat_vapor" value="${n.heat_vapor}" > </td>
+							<td style="text-align: center;"><input type="number" name="heat_liq${n.idx}" value="${n.heat_liq}" > </td>
+							<td style="text-align: center;"><input type="number" name="heat_vapor${n.idx}" value="${n.heat_vapor}" > </td>
 							<td>&nbsp;- Flow rate (vapor)</td>
 							<td style="font-size: 18px;">kg/h</td>
-							<td style="text-align: center;"><input type="number" name="flow_vapor" value="${n.flow_vapor}" <c:if test="${n.phase eq 'liquid'}">readonly </c:if>> </td>
+							<td style="text-align: center;"><input type="number" name="flow_vapor${n.idx}" value="${n.flow_vapor}" <c:if test="${n.phase eq 'liquid'}">readonly </c:if>> </td>
 							<td colspan="3">Convection Equation</td>
-							<td><input type="number" name="convection" value="${n.convection}" > </td>	
+							<td><input type="number" name="convection${n.idx}" value="${n.convection}" > </td>	
 							<td>Soil Conductivity</td>
 							<td style="font-size: 18px;" >Btu/lb F ft</td>
-							<td><input type="number" name="soil" value="${n.soil}"> </td>
+							<td><input type="number" name="soil${n.idx}" value="${n.soil}"> </td>
 	
 						</tr>
 						<tr> 
 							<td>Thermal Conductivity</td>
 							<td style="font-size: 18px; vertical-align: middle;">Btu/lb F ft</td>
-							<td style="text-align: center;"><input type="number" name="thcon_liq" value="${n.thcon_liq}" > </td>
-							<td style="text-align: center;"><input type="number" name="thcon_vapor" value="${n.thcon_vapor}" > </td>
+							<td style="text-align: center;"><input type="number" name="thcon_liq${n.idx}" value="${n.thcon_liq}" > </td>
+							<td style="text-align: center;"><input type="number" name="thcon_vapor${n.idx}" value="${n.thcon_vapor}" > </td>
 							<td colspan="7"></td>
 							<td>Heated Soil Dia</td>
 							<td style="font-size: 18px;" >inch</td>
-							<td><input type="number" name="heat_dia" value="${n.heat_dia}"> </td>
+							<td><input type="number" name="heat_dia${n.idx}" value="${n.heat_dia}"> </td>
 						</tr>
 
 					</tbody>
@@ -242,7 +247,7 @@
 							<td colspan="3">Pipe Spec.</td>
 							<td>Complex Factor</td>
 							<td colspan="3">
-								<select  style="width: 280px; font-size: 18px;" name="cfactor" onchange="rev_go(this.form)">
+								<select  style="width: 280px; font-size: 18px;" name="cfactor${n.idx}" onchange="rev_go(this.form)">
 									<option value="fitting" <c:if test="${n.cfactor eq 'fitting'}">selected </c:if>>Fitting (직접입력)</option>	
 									<option value="utility" <c:if test="${n.cfactor eq 'utility'}">selected </c:if>>Utility Supply Lines (1)</option>
 									<option value="long" <c:if test="${n.cfactor eq 'long'}">selected </c:if>>Long Straight Piping Runs (1) </option>
@@ -252,15 +257,15 @@
 								</select>
 							</td>
 							<td>Reynold no.</td>
-							<td><input type="number" name="re" value="${n.re}" disabled="disabled"></td>
+							<td><input type="number" name="re${n.idx}" value="${n.re}" disabled="disabled"></td>
 						</tr>
 						<tr > 
 							<td>Wall Roughness</td>
 							<td>m</td>
-							<td><input type="number" name="wall" value="${n.wall}"></td>	
+							<td><input type="number" name="wall${n.idx}" value="${n.wall}"></td>	
 							<td>Inside of Dia</td>
 							<td>m</td>
-							<td><input type="number" name="din" value="${n.din}" disabled="disabled"></td>
+							<td><input type="number" name="din${n.idx}" value="${n.din}" disabled="disabled"></td>
 							<td colspan="3">Insulation</td>
 							
 						</tr>
@@ -268,24 +273,24 @@
 							<td>Line Size</td>
 							<td>inch</td>
 							<td>
-								<select name="dout" onchange="rev_go(this.form)" >
+								<select name="dia${n.idx}" onchange="rev_go(this.form)" >
 									<c:forEach var="k" items="${n.dlist}">
-										<option value="${k}" <c:if test="${k eq n.dout}">selected </c:if> >${k}</option>
+										<option value="${k}" <c:if test="${k eq n.dia}">selected </c:if> >${k}</option>
 									</c:forEach>
 								</select>
 							</td>
 							<td>Outside of Dia</td>
 							<td>m</td>
-							<td><input type="number" name="din" value="${n.din}" disabled="disabled"></td>
+							<td><input type="number" name="dout${n.idx}" value="${n.dout}" disabled="disabled"></td>
 							<td>&nbsp;-Thickness</td>
 							<td>inch</td>
-							<td><input type="number" name="insul_thick" value="${n.insul_thick}" ></td>
+							<td><input type="number" name="insul_thick${n.idx}" value="${n.insul_thick}" ></td>
 		
 						</tr>
 						<tr >
 							<td colspan="2">schedule or Class</td>
 							<td>
-								<select name="sch" onchange="rev_go(this.form)" >
+								<select name="sch${n.idx}" onchange="rev_go(this.form)" >
 									<c:forEach var="k" items="${n.slist}">
 										<option value="${k}" <c:if test="${k eq n.sch}">selected </c:if>>${k}</option>
 									</c:forEach>
@@ -293,10 +298,10 @@
 							</td>
 							<td>Length of Pipe</td>
 							<td>m</td>
-							<td><input type="number" name="pipelen" value="${n.pipelen}"></td>						
+							<td><input type="number" name="pipelen${n.idx}" value="${n.pipelen}"></td>						
 							<td>&nbsp;-Conductivity</td>
 							<td>Btu/lb F ft</td>
-							<td><input type="number" name="insul_con" value="${n.insul_con}" ></td>			
+							<td><input type="number" name="insul_con${n.idx}" value="${n.insul_con}" ></td>			
 						</tr>
 					</tbody>
 				</table>
@@ -320,25 +325,25 @@
 							<td colspan="4"> 45&deg; Elbow Threaded</td>
 							<td colspan="2">Tee(Through-branch as Elbow)</td>
 							<td class="fitting2">Gate Valve</td>
-							<td><input type="number" name="gtvalve" value="${n.gtvalve}"></td>
+							<td><input type="number" name="gtvalve${n.idx}" value="${n.gtvalve}"></td>
 							<td class="fitting2">Ball Valve</td>
-							<td><input type="number" name="bvalve" value="${n.bvalve}" ></td>
+							<td><input type="number" name="bvalve${n.idx}" value="${n.bvalve}" ></td>
 						</tr>
 						<tr class="fitting">
 							<td class="fitting2">Std(R/D=1)</td>
-							<td><input type="number" name="elbow90_1" value="${n.elbow90_1}" ></td>
+							<td><input type="number" name="elbow90_1${n.idx}" value="${n.elbow90_1}" ></td>
 							<td class="fitting2">Long(R/D=1.5)</td>
-							<td><input type="number" name="elbow90_2" value="${n.elbow90_2}" ></td>
+							<td><input type="number" name="elbow90_2${n.idx}" value="${n.elbow90_2}" ></td>
 							<td class="fitting2">Std(R/D=1)</td>
-							<td><input type="number" name="elbow45_1" value="${n.elbow45_1}" ></td>
+							<td><input type="number" name="elbow45_1${n.idx}" value="${n.elbow45_1}" ></td>
 							<td class="fitting2">Long(R/D=1.5)</td>
-							<td><input type="number" name="elbow45_2" value="${n.elbow45_2}" ></td>
+							<td><input type="number" name="elbow45_2${n.idx}" value="${n.elbow45_2}" ></td>
 							<td class="fitting2">- Threaded (R/D=1)</td>
-							<td><input type="number" name="tee_1" value="${n.tee_1}" ></td>
+							<td><input type="number" name="tee_1${n.idx}" value="${n.tee_1}" ></td>
 							<td class="fitting2">Globe Valve</td>
-							<td><input type="number" name="gbvalve" value="${n.gbvalve}" ></td>
+							<td><input type="number" name="gbvalve${n.idx}" value="${n.gbvalve}" ></td>
 							<td class="fitting2">Diaphragm</td>
-							<td><input type="number" name="dvalve" value="${n.dvalve}"></td>							
+							<td><input type="number" name="dvalve${n.idx}" value="${n.dvalve}"></td>							
 							
 						</tr>
 						
@@ -349,20 +354,20 @@
 							<td><input type="number" name="tee_2" value="${n.tee_2}" ></td>
 							<td class="fitting2">Angle Valve</td>
 							<td colspan="3">
-								<span style="position:relative; left:10px;">- 45&deg;: <input type="number" name="avalve_1" value="${n.avalve_1}" > </span>
-								<span style="position:relative; left:40px;">- 90&deg;: <input type="number" name="avalve_2" value="${n.avalve_2}" > </span>
+								<span style="position:relative; left:10px;">- 45&deg;: <input type="number" name="avalve_1${n.idx}" value="${n.avalve_1}" > </span>
+								<span style="position:relative; left:40px;">- 90&deg;: <input type="number" name="avalve_2${n.idx}" value="${n.avalve_2}" > </span>
 							</td>
 						</tr>
 						
 						<tr class="fitting">
 							<td class="fitting2">Std(R/D=1)</td>
-							<td><input type="number" name="elbow90_3" value="${n.elbow90_3}" ></td>
+							<td><input type="number" name="elbow90_3${n.idx}" value="${n.elbow90_3}" ></td>
 							<td class="fitting2">Long(R/D=2)</td>
-							<td><input type="number" name="elbow90_4" value="${n.elbow90_4}" ></td>						
+							<td><input type="number" name="elbow90_4${n.idx}" value="${n.elbow90_4}" ></td>						
 							<td class="fitting2">1 weld 45&deg;</td>
-							<td><input type="number" name="elbow45_3" value="${n.elbow45_3}" ></td>
+							<td><input type="number" name="elbow45_3${n.idx}" value="${n.elbow45_3}" ></td>
 							<td class="fitting2">2 weld 22.5&deg;</td>
-							<td><input type="number" name="elbow45_4" value="${n.elbow45_4}" ></td>
+							<td><input type="number" name="elbow45_4${n.idx}" value="${n.elbow45_4}" ></td>
 							<td class="fitting2">- Flanged (R/D=1)</td>
 							<td><input type="number" name="tee_3" value="${n.tee_3}"></td>
 							<td class="fitting2" >check Valve</td>
@@ -373,12 +378,12 @@
 						</tr>
 						<tr class="fitting">
 							<td class="fitting2">Long(R/D=4)</td>
-							<td><input type="number" name="elbow90_5" value="${n.elbow90_5}" ></td>
+							<td><input type="number" name="elbow90_5${n.idx}" value="${n.elbow90_5}" ></td>
 							<td class="fitting2">Long(R/D=6)</td>
-							<td><input type="number" name="elbow90_6" value="${n.elbow90_6}" ></td>	
+							<td><input type="number" name="elbow90_6${n.idx}" value="${n.elbow90_6}" ></td>	
 							<td colspan="4"> </td>						
 							<td class="fitting2">- Stub in branch</td>
-							<td><input type="number" name="tee_4" value="${n.tee_4}"></td>	
+							<td><input type="number" name="tee_4${n.idx}" value="${n.tee_4}"></td>	
 							<td class="fitting2" colspan="4">Plug Valve </td>
 						</tr>
 						<tr class="fitting">
@@ -386,47 +391,47 @@
 							<td colspan="4"> 180&deg; Bend </td>	
 							<td colspan="2">Tee (Run-Through)</td>
 							<td class="fitting2">- branch flow</td>
-							<td><span style="position:relative; left:10px;"><input type="number" name="pvalve_1" value="${n.pvalve_1}" ></span></td>
+							<td><span style="position:relative; left:10px;"><input type="number" name="pvalve_1${n.idx}" value="${n.pvalve_1}" ></span></td>
 							<td class="fitting2">- three way</td>
-							<td><input type="number" name="pvalve_3" value="${n.pvalve_3}" ></td>							
+							<td><input type="number" name="pvalve_3${n.idx}" value="${n.pvalve_3}" ></td>							
 						</tr>
 						<tr class="fitting">
 							<td class="fitting2">1 weld 90&deg; </td>
-							<td><input type="number" name="elbow90_7" value="${n.elbow90_7}" ></td>
+							<td><input type="number" name="elbow90_7${n.idx}" value="${n.elbow90_7}" ></td>
 							<td colspan="2"></td>
 							<td colspan="3" class="fitting2">- Threaded, closed-return (R/D=1)</td>
-							<td><input type="number" name="bend_1" value="${n.bend_1}" ></td>														
+							<td><input type="number" name="bend_1${n.idx}" value="${n.bend_1}" ></td>														
 							<td class="fitting2">- Threaded (R/D=1)</td>
-							<td><input type="number" name="tee_5" value="${n.tee_5}" ></td>	
+							<td><input type="number" name="tee_5${n.idx}" value="${n.tee_5}" ></td>	
 							<td class="fitting2" colspan="2">- Straight though </td>	
-							<td colspan="2"><input type="number" name="pvalve_2" value="${n.pvalve_2}"></td>
+							<td colspan="2"><input type="number" name="pvalve_2${n.idx}" value="${n.pvalve_2}"></td>
 						</tr>
 						<tr class="fitting">
 							<td class="fitting2">2 weld 45&deg; </td>
-							<td><input type="number" name="elbow90_8" value="${n.elbow90_8}" ></td>							
+							<td><input type="number" name="elbow90_8${n.idx}" value="${n.elbow90_8}" ></td>							
 							<td colspan="2"></td>
 							<td colspan="3" class="fitting2">- Flanged (R/D=1)</td>
-							<td><input type="number" name="bend_2" value="${n.bend_2}"></td>
+							<td><input type="number" name="bend_2${n.idx}" value="${n.bend_2}"></td>
 							<td class="fitting2">- Flanged (R/D=1)</td>
-							<td><input type="number" name="tee_6" value="${tee_6}" ></td>
+							<td><input type="number" name="tee_6${n.idx}" value="${tee_6}" ></td>
 							<td class="fitting2">Reducer: </td>
 							<td colspan="3">
-								<span style="position:relative; right:10px;">diameter(inch) <input type="number" name="redd" value="${n.redd}" > </span>
-								<span style="position:relative; left:5px;"> theta <input type="number" name="redth" value="${n.redth}" > </span>							
+								<span style="position:relative; right:10px;">diameter(inch) <input type="number" name="redd${n.idx}" value="${n.redd}" > </span>
+								<span style="position:relative; left:5px;"> theta <input type="number" name="redth${n.idx}" value="${n.redth}" > </span>							
 							</td>														
 						</tr>
 						<tr class="fitting">
 							<td class="fitting2">3 weld 30&deg; </td>
-							<td><input type="number" name="elbow90_9" value="${n.elbow90_9}" ></td>							
+							<td><input type="number" name="elbow90_9${n.idx}" value="${n.elbow90_9}" ></td>							
 							<td colspan="2"></td>
 							<td colspan="3" class="fitting2">- All types (R/D=1.5)</td>
-							<td><input type="number" name="bend_2" value="${n.bend_3}"></td>							
+							<td><input type="number" name="bend_3${n.idx}" value="${n.bend_3}"></td>							
 							<td><span style="position:relative; left:10px;">- Stub in branch</span></td>
-							<td><span style="float: left;"><input type="number" name="tee_7" value="${n.tee_7}" onkeyup="rev_go(this.form)"></span></td>	
+							<td><span style="float: left;"><input type="number" name="tee_7${n.idx}" value="${n.tee_7}"></span></td>	
 							<td class="fitting2">Expander: </td>
 							<td colspan="3">
-								<span style="position:relative; right:10px;">diameter(inch) <input type="number" name="expd" value="${n.expd}" > </span>
-								<span style="position:relative; left:5px;"> theta <input type="number" name="expth" value="${n.expth}" > </span>							
+								<span style="position:relative; right:10px;">diameter(inch) <input type="number" name="expd${n.idx}" value="${n.expd}" > </span>
+								<span style="position:relative; left:5px;"> theta <input type="number" name="expth${n.idx}" value="${n.expth}" > </span>							
 							</td>							
 						</tr>
 					</tbody>
@@ -439,51 +444,51 @@
 						<tr>
 							<td>Equivalent Length</td>
 							<td>m</td>
-							<td><input type="number" name="eql_len" value="${n.eql_len}" ></td>
+							<td><input type="number" name="eql_len${n.idx}" value="${n.eql_len}" ></td>
 							<td></td>
 							<td>Soil Thermal Coefficient</td>
 							<td>Btu/lb F ft<sup>2</sup></td>
-							<td><input type="number" name="soil_temp" value="${n.soil_temp}" ></td>
+							<td><input type="number" name="soil_temp${n.idx}" value="${n.soil_temp}" ></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>Inside Flim Coefficient</td>
 							<td>Btu/lb F ft<sup>2</sup></td>
-							<td><input type="number" name="in_coeff" value="${n.in_coeff}" ></td>
+							<td><input type="number" name="in_coeff${n.idx}" value="${n.in_coeff}" ></td>
 							<td></td>
 							<td>Ground Temperature</td>
 							<td>F</td>
-							<td><input type="number" name="g_temp" value="${n.g_temp}" ></td>
+							<td><input type="number" name="g_temp${n.idx}" value="${n.g_temp}" ></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>Outside Flim Coefficient</td>
 							<td>Btu/lb F ft<sup>2</sup></td>
-							<td><input type="number" name="out_coeff" value="${n.out_coeff}" ></td>
+							<td><input type="number" name="out_coeff${n.idx}" value="${n.out_coeff}" ></td>
 							<td></td>
 							<td>Outlet Temperature</td>
 							<td>F</td>
-							<td><input type="number" name="out_temp" value="${n.out_temp}" ></td>
+							<td><input type="number" name="out_temp${n.idx}" value="${n.out_temp}" ></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>&nbsp;- by convection</td>
 							<td>Btu/lb F ft<sup>2</sup></td>
-							<td><input type="number" name="in_coeff_1" value="${n.in_coeff_1}" ></td>
+							<td><input type="number" name="in_coeff_1${n.idx}" value="${n.in_coeff_1}" ></td>
 							<td></td>
 							<td>Surface Temperature</td>
 							<td>F</td>
-							<td><input type="number" name="sur_temp" value="${n.sur_temp}" ></td>
+							<td><input type="number" name="sur_temp${n.idx}" value="${n.sur_temp}" ></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>&nbsp;- by convection</td>
 							<td>Btu/lb F ft<sup>2</sup></td>
-							<td><input type="number" name="in_coeff_2" value="${n.in_coeff_2}" ></td>
+							<td><input type="number" name="in_coeff_2${n.idx}" value="${n.in_coeff_2}" ></td>
 							<td></td>
 							<td>Diff Temperature</td>
 							<td>F</td>
-							<td><input type="number" name="diff_temp" value="${n.diff_temp}" ></td>
+							<td><input type="number" name="diff_temp${n.idx}" value="${n.diff_temp}" ></td>
 							<td></td>
 						</tr>
 						
@@ -493,7 +498,7 @@
 			</div>
 			<br><br>
 			</form>
-			</c:forEach>
+		</c:forEach>
 	</div>
 </body>
 </html>

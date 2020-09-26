@@ -16,8 +16,13 @@
 		#lhyd td{padding: 4px 8px; font-size: 16px; }
 		
 		.process input{width: 75px;}
-		.fitting input{width: 40px;}
 		#dp input{width: 80px;}
+		
+		#linehyd4{position: relative; left: 50px; margin-bottom: 10px; width:1600px;}	
+		#linehyd4 td {height: 30px;  font-size: 20px; vertical-align: middle; padding: 2px;}
+		.fitting input{width: 40px; font-size: 16px;}
+		.fitting2 {position:relative; left:10px;}
+
 		
 	</style>
 	<script type="text/javascript">
@@ -37,8 +42,7 @@
 		}
 		
 		function cal_go(f){
-			f.action="linerev.do";
-			f.submit();
+			alert("작업중");
 		}
 	</script>
 </head>
@@ -46,14 +50,13 @@
 	<div class="intro">
 		<h3>Line Hydraulic</h3>
 		
+		<c:forEach var="n" items="${list}">
 		<form method="post">
 			<input id="add_chart1" type="button" value="Add" onclick="add_go(this.form)"> 
 			<input type="hidden" name ="cal" value="${cal}">
-		</form>
+
 			<br><br>
 			
-			<c:forEach var="n" items="${list}">
-			<form method="post">
 			<div id="lhyd">
 				<table style="position: relative; left: 30px; margin-top: 20px; width: 1550px;">
 					<tbody>
@@ -190,171 +193,141 @@
 							<td><input type="number" name="ellen" value="${n.ellen}" disabled="disabled"></td>						
 							<td colspan="4"></td>
 						</tr>
-						
-						<c:if test="${n.cfactor eq 'fitting'}">
-						<tr>
-							<td colspan="10">Fitting</td>
-						</tr>
-						<tr class="fitting">
-							<td colspan="2"> 90 Elbow Threaded</td>
-							<td colspan="2"> 45 Elbow Threaded</td>
-							<td colspan="2">Tee(Through-branch as Elbow)</td>
-							<td>Gate Valve</td>
-							<td><span style="float: left;"><input type="number" name="gtvalve" value="${n.gtvalve}" onkeyup="rev_go(this.form)"></span></td>
-							<td>Ball Valve</td>
-							<td><span style="float: left;"><input type="number" name="bvalve" value="${n.bvalve}" onkeyup="rev_go(this.form)"></span></td>
-						</tr>
-						<tr class="fitting">
-							<td colspan="2">
-								Std(R/D=1)&nbsp;<input type="number" name="elbow90_1" value="${n.elbow90_1}" onkeyup="rev_go(this.form)">
-								<span style="position:relative; left:10px;">Long(R/D=1.5)&nbsp;
-								<input type="number" name="elbow90_2" value="${n.elbow90_2}" onkeyup="rev_go(this.form)"></span>  
-							</td>
-							<td colspan="2">
-								Std(R/D=1)&nbsp;<input type="number" name="elbow45_1" value="${n.elbow45_1}" onkeyup="rev_go(this.form)">
-								<span style="position:relative; left:10px;">Long(R/D=1.5)&nbsp;
-								<input type="number" name="elbow45_2" value="${n.elbow45_2}" onkeyup="rev_go(this.form)"></span>  		
-							</td>
-							<td><span style="position:relative; left:10px;">- Threaded (R/D=1)</span></td>
-							<td><span style="float: left;"><input type="number" name="tee_1" value="${n.tee_1}" onkeyup="rev_go(this.form)"></span></td>
-							<td>Globe Valve</td>
-							<td><span style="float: left;"><input type="number" name="gbvalve" value="${n.gbvalve}" onkeyup="rev_go(this.form)"></span></td>
-							<td>Diaphragm</td>
-							<td><span style="float: left;"><input type="number" name="dvalve" value="${n.dvalve}" onkeyup="rev_go(this.form)"></span></td>
-
-						</tr>
-						
-
-						<tr class="fitting">
-							<td colspan="2"> 90 Elbow Flanged</td>
-							<td colspan="2"> 180 Bend </td>
-							<td><span style="position:relative; left:10px;">- Threaded (R/D=1.5)</span></td>
-							<td><span style="float: left;"><input type="number" name="tee_2" value="${n.tee_2}" onkeyup="rev_go(this.form)"></span></td>
-							<td colspan="2">Angle Valve</td>
-							<td colspan="2">check Valve</td>
-						</tr>
-						
-						<tr class="fitting">
-							<td colspan="2">
-								Std(R/D=1)&nbsp;<input type="number" name="elbow90_3" value="${n.elbow90_3}" onkeyup="rev_go(this.form)">
-								<span style="position:relative; left:22px;">Long(R/D=2)&nbsp;
-								<input type="number" name="elbow90_4" value="${n.elbow90_4}" onkeyup="rev_go(this.form)"></span>  
-							</td>
-							<td colspan="2">
-								- Threaded, closed-return (R/D=1)&nbsp;<span style="position:relative; left:8px;">
-								<input type="number" name="bend_1" value="${n.bend_1}" onkeyup="rev_go(this.form)"></span>
-							</td>
-							<td><span style="position:relative; left:10px;">- Flanged (R/D=1)</span></td>
-							<td><span style="float: left;"><input type="number" name="tee_3" value="${n.tee_3}" onkeyup="rev_go(this.form)"></span></td>
-							<td colspan="2">
-								<span style="position:relative; left:10px;">- 45&ordm;&nbsp;&nbsp;
-								<input type="number" name="avalve_1" value="${n.avalve_1}" onkeyup="rev_go(this.form)"></span>
-								<span style="position:relative; left:20px;">- 90&ordm;&nbsp;&nbsp;
-								<input type="number" name="avalve_2" value="${n.avalve_2}" onkeyup="rev_go(this.form)"></span>  		
-							</td>
-							<td colspan="2">
-								<span style="position:relative; left:10px;">- swing&nbsp;&nbsp;
-								<input type="number" name="cvalve_1" value="${n.cvalve_1}" onkeyup="rev_go(this.form)"></span>
-								<span style="position:relative; left:20px;">- left&nbsp;&nbsp;
-								<input type="number" name="cvalve_2" value="${n.cvalve_2}" onkeyup="rev_go(this.form)"></span>  		
-							</td>
-
-						</tr>
-									
-						<tr class="fitting">
-							<td colspan="2">
-								Std(R/D=4)&nbsp;<input type="number" name="elbow90_5" value="${n.elbow90_5}" onkeyup="rev_go(this.form)">
-								<span style="position:relative; left:22px;">Long(R/D=6)&nbsp;
-								<input type="number" name="elbow90_6" value="${n.elbow90_6}" onkeyup="rev_go(this.form)"></span>  
-							</td>
-							<td colspan="2">
-								- Flanged (R/D=1)&nbsp;
-								<span style="position:relative; left:124px;">
-								<input type="number" name="bend_2" value="${n.bend_2}" onkeyup="rev_go(this.form)"></span>
-							</td>
-							<td><span style="position:relative; left:10px;">- Stub in branch</span></td>
-							<td><span style="float: left;"><input type="number" name="tee_4" value="${n.tee_4}" onkeyup="rev_go(this.form)"></span></td>
-							<td colspan="2">
-								Plug Valve 
-							</td>
-							<td colspan="2">
-								Reducer & Expander
-							</td>
-
-						</tr>	
-						
-						<tr class="fitting">
-							<td colspan="2">90 Elbow Welded</td>
-							<td colspan="2">
-								- All types (R/D=1.5)&nbsp;
-								<span style="position:relative; left:107px;">
-								<input type="number" name="bend_2" value="${n.bend_3}" onkeyup="rev_go(this.form)"></span>
-							</td>
-							<td colspan="2">Tee (Run-Through)</td>
-							<td><span style="position:relative; left:10px;">- branch flow</span></td>
-							<td><span style="float: left;"><input type="number" name="pvalve_1" value="${n.pvalve_1}" onkeyup="rev_go(this.form)"></span></td>
-							<td colspan="2">
-								<span style="position:relative; left:5px;">Reducer</span> 
-							</td>	
-
-						</tr>	
-						
-						<tr class="fitting">
-							<td colspan="2">
-								<span style="position:relative; left:181px;">1 Weld 90&nbsp;
-								<input type="number" name="elbow90_7" value="${n.elbow90_7}" onkeyup="rev_go(this.form)"></span>
-							</td>
-							<td colspan="2"></td>
-							<td><span style="position:relative; left:10px;">- Threaded (R/D=1)</span></td>
-							<td><span style="float: left;"><input type="number" name="tee_5" value="${n.tee_5}" onkeyup="rev_go(this.form)"></span></td>
-							<td><span style="position:relative; left:10px;">- Straight though</span></td>
-							<td><span style="float: left;"><input type="number" name="pvalve_2" value="${n.pvalve_2}" onkeyup="rev_go(this.form)"></span></td>
-							<td colspan="2">
-								<span style="position:relative; left:10px;">- dia.(in)&nbsp;
-								<input type="number" name="redd" value="${n.redd}" onkeyup="rev_go(this.form)"></span>
-								<span style="position:relative; left:10px;">- theta&nbsp;
-								<input type="number" name="redth" value="${n.redth}" onkeyup="rev_go(this.form)"></span>  		
-							</td>	
-						</tr>	
-											
-						<tr class="fitting">
-							<td colspan="2">
-								<span style="position:relative; left:181px;">2 Weld 45&nbsp;
-								<input type="number" name="elbow90_8" value="${n.elbow90_8}" onkeyup="rev_go(this.form)"></span>
-							</td>
-							<td colspan="2"></td>
-							<td><span style="position:relative; left:10px;">- Flanged (R/D=1)</span></td>
-							<td><span style="float: left;"><input type="number" name="tee_6" value="${tee_6}" onkeyup="rev_go(this.form)"></span></td>
-							<td><span style="position:relative; left:10px;">- three way</span></td>
-							<td rowspan="2"><span style="float: left;">
-							<input type="number" name="pvalve_3" value="${n.pvalve_3}" onkeyup="rev_go(this.form)"></span></td>
-							<td colspan="2">
-								<span style="position:relative; left:5px;">Expander</span>
-							</td>
-						</tr>	
-											
-						<tr class="fitting">
-							<td colspan="2">
-								<span style="position:relative; left:181px;">3 Weld 30&nbsp;
-								<input type="number" name="elbow90_9" value="${n.elbow90_9}" onkeyup="rev_go(this.form)"></span>
-							</td>
-							<td colspan="2"></td>
-							<td><span style="position:relative; left:10px;">- Stub in branch</span></td>
-							<td><span style="float: left;"><input type="number" name="tee_7" value="${n.tee_7}" onkeyup="rev_go(this.form)"></span></td>
-							<td><span style="position:relative; left:20px;">(flow though)</span></td>
-							<td colspan="2">
-								<span style="position:relative; left:10px;">- dia.(in)&nbsp;
-								<input type="number" name="expd" value="${n.expd}" onkeyup="rev_go(this.form)"></span>
-								<span style="position:relative; left:10px;">- theta&nbsp;
-								<input type="number" name="expth" value="${n.expth}" onkeyup="rev_go(this.form)"></span> 
-							</td>
-						</tr>	
-						</c:if>			
-
 					</tbody>
 					
-				</table>
-				
+				</table>			
+				<c:if test="${n.cfactor eq 'fitting'}">
+					<table id="linehyd4">
+						<thead>
+							<tr>
+								<th style="width: 10%"></th><th style="width: 4%"></th><th style="width: 10%"></th><th style="width: 4%"></th>
+								<th style="width: 8%"></th><th style="width: 4%"></th><th style="width: 10%"></th><th style="width: 4%"></th>
+								<th style="width: 14%"></th><th style="width: 4%"></th><th></th><th></th>
+								<th></th><th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="14">Fitting</td>
+							</tr>
+							<tr class="fitting">
+								<td colspan="4"> 90&deg; Elbow Threaded</td>
+								<td colspan="4"> 45&deg; Elbow Threaded</td>
+								<td colspan="2">Tee(Through-branch as Elbow)</td>
+								<td class="fitting2">Gate Valve</td>
+								<td><input type="number" name="gtvalve" value="${n.gtvalve}"></td>
+								<td class="fitting2">Ball Valve</td>
+								<td><input type="number" name="bvalve" value="${n.bvalve}" ></td>
+							</tr>
+							<tr class="fitting">
+								<td class="fitting2">Std(R/D=1)</td>
+								<td><input type="number" name="elbow90_1" value="${n.elbow90_1}" ></td>
+								<td class="fitting2">Long(R/D=1.5)</td>
+								<td><input type="number" name="elbow90_2" value="${n.elbow90_2}" ></td>
+								<td class="fitting2">Std(R/D=1)</td>
+								<td><input type="number" name="elbow45_1" value="${n.elbow45_1}" ></td>
+								<td class="fitting2">Long(R/D=1.5)</td>
+								<td><input type="number" name="elbow45_2" value="${n.elbow45_2}" ></td>
+								<td class="fitting2">- Threaded (R/D=1)</td>
+								<td><input type="number" name="tee_1" value="${n.tee_1}" ></td>
+								<td class="fitting2">Globe Valve</td>
+								<td><input type="number" name="gbvalve" value="${n.gbvalve}" ></td>
+								<td class="fitting2">Diaphragm</td>
+								<td><input type="number" name="dvalve" value="${n.dvalve}"></td>							
+								
+							</tr>
+							
+							<tr class="fitting">
+								<td colspan="4"> 90&deg; Elbow Flanged or Welded</td>
+								<td colspan="4"> 45&deg; Elbow Mitered</td>
+								<td class="fitting2">- Threaded (R/D=1.5)</td>
+								<td><input type="number" name="tee_2" value="${n.tee_2}" ></td>
+								<td class="fitting2">Angle Valve</td>
+								<td colspan="3">
+									<span style="position:relative; left:10px;">- 45&deg;: <input type="number" name="avalve_1" value="${n.avalve_1}" > </span>
+									<span style="position:relative; left:40px;">- 90&deg;: <input type="number" name="avalve_2" value="${n.avalve_2}" > </span>
+								</td>
+							</tr>
+							
+							<tr class="fitting">
+								<td class="fitting2">Std(R/D=1)</td>
+								<td><input type="number" name="elbow90_3" value="${n.elbow90_3}" ></td>
+								<td class="fitting2">Long(R/D=2)</td>
+								<td><input type="number" name="elbow90_4" value="${n.elbow90_4}" ></td>						
+								<td class="fitting2">1 weld 45&deg;</td>
+								<td><input type="number" name="elbow45_3" value="${n.elbow45_3}" ></td>
+								<td class="fitting2">2 weld 22.5&deg;</td>
+								<td><input type="number" name="elbow45_4" value="${n.elbow45_4}" ></td>
+								<td class="fitting2">- Flanged (R/D=1)</td>
+								<td><input type="number" name="tee_3" value="${n.tee_3}"></td>
+								<td class="fitting2" >check Valve</td>
+								<td colspan="3">
+									<span style="position:relative; left:10px;">- swing&deg;: <input type="number" name="cvalve_1" value="${n.cvalve_1}" > </span>
+									<span style="position:relative; left:10px;">- left&deg;: <input type="number" name="cvalve_2" value="${n.cvalve_2}" > </span>							
+								</td>
+							</tr>
+							<tr class="fitting">
+								<td class="fitting2">Long(R/D=4)</td>
+								<td><input type="number" name="elbow90_5" value="${n.elbow90_5}" ></td>
+								<td class="fitting2">Long(R/D=6)</td>
+								<td><input type="number" name="elbow90_6" value="${n.elbow90_6}" ></td>	
+								<td colspan="4"> </td>						
+								<td class="fitting2">- Stub in branch</td>
+								<td><input type="number" name="tee_4" value="${n.tee_4}"></td>	
+								<td class="fitting2" colspan="4">Plug Valve </td>
+							</tr>
+							<tr class="fitting">
+								<td colspan="4"> 90&deg; Elbow Mitered</td>
+								<td colspan="4"> 180&deg; Bend </td>	
+								<td colspan="2">Tee (Run-Through)</td>
+								<td class="fitting2">- branch flow</td>
+								<td><span style="position:relative; left:10px;"><input type="number" name="pvalve_1" value="${n.pvalve_1}" ></span></td>
+								<td class="fitting2">- three way</td>
+								<td><input type="number" name="pvalve_3" value="${n.pvalve_3}" ></td>							
+							</tr>
+							<tr class="fitting">
+								<td class="fitting2">1 weld 90&deg; </td>
+								<td><input type="number" name="elbow90_7" value="${n.elbow90_7}" ></td>
+								<td colspan="2"></td>
+								<td colspan="3" class="fitting2">- Threaded, closed-return (R/D=1)</td>
+								<td><input type="number" name="bend_1" value="${n.bend_1}" ></td>														
+								<td class="fitting2">- Threaded (R/D=1)</td>
+								<td><input type="number" name="tee_5" value="${n.tee_5}" ></td>	
+								<td class="fitting2" colspan="2">- Straight though </td>	
+								<td colspan="2"><input type="number" name="pvalve_2" value="${n.pvalve_2}"></td>
+							</tr>
+							<tr class="fitting">
+								<td class="fitting2">2 weld 45&deg; </td>
+								<td><input type="number" name="elbow90_8" value="${n.elbow90_8}" ></td>							
+								<td colspan="2"></td>
+								<td colspan="3" class="fitting2">- Flanged (R/D=1)</td>
+								<td><input type="number" name="bend_2" value="${n.bend_2}"></td>
+								<td class="fitting2">- Flanged (R/D=1)</td>
+								<td><input type="number" name="tee_6" value="${tee_6}" ></td>
+								<td class="fitting2">Reducer: </td>
+								<td colspan="3">
+									<span style="position:relative; right:10px;">diameter(inch) <input type="number" name="redd" value="${n.redd}" > </span>
+									<span style="position:relative; left:5px;"> theta <input type="number" name="redth" value="${n.redth}" > </span>							
+								</td>														
+							</tr>
+							<tr class="fitting">
+								<td class="fitting2">3 weld 30&deg; </td>
+								<td><input type="number" name="elbow90_9" value="${n.elbow90_9}" ></td>							
+								<td colspan="2"></td>
+								<td colspan="3" class="fitting2">- All types (R/D=1.5)</td>
+								<td><input type="number" name="bend_2" value="${n.bend_3}"></td>							
+								<td><span style="position:relative; left:10px;">- Stub in branch</span></td>
+								<td><span style="float: left;"><input type="number" name="tee_7" value="${n.tee_7}" onkeyup="rev_go(this.form)"></span></td>	
+								<td class="fitting2">Expander: </td>
+								<td colspan="3">
+									<span style="position:relative; right:10px;">diameter(inch) <input type="number" name="expd" value="${n.expd}" > </span>
+									<span style="position:relative; left:5px;"> theta <input type="number" name="expth" value="${n.expth}" > </span>							
+								</td>							
+							</tr>
+						</tbody>
+					</table>	
+				</c:if>			
+	
 			</div>
 			<br><br>
 			</form>
