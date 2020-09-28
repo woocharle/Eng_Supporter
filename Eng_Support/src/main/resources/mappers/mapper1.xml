@@ -48,13 +48,13 @@
 	</insert>
 
 	<!--회원갱신 -->
-	<update id="mupdate" parameterType="com.ict.db.VO2">
+	<update id="mupdate" parameterType="com.ict.db.MVO">
 		update member
 		set	m_com=#{m_com}, m_phone=#{m_phone}, m_email=#{m_email}, m_name=#{m_name}, m_content=#{m_content}
 		where idx =#{idx}
 	</update>
 
-	<update id="mupdate2" parameterType="com.ict.db.VO2">
+	<update id="mupdate2" parameterType="com.ict.db.MVO">
 		update member
 		set	m_pw=#{m_pw}
 		where idx =#{idx}
@@ -62,14 +62,14 @@
 
 	
 	<!--회원갱신 -->
-	<update id="mfind" parameterType="com.ict.db.VO2">
+	<update id="mfind" parameterType="com.ict.db.MVO">
 		update member
 		set	req_find = #{req_find}
 		where m_email = #{m_email}
 	</update>
 	
 	<!--회원탈퇴 -->
-	<delete id="mdelete" parameterType="com.ict.db.VO2"> 
+	<delete id="mdelete" parameterType="com.ict.db.MVO"> 
 		delete from member
 		where idx = #{idx}
 	</delete>	

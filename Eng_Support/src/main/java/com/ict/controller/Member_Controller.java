@@ -133,19 +133,18 @@ public class Member_Controller {
 				
 		String check = dao.getSearch1(mvo.getM_email());
 		String msg = "";
-	
+		String finish ="ok"; 
+		mv.addObject("finish", finish);
+		
 		if(check == null) {
 			int result = dao.getmIDU(mvo, "Insert");
 			msg="회원가입이 완료되었습니다. \n로그인을 하세요.";
 			mv.setViewName("view_member/0.login");
-			String join="ok";
-			mv.addObject("join", join);		
 			
 		}else {
 			msg="해당 메일로 가입한 아이디가 있습니다.";
 			mv.setViewName("view_member/0.join");
-			String finish ="ok"; 
-			mv.addObject("finish", finish);
+					
 		}
 
 		mv.addObject("msg", msg);

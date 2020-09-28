@@ -1,7 +1,7 @@
 package com.ict.db;
 
 public class VO3 {
-	private String b_idx, subject, writer, content, pwd, writedate, m_idx;
+	private String b_idx, subject, writer, content, pwd, writedate, open_close, m_idx;
 
 	public String getB_idx() {
 		return b_idx;
@@ -49,6 +49,14 @@ public class VO3 {
 
 	public void setWritedate(String writedate) {
 		this.writedate = writedate;
+	}
+
+	public String getOpen_close() {
+		return open_close;
+	}
+
+	public void setOpen_close(String open_close) {
+		this.open_close = open_close;
 	}
 
 	public String getM_idx() {

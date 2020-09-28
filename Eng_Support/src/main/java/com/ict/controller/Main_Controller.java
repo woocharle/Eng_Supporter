@@ -262,6 +262,7 @@ public class Main_Controller {
 			String cPage = request.getParameter("cPage");
 
 			if(cPage == null) {
+				cPage = "1";
 				paging.setNowPage(1);
 			}else {
 				paging.setNowPage(Integer.parseInt(cPage));
@@ -281,8 +282,9 @@ public class Main_Controller {
 				
 			mv.addObject("list", list);
 			mv.addObject("paging", paging);
-			mv.addObject("cPage", cPage);
 			mv.setViewName("list");
+			
+			request.getSession().setAttribute("cPage", cPage);
 			
 		}
 		

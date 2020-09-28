@@ -4,10 +4,14 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="login_ok"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="cPage"/>
+			<item value="revise"/>
+			<item value="class=&quot;paging"/>
+			<item value="class=paging"/>
 			<item value="login_ok"/>
 			<item value="style=&quot;width: 30%; text-align: left;&quot;"/>
 			<item value="getMember"/>
@@ -19,12 +23,9 @@
 			<item value=".concat(idx)"/>
 			<item value="del"/>
 			<item value="String.valueOf(i+1)"/>
-			<item value="hvo2."/>
-			<item value="bvalve"/>
-			<item value="gbvalve"/>
-			<item value="tee_1"/>
 		</list>
 		<list key="replacehistory">
+			<item value="drop"/>
 			<item value="class=&quot;tb&quot;"/>
 			<item value="b_list[i]"/>
 			<item value=""/>

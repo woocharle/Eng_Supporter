@@ -8,6 +8,7 @@
  		<typeAlias type="com.ict.db.MVO" alias="mvo"/>
  		<typeAlias type="com.ict.db.VO2" alias="vo2"/>
  		<typeAlias type="com.ict.db.VO3" alias="vo3"/>
+ 		<typeAlias type="com.ict.db.VO4" alias="vo4"/>
  	</typeAliases>
  
  	<mappers>

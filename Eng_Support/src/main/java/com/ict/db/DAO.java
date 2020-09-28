@@ -134,7 +134,7 @@ public class DAO {
 	// 3.Faq
 	
 	public int getFcount() {
-		int count = sqlSessionTemplate.selectOne("mcount");
+		int count = sqlSessionTemplate.selectOne("fcount");
  		return count;
 	}
 	
@@ -146,6 +146,42 @@ public class DAO {
 		List<VO3> flist = sqlSessionTemplate.selectList("flist", map);
 		
 		return flist;
+	}
+	
+	
+	public VO3 getFonelist(String b_idx) {
+		VO3 vo3 = sqlSessionTemplate.selectOne("fonelist", b_idx);
+		return vo3;
+	}
+	
+	public int getfIDU1(VO3 vo3, String mth) {
+		int result = 0; 
+		
+		switch(mth) {
+			case "Insert": result = sqlSessionTemplate.insert("finsert1", vo3); break;
+			case "Update": result = sqlSessionTemplate.update("fupdate1", vo3); break;
+			case "Delete": result = sqlSessionTemplate.delete("fdelete1", vo3); break;
+		}
+
+		return result; 
+	}
+	
+	public List<VO4> getalist(String b_idx){
+		List<VO4> alist = sqlSessionTemplate.selectList("alist", b_idx); 
+		return alist; 
+	}
+	
+	
+	public int getfIDU2(VO4 vo4, String mth) {
+		int result = 0; 
+		
+		switch(mth) {
+			case "Insert": result = sqlSessionTemplate.insert("finsert2", vo4); break;
+			case "Update": result = sqlSessionTemplate.update("fupdate2", vo4); break;
+			case "Delete": result = sqlSessionTemplate.delete("fdelete2", vo4); break;
+		}
+		
+		return result; 
 	}
 	
 	
