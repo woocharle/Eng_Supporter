@@ -154,11 +154,11 @@
 					</tr>
 					<tr>
 						<td rowspan="2"><input type="button" value="calculate">
-						<td>Volumn</td>
+						<td>Volume</td>
 						<td><input type="number">m<sup>3</sup></td>
 					</tr>
 					<tr>
-						<td>Wetted Volumn</td><td><input type="number">m<sup>3</sup></td>
+						<td>Wetted Volume</td><td><input type="number">m<sup>3</sup></td>
 					</tr>
 		
 				</tbody>
