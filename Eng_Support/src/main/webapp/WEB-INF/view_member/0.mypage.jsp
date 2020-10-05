@@ -25,8 +25,8 @@
 			font-size: 20px; width:900px; 
 			border-collapse:collapse; 
 			border: 1px solid black;}
-		.intro th{font-size: 25px; background-color: #333; color: white; font-weight: normal;}
-		.intro td{border: 1px solid black; }
+		.intro th{font-size: 20px; background-color: #333; color: white; font-weight: normal; height: 40px;}
+		.intro td{border: 1px solid black; text-align: center;}
 		
 		#list{width: 25%; height: 1400px; position: relative; left:10px;}
 		#list > h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}
@@ -69,23 +69,25 @@
 		
 	
 		<c:if test="${page eq 'faq'}">
+			<c:if test="${finish eq 'ok'}"><jsp:include page="../view_admin/alarm.jsp"/></c:if>
 			<div class="intro" >
-				<h3> FAQ </h3>
+				<h3> FAQ</h3>
 				<br>
 				<table>
 					<thead>
 						<tr style=" ">
-							<th style="width:15%">번호</th>
-							<th style="width:25%">제목</th>
-							<th style="width:30%">글쓴이</th>
-							<th style="width:30%">날짜</th>
+							<th style="width:10%">번호</th>
+							<th style="width:45%">제목</th>
+							<th style="width:15%">글쓴이</th>
+							<th style="width:10%">공개여부</th>
+							<th style="width:20%">날짜</th>
 						</tr>			
 					</thead>
 					<tbody>
 						<c:choose>
 							<c:when test="${empty list}">
 								<tr>
-									<td colspan="4" style="text-align: center; height: 100px;">
+									<td colspan="5" style="text-align: center; height: 100px;">
 										<span style="font-weight: bold; font-size: 30px;">자료가 존재하지 않습니다.</span>
 									</td>						
 								</tr>
@@ -93,9 +95,19 @@
 							<c:otherwise>
 								<c:forEach var="k" items="${list}" varStatus="vs">
 									<tr>
-										<td>${((paging.nowPage-1))*paging.numPerpage + vs.index + 1}</td>
+										<td>${paging.totalRecord - ((paging.nowPage-1)*paging.numPerpage + vs.index)}</td>
 										<td><a href="fonelist.do?b_idx=${k.b_idx}&cPage=${paging.nowPage}">${k.subject}</a></td>
 										<td>${k.writer}</td>
+										<td>
+											<c:choose>
+												<c:when test="${k.open_close eq 'close'}">
+													비공개
+												</c:when>
+												<c:otherwise>
+													공개
+												</c:otherwise>											
+											</c:choose>
+										</td>
 										<td>${k.writedate.substring(0,10)}</td>
 									</tr>					
 								</c:forEach>
@@ -105,7 +117,7 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="3" style="text-align: center; height: 40px;">
+							<td colspan="4" style="text-align: center; height: 40px;">
 								<!-- 이전 -->
 								<c:choose>
 									<c:when test="${paging.beginBlock <= paging.pagePerBlock}">
@@ -151,6 +163,7 @@
 		<c:if test="${page eq 'revise2'}"><jsp:include page="0.revise2.jsp"/></c:if>
 		<c:if test="${page eq 'drop'}"><jsp:include page="0.drop.jsp"/></c:if>
 		<c:if test="${page eq 'fwrite'}"><jsp:include page="0.fwrite.jsp"/></c:if>
+		<c:if test="${page eq 'fonelist'}"><jsp:include page="0.fonelist.jsp"/></c:if>
 		
 	</div>
 	

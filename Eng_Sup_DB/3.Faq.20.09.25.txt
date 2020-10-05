@@ -6,7 +6,7 @@ CREATE TABLE faq (
 	content LONGTEXT ,
 	pwd VARCHAR(20) ,
 	writedate TIMESTAMP NOT NULL,
-	m_idx ,
+	m_idx INT(11) NOT NULL,
 	PRIMARY KEY (b_idx) ,
 	INDEX faq_t_ibfk_1 (m_idx) ,
 	CONSTRAINT faq_t_ibfk_1 FOREIGN KEY (m_idx) REFERENCES mydb.member (idx) ON UPDATE RESTRICT ON DELETE RESTRICT
@@ -15,3 +15,5 @@ CREATE TABLE faq (
 create sequence faq_seq
 	increment by 1
 	start with 1;
+
+ALTER TABLE faq ADD open_close VARCHAR(10);

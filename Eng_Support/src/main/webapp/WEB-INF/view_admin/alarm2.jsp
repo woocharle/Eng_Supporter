@@ -8,10 +8,9 @@
 	<title>Engineering Support</title>
 </head>
 <body>
-
-		<script type="text/javascript">
-			alert("${msg}");
-		</script>		
-
+	<script type="text/javascript">
+		alert("댓글들이 삭제되어야 합니다.");
+		history.go(-2);
+	</script>
 </body>
 </html>

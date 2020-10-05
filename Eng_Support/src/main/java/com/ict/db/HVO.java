@@ -1,6 +1,5 @@
 package com.ict.db;
 
-import java.util.List;
 
 public class HVO {
 	private String idx, lineno, phase, press, flow, pin, temp,  vis, compress, over, pout, den, mol, cpcv;
@@ -11,7 +10,7 @@ public class HVO {
 	private String gtvalve, gbvalve, bvalve, cvalve_1, cvalve_2, avalve_1, avalve_2, pvalve_1, pvalve_2, pvalve_3;
 	private String dvalve, redd, redth, expd, expth;
 	
-	private List<String> dlist, slist;
+	private String[] dlist, slist;
 
 	public HVO() {}
 
@@ -535,19 +534,19 @@ public class HVO {
 		this.expth = expth;
 	}
 
-	public List<String> getDlist() {
+	public String[] getDlist() {
 		return dlist;
 	}
 
-	public void setDlist(List<String> dlist) {
+	public void setDlist(String[] dlist) {
 		this.dlist = dlist;
 	}
 
-	public List<String> getSlist() {
+	public String[] getSlist() {
 		return slist;
 	}
 
-	public void setSlist(List<String> slist) {
+	public void setSlist(String[] slist) {
 		this.slist = slist;
 	}
 	

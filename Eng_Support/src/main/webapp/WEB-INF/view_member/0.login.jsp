@@ -30,7 +30,6 @@
 </head>
 <body>
 	<c:if test="${finish eq 'ok'}"><jsp:include page="../view_admin/alarm.jsp"/></c:if>
-	<c:if test="${join eq 'ok'}"><jsp:include page="../view_admin/alarm2.jsp"/></c:if>
 	<div id="mydiv">
 		<h3>[ <a href ="home.do">메인 메뉴로 이동 </a>]</h3>
 		<form method="post">

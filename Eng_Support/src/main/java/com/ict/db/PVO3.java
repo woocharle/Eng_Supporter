@@ -11,7 +11,7 @@ public class PVO3 {
 	private String gtvalve_d, gbvalve_d, bvalve_d, cvalve_1_d, cvalve_2_d, avalve_1_d, avalve_2_d, pvalve_1_d, pvalve_2_d, pvalve_3_d;
 	private String dvalve_d, redd_d, redth_d, expd_d, expth_d;
 	
-	private List<String> size, schedule;
+	private String[] size, schedule;
 	
 	private String reynold_d, mol_d, cmpz_d, cpcv_d;
 	
@@ -457,19 +457,19 @@ public class PVO3 {
 		this.expth_d = expth_d;
 	}
 
-	public List<String> getSize() {
+	public String[] getSize() {
 		return size;
 	}
 
-	public void setSize(List<String> size) {
+	public void setSize(String[] size) {
 		this.size = size;
 	}
 
-	public List<String> getSchedule() {
+	public String[] getSchedule() {
 		return schedule;
 	}
 
-	public void setSchedule(List<String> schedule) {
+	public void setSchedule(String[] schedule) {
 		this.schedule = schedule;
 	}
 

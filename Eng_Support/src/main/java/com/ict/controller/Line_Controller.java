@@ -43,7 +43,7 @@ public class Line_Controller {
 				hvo.setDout("6");
 				hvo.setDlist(pipespec.getSize());
 				hvo.setSch("STD");
-				hvo.setSlist(pipespec.getSch());
+				hvo.setSlist(pipespec.getSchedule());
 				
 			} else {
 				hvo.setIdx(b_list[i].getIdx());
@@ -71,7 +71,7 @@ public class Line_Controller {
 				hvo.setDin(b_list[i].getDin());
 				hvo.setWall(b_list[i].getWall());
 				hvo.setSch(b_list[i].getSch());
-				hvo.setSlist(pipespec.getSch());
+				hvo.setSlist(pipespec.getSchedule());
 				hvo.setPipelen(b_list[i].getPipelen());
 				hvo.setEllen(b_list[i].getEllen());
 				hvo.setRe(b_list[i].getRe());
@@ -179,7 +179,7 @@ public class Line_Controller {
 				hvo.setDin(b_list[i].getDin());
 				hvo.setWall(b_list[i].getWall());
 				hvo.setSch(b_list[i].getSch());
-				hvo.setSlist(pipespec.getSch());
+				hvo.setSlist(pipespec.getSchedule());
 				hvo.setPipelen(b_list[i].getPipelen());
 				hvo.setEllen(b_list[i].getEllen());
 				hvo.setRe(b_list[i].getRe());
@@ -281,7 +281,7 @@ public class Line_Controller {
 				k.setDin(request.getParameter("din"));
 				k.setWall(request.getParameter("wall"));
 				k.setSch(request.getParameter("sch"));
-				k.setSlist(pipespec.getSch());
+				k.setSlist(pipespec.getSchedule());
 				k.setPipelen(request.getParameter("pipelen"));
 				k.setEllen(request.getParameter("ellen"));
 				k.setRe(request.getParameter("re"));

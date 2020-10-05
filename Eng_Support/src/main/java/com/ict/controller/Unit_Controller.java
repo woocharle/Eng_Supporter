@@ -28,7 +28,7 @@ public class Unit_Controller {
 	@RequestMapping(value="unit1.do", method=RequestMethod.POST)
 	public ModelAndView unit1_cmd(VO1 vo1, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
-		
+	
 		int num = Integer.parseInt(request.getParameter("num"));
 		int table = Integer.parseInt(request.getParameter("table"));
 		List<VO1> slist0 = (ArrayList<VO1>)request.getSession().getAttribute("slist");
@@ -51,9 +51,10 @@ public class Unit_Controller {
 	
 		request.getSession().setAttribute("slist", slist);
 		
-		mv.setViewName("view_user/2.unitconverter");
+	     mv.setViewName("view_user/2.unitconverter");
 		
 		return mv;
+		
 	}
 	
 	

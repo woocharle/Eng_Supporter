@@ -8,10 +8,8 @@
 	<title>Engineering Support</title>
 </head>
 <body>
-
-		<script type="text/javascript">
-			alert("${msg}");
-		</script>		
-
+	<script type="text/javascript">
+		alert("${msg}");
+	</script>		
 </body>
 </html>

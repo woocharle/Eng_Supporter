@@ -11,7 +11,7 @@ public class PVO2 {
 	private String gtvalve, gbvalve, bvalve, cvalve_1, cvalve_2, avalve_1, avalve_2, pvalve_1, pvalve_2, pvalve_3;
 	private String dvalve, redd, redth, expd, expth;
 	
-	private List<String> size, schedule;
+	private String[] size, schedule;
 	//추가
 	private String reynold, mol, cmpz, cpcv;
 	
@@ -569,22 +569,22 @@ public class PVO2 {
 	}
 
 
-	public List<String> getSize() {
+	public String[] getSize() {
 		return size;
 	}
 
 
-	public void setSize(List<String> size) {
+	public void setSize(String[] size) {
 		this.size = size;
 	}
 
 
-	public List<String> getSchedule() {
+	public String[] getSchedule() {
 		return schedule;
 	}
 
 
-	public void setSchedule(List<String> schedule) {
+	public void setSchedule(String[] schedule) {
 		this.schedule = schedule;
 	}
 

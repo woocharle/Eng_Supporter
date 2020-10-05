@@ -8,32 +8,55 @@
 	 	select count(*) from faq
 	 </select>
 	 
-	 <select id="flist" parameterType="Map" resultType="com.ict.db.VO1">
+	 <select id="flist" parameterType="Map" resultType="com.ict.db.VO3">
 	 	select * 
 	 		from (select row_number() over() as r_no, a.* 
-	 			from (select * from faq order by b_idx) as a ) as tb 
+	 			from (select * from faq order by b_idx) as a order by b_idx desc) as tb 
 	 	where tb.r_no between #{begin} and #{end}
 	 </select>
-	 
-	 <select id="fonelist" parameterType="String" resultType="com.ict.db.VO1">
+
+	 <select id="fonelist" parameterType="String" resultType="com.ict.db.VO3">
 	 	select * from faq
 	 	where b_idx = #{b_idx}
 	 </select>
 	 
-	 <insert id="finsert" parameterType="com.ict.db.VO1">
+	 <insert id="finsert1" parameterType="com.ict.db.VO3">
 	 	insert into faq
-	 	values (NEXT VALUE FOR faq_seq, #{subject}, #{writer}, #{content}, #{filename}, #{pwd}, sysdate(), 0)
+	 	values (NEXT VALUE FOR faq_seq, #{subject}, #{writer}, #{content}, #{pwd}, #{open_close}, sysdate(), #{m_idx})
 	 </insert>
 	 
-	 <update id="fupdate" parameterType="com.ict.db.VO1">
+	 <update id="fupdate1" parameterType="com.ict.db.VO3">
 	 	update faq
-	 	set subject= #{subject}, content=#{content}, filename=#{filename}
+	 	set subject=#{subject}, content=#{content}, open_close=#{open_close}
 	 	where b_idx=#{b_idx}
 	 </update>
 	 
-	 <delete id="fdelete" parameterType="com.ict.db.VO1">
+	 <delete id="fdelete1" parameterType="com.ict.db.VO3">
 	 	delete from faq
 	 	where b_idx=#{b_idx}
+	 </delete>
+	
+	 
+	 <select id="alist" parameterType="String"  resultType="com.ict.db.VO4">
+	 	select * from answer 
+	 	where b_idx = #{b_idx} 
+	 	order by a_idx; 
+	 </select>	
+	
+	 <insert id="finsert2" parameterType="com.ict.db.VO4">
+	 	insert into answer
+	 	values (NEXT VALUE FOR answer_seq, #{writer}, #{a_id}, #{content}, sysdate(), #{b_idx})
+	 </insert>
+	 
+	 <update id="fupdate2" parameterType="com.ict.db.VO4">
+	 	update answer
+	 	set content=#{content}
+	 	where a_idx=#{a_idx}
+	 </update>
+	 
+	 <delete id="fdelete2" parameterType="com.ict.db.VO4">
+	 	delete from answer
+	 	where a_idx=#{a_idx}
 	 </delete>
 	
 
