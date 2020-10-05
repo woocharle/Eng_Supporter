@@ -80,7 +80,6 @@ public class Main_Controller {
 		
 		request.getSession().setAttribute("slist", slist);		
 		
-		
 		return mv;
 	}
 	
@@ -135,7 +134,7 @@ public class Main_Controller {
 					hvo.setDout("6");
 					hvo.setDlist(pipespec.getSize());
 					hvo.setSch("STD");
-					hvo.setSlist(pipespec.getSch());
+					hvo.setSlist(pipespec.getSchedule());
 					
 					list.add(hvo);
 					
@@ -165,10 +164,10 @@ public class Main_Controller {
 					pvo3.setIdx_d(String.valueOf(i+1));
 					
 					pvo2.setSize(pipespec.getSize());
-					pvo2.setSchedule(pipespec.getSch());
+					pvo2.setSchedule(pipespec.getSchedule());
 					
 					pvo3.setSize(pipespec.getSize());
-					pvo3.setSchedule(pipespec.getSch());
+					pvo3.setSchedule(pipespec.getSchedule());
 					
 					pslist.add(pvo2);
 					pdlist.add(pvo3);
@@ -196,10 +195,10 @@ public class Main_Controller {
 					pvo3.setIdx_d(String.valueOf(i+1));
 					
 					pvo2.setSize(pipespec.getSize());
-					pvo2.setSchedule(pipespec.getSch());
+					pvo2.setSchedule(pipespec.getSchedule());
 					
 					pvo3.setSize(pipespec.getSize());
-					pvo3.setSchedule(pipespec.getSch());
+					pvo3.setSchedule(pipespec.getSchedule());
 					
 					pslist.add(pvo2);
 					pdlist.add(pvo3);
@@ -222,7 +221,7 @@ public class Main_Controller {
 				hvo2.setDout("6");
 				hvo2.setDlist(pipespec.getSize());
 				hvo2.setSch("STD");
-				hvo2.setSlist(pipespec.getSch());
+				hvo2.setSlist(pipespec.getSchedule());
 				
 				hlist.add(hvo2);
 		

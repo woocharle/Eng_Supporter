@@ -45,7 +45,7 @@ public class PSV_Controller {
 			 if (i == b_pslist.length) {
 				pvo2.setIdx(String.valueOf(i+1));
 				pvo2.setSize(pipespec.getSize());
-				pvo2.setSchedule(pipespec.getSch());
+				pvo2.setSchedule(pipespec.getSchedule());
 				 
 			 }else {
 				pvo2.setIdx(String.valueOf(i+1));
@@ -60,7 +60,7 @@ public class PSV_Controller {
 				pvo2.setDout(request.getParameter("dout".concat(String.valueOf(i+1))));
 				pvo2.setSize(pipespec.getSize());
 				pvo2.setSchd(request.getParameter("schd".concat(String.valueOf(i+1))));
-				pvo2.setSchedule(pipespec.getSch());
+				pvo2.setSchedule(pipespec.getSchedule());
 				pvo2.setDin(request.getParameter("din".concat(String.valueOf(i+1))));
 				pvo2.setPlen(request.getParameter("plen".concat(String.valueOf(i+1))));
 				pvo2.setWall(request.getParameter("wall".concat(String.valueOf(i+1))));
@@ -167,7 +167,7 @@ public class PSV_Controller {
 			k.setDout(request.getParameter("dout".concat(k.getIdx())));
 			k.setSize(pipespec.getSize());
 			k.setSchd(request.getParameter("schd".concat(k.getIdx())));
-			k.setSchedule(pipespec.getSch());
+			k.setSchedule(pipespec.getSchedule());
 			k.setDin(request.getParameter("din".concat(k.getIdx())));
 			k.setPlen(request.getParameter("plen".concat(k.getIdx())));
 			k.setWall(request.getParameter("wall".concat(k.getIdx())));
@@ -249,7 +249,7 @@ public class PSV_Controller {
 				pvo2.setDout(b_pslist[i].getDout());
 				pvo2.setSize(pipespec.getSize());
 				pvo2.setSchd(b_pslist[i].getSchd());
-				pvo2.setSchedule(pipespec.getSch());
+				pvo2.setSchedule(pipespec.getSchedule());
 				pvo2.setDin(b_pslist[i].getDin());
 				pvo2.setPlen(b_pslist[i].getPlen());
 				pvo2.setWall(b_pslist[i].getWall());
@@ -328,7 +328,7 @@ public class PSV_Controller {
 			k.setDout_d(request.getParameter("dout_d".concat(k.getIdx_d())));
 			k.setSize(pipespec.getSize());
 			k.setSchd_d(request.getParameter("schd_d".concat(k.getIdx_d())));
-			k.setSchedule(pipespec.getSch());
+			k.setSchedule(pipespec.getSchedule());
 			k.setDin_d(request.getParameter("din_d".concat(k.getIdx_d())));
 			k.setPlen_d(request.getParameter("plen_d".concat(k.getIdx_d())));
 			k.setWall_d(request.getParameter("wall_d".concat(k.getIdx_d())));
@@ -436,7 +436,7 @@ public class PSV_Controller {
 			k.setDout(request.getParameter("dout".concat(k.getIdx())));
 			k.setSize(pipespec.getSize());
 			k.setSchd(request.getParameter("schd".concat(k.getIdx())));
-			k.setSchedule(pipespec.getSch());
+			k.setSchedule(pipespec.getSchedule());
 			k.setDin(request.getParameter("din".concat(k.getIdx())));
 			k.setPlen(request.getParameter("plen".concat(k.getIdx())));
 			k.setWall(request.getParameter("wall".concat(k.getIdx())));
@@ -507,7 +507,7 @@ public class PSV_Controller {
 			 if (i == b_pdlist.length) {
 				pvo3.setIdx_d(String.valueOf(i+1));
 				pvo3.setSize(pipespec.getSize());
-				pvo3.setSchedule(pipespec.getSch());
+				pvo3.setSchedule(pipespec.getSchedule());
 				 
 			 }else {
 				pvo3.setIdx_d(String.valueOf(i+1));
@@ -522,7 +522,7 @@ public class PSV_Controller {
 				pvo3.setDout_d(request.getParameter("dout_d".concat(String.valueOf(i+1))));
 				pvo3.setSize(pipespec.getSize());
 				pvo3.setSchd_d(request.getParameter("schd_d".concat(String.valueOf(i+1))));
-				pvo3.setSchedule(pipespec.getSch());
+				pvo3.setSchedule(pipespec.getSchedule());
 				pvo3.setDin_d(request.getParameter("din_d".concat(String.valueOf(i+1))));
 				pvo3.setPlen_d(request.getParameter("plen_d".concat(String.valueOf(i+1))));
 				pvo3.setWall_d(request.getParameter("wall_d".concat(String.valueOf(i+1))));
@@ -630,7 +630,7 @@ public class PSV_Controller {
 			k.setDout_d(request.getParameter("dout_d".concat(k.getIdx_d())));
 			k.setSize(pipespec.getSize());
 			k.setSchd_d(request.getParameter("schd_d".concat(k.getIdx_d())));
-			k.setSchedule(pipespec.getSch());
+			k.setSchedule(pipespec.getSchedule());
 			k.setDin_d(request.getParameter("din_d".concat(k.getIdx_d())));
 			k.setPlen_d(request.getParameter("plen_d".concat(k.getIdx_d())));
 			k.setWall_d(request.getParameter("wall_d".concat(k.getIdx_d())));
@@ -714,7 +714,7 @@ public class PSV_Controller {
 				pvo3.setDout_d(b_pdlist[i].getDout_d());
 				pvo3.setSize(pipespec.getSize());
 				pvo3.setSchd_d(b_pdlist[i].getSchd_d());
-				pvo3.setSchedule(pipespec.getSch());
+				pvo3.setSchedule(pipespec.getSchedule());
 				pvo3.setDin_d(b_pdlist[i].getDin_d());
 				pvo3.setPlen_d(b_pdlist[i].getPlen_d());
 				pvo3.setWall_d(b_pdlist[i].getWall_d());
@@ -794,7 +794,7 @@ public class PSV_Controller {
 			k.setDout(request.getParameter("dout".concat(k.getIdx())));
 			k.setSize(pipespec.getSize());
 			k.setSchd(request.getParameter("schd".concat(k.getIdx())));
-			k.setSchedule(pipespec.getSch());
+			k.setSchedule(pipespec.getSchedule());
 			k.setDin(request.getParameter("din".concat(k.getIdx())));
 			k.setPlen(request.getParameter("plen".concat(k.getIdx())));
 			k.setWall(request.getParameter("wall".concat(k.getIdx())));
@@ -900,7 +900,7 @@ public class PSV_Controller {
 			k.setDout(request.getParameter("dout".concat(k.getIdx())));
 			k.setSize(pipespec.getSize());
 			k.setSchd(request.getParameter("schd".concat(k.getIdx())));
-			k.setSchedule(pipespec.getSch());
+			k.setSchedule(pipespec.getSchedule());
 			k.setDin(request.getParameter("din".concat(k.getIdx())));
 			k.setPlen(request.getParameter("plen".concat(k.getIdx())));
 			k.setWall(request.getParameter("wall".concat(k.getIdx())));
@@ -976,7 +976,7 @@ public class PSV_Controller {
 			k.setDout_d(request.getParameter("dout_d".concat(k.getIdx_d())));
 			k.setSize(pipespec.getSize());
 			k.setSchd_d(request.getParameter("schd_d".concat(k.getIdx_d())));
-			k.setSchedule(pipespec.getSch());
+			k.setSchedule(pipespec.getSchedule());
 			k.setDin_d(request.getParameter("din_d".concat(k.getIdx_d())));
 			k.setPlen_d(request.getParameter("plen_d".concat(k.getIdx_d())));
 			k.setWall_d(request.getParameter("wall_d".concat(k.getIdx_d())));

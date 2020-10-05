@@ -42,7 +42,7 @@ public class Pipeheat_Controller {
 				hvo2.setDout("6");
 				hvo2.setDlist(pipespec.getSize());
 				hvo2.setSch("STD");
-				hvo2.setSlist(pipespec.getSch());
+				hvo2.setSlist(pipespec.getSchedule());
 				
 			} else {
 				hvo2.setIdx(String.valueOf(i + 1));
@@ -90,7 +90,7 @@ public class Pipeheat_Controller {
 				hvo2.setInsul_thick(b_list[i].getInsul_thick());
 				
 				hvo2.setSch(b_list[i].getSch());
-				hvo2.setSlist(pipespec.getSch());
+				hvo2.setSlist(pipespec.getSchedule());
 				hvo2.setPipelen(b_list[i].getPipelen());
 				hvo2.setInsul_con(b_list[i].getInsul_con());
 				
@@ -216,7 +216,7 @@ public class Pipeheat_Controller {
 			k.setInsul_thick(request.getParameter("insul_thick".concat(k.getIdx())));
 			
 			k.setSch(request.getParameter("sch".concat(k.getIdx())));
-			k.setSlist(pipespec.getSch());
+			k.setSlist(pipespec.getSchedule());
 			k.setPipelen(request.getParameter("pipelen".concat(k.getIdx())));
 			k.setInsul_con(request.getParameter("insul_con".concat(k.getIdx())));
 			
@@ -336,7 +336,7 @@ public class Pipeheat_Controller {
 				hvo2.setInsul_thick(b_list[i].getInsul_thick());
 				
 				hvo2.setSch(b_list[i].getSch());
-				hvo2.setSlist(pipespec.getSch());
+				hvo2.setSlist(pipespec.getSchedule());
 				hvo2.setPipelen(b_list[i].getPipelen());
 				hvo2.setInsul_con(b_list[i].getInsul_con());
 				
@@ -466,7 +466,7 @@ public class Pipeheat_Controller {
 				k.setInsul_thick(request.getParameter("insul_thick".concat(idx)));
 				
 				k.setSch(request.getParameter("sch".concat(idx)));
-				k.setSlist(pipespec.getSch());
+				k.setSlist(pipespec.getSchedule());
 				k.setPipelen(request.getParameter("pipelen".concat(idx)));
 				k.setInsul_con(request.getParameter("insul_con".concat(idx)));
 				

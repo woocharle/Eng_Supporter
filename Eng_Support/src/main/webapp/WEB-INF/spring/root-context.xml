@@ -32,9 +32,90 @@
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
 	</bean>
 	
-	<bean id="scala" class="com.ict.model.Scala"></bean>
+	<bean id="scala" class="com.ict.model.Scala">
+		<property name="list1" >
+				<list>
+					<value>mm</value>
+					<value>cm</value>
+					<value>m</value>
+					<value>km</value>
+					<value>in</value>
+					<value>ft</value>			
+				</list>
+		</property>
+		<property name="list2" >
+				<list>
+					<value>m/s</value>
+					<value>km/h</value>
+					<value>ft/s</value>
+					<value>ft/min</value>
+					<value>mph</value>
+				</list>
+		</property>
+		<property name="list3" >
+				<list>
+					<value>C˚(Celsius)</value>
+					<value>F˚(Fahrenheit)</value>
+					<value>K(Kelvin)</value>
+					<value>R(Rankine)</value>
+				</list>
+		</property>
+		<property name="list4" >
+				<list>
+					<value>Pa</value>
+					<value>kPa</value>
+					<value>bar</value>
+					<value>atm</value>
+				</list>
+		</property>
+		<property name="list5" >
+				<list>
+					<value>g</value>
+					<value>kg</value>
+					<value>t</value>
+					<value>mg</value>
+					<value>lb</value>
+				</list>
+		</property>	
+	</bean>
 	
-	<bean id="piping" class="com.ict.model.Pipespec"></bean>
+	<bean id="piping" class="com.ict.model.Pipespec">
+		<property name="list1" >
+			<list>
+				<value>1/8</value> <value>1/4</value> <value>3/8</value> <value>1/2</value> 
+				<value>3/4</value> <value>1</value> <value>1 1/4</value> <value>1 1/2</value> 
+				<value>2</value> <value>2 1/2</value> <value>3</value> <value>3 1/2</value> 
+				<value>4</value> <value>5</value> <value>6</value> <value>8</value> 
+				<value>10</value> <value>12</value> <value>14</value> <value>16</value>
+				<value>18</value> <value>20</value> <value>22</value> <value>24</value> 
+				<value>26</value> <value>28</value> <value>30</value> <value>32</value> 
+				<value>34</value> <value>36</value> 		
+			</list>
+		</property>
+		<property name="schedule" >
+			<list>
+				<value>STD</value>
+				<value>40</value> 
+				<value>80</value> 
+				<value>160</value> 
+				<value>XS</value> 
+				<value>XXS</value> 
+				<value>5S</value> 
+				<value>10S</value> 
+				<value>40S</value> 
+				<value>80S</value> 
+				<value>10</value> 
+				<value>20</value> 
+				<value>30</value> 
+				<value>60</value> 
+				<value>100</value>
+				<value>120</value> 
+				<value>140</value> 		
+			</list>
+		</property>		
+	
+	
+	</bean>
 	
 	<bean id="paging" class="com.ict.model.Paging"></bean>
 
@@ -46,5 +127,9 @@
 		  <property name="maxUploadSize" value="104857600"></property>
 	
 	</bean>
+		
+	<!-- UnitConverter -->	
+
+		
 		
 </beans>

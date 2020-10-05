@@ -17,7 +17,7 @@ public class HVO2 {
 	private String eql_len, g_temp, in_coeff, soil_temp, out_coeff, out_temp, in_coeff_1, sur_temp, in_coeff_2, diff_temp;
 	
 	
-	private List<String> dlist, slist;
+	private String[] dlist, slist;
 
 	public HVO2() {}
 	
@@ -890,22 +890,22 @@ public class HVO2 {
 	}
 
 
-	public List<String> getDlist() {
+	public String[] getDlist() {
 		return dlist;
 	}
 
 
-	public void setDlist(List<String> dlist) {
+	public void setDlist(String[] dlist) {
 		this.dlist = dlist;
 	}
 
 
-	public List<String> getSlist() {
+	public String[] getSlist() {
 		return slist;
 	}
 
 
-	public void setSlist(List<String> slist) {
+	public void setSlist(String[] slist) {
 		this.slist = slist;
 	}
 

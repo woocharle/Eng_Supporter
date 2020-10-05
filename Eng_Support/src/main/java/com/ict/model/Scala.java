@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Scala {
-	private ArrayList<String> list1 = new ArrayList<String>(Arrays.asList("mm", "cm", "m", "km", "in", "ft"));
-	private ArrayList<String> list2 = new ArrayList<String>(Arrays.asList("m/s", "km/h", "ft/s", "ft/min", "mph"));
-	private ArrayList<String> list3 = new ArrayList<String>(Arrays.asList("C˚(Celsius)", "F(Fahrenheit)", "K(Kelvin)", "R(Rankine)"));
-	private ArrayList<String> list4 = new ArrayList<String>(Arrays.asList("Pa", "kPa", "bar", "atm"));
-	private ArrayList<String> list5 = new ArrayList<String>(Arrays.asList("g","kg", "t", "mg", "lb"));
+	private String[] list1;
+	private String[] list2;
+	private String[] list3;
+	private String[] list4;
+	private String[] list5;
 
-	public ArrayList<String> getList(String unit){
-		ArrayList<String> list = null;
+	public String[] getList(String unit){
+		String[] list = null;
 		
 		switch (unit) {
 			case "1": list = list1; break; //길이
@@ -20,11 +20,59 @@ public class Scala {
 			case "4": list = list4; break; //압력
 			case "5": list = list5; break; //질량
 		
-			default: list = list1; break;
+			//default: list = list1; break;
 		}
 		
 		return list;
-		
+	}
+
+	
+	public String[] getList1() {
+		return list1;
+	}
+
+	public void setList1(String[] list1) {
+		this.list1 = list1;
+	}
+
+
+	public String[] getList2() {
+		return list2;
+	}
+
+
+	public void setList2(String[] list2) {
+		this.list2 = list2;
+	}
+
+
+	public String[] getList3() {
+		return list3;
+	}
+
+
+	public void setList3(String[] list3) {
+		this.list3 = list3;
+	}
+
+
+	public String[] getList4() {
+		return list4;
+	}
+
+
+	public void setList4(String[] list4) {
+		this.list4 = list4;
+	}
+
+
+	public String[] getList5() {
+		return list5;
+	}
+
+
+	public void setList5(String[] list5) {
+		this.list5 = list5;
 	}
 	
 }

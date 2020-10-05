@@ -8,14 +8,16 @@
 	<meta charset="UTF-8">
 	<title> Engineering Support </title>
 	<style type="text/css">
-		.unit {margin: 0px auto; width: 1500px; margin-bottom: 10px; overflow: auto;}
-		.unit > h2{
+		#unit1 {margin: 0px auto; width: 1500px; margin-bottom: 10px;}
+		#unit1 h2{
 			position: relative;
 			left: 100px;
 			font-size: 40px; 
 			margin: 20px 0px 80px 0px;
 		}
-		.unit>form>input {width: 180px; height: 35px; font-size: 20px;}
+		
+		#unit2 {margin: 0px auto; width: 1500px; margin-bottom: 10px; overflow: auto;}
+		#unit2 input {width: 180px; height: 35px; font-size: 20px;}
 		
 		#add_chart {
 			position: relative;
@@ -86,7 +88,7 @@
 	<jsp:include page="0.header.jsp" />
 
 	<br><br>
-	<div class ="unit">
+	<div id ="unit1">
 		<h2> Unit Converter</h2>
 		<form method="post">	
 			<input type="hidden" name="table_1" value="${table}">
@@ -97,7 +99,7 @@
 	</div>
 	
 	
-	<div class ="unit">
+	<div id ="unit2">
 		<c:forEach var="n"  items="${slist}">
 			<div id="unitcvt">
 				<form method="post">
