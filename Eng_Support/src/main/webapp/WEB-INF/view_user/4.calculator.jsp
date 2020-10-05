@@ -16,12 +16,17 @@
 			clear: none;
 			
 		}
+		
+		.intro{width: 75%; height: 1400px; position: relative; left: 400px; bottom: 1520px; overflow: auto;}
+		
+		
 		 h2 {position: relative; left: 20px; font-size: 40px;}
 		.browser{position: relative; left: 60px; }
-		.browser h4{position: relative; left: 40px;}
+		.browser h3{position: relative; font-size: 30px; margin-bottom: 40px;}
+		.browser h4{position: relative; left: 40px; font-size: 25px; margin-bottom: 30px;}
+		.browser p{position: relative; left:60px; font-size: 22px; margin-bottom: 30px; width:950px;}
+
 		
-		 .intro{width: 75%; height: 1400px; position: relative; left: 400px; bottom: 1430px;}
-		 .intro h3{position: relative; left: 40px; font-size: 30px; margin-bottom: 50px;}
 		 .intro table{position: relative; left: 60px; font-size: 20px; margin-bottom: 50px;}
 		
 		 #list{width: 25%; height: 1400px; position: relative; left:10px;}
@@ -74,44 +79,62 @@
 	
 	<c:if test="${cal eq 'Intro'}">
 		<div class="intro" >
-			<h3>Introduce </h3>
-
-			<article class="browser">
-				<h3>Simple Calculation</h3>
-				<p>
-					구와 원통의 부피와 넓이를....
-				</p>
-			
-			</article>
+			<h2>Introduce </h2>
 			
 			<article class="browser">
 				<h3>Hydraulic</h3>
 				<h4>Line Hydraulic</h4>
 					<p>
-						
+						&lt;사용 목적&gt;<br>
+						측정한 Line을 지나갈 때 높이 수드 및 마찰 손실 수두 합한 총 손실 수두를 구하는 것이다. 
 					</p>
 			
 				<h4>Pump Hydraulic</h4>
 					<p>
-						
+						&lt;사용 목적&gt;<br>
+  						Pump는 NPSHA, Suction Pressure, Discharger Pressure과 Difference Head 등 Process 관련 
+  						Specification을 기계팀에서 제시하여 펌프 Vender와 협의하여 Pump를 제작할 수 있도록 한다. 
+  						<br><br>
+  						&lt;주요 용어&gt;<br>
+  						- NPSHA:  펌프의 공동화현상(Cavitaion)의 발생 가능성을 점검하는 척도  <br>
+  						- Cavitation: 유체의 속도 변화로 인한 압력변화로 기포가 생기는 현상 impeller를 손상시킨다.<br>
+  						- Suction Press: Pump에 압력 변화<br>
+  						- Discharge Press: Pump가 유체를 전송할 Vessel로 보내는데 필요한 압력. <br>
+  						- Differential Head: Discharge Press - Suction Press
 					</p>
 				
 				<h4>PSV Hydraulic</h4>
 					<p>
-						
+						PSV(Pressure Safety Valve)는 Vessel 내부 압력이 설계한 압력을 초과하여 기체를 다른 Vessel에 
+						보낼 경우에만 Open을 한다.<br>
+						PSV가 Suction을 하거나 Discharge할 때 손실 되는 수두가 커지면 Vessel 및 PSV가 손상이 될 수 
+						있기 때문에 Line의 Size 및 길이를 조정해야 된다.
 					</p>
-				
-			</article>
 			
+				<h4>Notice</h4>
+					<p>
+						기체와 액체의 혼합인 2Phase일 때 계산하는 경우가 있는데 Open이 잘 되지 않아서 찾기 힘들고 비용을 
+						지불해야되는 자료가 있어서 구현하지 못했다.<br>
+					 	Non-Newton fluid는 Newton fluid 나 Newton fluid와 거의 비슷한 양상을 보이는 fluid와
+					 	Reynolds Number를 구하는 방법이 다르다. Non-Newton fluid의 Reynolds Number를 구하는 공식을 찾고
+					 	정리하는데 시간이 많이 소요되서 정리가 되면 올릴 예정이다. 				
+					</p>
+					<br>
+			</article>
 			<article class="browser">
 				<h3>Heat Transfer</h3>
 				<h4>Pipe Heat Transfer</h4>
 					<p>
-						
+						&lt;사용 목적&gt;<br>
+						파이프가 지나가면 외부와 열교환을 하는 데 열에 의해 부피가 팽창되거나 상(Phase)가 변할 수 있는 
+						fluid가 있기 때문에 그에 대한 조치가 필요여부를 판단하는데 필요하다. 
 					</p>
 				<h4>Tank Heat Transfer</h4>
 					<p>
-						
+						&lt;사용 목적&gt;<br>
+						Tank에 있는 fluid가 열교환을 하는데 그것으로 팽창을 하거나 수축을 하여 내부 압력에 영향을 줄 정도로
+						팽창과 수축에 압력이 잘 변하는 fluid가 있다. 그래서 Heating Coil로 온도를 유지하기 위해 계절에 따른 
+						온도 변화량을 측정하는 것이다.
 					</p>
 			
 			</article>
@@ -120,6 +143,7 @@
 			<article class="browser">
 				<h3>참고문헌</h3>
 				<p>
+					Wiki백과사전<br>
 					
 				</p>
 			
@@ -154,11 +178,11 @@
 					</tr>
 					<tr>
 						<td rowspan="2"><input type="button" value="calculate">
-						<td>Volumn</td>
+						<td>Volume</td>
 						<td><input type="number">m<sup>3</sup></td>
 					</tr>
 					<tr>
-						<td>Wetted Volumn</td><td><input type="number">m<sup>3</sup></td>
+						<td>Wetted Volume</td><td><input type="number">m<sup>3</sup></td>
 					</tr>
 		
 				</tbody>
