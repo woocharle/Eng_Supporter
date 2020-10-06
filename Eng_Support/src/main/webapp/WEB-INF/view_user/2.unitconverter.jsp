@@ -9,14 +9,11 @@
 	<title> Engineering Support </title>
 	<style type="text/css">
 		#unit1 {margin: 0px auto; width: 1500px; margin-bottom: 10px;}
-		#unit1 h2{
-			position: relative;
-			left: 100px;
-			font-size: 40px; 
-			margin: 20px 0px 80px 0px;
-		}
+		#unit1 h2{position: relative;left: 100px; font-size: 40px; margin: 20px 0px 80px 0px;}
+		#unit1 input{width:180px; font-size: 25px;}
 		
-		#unit2 {margin: 0px auto; width: 1500px; margin-bottom: 10px; overflow: auto;}
+		
+		#unit2 {margin: 0px auto; width: 1500px; padding-top:20px;  margin-bottom: 40px; overflow: auto;}
 		#unit2 input {width: 180px; height: 35px; font-size: 20px;}
 		
 		#add_chart {

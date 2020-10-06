@@ -236,6 +236,9 @@ public class Main_Controller {
 		return mv;
 	}
 	
+	
+	
+	
 	@RequestMapping(value="mypage.do", method=RequestMethod.GET)
 	public ModelAndView mypage_Cmd(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();

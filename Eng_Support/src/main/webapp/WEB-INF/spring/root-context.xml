@@ -80,6 +80,7 @@
 	</bean>
 	
 	<bean id="pipespec" class="com.ict.model.Pipespec">
+
 		<property name="size" >
 			<list>
 				<value>1/8</value> <value>1/4</value> <value>3/8</value> <value>1/2</value> 
@@ -130,6 +131,4 @@
 		
 	<!-- UnitConverter -->	
 
-		
-		
 </beans>
