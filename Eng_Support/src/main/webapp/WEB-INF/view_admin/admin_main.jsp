@@ -48,7 +48,7 @@
 		}
 		
 		function petro_go() {
-			location.href="plist_go.do"	
+			location.href="plist_go.do";	
 		} 
 		
 		

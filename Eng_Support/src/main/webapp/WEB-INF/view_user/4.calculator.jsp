@@ -76,7 +76,7 @@
 				var area2 = 2 * pi * (dia/2) * wet;
 				area2 = parseInt(area2 * 100) / 100;
 				
-				var vol1 = parseInt(4 * pi * Math.pow(dia/2,3) * 100 / 3) / 100;			
+				var vol1 = parseInt(4 * pi * Math.pow(dia/2, 3) * 100 / 3) / 100;			
 				var vol2 = 0;
 				if(wet > dia/2){
 					var len = wet - dia/2;
@@ -87,7 +87,7 @@
 				
 				}else if (wet < dia/2){
 					var len = wet - dia/2;
-					vol2 = pi * (Math.pow(dia/2,2) * (wet) - (Math.pow(len,3)-Math.pow((-1 * dia/2),3)) / 3);
+					vol2 = pi * (Math.pow(dia/2,2) * (wet) - (Math.pow(len,3)-Math.pow((-1 * dia/2), 3)) / 3);
 					
 				}
 				

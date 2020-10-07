@@ -73,6 +73,12 @@ public class Main_Controller {
 			vo1.setIdx(i+1);
 			vo1.setScala(String.valueOf(1));
 			vo1.setList(scala.getList(vo1.getScala()));
+
+			String[] list = vo1.getList();
+			
+			vo1.setScala1(list[0]);
+			vo1.setScala2(list[0]);
+			
 			slist.add(vo1);
 		}
 		

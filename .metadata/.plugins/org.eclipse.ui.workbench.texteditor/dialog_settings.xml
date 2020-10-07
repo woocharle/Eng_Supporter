@@ -4,10 +4,17 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="#cylinder"/>
+		<item key="selection" value="double"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="Double"/>
+			<item value="int"/>
+			<item value="num"/>
+			<item value="${num}"/>
+			<item value="int[]"/>
+			<item value="l_list"/>
+			<item value="table_1"/>
 			<item value="#sphere"/>
 			<item value="pipespec"/>
 			<item value=".getSch()"/>
@@ -16,15 +23,13 @@
 			<item value="revise"/>
 			<item value="class=&quot;paging"/>
 			<item value="class=paging"/>
-			<item value="login_ok"/>
-			<item value="style=&quot;width: 30%; text-align: left;&quot;"/>
-			<item value="getMember"/>
-			<item value="getCheck"/>
-			<item value="check"/>
-			<item value="(&quot;"/>
-			<item value="request.getParameter"/>
 		</list>
 		<list key="replacehistory">
+			<item value="double"/>
+			<item value="String"/>
+			<item value="Double"/>
+			<item value="Double[]"/>
+			<item value="length"/>
 			<item value="#cylinder"/>
 			<item value=".getSchedule()"/>
 			<item value="String[]"/>
@@ -35,9 +40,6 @@
 			<item value=".concat(k.getIdx())"/>
 			<item value="idx"/>
 			<item value="k."/>
-			<item value="hvo2."/>
-			<item value="/th"/>
-			<item value="&lt;th&gt;"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
