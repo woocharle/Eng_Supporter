@@ -45,7 +45,8 @@ public class Unit_Controller {
 				String[] list = vo1.getList();
 				vo1.setScala1(list[0]);
 				vo1.setScala2(list[0]);		
-				
+				vo1.setUnit1("");
+				vo1.setUnit2("");				
 
 			} else {
 				vo1.setScala(b_slist[i].getScala());
@@ -85,17 +86,21 @@ public class Unit_Controller {
 			
 			if(i == table - 1) {
 				vo1.setScala("1");
+				vo1.setList(scala.getList(vo1.getScala()));
+				String[] list = vo1.getList();
+				vo1.setScala1(list[0]);
+				vo1.setScala2(list[0]);		
+				vo1.setUnit1("");
+				vo1.setUnit2("");					
 
 			} else {
 				vo1.setScala(b_slist[i].getScala());
+				vo1.setList(scala.getList(vo1.getScala()));
+				vo1.setScala1(b_slist[i].getScala1());
+				vo1.setScala2(b_slist[i].getScala2());
+				vo1.setUnit1(b_slist[i].getUnit1());
+				vo1.setUnit2(b_slist[i].getUnit2());				
 			}
-			
-			vo1.setList(scala.getList(vo1.getScala()));
-			
-			String[] list = vo1.getList();
-			
-			vo1.setScala1(list[0]);
-			vo1.setScala2(list[0]);
 			
 			slist.add(vo1);
 		}
@@ -172,10 +177,17 @@ public class Unit_Controller {
 			
 			for (VO1 k : slist) {
 				if(k.getIdx() == idx) {
-					double[] con = scala.getConversion1(scala1);  
 					int num = scala.getConversion2(k.getScala(), scala2);
-					Double trans = con[num];
-					unit2 = unit1 * trans;
+				
+					if(k.getScala().equals("3")) {
+						unit2 = scala.getConversion3(scala1, num, unit1);
+						
+					}else {
+						double[] con = scala.getConversion1(scala1);  
+						double trans = con[num];
+						unit2 = unit1 * trans;
+					}
+					
 					k.setScala1(scala1);
 					k.setScala2(scala2);
 					int unit0 = (int)unit1; 
@@ -192,7 +204,7 @@ public class Unit_Controller {
 						
 					}
 					
-					k.setUnit2(String.valueOf(Math.round(unit2 * 100000000)/100000000.0));
+					k.setUnit2(String.valueOf(Math.round(unit2 * 1000000000)/1000000000.0));
 					
 				}
 				
@@ -201,7 +213,8 @@ public class Unit_Controller {
 			request.getSession().setAttribute("slist", slist);
 			
 		} catch (Exception e) {
-			if(unit.equals("") || unit == null) {
+			System.out.println(e);
+			if(unit.equals("") || unit == null || unit.equals("-")) {
 				for (VO1 k : slist) {
 					if(k.getIdx() == idx) {
 

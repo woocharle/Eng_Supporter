@@ -126,7 +126,7 @@
 					<select name="scala" id="choice" onchange="scala_go(this.form)"> <!-- 하나만 선택 -->
 	  	  			   <option value="1" <c:if test="${n.scala eq '1'}"> selected </c:if>> 길이 (Length)</option>					
 		               <option value="2" <c:if test="${n.scala eq '2'}"> selected </c:if>> 속도 (Velocity)</option>		  	
-	  	 			   <option value="3" <c:if test="${n.scala eq '3'}"> selected </c:if>> 온도 (Temperature)</option>
+		               <option value="3" <c:if test="${n.scala eq '3'}"> selected </c:if>> 온도 (Temperature)</option>		  	
 	  	 			   <option value="4" <c:if test="${n.scala eq '4'}"> selected </c:if>> 압력 (Pressure)</option>
 	  	 			   <option value="5" <c:if test="${n.scala eq '5'}"> selected </c:if>> 무게 (Weight)</option>
 			  		 </select>
