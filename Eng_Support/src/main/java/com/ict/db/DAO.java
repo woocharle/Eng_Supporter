@@ -31,25 +31,25 @@ public class DAO {
 	
 	// 1.회원관리
 	// member_admin 
-	public List<MVO> getmlist(Paging paging) {
+	public List<VO1> getmlist(Paging paging) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("begin", paging.getBegin());
 		map.put("end", paging.getEnd());
 		
-		List<MVO> mlist = sqlSessionTemplate.selectList("mlist", map);
+		List<VO1> mlist = sqlSessionTemplate.selectList("mlist", map);
 		
 		return mlist;
 	}
 
 	
-	public MVO getMonelist(String idx) {
-		MVO mvo = sqlSessionTemplate.selectOne("monelist", idx);
+	public VO1 getMonelist(String idx) {
+		VO1 mvo = sqlSessionTemplate.selectOne("monelist", idx);
 		return mvo;
 	}
 	
 	// login
-	public MVO getMember(String m_id) {
-		MVO mvo = sqlSessionTemplate.selectOne("onelist_m", m_id);
+	public VO1 getMember(String m_id) {
+		VO1 mvo = sqlSessionTemplate.selectOne("onelist_m", m_id);
 		return mvo;
 	}
 	
@@ -70,7 +70,7 @@ public class DAO {
 	}
 	
 	// 회원가입
-	public int getmIDU(MVO mvo, String mth) {
+	public int getmIDU(VO1 mvo, String mth) {
 		int result = 0;
 		
 		switch (mth) {

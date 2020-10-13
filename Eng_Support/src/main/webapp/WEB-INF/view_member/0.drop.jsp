@@ -52,7 +52,7 @@
 					<tr>
 						<td class="tb">비밀번호</td>
 						<td><input type="password" id="비밀번호" name="m_pass">
-							<input type="hidden" id="비밀번호" name="m_pw0" value="${mvo.m_pw}"/>
+							<input type="hidden" id="비밀번호" name="m_pw0" value="${vo1.m_pw}"/>
 						</td>
 					</tr>	
 				</tbody>

@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.db.DAO;
-import com.ict.db.MVO;
+import com.ict.db.VO1;
 import com.ict.db.VO2;
 import com.ict.model.Paging;
 
@@ -80,7 +80,7 @@ public class Admin_Controller {
 			paging.setEndBlock(paging.getTotalPage());
 		}
 		
-		List<MVO> mlist = dao.getmlist(paging);
+		List<VO1> mlist = dao.getmlist(paging);
 		request.setAttribute("mlist", mlist);
 		request.setAttribute("paging", paging);
 		
@@ -94,9 +94,9 @@ public class Admin_Controller {
 		ModelAndView mv = new ModelAndView();
 		String idx = request.getParameter("idx");
 		String cPage = request.getParameter("cPage");
-		MVO mvo = dao.getMonelist(idx);
+		VO1 vo1 = dao.getMonelist(idx);
 		
-		request.getSession().setAttribute("mvo", mvo);
+		request.getSession().setAttribute("vo1", vo1);
 		request.getSession().setAttribute("cPage", cPage);
 		mv.setViewName("view_admin/admin_monelist");
 		

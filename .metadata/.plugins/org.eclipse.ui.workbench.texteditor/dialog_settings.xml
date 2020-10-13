@@ -4,47 +4,47 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="= mass"/>
+		<item key="selection" value="heat"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="temp"/>
+			<item value="spheat"/>
+			<item value="temp_liq, temp_vap, temp_air"/>
+			<item value="value=&quot;{}&quot;"/>
+			<item value="value=&quot;&quot;"/>
+			<item value="mtl_"/>
+			<item value="readonly"/>
+			<item value="mvo"/>
+			<item value="vo1"/>
+			<item value="mvo."/>
 			<item value="= vel"/>
 			<item value="length"/>
 			<item value="Double"/>
 			<item value="int"/>
 			<item value="num"/>
-			<item value="${num}"/>
-			<item value="int[]"/>
-			<item value="l_list"/>
-			<item value="table_1"/>
-			<item value="#sphere"/>
-			<item value="pipespec"/>
-			<item value=".getSch()"/>
-			<item value="List&lt;String&gt;"/>
-			<item value="cPage"/>
-			<item value="revise"/>
 		</list>
 		<list key="replacehistory">
+			<item value="heat"/>
+			<item value="area"/>
+			<item value="ocf"/>
+			<item value="ceff"/>
+			<item value="den"/>
+			<item value="vis"/>
+			<item value="value=&quot;${}&quot;"/>
+			<item value="value=&quot;{}&quot;"/>
+			<item value="thcon_"/>
+			<item value="thick_"/>
+			<item value="vo1"/>
+			<item value="uvo"/>
+			<item value="vo1."/>
 			<item value="= mass"/>
 			<item value="vel"/>
-			<item value="double"/>
-			<item value="String"/>
-			<item value="Double"/>
-			<item value="Double[]"/>
-			<item value="length"/>
-			<item value="#cylinder"/>
-			<item value=".getSchedule()"/>
-			<item value="String[]"/>
-			<item value="drop"/>
-			<item value="class=&quot;tb&quot;"/>
-			<item value="b_list[i]"/>
-			<item value=""/>
-			<item value=".concat(k.getIdx())"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1128"/>
-		<item key="DIALOG_Y_ORIGIN" value="215"/>
+		<item key="DIALOG_X_ORIGIN" value="625"/>
+		<item key="DIALOG_Y_ORIGIN" value="228"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

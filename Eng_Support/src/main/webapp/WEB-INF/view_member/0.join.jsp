@@ -81,17 +81,17 @@
 				<tbody>
 					<tr>
 						<td style="width: 30%; text-align: left;">이름</td>
-						<td><input type="text" id="이름" name="m_name" value="${mvo.m_name}"></td>
+						<td><input type="text" id="이름" name="m_name" value="${vo1.m_name}"></td>
 						<td></td>
 					</tr>	
 					<tr>
 						<td style="width: 30%; text-align: left;">소속</td>
-						<td><input type="text" id="소속" name="m_com" value="${mvo.m_com}"></td>
+						<td><input type="text" id="소속" name="m_com" value="${vo1.m_com}"></td>
 						<td></td>
 					</tr>	
 					<tr>
 						<td style="width: 30%; text-align: left;">아이디</td>
-						<td><input type="text" id="아이디" name="m_id" value="${mvo.m_id}"></td>
+						<td><input type="text" id="아이디" name="m_id" value="${vo1.m_id}"></td>
 						<td style="width: 20%"><input type="button" value="중복확인" style="width:100px;" onclick="check_ok(this.form)"></td>
 					</tr>
 					<c:if test="${id_chk1 eq 'yes'}">
@@ -106,7 +106,7 @@
 					</c:if>
 					<tr>
 						<td style="width: 30%; text-align: left;">비밀번호</td>
-						<td><input type="password" id="비밀번호" name="m_pw" value="${mvo.m_pw}"></td>
+						<td><input type="password" id="비밀번호" name="m_pw" value="${vo1.m_pw}"></td>
 						<td></td>
 					</tr>	
 					<tr>
@@ -117,12 +117,12 @@
 					
 					<tr>
 						<td style="width: 30%; text-align: left;">이메일</td>
-						<td><input type="text" id="이메일" name="m_email" value="${mvo.m_email}"></td>
+						<td><input type="text" id="이메일" name="m_email" value="${vo1.m_email}"></td>
 						<td></td>
 					</tr>	
 					<tr>
 						<td style="width: 30%; text-align: left;">연락처</td>
-						<td><input type="text" id="연락처" name="m_phone" value="${mvo.m_email}"></td>
+						<td><input type="text" id="연락처" name="m_phone" value="${vo1.m_email}"></td>
 						<td></td>
 					</tr>	
 					<tr><td colspan="3"></td></tr>
