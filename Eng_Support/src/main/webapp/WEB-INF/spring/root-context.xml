@@ -377,6 +377,24 @@
 	
 	<bean id="paging" class="com.ict.model.Paging"></bean>
 
+	<bean id="tank" class="com.ict.model.Tank">
+		<property name="em_map">
+			<map>
+				<entry key="common" value="0.9"/>
+				<entry key="alumi" value="0.05~0.1"/>
+				<entry key="steel"  value="0.27~0.6"/>
+				<entry key="paper" value="0.9~0.94"/>
+				<entry key="enamel" value="0.92"/>
+				<entry key="wood" value="0.82~0.92"/>
+				<entry key="black1" value="0.82~0.88"/>
+				<entry key="black2" value="0.92~0.98"/>
+				<entry key="black3" value="0.77~0.96"/>
+				<entry key="black4" value="0.27~0.69"/>
+				<entry key="black5" value="0.51"/>
+			</map>
+		</property>		
+	
+	</bean>
 	
 	<!-- 파일 I/O -->
 	<bean id="multipartResolver" 

@@ -14,18 +14,25 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ict.db.HVO2;
 import com.ict.db.TVO;
 import com.ict.model.Pipespec;
+import com.ict.model.Tank;
 
 @Controller
 public class Heat_Controller {
 	private Pipespec pipespec;
+	private Tank tank;
 
 	@Autowired
 	public void setPipespec(Pipespec pipespec) {
 		this.pipespec = pipespec;
 	}
 	
-	//1.pipe
+	@Autowired
+	public void setTank(Tank tank) {
+		this.tank = tank;
+	}
 	
+	//1.pipe
+
 	@RequestMapping(value="pipeheat_add.do", method=RequestMethod.POST)
 	public ModelAndView lineadd_Cmd(HVO2 hvo2, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
@@ -547,14 +554,215 @@ public class Heat_Controller {
 	@RequestMapping(value="tankheat_cal.do", method=RequestMethod.POST)
 	public ModelAndView tankheat_cal_Cmd(HttpServletRequest request, TVO tvo) {
 		ModelAndView mv = new ModelAndView();
+		String cal = request.getParameter("cal");
+		tvo = (TVO)request.getSession().getAttribute("tvo");
+		
+		tvo.setItemno(request.getParameter("itemno"));
+		tvo.setVel_wind(request.getParameter("vel_wind"));
+		tvo.setStype(request.getParameter("stype"));
+		System.out.println(tvo.getStype());
+		tvo.setEm1(tank.getEm_map().get(tvo.getStype()));
+		tvo.setEm2(request.getParameter("em2"));
+		tvo.setTemp_sur(request.getParameter("temp_sur"));
+		tvo.setCon_sur(request.getParameter("con_sur"));
+		tvo.setTtype(request.getParameter("ttype"));
+		tvo.setTdia(request.getParameter("tdia"));
+		tvo.setBtype(request.getParameter("btype"));
+		tvo.setTlen(request.getParameter("tlen"));
+		tvo.setHtype(request.getParameter("htype"));
+		tvo.setWtlen(request.getParameter("wtlen"));
+		tvo.setLtype(request.getParameter("ltype"));
+		tvo.setTroof(request.getParameter("troof"));
+		
+		tvo.setMtl_body(request.getParameter("mtl_body"));
+		tvo.setMtl_sinsul(request.getParameter("mtl_sinsul"));
+		tvo.setMtl_rinsul(request.getParameter("mtl_rinsul"));
+		tvo.setMtl_binsul(request.getParameter("mtl_binsul"));
+		
+		tvo.setThick_body(request.getParameter("thick_body"));
+		tvo.setThick_sinsul(request.getParameter("thick_sinsul"));
+		tvo.setThick_rinsul(request.getParameter("thick_rinsul"));
+		tvo.setThick_binsul(request.getParameter("thick_binsul"));
+		
+		tvo.setThcon_body(request.getParameter("thcon_body"));
+		tvo.setThcon_sinsul(request.getParameter("thcon_sinsul"));
+		tvo.setThcon_rinsul(request.getParameter("thcon_rinsul"));
+		tvo.setThcon_binsul(request.getParameter("thcon_binsul"));
+		
+		tvo.setFcoeff_drywall(request.getParameter("fcoeff_drywall"));
+		tvo.setFcoeff_wetwall(request.getParameter("fcoeff_wetwall"));
+		tvo.setFcoeff_roof(request.getParameter("fcoeff_roof"));
+		tvo.setFcoeff_bottom(request.getParameter("fcoeff_bottom"));
+		
+		tvo.setTemp_liq(request.getParameter("temp_liq"));
+		tvo.setTemp_vap(request.getParameter("temp_vap"));
+		tvo.setTemp_air(request.getParameter("temp_air"));
+		
+		tvo.setThm_liq(request.getParameter("thm_liq"));
+		tvo.setThm_vap(request.getParameter("thm_vap"));
+		tvo.setThm_air(request.getParameter("thm_air"));
+		
+		tvo.setSpheat_liq(request.getParameter("spheat_liq"));
+		tvo.setSpheat_vap(request.getParameter("spheat_vap"));
+		tvo.setSpheat_air(request.getParameter("spheat_air"));
+		
+		tvo.setVis_liq(request.getParameter("vis_liq"));
+		tvo.setVis_vap(request.getParameter("vis_vap"));
+		tvo.setVis_air(request.getParameter("vis_air"));
+		
+		tvo.setDen_liq(request.getParameter("den_liq"));
+		tvo.setDen_vap(request.getParameter("den_vap"));
+		tvo.setDen_air(request.getParameter("den_air"));
+		
+		tvo.setCeff_liq(request.getParameter("ceff_liq"));
+		tvo.setCeff_vap(request.getParameter("ceff_vap"));
+		tvo.setCeff_air(request.getParameter("ceff_air"));		
+				
+		//계산하기
+		//1. 변수명 짓기 및 데이터 가공 
+		//온도
+		double temp_liq = change(tvo.getTemp_liq()) * 9/5 + 32;   
+		double temp_vap = change(tvo.getTemp_liq()) * 9/5 + 32;   
+		double temp_air = change(tvo.getTemp_liq()) * 9/5 + 32;   
+		
+		double thm_liq = change(tvo.getThm_liq())/1.488164;
+		double thm_vap = change(tvo.getThm_vap())/1.488164;   
+		double thm_air = change(tvo.getThm_air())/1.488164; 
+		
+		double spheat_liq = change(tvo.getSpheat_liq());
+		double spheat_vap = change(tvo.getSpheat_vap());
+		double spheat_air = change(tvo.getSpheat_air());
+		
+		double vis_liq = change(tvo.getVis_liq());
+		double vis_vap = change(tvo.getVis_vap());
+		double vis_air = change(tvo.getVis_air());
+		
+		double den_liq = change(tvo.getDen_liq())*Math.pow(0.3048, 3)/0.4536;
+		double den_vap = change(tvo.getDen_vap())*Math.pow(0.3048, 3)/0.4536;
+		double den_air = change(tvo.getDen_air())*Math.pow(0.3048, 3)/0.4536;
+		
+		double ceff_liq = change(tvo.getCeff_liq())/1.8;
+		double ceff_vap = change(tvo.getCeff_vap())/1.8;
+		double ceff_air = change(tvo.getCeff_air())/1.8;
+		
+		double vel_wind = change(tvo.getVel_wind())/0.44704;
+		double em = change(tvo.getEm2());
+		double temp_sur = change(tvo.getTemp_sur()) * 9/5 + 32;
+		double con_sur = change(tvo.getCon_sur()) / 1.488164;
+		
+		double fcoeff_drywall = change(tvo.getFcoeff_drywall()) * 4.882431;
+		double fcoeff_wetwall = change(tvo.getFcoeff_wetwall()) * 4.882431;
+		double fcoeff_roof = change(tvo.getFcoeff_roof()) * 4.882431;
+		double fcoeff_bottom = change(tvo.getFcoeff_bottom()) * 4.882431;
+		
+		double tdia = change(tvo.getTdia())/0.3048;
+		double tlen = change(tvo.getTlen())/0.3048;
+		double wtlen = change(tvo.getWtlen())/0.3048;
+		double troof = change(tvo.getTroof())/0.3048;
+		
+		double thick_body =change(tvo.getThick_body())/25.4;
+		double thick_sinsul = change(tvo.getThick_sinsul())/25.4;
+		double thick_rinsul = change(tvo.getThick_rinsul())/25.4;
+		double thick_binsul = change(tvo.getThick_binsul())/25.4;
+		
+		double thcon_body =change(tvo.getThcon_body())/1.488164;
+		double thcon_sinsul = change(tvo.getThcon_sinsul())/1.488164;
+		double thcon_rinsul = change(tvo.getThcon_rinsul())/1.488164;
+		double thcon_binsul = change(tvo.getThcon_binsul())/1.488164;
+		
+		String body = tvo.getBtype();
+		String head = tvo.getHtype();
+		
+		
+		//2. 계산하기
+		try {
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		request.setAttribute("cal", cal);
+		request.getSession().setAttribute("tvo", tvo);
+		
+		mv.setViewName("view_user/4.calculator");
 		
 		return mv;
 	}
 	@RequestMapping(value="tankheat_rev.do", method=RequestMethod.POST)
 	public ModelAndView tankheat_rev_Cmd(HttpServletRequest request, TVO tvo) {
 		ModelAndView mv = new ModelAndView();
+		String cal = request.getParameter("cal");
+		tvo = (TVO)request.getSession().getAttribute("tvo");
 		
 		
+		tvo.setItemno(request.getParameter("itemno"));
+		tvo.setVel_wind(request.getParameter("vel_wind"));
+		tvo.setStype(request.getParameter("stype"));
+		System.out.println(tvo.getStype());
+		tvo.setEm1(tank.getEm_map().get(tvo.getStype()));
+		tvo.setEm2(request.getParameter("em2"));
+		tvo.setTemp_sur(request.getParameter("temp_sur"));
+		tvo.setCon_sur(request.getParameter("con_sur"));
+		tvo.setTtype(request.getParameter("ttype"));
+		tvo.setTdia(request.getParameter("tdia"));
+		tvo.setBtype(request.getParameter("btype"));
+		tvo.setTlen(request.getParameter("tlen"));
+		tvo.setHtype(request.getParameter("htype"));
+		tvo.setWtlen(request.getParameter("wtlen"));
+		tvo.setLtype(request.getParameter("ltype"));
+		tvo.setTroof(request.getParameter("troof"));
+		
+		tvo.setMtl_body(request.getParameter("mtl_body"));
+		tvo.setMtl_sinsul(request.getParameter("mtl_sinsul"));
+		tvo.setMtl_rinsul(request.getParameter("mtl_rinsul"));
+		tvo.setMtl_binsul(request.getParameter("mtl_binsul"));
+		
+		tvo.setThick_body(request.getParameter("thick_body"));
+		tvo.setThick_sinsul(request.getParameter("thick_sinsul"));
+		tvo.setThick_rinsul(request.getParameter("thick_rinsul"));
+		tvo.setThick_binsul(request.getParameter("thick_binsul"));
+		
+		tvo.setThcon_body(request.getParameter("thcon_body"));
+		tvo.setThcon_sinsul(request.getParameter("thcon_sinsul"));
+		tvo.setThcon_rinsul(request.getParameter("thcon_rinsul"));
+		tvo.setThcon_binsul(request.getParameter("thcon_binsul"));
+		
+		tvo.setFcoeff_drywall(request.getParameter("fcoeff_drywall"));
+		tvo.setFcoeff_wetwall(request.getParameter("fcoeff_wetwall"));
+		tvo.setFcoeff_roof(request.getParameter("fcoeff_roof"));
+		tvo.setFcoeff_bottom(request.getParameter("fcoeff_bottom"));
+		
+		tvo.setTemp_liq(request.getParameter("temp_liq"));
+		tvo.setTemp_vap(request.getParameter("temp_vap"));
+		tvo.setTemp_air(request.getParameter("temp_air"));
+		
+		tvo.setThm_liq(request.getParameter("thm_liq"));
+		tvo.setThm_vap(request.getParameter("thm_vap"));
+		tvo.setThm_air(request.getParameter("thm_air"));
+		
+		tvo.setSpheat_liq(request.getParameter("spheat_liq"));
+		tvo.setSpheat_vap(request.getParameter("spheat_vap"));
+		tvo.setSpheat_air(request.getParameter("spheat_air"));
+		
+		tvo.setVis_liq(request.getParameter("vis_liq"));
+		tvo.setVis_vap(request.getParameter("vis_vap"));
+		tvo.setVis_air(request.getParameter("vis_air"));
+		
+		tvo.setDen_liq(request.getParameter("den_liq"));
+		tvo.setDen_vap(request.getParameter("den_vap"));
+		tvo.setDen_air(request.getParameter("den_air"));
+		
+		tvo.setCeff_liq(request.getParameter("ceff_liq"));
+		tvo.setCeff_vap(request.getParameter("ceff_vap"));
+		tvo.setCeff_air(request.getParameter("ceff_air"));		
+		
+		
+		request.setAttribute("cal", cal);
+		request.getSession().setAttribute("tvo", tvo);
+		
+		mv.setViewName("view_user/4.calculator");
 		
 		return mv;
 	}

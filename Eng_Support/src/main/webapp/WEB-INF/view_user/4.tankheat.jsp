@@ -32,12 +32,12 @@
 
     <script type="text/javascript">
 		function cal_go(f) {
-			//f.action="tankheat_cal.do";
+			f.action="tankheat_cal.do";
 			f.submit(); 
 		}
 		
-		function cal_go(f) {
-			//f.action="tankheat_rev.do";
+		function rev_go(f) {
+			f.action="tankheat_rev.do";
 			f.submit(); 
 		}
 		
