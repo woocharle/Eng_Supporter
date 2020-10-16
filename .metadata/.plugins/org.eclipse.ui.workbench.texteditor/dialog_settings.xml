@@ -4,10 +4,13 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="pi"/>
+		<item key="selection" value="double[]"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="int[]"/>
+			<item value="avalve"/>
+			<item value="cvalve"/>
 			<item value="Math.PI"/>
 			<item value="type."/>
 			<item value="25.4"/>
@@ -20,11 +23,9 @@
 			<item value="temp"/>
 			<item value="Spheat"/>
 			<item value="Thm"/>
-			<item value="Temp"/>
-			<item value="mtl_"/>
-			<item value="spheat"/>
 		</list>
 		<list key="replacehistory">
+			<item value="double[]"/>
 			<item value="pi"/>
 			<item value="body."/>
 			<item value="1.488164"/>
@@ -39,7 +40,6 @@
 			<item value="heat"/>
 			<item value="area"/>
 			<item value="ocf"/>
-			<item value="ceff"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

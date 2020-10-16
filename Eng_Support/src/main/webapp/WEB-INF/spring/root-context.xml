@@ -508,11 +508,67 @@
 			</list>
 		</property>
 		
+		<property name="tee_2">
+			<list>
+				<value>800</value>	  	<!--kd 단위: K1-->
+				<value>0.14</value>		<!--kd 단위: K-->
+				<value>10.6</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+		
+		<property name="tee_3">
+			<list>
+				<value>800</value>	  	<!--kd 단위: K1-->
+				<value>0.28</value>		<!--kd 단위: K-->
+				<value>10.6</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+		
+		<property name="tee_4">
+			<list>
+				<value>1000</value>	  	<!--kd 단위: K1-->
+				<value>0.34</value>		<!--kd 단위: K-->
+				<value>10.6</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+		
+		<property name="tee_5">
+			<list>
+				<value>200</value>	  	<!--kd 단위: K1-->
+				<value>0.091</value>		<!--kd 단위: K-->
+				<value>10.6</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+		
+		<property name="tee_6">
+			<list>
+				<value>150</value>	  	<!--kd 단위: K1-->
+				<value>0.05</value>		<!--kd 단위: K-->
+				<value>10.6</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+		
+		<property name="tee_7">
+			<list>
+				<value>100</value>	  	<!--kd 단위: K1-->
+				<value>0</value>		<!--kd 단위: K-->
+				<value>0</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+		
 		<property name="gtvalve">
 			<list>
 				<value>300</value>	  	<!--kd 단위: K1-->
 				<value>0.037</value>		<!--kd 단위: K-->
 				<value>10.3</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+		
+		<property name="gbvalve">
+			<list>
+				<value>1500</value>	  	<!--kd 단위: K1-->
+				<value>1.7</value>		<!--kd 단위: K-->
+				<value>9.5</value>  	<!--kd 단위: mm^0.3-->
 			</list>
 		</property>
 		
@@ -523,15 +579,63 @@
 				<value>9.2</value>  	<!--kd 단위: mm^0.3-->
 			</list>
 		</property>
-	
-		<property name="gbvalve">
+		
+		<property name="cvalve_1">		<!--swing check  -->
 			<list>
 				<value>1500</value>	  	<!--kd 단위: K1-->
-				<value>1.7</value>		<!--kd 단위: K-->
-				<value>9.5</value>  	<!--kd 단위: mm^0.3-->
+				<value>0.46</value>		<!--kd 단위: K-->
+				<value>10.6</value>  	<!--kd 단위: mm^0.3-->
 			</list>
 		</property>
 		
+		<property name="cvalve_2">		<!--lift check  -->
+			<list>
+				<value>2000</value>	  	<!--kd 단위: K1-->
+				<value>2.85</value>		<!--kd 단위: K-->
+				<value>10</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+	
+		<property name="avalve_1">		<!--lift check  -->
+			<list>
+				<value>950</value>	  	<!--kd 단위: K1-->
+				<value>0.25</value>		<!--kd 단위: K-->
+				<value>10.6</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+	
+		<property name="avalve_2">		<!--lift check  -->
+			<list>
+				<value>1000</value>	  	<!--kd 단위: K1-->
+				<value>0.69</value>		<!--kd 단위: K-->
+				<value>10</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+	
+		<property name="pvalve_1">		<!--lift check  -->
+			<list>
+				<value>500</value>	  	<!--kd 단위: K1-->
+				<value>0.41</value>		<!--kd 단위: K-->
+				<value>10.6</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+	
+		<property name="pvalve_2">		<!--lift check  -->
+			<list>
+				<value>300</value>	  	<!--kd 단위: K1-->
+				<value>0.084</value>		<!--kd 단위: K-->
+				<value>10.3</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+	
+		<property name="pvalve_3">		<!--lift check  -->
+			<list>
+				<value>300</value>	  	<!--kd 단위: K1-->
+				<value>0.14</value>		<!--kd 단위: K-->
+				<value>10.6</value>  	<!--kd 단위: mm^0.3-->
+			</list>
+		</property>
+	
 		<property name="dvalve">
 			<list>
 				<value>1000</value>	  	<!--kd 단위: K1-->
