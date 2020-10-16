@@ -676,7 +676,15 @@ public class Heat_Controller {
 		
 		//2. 계산하기
 		try {
+			//면적
 			
+			//온도
+			
+			//총괄 열전달 계수
+			
+			// 열량
+			
+			// 총열량
 			
 			
 		} catch (Exception e) {

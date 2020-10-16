@@ -250,6 +250,8 @@ public class Main_Controller {
 				
 				tvo.setStype("common");
 				tvo.setEm1(tank.getEm_map().get(tvo.getStype()));
+				tvo.setHtype("roof");
+				tvo.setLtype("yes");
 				
 				request.getSession().setAttribute("tvo", tvo);
 				

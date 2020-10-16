@@ -4,17 +4,14 @@ import java.util.Map;
 
 public class Tank {
 	private Map<String, String> em_map;
-	
+	private double pi = Math.PI;
 	
 	// cal Area1는 Drywall의 면적
-	public double calArea1(String body, String head, double tdia, double tlen, double wtlen, double troof) {
+	public double calArea1(String body, String head, String part, double tdia, double tlen, double wtlen) {
 		double res = 0;
 		double dlen = 0;
 		double el = 0;   //ellips의 비율  
-		double hi = 0;   //ellpis의 높이
-		double radius = 0; 
-		double elarea = 0;// ellpis의 반지름. 	
-		
+		double elarea = 0;// ellpis의 넓이
 
 		if(head.equals("ellips1")) {
 			el = 2;
@@ -22,54 +19,81 @@ public class Tank {
 			el = 3;
 		} 
 		
-		if (el != 0) {
-			elarea = 2 * Math.PI * (tdia * (el + 1) / el / 4) * (tdia / 2 / el);
-		}
+		elarea = (el == 2 || el == 3) ? 2 * pi * (tdia * (el + 1) / el / 4) * (tdia / 2 / el) : 0;
 		
-		if (body.equals("vertical1")) {
-			res = Math.PI * tdia * (tlen - wtlen);
-			
-			if(head.equals("plate")) {
-				res = res + Math.pow(tdia, 2) / 4; 
-			} 
-			
-		} else if(body.equals("vertical2") ) {
-			res = Math.PI * tdia * (tlen - wtlen);
-			
+		if (body.equals("vertical1") || body.equals("vertical2")) {
+			res = part.equals("dry") ? pi * tdia * (tlen - wtlen) : pi * tdia * (wtlen);
+					
 			if(head.equals("plate")) {
 				res = res + Math.pow(tdia, 2) / 4; 
 			} else if (head.equals("ellips1") || head.equals("ellips2")) {
 				res = res + elarea;
-			} 		
-			
-			
-		} else if(body.equals("horizontal") ) {
-			double s_total = Math.PI * Math.pow(tdia, 2) / 4;
-			double theta = 2 * Math.acos((tdia/2 - (tdia - wtlen))/ (tdia/2)) * 180 / Math.PI;
-			double s_dry = s_total * theta / 360 - Math.pow(tdia / 2, 2) * 0.5 * Math.sin(Math.PI * theta / 180) ;
+			}
 		
-			res = (Math.PI * tdia * tlen + 2 * elarea) * s_dry / s_total;	
+		} else if(body.equals("horizontal") ) {
+			double s_total = pi * Math.pow(tdia, 2) / 4;
+			double theta = 0;
+			double s_dry = 0;
+			
+			if(wtlen == tdia) {
+				s_dry = 0;
+				
+			} else if(wtlen > tdia / 2){
+				theta = 2 * Math.acos((tdia/2 - (wtlen - tdia/2))/ (tdia/2)) * 180 / pi;
+				s_dry = s_total * (360 - theta) / 360 + Math.pow(tdia / 2, 2) * 0.5 * Math.sin(pi * theta / 180);
+			
+			} else if(wtlen == tdia/2) {
+				s_dry = s_total / 2;
+			}
+			else {
+				theta = 2 * Math.acos((tdia/2 - (tdia/2 - wtlen))/ (tdia/2)) * 180 / pi;
+				s_dry = s_total - (s_total * theta / 360 - Math.pow(tdia / 2, 2) * 0.5 * Math.sin(pi * theta / 180));
+			}
+			
+			res = part.equals("dry") ? (pi * tdia * tlen + 2 * elarea) * s_dry / s_total :
+						   (pi * tdia * tlen + 2 * elarea) * (s_total - s_dry) / s_total ;	
 			
 		} else if(body.equals("sphere") ) {
 			if(wtlen == tdia) {
-				res = 0;
+				res = part.equals("dry") ? 0 : 4 * pi * Math.pow(wtlen/2, 2);
+				
 			}else if(wtlen > tdia / 2){
 				dlen = tlen - tdia / 2;
-				res = 2 * Math.PI * Math.pow(tdia/2, 2) - 2 * Math.PI * tdia / 2 * dlen;
+				res = part.equals("dry") ? 2 * pi * Math.pow(tdia/2, 2) - 2 * pi * tdia / 2 * dlen :
+										   2 * pi * Math.pow(tdia/2, 2) + 2 * pi * tdia / 2 * dlen ;
 				
 			}else if(wtlen == tdia / 2) {
-				res = 2 * Math.PI * Math.pow(tdia/2, 2);
+				res = 2 * pi * Math.pow(tdia/2, 2);
 						
-			}else if(wtlen < tdia / 2) {
+			}else if(wtlen < tdia / 2 && wtlen > 0) {
 				dlen = tdia / 2 - tlen;
-				res = 2 * Math.PI * Math.pow(tdia/2, 2) + 2 * Math.PI * tdia / 2 * dlen;
+				res = part.equals("dry") ? 2 * pi * Math.pow(tdia/2, 2) + 2 * pi * tdia / 2 * dlen : 
+					 					   2 * pi * Math.pow(tdia/2, 2) - 2 * pi * tdia / 2 * dlen ;
+				
+				
+			}else {
+				res = part.equals("dry") ? 4 * pi * Math.pow(wtlen/2, 2) : 0;
 			}
 		}
+		
+		res =  ((int)(res * 100)) / 100.0;
 		
 		return res;
 	}	
 	
+	public double calArea2 (double tdia ,double troof) {
+		return ((int)100 * pi * tdia / 2 * Math.pow((Math.pow(tdia, 2) / 4 + Math.pow(troof, 2)), 0.5)) / 100.0;  
+	}
 	
+	public double calArea3 (double tdia) {
+		return ((int)pi * Math.pow(tdia, 2) / 4) / 100.0;
+	}
+	
+	
+	// Temp와 U값은 고정점 반복법 사용 [ abs(이전값 - 현재값) / 현재값 구하고 싶은 값을 변수로 넣어서 result 변화.]
+	
+	
+	//
 	
 	public double calGr(double tv, double vis, double den, double exp, double tw, double hi) {
 		return Math.abs(tv - tw) * Math.pow(hi, 3) * Math.pow(den, 2) * 4.17 * 100000000 * exp 
