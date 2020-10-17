@@ -13,12 +13,13 @@
 	
 		#add_chart1{position: relative; left: 950px; font-size: 20px; height: 30px; width: 100px;}
 		#lhyd{position: relative; left: 50px; overflow: scroll; width: 1000px; height: 450px; border: 1px solid black;}
-		#lhyd td{padding: 4px 8px; font-size: 16px; }
+		#lhyd td{padding: 2px 4px; font-size: 20px; height:30px; }
+		#lhyd input{font-size: 16px;}
 		
 		.process input{width: 75px;}
 		#dp input{width: 80px;}
 		
-		#linehyd4{position: relative; left: 50px; margin-bottom: 10px; width:1600px;}	
+		#linehyd4{position: relative; left: 50px; bottom:20px; width:1600px;}	
 		#linehyd4 td {height: 30px;  font-size: 20px; vertical-align: middle; padding: 2px;}
 		.fitting input{width: 40px; font-size: 16px;}
 		.fitting2 {position:relative; left:10px;}
@@ -58,20 +59,20 @@
 			<br><br>
 			
 			<div id="lhyd">
-				<table style="position: relative; left: 30px; margin-top: 20px; width: 1550px;">
+				<table style="position: relative; left: 40px; margin-top: 20px; width: 1550px;">
 					<tbody>
 						<tr> <!--1  -->
-							<td style="width: 170px;">Line.No</td>
+							<td style="width: 170px; height:40px;">Line.No</td>
 							<td colspan="2">
 								<input type="text" name="lineno" value="${n.lineno}" style="width: 150px">
 								<input type="hidden" name ="cal" value="${cal}">
 								<input type="hidden" name="idx" value="${n.idx}"/>
 								&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="button" value="Calculate" style="width:80px;" onclick="cal_go(this.form)">
+								<input type="button" value="Calculate" style="width:100px; font-size: 18px;" onclick="cal_go(this.form)">
 							</td>
 							<td>
 								<c:if test="${n.idx ne '1'}">
-									<input type="button" value="Delete" style="width:80px;" onclick="del_go(this.form)">									
+									<input type="button" value="Delete" style="width:100px; font-size: 18px;" onclick="del_go(this.form)">									
 								</c:if>
 							</td>
 							<td colspan="6"></td>
@@ -80,7 +81,7 @@
 						<tr style="font-size: 20px;"> <!-- 2 -->
 							<td>Process</td>
 							<td>Phase</td>
-							<td style="width:190px;">
+							<td style="width:250px;">
 								<select style="width: 100px; font-size: 16px;" name="phase" onchange="rev_go(this.form)">
 									<option value="liquid" <c:if test="${n.phase eq 'liquid'}">selected </c:if>>Liquid</option>
 									<option value="vapor" <c:if test="${n.phase eq 'vapor'}">selected </c:if>>Vapor </option>
@@ -115,15 +116,15 @@
 						</tr>
 						<tr class="process"> <!-- 4 -->
 							<td>Over Design (%)</td>
-							<td><input type="number" name="over" value="${n.over}" onkeyup="rev_go(this.form)"> </td>
+							<td><input type="number" name="over" value="${n.over}" > </td>
 							<td>Outlet Press (kg/cm<sup>2</sup>G)</td>
-							<td><input type="number" name="pout" value="${n.pout}" onkeyup="rev_go(this.form)"> </td>
+							<td><input type="number" name="pout" value="${n.pout}"> </td>
 							<td>Density (kg/m<sup>3</sup>)</td>
-							<td><input type="number" name="den" value="${n.den}" onkeyup="rev_go(this.form)"> </td>
+							<td><input type="number" name="den" value="${n.den}" > </td>
 							<td>Molecular</td>
-							<td><input type="number" name="mol" value="${n.mol}" onkeyup="rev_go(this.form)"> </td>
+							<td><input type="number" name="mol" value="${n.mol}" > </td>
 							<td>Cp/Cv</td>
-						    <td><input type="number" name="cpcv" value="${n.cpcv}" onkeyup="rev_go(this.form)"> </td>	
+						    <td><input type="number" name="cpcv" value="${n.cpcv}" > </td>	
 					
 	
 						</tr>

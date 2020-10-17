@@ -29,26 +29,136 @@
 		
 		#simple{width: 75%; height: 1400px; position: relative; left: 400px; bottom: 1420px;}
 		#simple h3{position: relative; font-size: 30px; left: 60px;}
-		#simple table{position: relative; left: 90px; font-size: 20px; margin-bottom: 50px;}
-		#simple input{width: 100px;}
-		
-		 #list{width: 25%; height: 1400px; position: relative; left:10px;}
-		 #list > h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}
-		 #list li{font-size: 20px; font-weight: bold; margin: 30px 0px 30px 30px;}
-		 #list1 {list-style-type: none; height:1350px; border-right: 1px dashed black;}
-		 .list2 > li {position:relative; right: 20px;}
+		#simple table{position: relative; left: 90px; font-size: 20px; margin-bottom: 50px; width:600px;}
+		#simple input{width: 100px; font-size:20px; text-align: center;}
+		.output{width:105px; font-weight:bold; font-size:20px; text-align: center;}
+
+		#list{width: 25%; height: 1400px; position: relative; left:10px;}
+		#list > h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}
+		#list li{font-size: 20px; font-weight: bold; margin: 30px 0px 30px 30px;}
+		#list1 {list-style-type: none; height:1350px; border-right: 1px dashed black;}
+		.list2 > li {position:relative; right: 20px;}
 		 
-		 #list a{text-decoration:none;}
-		 #list a:link {color: black;}
-		 #list a:visited {color: black;}
-		 #list a:hover {color: black; text-decoration: underline;}
+		#list a{text-decoration:none;}
+		#list a:link {color: black;}
+		#list a:visited {color: black;}
+		#list a:hover {color: black; text-decoration: underline;}
 
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		function sphere_cal(f) {
+		$(function() {
+			$("#sphere_cal").click(function() {
+				$("#sphere_area").empty();
+				$("#sphere_vol").empty();
+				
+				var dia0 = Number($("#sphere_dia").val());
+				var wet0 = Number($("#sphere_wet1").val());
+				var pi = Math.PI;
+				
+				var	dia = parseFloat(dia0);
+				var	wet = parseFloat(wet0);
 			
-		}
+				if(dia0 == 0 || dia0 == null){
+					alert("반지름을 입력하시오");
+					$("#sphere_dia").focus();
+					return;
+				} 
+				
+				if(wet > dia){
+					alert("젖은 부분이 반지름보다 클 수 없습니다.");
+					$("#sphere_wet1").focus();	
+					return;
+				}
+
+				
+				var area1 = parseInt(pi * 4 * Math.pow(dia/2, 2)*100) / 100; 
+				var area2 = 2 * pi * (dia/2) * wet;
+				area2 = parseInt(area2 * 100) / 100;
+				
+				var vol1 = parseInt(4 * pi * Math.pow(dia/2, 3) * 100 / 3) / 100;			
+				var vol2 = 0;
+				if(wet > dia/2){
+					var len = wet - dia/2;
+					vol2 = 2 * pi * Math.pow(dia/2,3) + pi * (Math.pow(dia/2,2) * len - Math.pow(len,3) / 3);
+				
+				}else if(wet == dia/2){
+					vol2 = 2 * pi * Math.pow(dia/2,3);
+				
+				}else if (wet < dia/2){
+					var len = wet - dia/2;
+					vol2 = pi * (Math.pow(dia/2,2) * (wet) - (Math.pow(len,3)-Math.pow((-1 * dia/2), 3)) / 3);
+					
+				}
+				
+				vol2 = parseInt(vol2 * 100) / 100;
+				
+				$("#sphere_area").append(area1);
+				$("#sphere_wet2").append(area2);	
+				$("#sphere_vol").append(vol1);
+				$("#sphere_wet3").append(vol2);
+				
+			});
+			
+			$("#cylinder_cal").click(function() {
+				$("#cylinder_area").empty();
+				$("#cylinder_wet2").empty();
+				$("#cylinder_vol").empty();
+				$("#cylinder_wet3").empty();
+				
+				var dia0 = Number($("#cylinder_dia").val());
+				var height0 = Number($("#cylinder_high").val());
+				var wet0 = Number($("#cylinder_wet1").val());
+				var pi = Math.PI;
+				
+				var	dia = parseFloat(dia0);
+				var	height = parseFloat(height0);
+				var	wet = parseFloat(wet0);				
+			
+				if(dia == 0 || dia0 == null){
+					alert("반지름을 입력하시오");
+					$("#cylinder_dia").focus();
+					return;
+
+				} 
+				
+				if(height == 0 || height0 == null){
+					alert("높이를 입력하시오");
+					$("#cylinder_high").focus();
+					return;
+
+				} 				
+				
+				if(wet > height){
+					alert("젖은 부분이 높이보다 클 수 없습니다.");
+					$("#cylinder_wet1").focus();	
+					return;
+				}
+						
+				var area1 = 2 * pi * Math.pow(dia/2, 2) + dia * pi * height; 
+				area1 = parseInt(area1 * 100) / 100;
+				
+				var area2 = 2 * pi * Math.pow(dia/2, 2) + dia * pi * wet; 
+				area2 = parseInt(area2 * 100) / 100;
+				
+				var vol1 = pi * Math.pow(dia/2, 2) * height;		
+				vol1 = parseInt(vol1 * 100) / 100;			
+				
+				var vol2 = pi * Math.pow(dia/2, 2) * wet;		
+				vol2 = parseInt(vol2 * 100) / 100;			
+				
+				
+				$("#cylinder_area").append(area1);
+				$("#cylinder_wet2").append(area2);
+				$("#cylinder_vol").append(vol1);
+				$("#cylinder_wet3").append(vol2);
+				
+			});
+			
+			
+			
+		});
+			
 		
 	</script>
 	
@@ -159,51 +269,49 @@
 	<c:if test="${cal eq 'simcal'}">
 		<div id="simple" >
 			<h3>Simple Calculation</h3>
-			<form method="post">
-			<table style="width:600px;">
+			<table>
 				<thead>
 					<tr>
-						<th style="width:40%;"></th><th style="width:5%;"></th><th></th><th></th>
+						<th style="width:40%;"></th><th style="width:5%;"></th><th></th><th></th><th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td> Sphere </td><td></td><td colspan="2"><span style="font-weight: bold;">Input</span></td>
+						<td style="height: 50px;"> Sphere </td><td></td><td colspan="3"><span style="font-weight: bold;">Input</span></td>
 					</tr>
 					<tr>
-						<td rowspan="5" style="width:100px;"><img alt="sphere" src="resources/upload/sphere.png"></td><td></td>
-						<td style="height: 42px;">Diameter</td><td><input type="number" name="sphere_dia">&nbsp;&nbsp;m</td>
+						<td rowspan="5" style="text-align:center;"><img alt="sphere" src="resources/upload/sphere.png"></td><td></td>
+						<td style="height: 42px;">Diameter</td><td><input type="number" id="sphere_dia"></td><td>&nbsp;&nbsp;m</td>
 					</tr>
 					<tr>
-						<td style="height: 42px;"></td><td>Wet Length</td><td><input type="number" name="sphere_wet1">&nbsp;&nbsp;m</td>
+						<td style="height: 42px;"></td><td>Wet Length</td><td><input type="number" id="sphere_wet1"></td><td>&nbsp;&nbsp;m</td>
 					</tr>
 					<tr>
 						<td></td><td><span style="font-weight: bold;">Output</span></td><td></td>
 					</tr>
 					<tr>
-						<td style="height: 42px;"></td><td>Area</td><td><input type="number" name="sphere_Area">&nbsp;&nbsp;m<sup>2</sup></td>
+						<td style="height: 48px;"></td><td>Area</td><td id="sphere_area" class="output"></td><td>&nbsp;&nbsp;m<sup>2</sup></td>
 					</tr>
 					<tr>
-						<td style="height: 42px;"></td><td>Wetted Area</td><td><input type="number">&nbsp;&nbsp;m<sup>2</sup></td>
+						<td style="height: 48px;"></td><td>Wetted Area</td><td id="sphere_wet2" class="output"></td><td>&nbsp;&nbsp;m<sup>2</sup></td>
 					</tr>
 					<tr>
 						<td rowspan="2" style="text-align: center;">
-						<input type="button" value="calculate" onclick="sphere_cal(this.form)" style="width: 150px; font-size: 20px;">
-						<td style="height: 42px;"></td><td>Volume</td>
-						<td><input type="number">&nbsp;&nbsp;m<sup>3</sup></td>
+							<button id="sphere_cal" style="width: 150px; font-size: 20px;">calculate</button>
+						</td>
+						<td style="height: 48px;"></td><td>Volume</td>
+						<td id="sphere_vol" class="output"></td><td>&nbsp;&nbsp;m<sup>3</sup></td>
 					</tr>
 					<tr>
-						<td style="height: 42px;"></td><td>Wetted Volume</td><td><input type="number">&nbsp;&nbsp;m<sup>3</sup></td>
+						<td style="height: 48px;"></td><td>Wetted Volume</td><td id="sphere_wet3" class="output"></td><td>&nbsp;&nbsp;m<sup>3</sup></td>
 					</tr>
 		
 				</tbody>
 				
 			</table>
-			</form>
-			<br><br>
+			<br>
 	
-			<form method="post">
-			<table style="width:600px;">
+			<table>
 				<thead>
 					<tr>
 						<th style="width:40%;"></th><th style="width:5%;"></th><th></th><th></th>
@@ -211,43 +319,42 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td> Cylinder </td><td></td><td colspan="2"><span style="font-weight: bold;">Input</span></td>
+						<td style="height: 50px;"> Cylinder </td><td></td><td colspan="3"><span style="font-weight: bold;">Input</span></td>
 					</tr>
 					<tr>
-						<td rowspan="6"><img alt="cylinder" src="resources/upload/cylinder.png"></td><td></td>
-						<td style="height: 35px;">Diameter</td><td><input type="number">&nbsp;&nbsp;m</td>
+						<td rowspan="6" style="text-align:center;"><img alt="cylinder" src="resources/upload/cylinder.png"></td><td></td>
+						<td style="height: 35px;">Diameter</td><td><input type="number" id="cylinder_dia"></td><td>&nbsp;&nbsp;m</td>
 					</tr>
 					<tr>
-						<td style="height: 35px;"></td><td>height</td><td><input type="number">&nbsp;&nbsp;m</td>
+						<td style="height: 35px;"></td><td>height</td><td><input type="number" id="cylinder_high"></td><td>&nbsp;&nbsp;m</td>
 					</tr>
 					<tr>
-						<td style="height: 35px;"></td><td>Wet Length</td><td><input type="number">&nbsp;&nbsp;m</td>
+						<td style="height: 35px;"></td><td>Wet Length</td><td><input type="number" id="cylinder_wet1"></td><td>&nbsp;&nbsp;m</td>
 					</tr>
 					<tr>
-						<td></td><td><span style="font-weight: bold;">Output</span></td><td></td>
+						<td style="height: 42px;"></td><td><span style="font-weight: bold;">Output</span></td><td></td><td></td>
 					</tr>
 					<tr>
-						<td style="height: 42px;"></td><td>Area</td><td><input type="number">&nbsp;&nbsp;m<sup>2</sup></td>
+						<td style="height: 42px;"></td><td>Area</td><td id="cylinder_area" class="output"></td><td>&nbsp;&nbsp;m<sup>2</sup></td>
 					</tr>
 					<tr>
-						<td style="height: 42px;"></td><td>Wetted Area</td><td><input type="number">&nbsp;&nbsp;m<sup>2</sup></td>
+						<td style="height: 42px;"></td><td>Wetted Area</td><td id="cylinder_wet2" class="output"></td><td>&nbsp;&nbsp;m<sup>2</sup></td>
 					</tr>
 					<tr>
 						<td rowspan="2" style="text-align: center;">
-						<input type="button" value="calculate" onclick="cylinder_cal(this.form)" style="width: 150px; font-size: 20px;">
+							<button id="cylinder_cal" style="width: 150px; font-size: 20px;">calculate</button>
+						</td>
 						<td style="height: 42px;"></td><td>Volume</td>
-						<td><input type="number">&nbsp;&nbsp;m<sup>3</sup></td>
+						<td id="cylinder_vol" class="output"></td><td>&nbsp;&nbsp;m<sup>3</sup></td>
 					</tr>
 					<tr>
-						<td style="height: 42px;"></td><td>Wetted Volumn</td><td><input type="number">&nbsp;&nbsp;m<sup>3</sup></td>
+						<td style="height: 42px;"></td><td>Wetted Volumn</td><td id="cylinder_wet3" class="output"></td><td>&nbsp;&nbsp;m<sup>3</sup></td>
 					</tr>
 		
 				</tbody>
 				
 			</table>
-			</form>
-
-			
+		
 		</div>
 	</c:if>
 	

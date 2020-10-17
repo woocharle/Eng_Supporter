@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,13 @@ import com.ict.model.Pipespec;
 
 @Controller
 public class Pump_Controller {
+	@Autowired
+	private Pipespec pipespec;
+
+	public void setPipespec(Pipespec pipespec) {
+		this.pipespec = pipespec;
+	}
+	
 	
 	@RequestMapping(value="plineadd1.do", method=RequestMethod.POST)
 	public ModelAndView pumpadd1_Cmd(HttpServletRequest request) {
@@ -48,7 +56,7 @@ public class Pump_Controller {
 		
 		for (int i = 0; i < b_pslist.length + 1; i++) {
 			 PVO2 pvo2 = new PVO2();
-			 Pipespec pipespec = new Pipespec();
+			 pipespec = new Pipespec();
 			
 			 if (i == b_pslist.length) {
 				pvo2.setIdx(String.valueOf(i+1));
@@ -164,7 +172,7 @@ public class Pump_Controller {
 		pvo1.setCitem(request.getParameter("citem"));		
 		
 		for (PVO2 k : pslist) {
-			Pipespec pipespec = new Pipespec();
+			pipespec = new Pipespec();
 			
 			k.setLineno(request.getParameter("lineno".concat(k.getIdx())));
 			k.setPin(request.getParameter("pin".concat(k.getIdx())));
@@ -461,7 +469,7 @@ public class Pump_Controller {
 		
 
 		for (PVO2 k : pslist) {
-			Pipespec pipespec = new Pipespec();
+			pipespec = new Pipespec();
 			
 			k.setLineno(request.getParameter("lineno".concat(k.getIdx())));
 			k.setPin(request.getParameter("pin".concat(k.getIdx())));
@@ -660,7 +668,7 @@ public class Pump_Controller {
 		
 		
 		for (PVO3 k : pdlist) {
-			Pipespec pipespec = new Pipespec();
+			pipespec = new Pipespec();
 			
 			k.setLineno_d(request.getParameter("lineno_d".concat(k.getIdx_d())));
 			k.setPout_d(request.getParameter("pout_d".concat(k.getIdx_d())));
@@ -824,7 +832,7 @@ public class Pump_Controller {
 		//suction
 			
 		for (PVO2 k : pslist) {
-			Pipespec pipespec = new Pipespec();
+			pipespec = new Pipespec();
 
 			k.setLineno(request.getParameter("lineno".concat(k.getIdx())));
 			k.setPin(request.getParameter("pin".concat(k.getIdx())));
@@ -960,7 +968,7 @@ public class Pump_Controller {
 		
 		//suction line
 		for (PVO2 k : pslist) {
-			Pipespec pipespec = new Pipespec();
+			pipespec = new Pipespec();
 			
 			k.setLineno(request.getParameter("lineno".concat(k.getIdx())));
 			k.setPin(request.getParameter("pin".concat(k.getIdx())));
@@ -1034,7 +1042,7 @@ public class Pump_Controller {
 
 		
 		for (PVO3 k : pdlist) {
-			Pipespec pipespec = new Pipespec();
+			pipespec = new Pipespec();
 			
 			k.setLineno_d(request.getParameter("lineno_d".concat(k.getIdx_d())));
 			k.setPout_d(request.getParameter("pout_d".concat(k.getIdx_d())));

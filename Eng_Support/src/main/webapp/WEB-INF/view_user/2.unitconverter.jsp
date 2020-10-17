@@ -9,14 +9,11 @@
 	<title> Engineering Support </title>
 	<style type="text/css">
 		#unit1 {margin: 0px auto; width: 1500px; margin-bottom: 10px;}
-		#unit1 h2{
-			position: relative;
-			left: 100px;
-			font-size: 40px; 
-			margin: 20px 0px 80px 0px;
-		}
+		#unit1 h2{position: relative;left: 100px; font-size: 40px; margin: 20px 0px 80px 0px;}
+		#unit1 input{width:180px; font-size: 25px;}
 		
-		#unit2 {margin: 0px auto; width: 1500px; margin-bottom: 10px; overflow: auto;}
+		
+		#unit2 {margin: 0px auto; width: 1500px; padding-top:20px;  margin-bottom: 40px; overflow: auto;}
 		#unit2 input {width: 180px; height: 35px; font-size: 20px;}
 		
 		#add_chart {
@@ -66,19 +63,24 @@
 	</style>
 	<script type="text/javascript">
 		function scala_go(f){
-			f.action = "unit1.do"
+			f.action = "unit1.do";
 			f.submit();
 		}	
 		
 		function add_go(f){
-			f.action = "unit2.do"
+			f.action = "unit2.do";
 			f.submit();
 		}					
 		
 		function del_go(f){
-			f.action = "unit3.do"
+			f.action = "unit3.do";
 			f.submit();
 		}					
+		
+		function trans_go(f){
+			f.action = "unit4.do";
+			f.submit();
+		}
 		
 		
 	</script>
@@ -89,7 +91,7 @@
 
 	<br><br>
 	<div id ="unit1">
-		<h2> Unit Converter</h2>
+		<h2>Unit Converter</h2>
 		<form method="post">	
 			<input type="hidden" name="table_1" value="${table}">
 			<input id="add_chart" type="button" value="Add Chart" onclick="add_go(this.form)">
@@ -101,53 +103,67 @@
 	
 	<div id ="unit2">
 		<c:forEach var="n"  items="${slist}">
+			<c:if test="${idx eq n.idx}">
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+				<script type="text/javascript">
+					$(function() {
+						$("#auto").on("click", function() {
+							var num = ${idx};
+							$("#"+num).focus();
+						});
+						
+						$("#auto").trigger("click");
+					});
+
+				</script>
+				<div id="auto"></div>
+				
+			</c:if>
 			<div id="unitcvt">
 				<form method="post">
 				<div id="section1"> 
 					<span style="font-size:30px;">단위 :&nbsp;&nbsp;</span> 
-					<select name="c_scala" id="choice" onchange="scala_go(this.form)"> <!-- 하나만 선택 -->
+					<select name="scala" id="choice" onchange="scala_go(this.form)"> <!-- 하나만 선택 -->
 	  	  			   <option value="1" <c:if test="${n.scala eq '1'}"> selected </c:if>> 길이 (Length)</option>					
 		               <option value="2" <c:if test="${n.scala eq '2'}"> selected </c:if>> 속도 (Velocity)</option>		  	
-	  	 			   <option value="3" <c:if test="${n.scala eq '3'}"> selected </c:if>> 온도 (Temperature)</option>
+		               <option value="3" <c:if test="${n.scala eq '3'}"> selected </c:if>> 온도 (Temperature)</option>		  	
 	  	 			   <option value="4" <c:if test="${n.scala eq '4'}"> selected </c:if>> 압력 (Pressure)</option>
 	  	 			   <option value="5" <c:if test="${n.scala eq '5'}"> selected </c:if>> 무게 (Weight)</option>
 			  		 </select>
-			  		  <input type="hidden" name="num" value="${n.idx}">
-			  		  <input type="hidden" name="table" value="${table}">
-				  
+			  		 <input type="hidden" name="idx" value="${n.idx}">
+			 		 
 			  	</div>
-				</form>
 				
 				<div id ="inout">
 					<div id="input">
 						<span style="font-size:25px;">Input :&nbsp;&nbsp;</span>
-						<input name="in" type ="number">
+						<input name="unit1" <c:if test="${idx eq n.idx}"> id="${idx}" </c:if> type ="text"  value="${n.unit1}" onkeyup="trans_go(this.form)">
 					</div>
 				
 					<div id="Output">
 						<span style="font-size:25px;">Output :&nbsp;&nbsp;</span>
-						<input name="Out" type ="number" readonly="readonly">
+						<input name="unit2" type ="text"  value="${n.unit2}" readonly="readonly">
 					</div>
 				</div>
 
 				<div>
-					<select name="scala1" id="choice1" size="8">
+					<select name="scala1" id="choice1" size="8" onchange="trans_go(this.form)">
 						<c:forEach var="k" items="${n.list}" >
 							
-							<option value="${k}">${k}</option>
+							<option value="${k}" <c:if test="${k eq n.scala1}"> selected </c:if>>${k}</option>
 						
 						</c:forEach>
 					</select>
 					
-					<select name="scala2" id="choice2" size="8">
+					<select name="scala2" id="choice2" size="8" onchange="trans_go(this.form)">
 						<c:forEach var="k" items="${n.list}" >
 							
-							<option value="${k}">${k}</option>
+							<option value="${k}" <c:if test="${k eq n.scala2}"> selected </c:if>>${k}</option>
 						
 						</c:forEach>
 					</select>
 				</div>
-				
+				</form>
 			</div>
 			<br><br><br><br>
 		</c:forEach>		
