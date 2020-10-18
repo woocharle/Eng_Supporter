@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ict.db.VO1;
+import com.ict.db.UVO;
 import com.ict.model.Scala;
 
 @Controller
@@ -25,39 +25,39 @@ public class Unit_Controller {
 
 
 	@RequestMapping(value="unit1.do", method=RequestMethod.POST)
-	public ModelAndView unit1_cmd(VO1 vo1, HttpServletRequest request) {
+	public ModelAndView unit1_cmd(UVO uvo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 	
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		request.setAttribute("idx", idx);
-		List<VO1> slist = (ArrayList<VO1>)request.getSession().getAttribute("slist");
-		VO1[] b_slist = slist.toArray(new VO1[slist.size()]);
+		List<UVO> slist = (ArrayList<UVO>)request.getSession().getAttribute("slist");
+		UVO[] b_slist = slist.toArray(new UVO[slist.size()]);
 		int table = slist.size();
 		
 		slist.clear();
 				
 		for (int i = 0; i < table; i++) {
-			vo1 = new VO1();
-			vo1.setIdx(i + 1);
+			uvo = new UVO();
+			uvo.setIdx(i + 1);
 			if(i == idx - 1) {
-				vo1.setScala(request.getParameter("scala"));
-				vo1.setList(scala.getList(vo1.getScala()));
-				String[] list = vo1.getList();
-				vo1.setScala1(list[0]);
-				vo1.setScala2(list[0]);		
-				vo1.setUnit1("");
-				vo1.setUnit2("");				
+				uvo.setScala(request.getParameter("scala"));
+				uvo.setList(scala.getList(uvo.getScala()));
+				String[] list = uvo.getList();
+				uvo.setScala1(list[0]);
+				uvo.setScala2(list[0]);		
+				uvo.setUnit1("");
+				uvo.setUnit2("");				
 
 			} else {
-				vo1.setScala(b_slist[i].getScala());
-				vo1.setList(scala.getList(vo1.getScala()));
-				vo1.setScala1(b_slist[i].getScala1());
-				vo1.setScala2(b_slist[i].getScala2());
-				vo1.setUnit1(b_slist[i].getUnit1());
-				vo1.setUnit2(b_slist[i].getUnit2());
+				uvo.setScala(b_slist[i].getScala());
+				uvo.setList(scala.getList(uvo.getScala()));
+				uvo.setScala1(b_slist[i].getScala1());
+				uvo.setScala2(b_slist[i].getScala2());
+				uvo.setUnit1(b_slist[i].getUnit1());
+				uvo.setUnit2(b_slist[i].getUnit2());
 			}
 			
-			slist.add(vo1);
+			slist.add(uvo);
 		}
 	
 		request.getSession().setAttribute("slist", slist);
@@ -70,39 +70,39 @@ public class Unit_Controller {
 	
 	
 	@RequestMapping(value="unit2.do", method=RequestMethod.POST)
-	public ModelAndView unit2_cmd(VO1 vo1, HttpServletRequest request) {
+	public ModelAndView unit2_cmd(UVO uvo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		
-		List<VO1> slist = (List<VO1>)request.getSession().getAttribute("slist");
-		VO1[] b_slist = slist.toArray(new VO1[slist.size()]);
+		List<UVO> slist = (List<UVO>)request.getSession().getAttribute("slist");
+		UVO[] b_slist = slist.toArray(new UVO[slist.size()]);
 		int table = slist.size();
 		table = table + 1;
 		
 		slist.clear();
 		
 		for (int i = 0; i < table; i++) {
-			vo1 = new VO1();
-			vo1.setIdx(i + 1);
+			uvo = new UVO();
+			uvo.setIdx(i + 1);
 			
 			if(i == table - 1) {
-				vo1.setScala("1");
-				vo1.setList(scala.getList(vo1.getScala()));
-				String[] list = vo1.getList();
-				vo1.setScala1(list[0]);
-				vo1.setScala2(list[0]);		
-				vo1.setUnit1("");
-				vo1.setUnit2("");					
+				uvo.setScala("1");
+				uvo.setList(scala.getList(uvo.getScala()));
+				String[] list = uvo.getList();
+				uvo.setScala1(list[0]);
+				uvo.setScala2(list[0]);		
+				uvo.setUnit1("");
+				uvo.setUnit2("");					
 
 			} else {
-				vo1.setScala(b_slist[i].getScala());
-				vo1.setList(scala.getList(vo1.getScala()));
-				vo1.setScala1(b_slist[i].getScala1());
-				vo1.setScala2(b_slist[i].getScala2());
-				vo1.setUnit1(b_slist[i].getUnit1());
-				vo1.setUnit2(b_slist[i].getUnit2());				
+				uvo.setScala(b_slist[i].getScala());
+				uvo.setList(scala.getList(uvo.getScala()));
+				uvo.setScala1(b_slist[i].getScala1());
+				uvo.setScala2(b_slist[i].getScala2());
+				uvo.setUnit1(b_slist[i].getUnit1());
+				uvo.setUnit2(b_slist[i].getUnit2());				
 			}
 			
-			slist.add(vo1);
+			slist.add(uvo);
 		}
 		
 		
@@ -114,11 +114,11 @@ public class Unit_Controller {
 	}
 	
 	@RequestMapping(value="unit3.do", method=RequestMethod.POST)
-	public ModelAndView unit3_cmd(VO1 vo1, HttpServletRequest request) {
+	public ModelAndView unit3_cmd(UVO uvo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		
-		List<VO1> slist = (ArrayList<VO1>)request.getSession().getAttribute("slist");
-		VO1[] b_slist = slist.toArray(new VO1[slist.size()]);
+		List<UVO> slist = (ArrayList<UVO>)request.getSession().getAttribute("slist");
+		UVO[] b_slist = slist.toArray(new UVO[slist.size()]);
 		int table = slist.size();
 		table = table - 1;
 		
@@ -130,16 +130,16 @@ public class Unit_Controller {
 		}
 		
 		for (int i = 0; i < table; i++) {
-			vo1 = new VO1();
-			vo1.setIdx(i + 1);
-			vo1.setScala(b_slist[i].getScala());
-			vo1.setList(scala.getList(vo1.getScala()));
-			vo1.setScala1(b_slist[i].getScala1());
-			vo1.setScala2(b_slist[i].getScala2());
-			vo1.setUnit1(b_slist[i].getUnit1());
-			vo1.setUnit2(b_slist[i].getUnit2());	
+			uvo = new UVO();
+			uvo.setIdx(i + 1);
+			uvo.setScala(b_slist[i].getScala());
+			uvo.setList(scala.getList(uvo.getScala()));
+			uvo.setScala1(b_slist[i].getScala1());
+			uvo.setScala2(b_slist[i].getScala2());
+			uvo.setUnit1(b_slist[i].getUnit1());
+			uvo.setUnit2(b_slist[i].getUnit2());	
 			
-			slist.add(vo1);
+			slist.add(uvo);
 		}
 				
 		request.getSession().setAttribute("slist", slist);
@@ -151,12 +151,12 @@ public class Unit_Controller {
 	
 	
 	@RequestMapping(value="unit4.do", method=RequestMethod.POST)
-	public ModelAndView unit4_Cmd(VO1 vo1, HttpServletRequest request) {
+	public ModelAndView unit4_Cmd(UVO uvo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		request.setAttribute("idx", idx);
-		List<VO1> slist = (ArrayList<VO1>)request.getSession().getAttribute("slist");
+		List<UVO> slist = (ArrayList<UVO>)request.getSession().getAttribute("slist");
 		String scala1 = request.getParameter("scala1"); 
 		String scala2 = request.getParameter("scala2"); 
 		String unit = request.getParameter("unit1");
@@ -175,7 +175,7 @@ public class Unit_Controller {
 			double unit1 = Double.parseDouble(unit);
 			double unit2 = 0;			
 			
-			for (VO1 k : slist) {
+			for (UVO k : slist) {
 				if(k.getIdx() == idx) {
 					int num = scala.getConversion2(k.getScala(), scala2);
 				
@@ -215,7 +215,7 @@ public class Unit_Controller {
 		} catch (Exception e) {
 			System.out.println(e);
 			if(unit.equals("") || unit == null || unit.equals("-")) {
-				for (VO1 k : slist) {
+				for (UVO k : slist) {
 					if(k.getIdx() == idx) {
 
 						k.setScala1(scala1);

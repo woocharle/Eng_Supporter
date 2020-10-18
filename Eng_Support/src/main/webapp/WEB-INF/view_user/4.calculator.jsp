@@ -72,8 +72,23 @@
 				}
 
 				
-				var area1 = parseInt(pi * 4 * Math.pow(dia/2, 2)*100) / 100; 
-				var area2 = 2 * pi * (dia/2) * wet;
+				var area1 = parseInt(4 * pi * Math.pow(dia/2, 2)*100) / 100; 
+				var area2 = 0;
+				if(wet > dia/2){
+					var len = wet - dia/2;
+					area2 = 2 * pi * Math.pow(dia/2, 2) + 2 * pi * (dia/2) * len;
+				
+				}else if(wet == dia/2){
+					area2 = 2 * pi * Math.pow(dia/2, 2);
+				
+				}else if (wet < dia/2){
+					var len = dia/2 - wet;
+					area2 = 2 * pi * Math.pow(dia/2, 2) - 2 * pi * (dia/2) * len;
+					
+				} else if (wet == dia){
+					area2 = area1;
+				}
+				
 				area2 = parseInt(area2 * 100) / 100;
 				
 				var vol1 = parseInt(4 * pi * Math.pow(dia/2, 3) * 100 / 3) / 100;			

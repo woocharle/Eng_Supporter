@@ -1,6 +1,5 @@
 package com.ict.db;
 
-import java.util.List;
 
 public class HVO2 {
 	private String idx, lineno, phase, ev, stype, temp_air, temp_liq, temp_vapor, flow, em, wind_vel;

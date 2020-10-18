@@ -10,7 +10,7 @@
 	</select>
 
 
-	<select id="mlist" parameterType="Map" resultType="com.ict.db.MVO">
+	<select id="mlist" parameterType="Map" resultType="com.ict.db.VO1">
 		select *from(
 			select ROW_NUMBER() OVER() AS r_no , a.*from (
 				select * from member order by idx) AS a
@@ -18,11 +18,11 @@
 		where TB.r_no BETWEEN #{begin} AND #{end}; 
 	</select>
 
-	<select id="monelist" parameterType="String" resultType="com.ict.db.MVO">
+	<select id="monelist" parameterType="String" resultType="com.ict.db.VO1">
 		select * from member where idx = #{idx}
 	</select>
 
-	<select id="onelist_m" parameterType="String" resultType="com.ict.db.MVO">
+	<select id="onelist_m" parameterType="String" resultType="com.ict.db.VO1">
 		select * from member where m_id = #{m_id}
 	</select>
 	
@@ -41,20 +41,20 @@
 	
 
 	<!--회원가입 -->
-	<insert id="minsert" parameterType="com.ict.db.MVO">
+	<insert id="minsert" parameterType="com.ict.db.VO1">
 		insert into member
 		values(NEXT VALUE FOR member_seq, #{m_id}, #{m_com}, #{m_phone}, #{m_email},
 			#{m_name}, #{m_pw}, null, null, null)
 	</insert>
 
 	<!--회원갱신 -->
-	<update id="mupdate" parameterType="com.ict.db.MVO">
+	<update id="mupdate" parameterType="com.ict.db.VO1">
 		update member
 		set	m_com=#{m_com}, m_phone=#{m_phone}, m_email=#{m_email}, m_name=#{m_name}, m_content=#{m_content}
 		where idx =#{idx}
 	</update>
 
-	<update id="mupdate2" parameterType="com.ict.db.MVO">
+	<update id="mupdate2" parameterType="com.ict.db.VO1">
 		update member
 		set	m_pw=#{m_pw}
 		where idx =#{idx}
@@ -62,14 +62,14 @@
 
 	
 	<!--회원갱신 -->
-	<update id="mfind" parameterType="com.ict.db.MVO">
+	<update id="mfind" parameterType="com.ict.db.VO1">
 		update member
 		set	req_find = #{req_find}
 		where m_email = #{m_email}
 	</update>
 	
 	<!--회원탈퇴 -->
-	<delete id="mdelete" parameterType="com.ict.db.MVO"> 
+	<delete id="mdelete" parameterType="com.ict.db.VO1"> 
 		delete from member
 		where idx = #{idx}
 	</delete>	

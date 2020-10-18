@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.db.DAO;
-import com.ict.db.MVO;
+import com.ict.db.VO1;
 import com.ict.db.VO3;
 import com.ict.db.VO4;
 import com.ict.model.Paging;
@@ -34,10 +34,10 @@ public class Faq_Controller {
 	
 	
 	@RequestMapping(value="fwrite.do", method = RequestMethod.GET)
-	public ModelAndView fwrite_Cmd(HttpServletRequest request, MVO mvo) {
+	public ModelAndView fwrite_Cmd(HttpServletRequest request, VO1 vo1) {
 		ModelAndView mv = new ModelAndView();
 		String cPage = request.getParameter("cPage");
-		request.getSession().getAttribute("mvo");
+		request.getSession().getAttribute("vo1");
 		String page = "fwrite";
 		
 		
@@ -62,16 +62,16 @@ public class Faq_Controller {
 		ModelAndView mv = new ModelAndView();
 		String b_idx = request.getParameter("b_idx");
 		String cPage = request.getParameter("cPage");
-		MVO mvo = (MVO)request.getSession().getAttribute("mvo");
+		VO1 vo1 = (VO1)request.getSession().getAttribute("vo1");
 		String page = "fonelist";
 		request.getSession().setAttribute("page", page);
-		request.getSession().getAttribute("mvo");
+		request.getSession().getAttribute("vo1");
 		List<VO4> alist = dao.getalist(b_idx);
 		
 		vo3 = dao.getFonelist(b_idx);
 		
 		if(vo3.getOpen_close().equals("close")) {
-			if(mvo.getM_id().equals("admin") || mvo.getIdx().equals(vo3.getM_idx())) {
+			if(vo1.getM_id().equals("admin") || vo1.getIdx().equals(vo3.getM_idx())) {
 				request.getSession().setAttribute("alist", alist);
 				request.getSession().setAttribute("vo3", vo3);
 				request.getSession().setAttribute("cPage", cPage);

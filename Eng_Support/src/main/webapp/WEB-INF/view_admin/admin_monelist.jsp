@@ -43,33 +43,33 @@
 				<tbody>
 					<tr align="center">
 						<td style="width:30%; background-color:#333; color: white;">회원이름 / 아이디</td>
-						<td>${mvo.m_name}&nbsp;&nbsp;/&nbsp;&nbsp; ${mvo.m_id}</td>
+						<td>${vo1.m_name}&nbsp;&nbsp;/&nbsp;&nbsp; ${vo1.m_id}</td>
 					</tr>
 					<tr align="center">
 						<td style="color: white; background-color:#333;">비밀번호</td>
-						<td>${mvo.m_pw}</td>
+						<td>${vo1.m_pw}</td>
 					</tr>	
 					<tr align="center">
 						<td style="color: white; background-color:#333;">소속</td>
-						<td>${mvo.m_com}</td>
+						<td>${vo1.m_com}</td>
 					</tr>					
 					<tr align="center">
 						<td style="color: white; background-color:#333;">전화번호</td>
-						<td>${mvo.m_phone}</td>			
+						<td>${vo1.m_phone}</td>			
 					</tr>
 					<tr>
 						<td style="color: white; background-color:#333;">이메일</td>
-						<td>${mvo.m_email}</td>		
+						<td>${vo1.m_email}</td>		
 					</tr>
 					<tr>
 						<td style="color: white; background-color:#333;">요청사항 (삭제 / 분실)</td>
 						<td>
 							<c:choose> 
-								<c:when test="${mvo.req_del ne null}">O</c:when>
+								<c:when test="${vo1.req_del ne null}">O</c:when>
 								<c:otherwise>X</c:otherwise>
 							</c:choose>&nbsp;&nbsp;/&nbsp;&nbsp;
 							<c:choose> 
-								<c:when test="${mvo.req_find ne null}">O</c:when>
+								<c:when test="${vo1.req_find ne null}">O</c:when>
 								<c:otherwise>X</c:otherwise>
 							</c:choose>
 						</td>		
@@ -89,7 +89,7 @@
 						    <input type="button" value="삭제" onclick="delete_go(this.form)" />
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="button" value="아이디/비번 전송" onclick="send_go(this.form)" />
-							<input type="hidden" name="idx" value="${mvo.idx}"/>
+							<input type="hidden" name="idx" value="${vo1.idx}"/>
 						</td>
 					</tr>
 				</tfoot>

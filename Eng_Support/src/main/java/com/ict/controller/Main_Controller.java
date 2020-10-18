@@ -17,12 +17,14 @@ import com.ict.db.HVO2;
 import com.ict.db.PVO1;
 import com.ict.db.PVO2;
 import com.ict.db.PVO3;
-import com.ict.db.VO1;
+import com.ict.db.TVO;
+import com.ict.db.UVO;
 import com.ict.db.VO2;
 import com.ict.db.VO3;
 import com.ict.model.Paging;
 import com.ict.model.Pipespec;
 import com.ict.model.Scala;
+import com.ict.model.Tank;
 
 @Controller
 public class Main_Controller {
@@ -30,6 +32,7 @@ public class Main_Controller {
 	private Scala scala;
 	private Pipespec pipespec;
 	private Paging paging; 
+	private Tank tank;
 	
 	@Autowired
 	public void setDao(DAO dao) {
@@ -51,9 +54,16 @@ public class Main_Controller {
 		this.paging = paging;
 	}
 	
-
+	@Autowired
+	public void setTank(Tank tank) {
+		this.tank = tank;
+	}
+	
+	
 	// jsp의 *.do 
 	
+
+
 	@RequestMapping(value="home.do", method=RequestMethod.GET)
 	public ModelAndView home_Cmd() {
 		return new ModelAndView("view_user/1.main");
@@ -61,25 +71,25 @@ public class Main_Controller {
 	}
 	
 	@RequestMapping(value="unit.do", method = RequestMethod.GET)
-	public ModelAndView unit_Cmd(VO1 vo1, HttpServletRequest request) {
+	public ModelAndView unit_Cmd(UVO uvo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		int table = 2;
 		request.getSession().setAttribute("table", table);
 		
-		List<VO1> slist = new ArrayList<VO1>();
+		List<UVO> slist = new ArrayList<UVO>();
 		
 		for (int i = 0; i < table; i++) {
-			vo1 = new VO1();
-			vo1.setIdx(i+1);
-			vo1.setScala(String.valueOf(1));
-			vo1.setList(scala.getList(vo1.getScala()));
+			uvo = new UVO();
+			uvo.setIdx(i+1);
+			uvo.setScala(String.valueOf(1));
+			uvo.setList(scala.getList(uvo.getScala()));
 
-			String[] list = vo1.getList();
+			String[] list = uvo.getList();
 			
-			vo1.setScala1(list[0]);
-			vo1.setScala2(list[0]);
+			uvo.setScala1(list[0]);
+			uvo.setScala2(list[0]);
 			
-			slist.add(vo1);
+			slist.add(uvo);
 		}
 		
 		mv.setViewName("view_user/2.unitconverter");
@@ -111,7 +121,7 @@ public class Main_Controller {
 	}
 	
 	@RequestMapping(value="cal.do", method = RequestMethod.GET)
-	public ModelAndView cal_Cmd(HVO hvo, HVO2 hvo2, HttpServletRequest request) {
+	public ModelAndView cal_Cmd(HVO hvo, HVO2 hvo2, TVO tvo, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String cal = request.getParameter("cal");
 		request.getSession().setAttribute("cal", cal);
@@ -235,6 +245,17 @@ public class Main_Controller {
 				
 			break;
 			
+			case "thtrans":
+				tvo = new TVO();
+				
+				tvo.setStype("common");
+				tvo.setEm1(tank.getEm_map().get(tvo.getStype()));
+				tvo.setHtype("roof");
+				tvo.setLtype("yes");
+				
+				request.getSession().setAttribute("tvo", tvo);
+				
+			break; 
 		} 
 		
 		mv.setViewName("view_user/4.calculator");
