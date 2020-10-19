@@ -1,7 +1,7 @@
 package com.ict.db;
 
 public class TVO {
-	private String itemno, vel_wind, stype, em1, em2, temp_sur, con_sur;
+	private String itemno, vel_wind, stype, em1, em2, temp_gr, con_gr;
 	private String ttype, tdia, btype, tlen, htype, wtlen, ltype, troof;
 	private String mtl_body, mtl_sinsul, mtl_rinsul, mtl_binsul;
 	private String thick_body, thick_sinsul, thick_rinsul, thick_binsul;
@@ -54,20 +54,20 @@ public class TVO {
 		this.em2 = em2;
 	}
 	
-	public String getTemp_sur() {
-		return temp_sur;
+	public String getTemp_gr() {
+		return temp_gr;
 	}
 	
-	public void setTemp_sur(String temp_sur) {
-		this.temp_sur = temp_sur;
+	public void setTemp_gr(String temp_gr) {
+		this.temp_gr = temp_gr;
 	}
 	
-	public String getCon_sur() {
-		return con_sur;
+	public String getCon_gr() {
+		return con_gr;
 	}
 	
-	public void setCon_sur(String con_sur) {
-		this.con_sur = con_sur;
+	public void setCon_gr(String con_gr) {
+		this.con_gr = con_gr;
 	}
 	
 	public String getTtype() {

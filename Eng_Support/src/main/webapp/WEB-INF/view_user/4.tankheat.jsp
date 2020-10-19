@@ -26,7 +26,7 @@
 	
 		#tank2 input{width:100px; font-size:20px; text-align: center;}
 		
-		#cal_res{position:relative;}
+		#cal_res{position:relative; left: 700px; font-size:22px;}
 		
 	</style>
 
@@ -58,7 +58,7 @@
 					<tr>
 						<td class="tank1_txt1">Wind Velocity</td>
 						<td class="tank1_txt2">m/s</td>
-						<td><input type="number" class="tank1_ip" name="vel_wind" value="${tvo.vel_wind}"></td>
+						<td><input type="text" class="tank1_ip" name="vel_wind" value="${tvo.vel_wind}"></td>
 						<td rowspan="6" style="width:300px;"><img style="position: relative; left:80px;" alt="sphere" src="/resources/upload/sphere.png"></td>
 					</tr>	
 					<tr>
@@ -83,7 +83,7 @@
 					<tr>
 						<td class="tank1_txt1" colspan="2">Emissivity
 						 <span style="position: relative; left:110px;">Guide:&nbsp;&#40;${tvo.em1}&#41;</span>
-						<td><input type="number" name="em2" class="tank1_ip" value="${tvo.em2}"></td>
+						<td><input type="text" name="em2" class="tank1_ip" value="${tvo.em2}"></td>
 					</tr>	
 					<tr>							
 						<td colspan="3" class="tank1_txt">Ground</td>
@@ -91,12 +91,12 @@
 					<tr>
 						<td class="tank1_txt1">Temperature</td>
 						<td class="tank1_txt2">&deg;C</td>
-						<td><input type="number" name="temp_sur" class="tank1_ip" value="${tvo.temp_sur}"></td>
+						<td><input type="text" name="temp_gr" class="tank1_ip" value="${tvo.temp_gr}"></td>
 					</tr>	
 					<tr>
 						<td class="tank1_txt1">Conductivity</td>
 						<td class="tank1_txt2">kcal/m h &deg;C</td>
-						<td><input type="number" name="con_sur" class="tank1_ip" value="${tvo.con_sur}"></td>
+						<td><input type="text" name="con_gr" class="tank1_ip" value="${tvo.con_gr}"></td>
 					</tr>							
 				</tbody>
 			
@@ -114,7 +114,7 @@
 						</td>	
 						<td class="tank1_txt1" style="width:230px;">Diameter</td>
 						<td class="tank1_txt5">m</td>
-						<td><input type="number" class="tank1_ip" name="tdia" value="${tvo.tdia}"></td>						
+						<td><input type="text" class="tank1_ip" name="tdia" value="${tvo.tdia}"></td>						
 					</tr>
 					<tr>
 						<td class="tank1_txt1">Type of Body</td>
@@ -128,7 +128,7 @@
 						</td>	
 						<td class="tank1_txt1">Length (Total)</td>
 						<td class="tank1_txt5">m</td>
-						<td><input type="number" class="tank1_ip"  name="tlen" value="${tvo.tlen}"></td>						
+						<td><input type="text" class="tank1_ip"  name="tlen" value="${tvo.tlen}"></td>						
 					</tr>				
 					<tr>
 						<td class="tank1_txt1">Type of Head</td>
@@ -142,7 +142,7 @@
 						</td>	
 						<td class="tank1_txt1">Length (Wet)</td>
 						<td class="tank1_txt5">m</td>
-						<td><input type="number" class="tank1_ip" name="wtlen" value="${tvo.wtlen}"></td>						
+						<td><input type="text" class="tank1_ip" name="wtlen" value="${tvo.wtlen}"></td>						
 					</tr>				
 					<tr>
 						<td class="tank1_txt1">Equip on Leg</td>
@@ -154,7 +154,7 @@
 						</td>	
 						<td class="tank1_txt1">Height of Roof Center</td>
 						<td class="tank1_txt5">m</td>
-						<td><input type="number" class="tank1_ip" name="troof" value="${troof}" <c:if test="${tvo.htype ne 'roof'}"> readonly </c:if>></td>						
+						<td><input type="text" class="tank1_ip" name="troof" value="${tvo.troof}" <c:if test="${tvo.htype ne 'roof'}"> readonly </c:if>></td>						
 					</tr>
 				</tbody>		
 			</table>
@@ -172,38 +172,44 @@
 				<tbody>
 					<tr>
 						<td class="tank1_txt1">Material</td>
-						<td style="width: 120px; font-size:20px;">m</td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="mtl_body" value="${tvo.mtl_body}"></td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="mtl_sinsul" value="${tvo.mtl_sinsul}"></td>
+						<td style="width: 120px; font-size:20px;"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="mtl_body" value="${tvo.mtl_body}"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="mtl_sinsul" value="${tvo.mtl_sinsul}"></td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.htype eq 'roof'}"><input type="number" class="tank1_ip2" name="mtl_rinsul" value="${tvo.mtl_rinsul}"></c:if>
+							<input type="text" class="tank1_ip2" name="mtl_rinsul" value="${tvo.mtl_rinsul}" 
+							<c:if test="${tvo.htype ne 'roof'}">disabled="disabled"</c:if>>
 						</td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.ltype eq 'no'}"><input type="number" class="tank1_ip2" name="mtl_binsul" value="${tvo.mtl_binsul}"></c:if>
+							<input type="text" class="tank1_ip2" name="mtl_binsul" value="${tvo.mtl_binsul}" 
+							<c:if test="${tvo.ltype eq 'yes'}">disabled="disabled" </c:if>>
 						</td>
 					</tr>
 					<tr>
 						<td class="tank1_txt1">Thickness</td>
 						<td style="width: 120px; font-size:20px;">mm</td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="thick_body" value="${tvo.thick_body}"></td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="thick_sinsul" value="${tvo.thick_sinsul}"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="thick_body" value="${tvo.thick_body}"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="thick_sinsul" value="${tvo.thick_sinsul}"></td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.htype eq 'roof'}"><input type="number" class="tank1_ip2" name="thick_rinsul" value="${tvo.thick_rinsul}"></c:if>
+							<input type="text" class="tank1_ip2" name="thick_rinsul" value="${tvo.thick_rinsul}" 
+							<c:if test="${tvo.htype ne 'roof'}">disabled="disabled"</c:if>>
 						</td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.ltype eq 'no'}"><input type="number" class="tank1_ip2" name="thick_binsul" value="${tvo.thick_binsul}"></c:if>
+							<input type="text" class="tank1_ip2" name="thick_binsul" value="${tvo.thick_binsul}" 
+							<c:if test="${tvo.ltype eq 'yes'}">disabled="disabled" </c:if>>
 						</td>
 					</tr>
 					<tr>
 						<td class="tank1_txt1">Thermal Conductivity</td>
-						<td style="width: 120px; font-size:20px;">m</td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="thcon_body" value="${tvo.thcon_body}"></td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2"  name="thcon_sinsul" value="${tvo.thcon_sinsul}"></td>
+						<td style="width: 120px; font-size:20px;">kcal/m h &deg;C</td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="thcon_body" value="${tvo.thcon_body}"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2"  name="thcon_sinsul" value="${tvo.thcon_sinsul}"></td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.htype eq 'roof'}"><input type="number" class="tank1_ip2" name="thcon_rinsul" value="${tvo.thcon_rinsul}"></c:if>
+							<input type="text" class="tank1_ip2" name="thcon_rinsul" value="${tvo.thcon_rinsul}" 
+							<c:if test="${tvo.htype ne 'roof'}">disabled="disabled"</c:if>>
 						</td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.ltype eq 'no'}"><input type="number" class="tank1_ip2" name="thcon_binsul" value="${tvo.thcon_binsul}"></c:if>
+							<input type="text" class="tank1_ip2" name="thcon_binsul" value="${tvo.thcon_binsul}"  
+							<c:if test="${tvo.ltype eq 'yes'}">disabled="disabled" </c:if>>
 						</td>
 					</tr>
 					<tr>
@@ -213,13 +219,15 @@
 					<tr>
 						<td class="tank1_txt1">Assume Fouling <br>Coefficients</td>
 						<td style="width: 120px; font-size:20px;">m<sup>2</sup> h &deg;C/kcal</td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="fcoeff_drywall" value="${tvo.fcoeff_drywall}"></td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="fcoeff_wetwall" value="${tvo.fcoeff_wetwall}"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="fcoeff_drywall" value="${tvo.fcoeff_drywall}"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="fcoeff_wetwall" value="${tvo.fcoeff_wetwall}"></td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.htype eq 'roof'}"><input type="number" class="tank1_ip2" name="fcoeff_roof" value="${tvo.fcoeff_roof}"></c:if>
+							<input type="text" class="tank1_ip2" name="fcoeff_roof" value="${tvo.fcoeff_roof}"
+							<c:if test="${tvo.htype ne 'roof'}">disabled="disabled"</c:if>>
 						</td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.ltype eq 'no'}"><input type="number" class="tank1_ip2" name="fcoeff_bottom" value="${tvo.fcoeff_bottom}"></c:if>
+							<input type="text" class="tank1_ip2" name="fcoeff_bottom" value="${tvo.fcoeff_bottom}"
+							<c:if test="${tvo.ltype eq 'yes'}">disabled="disabled" </c:if>>
 						</td>
 					</tr>						
 				</tbody>
@@ -234,44 +242,44 @@
 					<tr>
 						<td class="tank1_txt1">Temperature</td>
 						<td style="width: 120px; font-size:20px;">&deg;C</td>
-						<td style="text-align: center;"><input type="number" name="temp_liq" value="${tvo.temp_liq}"></td>
-						<td style="text-align: center;"><input type="number" name="temp_vap" value="${tvo.temp_vap}"></td>
-						<td style="text-align: center;"><input type="number" name="temp_air" value="${tvo.temp_air}"></td>
+						<td style="text-align: center;"><input type="text" name="temp_liq" value="${tvo.temp_liq}"></td>
+						<td style="text-align: center;"><input type="text" name="temp_vap" value="${tvo.temp_vap}"></td>
+						<td style="text-align: center;"><input type="text" name="temp_air" value="${tvo.temp_air}"></td>
 					</tr>
 					<tr>
 						<td class="tank1_txt1">Thermal Conductivity</td>
 						<td style="width: 120px; font-size:20px;">kcal/m h &deg;C</td>
-						<td style="text-align: center;"><input type="number" name="thm_liq" value="${tvo.thm_liq}"></td>
-						<td style="text-align: center;"><input type="number" name="thm_vap" value="${tvo.thm_vap}"></td>
-						<td style="text-align: center;"><input type="number" name="thm_air" value="${tvo.thm_air}"></td>
+						<td style="text-align: center;"><input type="text" name="thm_liq" value="${tvo.thm_liq}"></td>
+						<td style="text-align: center;"><input type="text" name="thm_vap" value="${tvo.thm_vap}"></td>
+						<td style="text-align: center;"><input type="text" name="thm_air" value="${tvo.thm_air}"></td>
 					</tr>
 					<tr>
 						<td class="tank1_txt1">Specific Heat</td>
 						<td style="width: 120px; font-size:20px;">kcal/kg &deg;C</td>
-						<td style="text-align: center;"><input type="number" name="spheat_liq" value="${tvo.spheat_liq}"></td>
-						<td style="text-align: center;"><input type="number" name="spheat_vap" value="${tvo.spheat_vap}"></td>
-						<td style="text-align: center;"><input type="number" name="spheat_air" value="${tvo.spheat_air}"></td>
+						<td style="text-align: center;"><input type="text" name="spheat_liq" value="${tvo.spheat_liq}"></td>
+						<td style="text-align: center;"><input type="text" name="spheat_vap" value="${tvo.spheat_vap}"></td>
+						<td style="text-align: center;"><input type="text" name="spheat_air" value="${tvo.spheat_air}"></td>
 					</tr>
 					<tr>
 						<td class="tank1_txt1">Viscosity</td>
 						<td style="width: 120px; font-size:20px;">cP</td>
-						<td style="text-align: center;"><input type="number" name="vis_liq" value="${tvo.vis_liq}"></td>
-						<td style="text-align: center;"><input type="number" name="vis_vap" value="${tvo.vis_vap}"></td>
-						<td style="text-align: center;"><input type="number" name="vis_air" value="${tvo.vis_air}"></td>
+						<td style="text-align: center;"><input type="text" name="vis_liq" value="${tvo.vis_liq}"></td>
+						<td style="text-align: center;"><input type="text" name="vis_vap" value="${tvo.vis_vap}"></td>
+						<td style="text-align: center;"><input type="text" name="vis_air" value="${tvo.vis_air}"></td>
 					</tr>
 					<tr>
 						<td class="tank1_txt1">Density</td>
-						<td style="width: 120px; font-size:20px;">Btu/lb F</td>
-						<td style="text-align: center;"><input type="number" name="den_liq" value="${tvo.den_liq}"></td>
-						<td style="text-align: center;"><input type="number" name="den_vap" value="${tvo.den_vap}"></td>
-						<td style="text-align: center;"><input type="number" name="den_air" value="${tvo.den_air}"></td>
+						<td style="width: 120px; font-size:20px;">kg/m<sup>3</sup></td>
+						<td style="text-align: center;"><input type="text" name="den_liq" value="${tvo.den_liq}"></td>
+						<td style="text-align: center;"><input type="text" name="den_vap" value="${tvo.den_vap}"></td>
+						<td style="text-align: center;"><input type="text" name="den_air" value="${tvo.den_air}"></td>
 					</tr>
 					<tr>
 						<td class="tank1_txt1">Coefficient of<br>Volumetric Expansion </td>
 						<td style="width: 120px; font-size:20px;">1 / &deg;C</td>
-						<td style="text-align: center;"><input type="number" name="ceff_liq" value="${tvo.ceff_liq}"></td>
-						<td style="text-align: center;"><input type="number" name="ceff_vap" value="${tvo.ceff_vap}"></td>
-						<td style="text-align: center;"><input type="number" name="ceff_air" value="${tvo.ceff_air}"></td>
+						<td style="text-align: center;"><input type="text" name="ceff_liq" value="${tvo.ceff_liq}"></td>
+						<td style="text-align: center;"><input type="text" name="ceff_vap" value="${tvo.ceff_vap}"></td>
+						<td style="text-align: center;"><input type="text" name="ceff_air" value="${tvo.ceff_air}"></td>
 					</tr>
 
 				</tbody>
@@ -294,56 +302,63 @@
 					<tr>
 						<td class="tank1_txt1">Temperature</td>
 						<td style="width: 120px; font-size:20px;">&deg;C</td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="temp_dry" value="${tvo.temp_dry}" readonly="readonly"></td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="temp_wet" value="${tvo.temp_wet}" readonly="readonly"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="temp_dry" value="${tvo.temp_dry}" readonly="readonly"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="temp_wet" value="${tvo.temp_wet}" readonly="readonly"></td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.htype eq 'roof'}"><input type="number" class="tank1_ip2" name="temp_roof" value="${tvo.temp_roof}" readonly="readonly"></c:if>
+							<input type="text" class="tank1_ip2" name="temp_roof" <c:if test="${tvo.htype ne 'roof'}">disabled="disabled"</c:if>
+							<c:if test="${tvo.htype eq 'roof'}"> value='${tvo.temp_roof}' readonly="readonly"</c:if>>
 						</td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.ltype eq 'no'}"><input type="number" class="tank1_ip2" name="temp_btm" value="${tvo.temp_btm}" readonly="readonly"></c:if>
+							<input type="text" class="tank1_ip2" name="temp_btm"  <c:if test="${tvo.ltype eq 'yes'}">disabled="disabled"</c:if>
+							<c:if test="${tvo.ltype eq 'no'}"> value='${tvo.temp_btm}' readonly="readonly"</c:if>>
 						</td>
 					</tr>
 					<tr>
 						<td class="tank1_txt1">U&nbsp;&#40;Overall Coefficient&#41;</td>
 						<td style="width: 120px; font-size:20px;">kcal/m<sup>2</sup> h &deg;C</td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="ocf_dry" value="${tvo.ocf_dry}" readonly="readonly"></td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="ocf_wet" value="${tvo.ocf_wet}" readonly="readonly"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="ocf_dry" value="${tvo.ocf_dry}" readonly="readonly"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="ocf_wet" value="${tvo.ocf_wet}" readonly="readonly"></td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.htype eq 'roof'}"><input type="number" class="tank1_ip2" name="ocf_roof" value="${tvo.ocf_roof}" readonly="readonly"></c:if>
+							<input type="text" class="tank1_ip2" name="ocf_roof" 
+							<c:if test="${tvo.htype ne 'roof'}">disabled="disabled"</c:if><c:if test="${tvo.htype eq 'roof'}"> value='${tvo.ocf_roof}' readonly="readonly"</c:if>>
 						</td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.ltype eq 'no'}"><input type="number" class="tank1_ip2" name="ocf_btm" value="${tvo.ocf_btm}" readonly="readonly"></c:if>
+							<input type="text" class="tank1_ip2" name="ocf_btm" value="${tvo.ocf_btm}" 
+							<c:if test="${tvo.ltype eq 'yes'}">disabled="disabled"</c:if><c:if test="${tvo.ltype eq 'no'}">readonly="readonly"</c:if>>
 						</td>
 					</tr>
 					<tr>
 						<td class="tank1_txt1">A&nbsp;&#40;Area&#41;</td>
 						<td style="width: 120px; font-size:20px;">m<sup>2</sup> </td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="area_dry" value="${tvo.area_dry}" readonly="readonly"></td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2"  name="area_wet" value="${tvo.area_wet}" readonly="readonly"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="area_dry" value="${tvo.area_dry}" readonly="readonly"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2"  name="area_wet" value="${tvo.area_wet}" readonly="readonly"></td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.htype eq 'roof'}"><input type="number" class="tank1_ip2" name="area_roof" value="${tvo.area_roof}" readonly="readonly"></c:if>
+							<input type="text" class="tank1_ip2" name="area_roof" <c:if test="${tvo.htype ne 'roof'}">disabled="disabled"</c:if>
+							<c:if test="${tvo.htype eq 'roof'}"> value='${tvo.area_roof}' readonly="readonly"</c:if>>
 						</td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.ltype eq 'no'}"><input type="number" class="tank1_ip2" name="area_btm" value="${tvo.area_btm}" readonly="readonly"></c:if>
+							<input type="text" class="tank1_ip2" name="area_btm" <c:if test="${tvo.ltype eq 'yes'}">disabled="disabled"</c:if>
+							<c:if test="${tvo.ltype eq 'no'}">value='${tvo.area_btm}' readonly="readonly"</c:if>>
 						</td>
 					</tr>
 
 					<tr>
 						<td class="tank1_txt1">Q&nbsp;&#40;Heat Transfer&#41;</td>
 						<td style="width: 120px; font-size:20px;">kcal/hr</td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="heat_dry" value="${tvo.heat_dry}" readonly="readonly"></td>
-						<td style="text-align: center;"><input type="number" class="tank1_ip2" name="heat_wet" value="${tvo.heat_wet}" readonly="readonly"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="heat_dry" value="${tvo.heat_dry}" readonly="readonly"></td>
+						<td style="text-align: center;"><input type="text" class="tank1_ip2" name="heat_wet" value="${tvo.heat_wet}" readonly="readonly"></td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.htype eq 'roof'}"><input type="number" class="tank1_ip2" name="heat_roof" value="${tvo.heat_roof}" readonly="readonly"></c:if>
+							<input type="text" class="tank1_ip2" name="heat_roof" <c:if test="${tvo.htype ne 'roof'}">disabled="disabled"</c:if>
+							<c:if test="${tvo.htype eq 'roof'}"> value='${tvo.heat_roof}' readonly="readonly"</c:if>>
 						</td>
 						<td style="text-align: center;">
-							<c:if test="${tvo.ltype eq 'no'}"><input type="number" class="tank1_ip2" name="heat_btm" value="${tvo.heat_btm}" readonly="readonly"></c:if>
-						</td>
+							<input type="text" class="tank1_ip2" name="heat_btm" <c:if test="${tvo.ltype eq 'yes'}">disabled="disabled"</c:if>
+							<c:if test="${tvo.ltype eq 'no'}"> value='${tvo.heat_btm}' readonly="readonly"</c:if>>
 					</tr>						
 				</tbody>
 				<tfoot>
 						<tr>
-							<td colspan="6"> <p id="cal_res"> <c:if test="${tvo.heat_total ne null}">${tvo.heat_total}</c:if> </p></td>
+							<td colspan="6"> <p id="cal_res"> <c:if test="${tvo.heat_total ne null}">Total: ${tvo.heat_total}&nbsp;kcal/hr</c:if> </p></td>
 						</tr>
 				</tfoot>
 			</table>			
