@@ -5,6 +5,7 @@ CREATE TABLE faq (
 	writer VARCHAR(20) ,
 	content LONGTEXT ,
 	pwd VARCHAR(20) ,
+	open_close VARCHAR(10),
 	writedate TIMESTAMP NOT NULL,
 	m_idx INT(11) NOT NULL,
 	PRIMARY KEY (b_idx) ,

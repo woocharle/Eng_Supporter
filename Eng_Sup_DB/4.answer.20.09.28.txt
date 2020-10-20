@@ -2,9 +2,10 @@
 
 CREATE table answer(
 	a_idx INT(11) NOT NULL,
-	subject VARCHAR(50) ,
 	writer VARCHAR(20) ,
+	a_id VARCHAR(20) ,
 	pwd VARCHAR(20),
+	content LONGTEXT,
 	writedate TIMESTAMP NOT NULL,
 	b_idx INT(11) NOT NULL,
 	PRIMARY KEY (a_idx) ,
