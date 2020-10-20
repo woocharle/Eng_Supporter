@@ -4,10 +4,11 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="heat_"/>
+		<item key="selection" value="ocf_dry"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="ocf_dry"/>
 			<item value="temp_"/>
 			<item value="${tvo.ltype eq &apos;no&apos;}"/>
 			<item value="type=&quot;number&quot;"/>
@@ -22,9 +23,9 @@
 			<item value="temp_sur"/>
 			<item value="k"/>
 			<item value="int[]"/>
-			<item value="avalve"/>
 		</list>
 		<list key="replacehistory">
+			<item value="ocf_"/>
 			<item value="heat_"/>
 			<item value="${tvo.ltype eq &apos;yes&apos;}"/>
 			<item value="type=&quot;text&quot;"/>
@@ -39,7 +40,6 @@
 			<item value="Thcon"/>
 			<item value="change"/>
 			<item value="Ceff"/>
-			<item value="Den"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

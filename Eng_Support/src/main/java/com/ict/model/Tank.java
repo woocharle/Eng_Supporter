@@ -5,6 +5,9 @@ import java.util.Map;
 public class Tank {
 	private Map<String, String> em_map;
 	private double pi = Math.PI;
+	private double temp_dry, temp_wet, temp_roof, temp_btm;
+	private double ocf_dry, ocf_wet, ocf_roof, ocf_btm;
+	
 	
 	// cal Area1는 Drywall의 면적
 	public double calArea1(String body, String head, String part, double tdia, double tlen, double wtlen) {
@@ -93,18 +96,14 @@ public class Tank {
 	
 	// Temp와 U값은 고정점 반복법 사용 [ abs(이전값 - 현재값) / 현재값 구하고 싶은 값을 변수로 넣어서 result 변화.]
 	
-	public double[] calResult_1(double tlen, double wtlen, double coeff_body, double coeff_sinsul, double coeff_d, double coeff_w,
+	public void calResult_1(double tlen, double wtlen, double coeff_body, double coeff_sinsul, double coeff_d, double coeff_w,
 							 double temp_vap, double vis_vap, double den_vap, double exp_vap, double spheat_vap, double thm_vap,
 							 double temp_air, double vis_air, double den_air, double exp_air, double spheat_air, double thm_air,
 							 double temp_liq, double vis_liq, double den_liq, double exp_liq, double spheat_liq, double thm_liq,
 							 double em, double vel_wind) {
 		
-		double[] res = new double[4];
-		double[] res2;  
-
-		
- 		double temp_dry = (temp_vap / temp_air) / 2;
- 		double temp_wet = (temp_liq / temp_air) / 2 ;
+ 		double temp_dry0 = (temp_vap / temp_air) / 2;
+ 		double temp_wet0 = (temp_liq / temp_air) / 2 ;
 		double temp_wall = coeff_sinsul == 0 ? (temp_liq + temp_air) / 2: temp_air + 0.25 * (temp_liq  - temp_air);
 		double temp_rad1 = coeff_sinsul == 0 ? (temp_vap + temp_air) / 2: temp_air + 0.25 * (temp_vap  - temp_air);
 		double temp_rad2 = coeff_sinsul == 0 ? (temp_liq + temp_air) / 2: temp_air + 0.25 * (temp_liq  - temp_air);
@@ -120,20 +119,20 @@ public class Tank {
 		double wind_f1 = 0.868 * Math.pow(Math.abs(temp_vap - temp_air) / 1.8, -0.246) * vel_wind * 0.44704 + 1;
 		double wind_f2 = 0.868 * Math.pow(Math.abs(temp_liq - temp_air) / 1.8, -0.246) * vel_wind * 0.44704 + 1;
 		
-		double coeff_dry = calCoeff_vap(gr_1, pr_1, tlen - wtlen, thm_vap);
-		double coeff_wet = calCoeff_liq(gr_2, pr_2, wtlen, thm_liq);
+		double coeff_dry0 = calCoeff_vap(gr_1, pr_1, tlen - wtlen, thm_vap);
+		double coeff_wet0 = calCoeff_liq(gr_2, pr_2, wtlen, thm_liq);
 		double coeff_wall1 = calCoeff_vap(gr_3, pr_3, tlen, thm_air) * wind_f1;
 		double coeff_wall2 = calCoeff_vap(gr_3, pr_3, tlen, thm_air) * wind_f2;
 		double coeff_rad1 = calCoeff_rad(temp_rad1, temp_air, em);
 		double coeff_rad2 = calCoeff_rad(temp_rad2, temp_air, em);
 		
-		double u0_dry = calCoeff_over(coeff_dry, coeff_wall1, coeff_rad1, coeff_body, coeff_sinsul, coeff_d);
-		double u0_wet = calCoeff_over(coeff_wet, coeff_wall2, coeff_rad2, coeff_body, coeff_sinsul, coeff_w);
+		double u0_dry = calCoeff_over(coeff_dry0, coeff_wall1, coeff_rad1, coeff_body, coeff_sinsul, coeff_d);
+		double u0_wet = calCoeff_over(coeff_wet0, coeff_wall2, coeff_rad2, coeff_body, coeff_sinsul, coeff_w);
 		
 		double u1_dry = u0_dry;
 		double u1_wet = u0_wet;
-		double c1_dry = coeff_dry;
-		double c1_wet = coeff_wet;
+		double c1_dry = coeff_dry0;
+		double c1_wet = coeff_wet0;
 		double cr1_dry = coeff_rad1;
 		double cr1_wet = coeff_rad2;
 		double cw1_dry = coeff_wall1;
@@ -153,20 +152,22 @@ public class Tank {
 			t1_rad2 = u1_wet / (cr1_wet + cw1_wet) * (temp_liq - temp_air) + temp_air;
 			t1_wall = Math.max(t1_rad1, t1_rad2);
 			
-			res2 = calRepeat_u1(tlen, wtlen, coeff_body, coeff_sinsul, coeff_d, coeff_w, 
-								temp_vap, vis_vap, den_vap, exp_vap, thm_vap, pr_1, 
-								temp_air, vis_air, den_air, exp_air, thm_air, pr_2, 
-								temp_liq, vis_liq, den_liq, exp_liq, thm_liq, pr_3, 
-								em, vel_wind, t1_dry, t1_wet, t1_rad1, t1_rad2, t1_wall);
-	
-			u2_dry = res2[0];
-			u2_wet = res2[1];
-			c2_dry = res2[2];
-			c2_wet = res2[3];
-			cr2_dry = res2[4];
-			cr2_wet = res2[5];
-			cw2_dry = res2[6];
-			cw2_wet = res2[7];
+			gr_1 = calGr(temp_vap, vis_vap, den_vap, exp_vap, t1_dry, tlen - wtlen);
+			gr_2 = calGr(temp_liq, vis_liq, den_liq, exp_liq, t1_wet, wtlen);
+			gr_3 = calGr(temp_air, vis_air, den_air, exp_air, t1_wall, tlen);
+			
+			wind_f1 = 0.868 * Math.pow(Math.abs(temp_vap - temp_air) / 1.8, -0.246) * vel_wind * 0.44704 + 1;
+			wind_f2 = 0.868 * Math.pow(Math.abs(temp_liq - temp_air) / 1.8, -0.246) * vel_wind * 0.44704 + 1;
+			
+			c2_dry = calCoeff_vap(gr_1, pr_1, tlen - wtlen, thm_vap);
+			c2_wet =  calCoeff_liq(gr_2, pr_2, wtlen, thm_liq);
+			cw2_dry =  calCoeff_vap(gr_3, pr_3, tlen, thm_air) * wind_f1;
+			cw2_wet = calCoeff_vap(gr_3, pr_3, tlen, thm_air) * wind_f2;
+			cr2_dry = calCoeff_rad(t1_rad1, temp_air, em);
+			cr2_wet =  calCoeff_rad(t1_rad2, temp_air, em);
+			
+			u2_dry = calCoeff_over(c2_dry, cw2_dry, cr2_dry, coeff_body, coeff_sinsul, coeff_d);
+			u2_wet  = calCoeff_over(c2_wet, cw2_wet, cr2_wet, coeff_body, coeff_sinsul, coeff_w);
 			
 			error1 = Math.abs(u1_dry - u2_dry) / u2_dry; 
 			error2 = Math.abs(u1_wet - u2_wet) / u2_wet; 
@@ -182,63 +183,53 @@ public class Tank {
 			
 		}while(error1 > 0.00001 || error2 > 0.00001);
 		
-		res[0] = (t1_dry - 32) * 5 / 9 ;
-		res[1] = (t1_wet - 32) * 5 / 9;
-		res[2] = u2_dry * 4.882431;
-		res[3] = u2_wet * 4.882431;
+		temp_dry = (t1_dry - 32) * 5 / 9 ;
+		temp_wet = (t1_wet - 32) * 5 / 9;
+		ocf_dry = u2_dry * 4.882431;
+		ocf_wet = u2_wet * 4.882431;
 		
-		return res;
 	}
 	
 
-	public double[] calRepeat_u1(double tlen, double wtlen, double coeff_body, double coeff_sinsul, double coeff_d, double coeff_w,
-							 double temp_vap, double vis_vap, double den_vap, double exp_vap, double thm_vap, double pr_1,
-							 double temp_air, double vis_air, double den_air, double exp_air, double thm_air, double pr_2,
-							 double temp_liq, double vis_liq, double den_liq, double exp_liq, double thm_liq, double pr_3,
-							 double em, double vel_wind, double t1_dry, double t1_wet, double t1_rad1, double t1_rad2, double t1_wall) {
-		
-		double[] res = new double[8];
-		
-		
-		double gr_1 = calGr(temp_vap, vis_vap, den_vap, exp_vap, t1_dry, tlen - wtlen);
-		double gr_2 = calGr(temp_liq, vis_liq, den_liq, exp_liq, t1_wet, wtlen);
-		double gr_3 = calGr(temp_air, vis_air, den_air, exp_air, t1_wall, tlen);
-		
-		double wind_f1 = 0.868 * Math.pow(Math.abs(temp_vap - temp_air) / 1.8, -0.246) * vel_wind * 0.44704 + 1;
-		double wind_f2 = 0.868 * Math.pow(Math.abs(temp_liq - temp_air) / 1.8, -0.246) * vel_wind * 0.44704 + 1;
-		
-		double coeff_dry = calCoeff_vap(gr_1, pr_1, tlen - wtlen, thm_vap);
-		double coeff_wet = calCoeff_liq(gr_2, pr_2, wtlen, thm_liq);
-		double coeff_wall1 = calCoeff_vap(gr_3, pr_3, tlen, thm_air) * wind_f1;
-		double coeff_wall2 = calCoeff_vap(gr_3, pr_3, tlen, thm_air) * wind_f2;
-		double coeff_rad1 = calCoeff_rad(t1_rad1, temp_air, em);
-		double coeff_rad2 = calCoeff_rad(t1_rad2, temp_air, em);
-		
-		double u0_dry = calCoeff_over(coeff_dry, coeff_wall1, coeff_rad1, coeff_body, coeff_sinsul, coeff_d);
-		double u0_wet = calCoeff_over(coeff_wet, coeff_wall2, coeff_rad2, coeff_body, coeff_sinsul, coeff_w);
-		
-		res[0] = u0_dry;
-		res[1] = u0_wet;
-		res[2] = coeff_dry;
-		res[3] = coeff_wet;
-		res[4] = coeff_rad1;
-		res[5] = coeff_rad2;
-		res[6] = coeff_wall1;
-		res[7] = coeff_wall2;
-		
-		return res;
+	public double getTemp_dry() {
+		return temp_dry;
 	}
+
+	public void setTemp_dry(double temp_dry) {
+		this.temp_dry = temp_dry;
+	}
+
+	public double getTemp_wet() {
+		return temp_wet;
+	}
+
+	public void setTemp_wet(double temp_wet) {
+		this.temp_wet = temp_wet;
+	}
+
+	public double getOcf_dry() {
+		return ocf_dry;
+	}
+
+	public void setOcf_dry(double ocf_dry) {
+		this.ocf_dry = ocf_dry;
+	}
+
+	public double getOcf_wet() {
+		return ocf_wet;
+	}
+
+	public void setOcf_wet(double ocf_wet) {
+		this.ocf_wet = ocf_wet;
+	}
+
 	
-	public double[] calResult_2(double tdia, double coeff_body, double coeff_rinsul, double coeff_r,
+	public void calResult_2(double tdia, double coeff_body, double coeff_rinsul, double coeff_f,
 			 double temp_vap, double vis_vap, double den_vap, double exp_vap, double spheat_vap, double thm_vap,
 			 double temp_air, double vis_air, double den_air, double exp_air, double spheat_air, double thm_air,
 			 double temp_liq, double vis_liq, double den_liq, double exp_liq, double spheat_liq, double thm_liq,
 			 double em, double vel_wind) {
 
-		double[] res = new double[2];
-		double[] res2;  
-		
-		
 		double temp_roof1 = (temp_vap / temp_air) / 2;
 		double temp_roof2 = coeff_rinsul == 0 ? (temp_liq + temp_air) / 2: temp_air + 0.25 * (temp_vap  - temp_air);
 		double temp_rad = coeff_rinsul == 0 ? temp_air + 0.5 * (temp_vap  - temp_air) / 2: temp_air + 0.25 * (temp_vap  - temp_air);
@@ -254,7 +245,7 @@ public class Tank {
 		double coeff_roof1 = calCoeff_roof1(gr_1, pr_1, tdia, thm_vap);
 		double coeff_roof2 = calCoeff_roof2(gr_2, pr_2, tdia, thm_air) * wind_f;
 		double coeff_rad = calCoeff_rad(temp_rad, temp_air, em);
-		double u0_roof = calCoeff_over(coeff_roof1, coeff_roof2, coeff_rad, coeff_body, coeff_rinsul, coeff_r);
+		double u0_roof = calCoeff_over(coeff_roof1, coeff_roof2, coeff_rad, coeff_body, coeff_rinsul, coeff_f);
 		
 		double u1_roof = u0_roof;
 		double c1_roof1 = coeff_roof1;
@@ -271,15 +262,15 @@ public class Tank {
 			t1_roof2 = temp_air + u1_roof / (c1_roof2 + cr1_roof) * (temp_vap - temp_air);
 			t1_rad = temp_air + u1_roof / (c1_roof2 + cr1_roof) * (temp_vap - temp_air);
 			
-			res2 = calRepeat_u2(tdia, coeff_body, coeff_rinsul, coeff_r,
-							temp_vap, vis_vap, den_vap, exp_vap, thm_vap, 
-							temp_air, vis_air, den_air, exp_air, thm_air, 
-							temp_liq, pr_1, pr_2, em, vel_wind, t1_roof1, t1_roof2, t1_rad);
+			gr_1 = calGr(temp_vap, vis_vap, den_vap, exp_vap, t1_roof1, tdia);
+			gr_2 = calGr(temp_air, vis_air, den_air, exp_air, t1_roof2, tdia);
 			
-			u2_roof = res2[0];
-			c2_roof1 = res2[1];
-			c2_roof2 = res2[2];
-			cr2_roof = res2[3];
+			wind_f = 0.868 * Math.pow(Math.abs(temp_vap - temp_air) / 1.8, -0.246) * vel_wind * 0.44704 + 1;
+			
+			c2_roof1 = calCoeff_roof1(gr_1, pr_1, tdia, thm_vap);
+			c2_roof2 = calCoeff_roof2(gr_2, pr_2, tdia, thm_air) * wind_f;
+			cr2_roof = calCoeff_rad(t1_rad, temp_air, em);
+			u2_roof = calCoeff_over(c2_roof1, c2_roof2, cr2_roof, coeff_body, coeff_rinsul, coeff_f);		
 
 			error = Math.abs(u1_roof - u2_roof) / u2_roof; 
 			
@@ -291,45 +282,32 @@ public class Tank {
 		
 		}while(error > 0.00001);
 			
-		res[0] = (t1_roof1 - 32) * 5 / 9 ;
-		res[1] = u2_roof * 4.882431;
-		
-		return res;
+		temp_roof = (t1_roof1 - 32) * 5 / 9 ;
+		ocf_roof = u2_roof * 4.882431;
+
 	}
 	
-	public double[] calRepeat_u2(double tdia, double coeff_body, double coeff_rinsul, double coeff_r,
-			 double temp_vap, double vis_vap, double den_vap, double exp_vap, double thm_vap, 
-			 double temp_air, double vis_air, double den_air, double exp_air, double thm_air, 
-			 double temp_liq, double pr_1, double pr_2, double em, double vel_wind, double t1_roof1, double t1_roof2, double t1_rad) {
-
-		double[] res = new double[4];
-		
-		double gr_1 = calGr(temp_vap, vis_vap, den_vap, exp_vap, t1_roof1, tdia);
-		double gr_2 = calGr(temp_air, vis_air, den_air, exp_air, t1_roof2, tdia);
-		
-		double wind_f = 0.868 * Math.pow(Math.abs(temp_vap - temp_air) / 1.8, -0.246) * vel_wind * 0.44704 + 1;
-		
-		double coeff_roof1 = calCoeff_roof1(gr_1, pr_1, tdia, thm_vap);
-		double coeff_roof2 = calCoeff_roof2(gr_2, pr_2, tdia, thm_air) * wind_f;
-		double coeff_rad = calCoeff_rad(t1_rad, temp_air, em);
-		double u0_roof = calCoeff_over(coeff_roof1, coeff_roof2, coeff_rad, coeff_body, coeff_rinsul, coeff_r);
-		
-		res[0] = u0_roof;
-		res[1] = coeff_roof1;
-		res[2] = coeff_roof2;
-		res[3] = coeff_rad;
-
-		return res;
+	public double getTemp_roof() {
+		return temp_roof;
 	}
 
-	public double[] calResult_3(double tdia, double coeff_body, double coeff_binsul, double coeff_r, double temp_air,
+	public void setTemp_roof(double temp_roof) {
+		this.temp_roof = temp_roof;
+	}
+
+	public double getOcf_roof() {
+		return ocf_roof;
+	}
+
+	public void setOcf_roof(double ocf_roof) {
+		this.ocf_roof = ocf_roof;
+	}
+
+	
+	public void calResult_3(double tdia, double coeff_body, double coeff_binsul, double coeff_f, double temp_air,
 								double temp_liq, double vis_liq, double den_liq, double exp_liq, double spheat_liq, double thm_liq,
 								double temp_gr, double thcon_gr) {
 
-		double[] res = new double[2];
-		double[] res2;  
-		
-		
 		double temp_btn = (temp_liq + temp_gr) / 2;
 		double gr = calGr(temp_liq, vis_liq, den_liq, exp_liq, temp_btn, tdia);
 		double pr = calPr(spheat_liq, vis_liq, thm_liq);
@@ -337,7 +315,7 @@ public class Tank {
 		double coeff_btn1 = calCoeff_roof2(gr, pr, tdia, thm_liq);
 		double coeff_btn2 = calCoeff_gr(thcon_gr, tdia);
 		
-		double u0_btn = calCoeff_over(coeff_btn1, coeff_btn2, 0, coeff_body, coeff_binsul, coeff_r);
+		double u0_btn = calCoeff_over(coeff_btn1, coeff_btn2, 0, coeff_body, coeff_binsul, coeff_f);
 		
 		double u1_btn = u0_btn;
 		double c1_btn1 = coeff_btn1;
@@ -349,11 +327,11 @@ public class Tank {
 		do {
 			t1_btn1 = temp_liq - u1_btn / c1_btn1 * (temp_liq - temp_air);
 		
-			res2 = calRepeat_u3(tdia, coeff_body, coeff_binsul, coeff_r, temp_air, 
-								temp_liq, vis_liq, den_liq, exp_liq, spheat_liq, thm_liq, coeff_btn2, t1_btn1);
+			gr = calGr(temp_liq, vis_liq, den_liq, exp_liq, t1_btn1, tdia);
+			pr = calPr(spheat_liq, vis_liq, thm_liq);		
 			
-			u2_btn = res2[0];
-			c2_btn1 = res2[1];
+			c2_btn1 = calCoeff_roof2(gr, pr, tdia, thm_liq);
+			u2_btn = calCoeff_over(c2_btn1, coeff_btn2, 0, coeff_body, coeff_binsul, coeff_f);
 
 			error = Math.abs(u1_btn - u2_btn) / u2_btn; 
 			
@@ -362,34 +340,28 @@ public class Tank {
 		
 		}while(error > 0.00001);
 			
-		res[0] = (t1_btn1 - 32) * 5 / 9 ;
-		res[1] = u2_btn * 4.882431;
-		System.out.println(c1_btn1);
+		temp_btm = (t1_btn1 - 32) * 5 / 9 ;
+		ocf_btm = u2_btn * 4.882431;
 		
-		return res;
 	}
-	
-	
-	public double[] calRepeat_u3(double tdia, double coeff_body, double coeff_rinsul, double coeff_r, double temp_air,
-			double temp_liq, double vis_liq, double den_liq, double exp_liq, double spheat_liq, double thm_liq,
-			double coeff_btn2, double t1_btn) {
 
-		double[] res = new double[2];
-		
-		double gr = calGr(temp_liq, vis_liq, den_liq, exp_liq, t1_btn, tdia);
-		double pr = calPr(spheat_liq, vis_liq, thm_liq);
-		
-		double coeff_btn1 = calCoeff_roof2(gr, pr, tdia, thm_liq);
-		
-		double u0_btn = calCoeff_over(coeff_btn1, coeff_btn2, 0, coeff_body, coeff_rinsul, coeff_r);
-		
-		res[0] = u0_btn;
-		res[1] = coeff_btn1;
+	// 부분 계산 
 
-		return res;
-	}	
-	
+	public double getTemp_btm() {
+		return temp_btm;
+	}
 
+	public void setTemp_btm(double temp_btm) {
+		this.temp_btm = temp_btm;
+	}
+
+	public double getOcf_btm() {
+		return ocf_btm;
+	}
+
+	public void setOcf_btm(double ocf_btm) {
+		this.ocf_btm = ocf_btm;
+	}
 
 	public double calGr(double t, double vis, double den, double exp, double tw, double hi) {
 		return Math.abs(t - tw) * Math.pow(hi, 3) * Math.pow(den, 2) * 4.17 * 100000000 * exp 
@@ -499,5 +471,6 @@ public class Tank {
 	public void setEm_map(Map<String, String> em_map) {
 		this.em_map = em_map;
 	}
+
 	
 }

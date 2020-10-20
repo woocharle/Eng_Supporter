@@ -11,8 +11,9 @@
 		.intro table{position: relative; left: 60px; margin-bottom: 20px;}
 		.intro h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}	
 		.intro td{height: 40px;}
-
-		#tbutton {position:relative; left: 200px; width:150px; height:35px; font-size: 20px;}
+		img{width: 320px; height:250px;}
+		
+		#tbutton {position:relative; left: 250px; width:150px; height:35px; font-size: 20px;}
 		#itemno{width: 180px; font-size:22px; text-align: center;}
 		.tank1_ip{width:80px; font-size:20px; text-align: center;}
 		.tank1_ip2{width:100px; font-size:20px; text-align: center;}
@@ -59,7 +60,30 @@
 						<td class="tank1_txt1">Wind Velocity</td>
 						<td class="tank1_txt2">m/s</td>
 						<td><input type="text" class="tank1_ip" name="vel_wind" value="${tvo.vel_wind}"></td>
-						<td rowspan="6" style="width:300px;"><img style="position: relative; left:80px;" alt="sphere" src="/resources/upload/sphere.png"></td>
+						<td rowspan="6" style="width:300px; padding:0px;">
+							<c:choose>
+								<c:when test="${tvo.htype eq 'roof'}">
+									<img style="position: relative; left:80px;" alt="roof" src="/resources/upload/roof_tank.jpg">
+								</c:when>
+								<c:otherwise>
+									<c:choose>
+										<c:when test="${tvo.btype eq 'vertical1'}">
+											<img style="position: relative; left:80px;" alt="vertical_1" src="/resources/upload/cylinder_v1.jpg">
+										</c:when>		
+										<c:when test="${tvo.btype eq 'vertical2'}">
+											<img style="position: relative; left:80px;" alt="vertical_1" src="/resources/upload/cylinder_v2.jpg">
+										</c:when>	
+										<c:when test="${tvo.btype eq 'horizontal'}">
+											<img style="position: relative; left:80px;" alt="horizontal" src="/resources/upload/cylinder_h.jpg">
+										</c:when>	
+										<c:when test="${tvo.btype eq 'sphere'}">
+											<img style="position: relative; left:80px;" alt="sphere" src="/resources/upload/sphere_tank.jpg">
+										</c:when>						
+									</c:choose>
+									
+								</c:otherwise>
+							</c:choose>
+						</td>
 					</tr>	
 					<tr>
 						<td class="tank1_txt1">Type of Surface</td>
@@ -119,7 +143,7 @@
 					<tr>
 						<td class="tank1_txt1">Type of Body</td>
 						<td>
-							<select name="btype" class="tank1_txt4">
+							<select name="btype" class="tank1_txt4" onchange="rev_go(this.form)">
 								<option value="vertical1" <c:if test="${tvo.btype eq 'vertical1'}"> selected </c:if>> Vertical plate </option>					
 			               		<option value="vertical2" <c:if test="${tvo.btype eq 'vertical2'}"> selected </c:if>> Vertical Cylinder </option>		  	
 			               		<option value="horizontal" <c:if test="${tvo.btype eq 'horizontal'}"> selected </c:if>> Horizontal Cylinder </option>		  	
