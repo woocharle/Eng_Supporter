@@ -350,27 +350,285 @@
 				<value>34</value> <value>36</value> 		
 			</list>
 		</property>
+		
 		<property name="schedule" >
 			<list>
-				<value>STD</value>
-				<value>40</value> 
-				<value>80</value> 
-				<value>160</value> 
-				<value>XS</value> 
-				<value>XXS</value> 
-				<value>5S</value> 
-				<value>10S</value> 
-				<value>40S</value> 
-				<value>80S</value> 
-				<value>10</value> 
-				<value>20</value> 
-				<value>30</value> 
-				<value>60</value> 
-				<value>100</value>
-				<value>120</value> 
-				<value>140</value> 		
+				<value>STD</value> <value>40</value> <value>80</value> <value>160</value> <value>XS</value> 
+				<value>XXS</value> <value>5S</value> <value>10S</value> <value>40S</value> <value>80S</value> 
+				<value>10</value> <value>20</value> <value>30</value> <value>60</value> <value>100</value>
+				<value>120</value> <value>140</value> <value>Out</value>
 			</list>
 		</property>		
+		
+		<property name="size1">
+			<list>
+				<value>0.269</value> <value>0.269</value> <value>0.215</value> <value>0</value> <value>0.215</value>  	
+				<value>0</value> <value>0</value> <value>0.307</value> <value>0.269</value> <value>0.215</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>0.405</value> 
+			</list>
+		</property>	
+		
+		<property name="size2">
+			<list>
+				<value>0.364</value> <value>0.364</value> <value>0.302</value> <value>0</value> <value>0.302</value>  	
+				<value>0</value> <value>0</value> <value>0.410</value> <value>0.364</value> <value>0.302</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>0.54</value> 
+			</list>
+		</property>	
+		
+		<property name="size3">
+			<list>
+				<value>0.493</value> <value>0.493</value> <value>0.423</value> <value>0</value> <value>0.423</value>  	
+				<value>0</value> <value>0</value> <value>0.545</value> <value>0.493</value> <value>0.423</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>0.675</value> 
+			</list>
+		</property>	
+		
+		<property name="size4">
+			<list>
+				<value>0.622</value> <value>0.622</value> <value>0.546</value> <value>0.466</value> <value>0.546</value>  	
+				<value>0.252</value> <value>0.710</value> <value>0.674</value> <value>0.622</value> <value>0.546</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>0.84</value> 
+			</list>
+		</property>	
+		
+		<property name="size5">
+			<list>
+				<value>0.824</value> <value>0.824</value> <value>0.742</value> <value>0.612</value> <value>0.742</value>  	
+				<value>0.434</value> <value>0.92</value> <value>0.884</value> <value>0.824</value> <value>0.742</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>1.05</value> 
+			</list>
+		</property>	
+		
+		<property name="size6">
+			<list>
+				<value>1.049</value> <value>1.049</value> <value>0.957</value> <value>0.815</value> <value>0.957</value>  	
+				<value>0.599</value> <value>1.185</value> <value>1.097</value> <value>1.049</value> <value>0.957</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>1.315</value> 
+			</list>
+		</property>	
+		
+		<property name="size7">
+			<list>
+				<value>1.38</value> <value>1.38</value> <value>1.278</value> <value>1.16</value> <value>1.278</value>  	
+				<value>0.896</value> <value>1.53</value> <value>1.442</value> <value>1.38</value> <value>1.278</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>1.66</value> 
+			</list>
+		</property>	
+		
+		<property name="size8">
+			<list>
+				<value>1.61</value> <value>1.61</value> <value>1.5</value> <value>1.338</value> <value>1.5</value>  	
+				<value>1.1</value> <value>1.77</value> <value>1.682</value> <value>1.610</value> <value>1.5</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>1.9</value> 
+			</list>
+		</property>	
+		
+		<property name="size9">
+			<list>
+				<value>2.067</value> <value>2.067</value> <value>1.939</value> <value>1.687</value> <value>1.939</value>  	
+				<value>1.503</value> <value>2.245</value> <value>2.157</value> <value>2.067</value> <value>1.939</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>2.375</value> 
+			</list>
+		</property>	
+		
+		<property name="size10">
+			<list>
+				<value>2.469</value> <value>2.469</value> <value>2.323</value> <value>2.125</value> <value>2.323</value>  	
+				<value>1.771</value> <value>2.709</value> <value>2.635</value> <value>2.469</value> <value>2.323</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>2.875</value> 
+			</list>
+		</property>	
+		
+		<property name="size11">
+			<list>
+				<value>3.068</value> <value>3.068</value> <value>2.9</value> <value>2.624</value> <value>2.9</value>  	
+				<value>2.3</value> <value>3.334</value> <value>3.26</value> <value>3.068</value> <value>2.9</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>3.5</value> 
+			</list>
+		</property>	
+		
+		<property name="size12">
+			<list>
+				<value>3.548</value> <value>3.548</value> <value>3.364</value> <value>0</value> <value>3.364</value>  	
+				<value>0</value> <value>3.834</value> <value>3.76</value> <value>3.548</value> <value>3.364</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>4.0</value> 
+			</list>
+		</property>	
+		
+		<property name="size13">
+			<list>
+				<value>4.026</value> <value>4.026</value> <value>3.826</value> <value>3.438</value> <value>3.826</value>  	
+				<value>3.152</value> <value>4.334</value> <value>4.26</value> <value>4.026</value> <value>3.826</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>3.624</value> <value>0</value> <value>4.5</value> 
+			</list>
+		</property>	
+		
+		<property name="size14">
+			<list>
+				<value>5.047</value> <value>5.047</value> <value>4.813</value> <value>4.313</value> <value>4.813</value>  	
+				<value>4.063</value> <value>5.345</value> <value>5.295</value> <value>5.047</value> <value>4.813</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>4.563</value> <value>0</value> <value>5.563</value> 
+			</list>
+		</property>	
+		
+		<property name="size15">
+			<list>
+				<value>6.065</value> <value>6.065</value> <value>5.761</value> <value>5.187</value> <value>5.761</value>  	
+				<value>4.897</value> <value>6.407</value> <value>6.357</value> <value>6.065</value> <value>5.761</value>  	 	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>5.501</value> <value>0</value> <value>6.625</value> 
+			</list>
+		</property>	
+		
+		<property name="size16">
+			<list>
+				<value>7.981</value> <value>7.981</value> <value>7.625</value> <value>6.813</value> <value>7.625</value>  	
+				<value>6.875</value> <value>8.407</value> <value>8.329</value> <value>7.981</value> <value>7.625</value>  	 	
+				<value>0</value> <value>8.125</value> <value>8.071</value> <value>7.813</value> <value>7.437</value>  	
+				<value>7.187</value> <value>7.001</value> <value>8.625</value> 
+			</list>
+		</property>	
+		
+		<property name="size17">
+			<list>
+				<value>10.02</value> <value>10.02</value> <value>9.562</value> <value>8.5</value> <value>9.75</value>  	
+				<value>8.75</value> <value>10.482</value> <value>10.42</value> <value>10.02</value> <value>9.75</value>  	 	
+				<value>0</value> <value>10.25</value> <value>10.136</value> <value>9.75</value> <value>9.312</value>  	
+				<value>9.062</value> <value>8.75</value> <value>10.75</value> 
+			</list>
+		</property>	
+		
+		<property name="size18">
+			<list>
+				<value>12</value> <value>11.938</value> <value>11.374</value> <value>10.126</value> <value>11.75</value>  	
+				<value>10.75</value> <value>12.438</value> <value>12.390</value> <value>12</value> <value>11.75</value>  	 	
+				<value>0</value> <value>12.25</value> <value>12.09</value> <value>11.626</value> <value>11.062</value>  	
+				<value>10.75</value> <value>10.5</value> <value>12.75</value> 
+			</list>
+		</property>	
+		
+		<property name="size19">
+			<list>
+				<value>13.25</value> <value>13.124</value> <value>12.5</value> <value>11.188</value> <value>13</value>  	
+				<value>0</value> <value>13.688</value> <value>13.624</value> <value>0</value> <value>0</value>  	 	
+				<value>13.5</value> <value>13.376</value> <value>13.25</value> <value>12.812</value> <value>12.124</value>  	
+				<value>11.812</value> <value>11.5</value> <value>14</value> 
+			</list>
+		</property>	
+		
+		<property name="size20">
+			<list>
+				<value>15.25</value> <value>15</value> <value>14.312</value> <value>12.812</value> <value>15</value>  	
+				<value>0</value> <value>15.67</value> <value>15.624</value> <value>0</value> <value>0</value>  	 	
+				<value>15.5</value> <value>15.376</value> <value>15.25</value> <value>14.688</value> <value>13.938</value>  	
+				<value>13.562</value> <value>13.124</value> <value>16</value> 
+			</list>
+		</property>	
+		
+		<property name="size21">
+			<list>
+				<value>17.25</value> <value>16.876</value> <value>16.124</value> <value>14.438</value> <value>17</value>  	
+				<value>0</value> <value>17.67</value> <value>17.624</value> <value>0</value> <value>0</value>  	 	
+				<value>17.5</value> <value>17.376</value> <value>17.124</value> <value>16.5</value> <value>15.688</value>  	
+				<value>15.25</value> <value>14.876</value> <value>18</value> 
+			</list>
+		</property>	
+		
+		<property name="size22">
+			<list>
+				<value>19.25</value> <value>18.812</value> <value>17.938</value> <value>16.062</value> <value>19</value>  	
+				<value>0</value> <value>19.624</value> <value>19.564</value> <value>0</value> <value>0</value>  	 	
+				<value>19.5</value> <value>19.25</value> <value>19</value> <value>18.376</value> <value>17.438</value>  	
+				<value>17</value> <value>16.5</value> <value>20</value> 
+			</list>
+		</property>	
+		
+		<property name="size23">
+			<list>
+				<value>21.25</value> <value>0</value> <value>19.75</value> <value>17.75</value> <value>21</value>  	
+				<value>0</value> <value>21.624</value> <value>21.564</value> <value>0</value> <value>0</value>  	 	
+				<value>21.5</value> <value>21.25</value> <value>21</value> <value>20.25</value> <value>19.25</value>  	
+				<value>18.75</value> <value>18.25</value> <value>22</value> 
+			</list>
+		</property>	
+		
+		<property name="size24">
+			<list>
+				<value>23.25</value> <value>22.624</value> <value>21.562</value> <value>19.312</value> <value>23</value>  	
+				<value>0</value> <value>23.564</value> <value>23.5</value> <value>0</value> <value>0</value>  	 	
+				<value>23.5</value> <value>23.25</value> <value>22.876</value> <value>22.062</value> <value>20.938</value>  	
+				<value>20.376</value> <value>19.876</value> <value>24</value> 
+			</list>
+		</property>	
+		
+		<property name="size25">
+			<list>
+				<value>25.25</value> <value>0</value> <value>0</value> <value>0</value> <value>25</value>  	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	 	
+				<value>25.376</value> <value>25</value> <value>0</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>26</value> 
+			</list>
+		</property>	
+		
+		<property name="size26">
+			<list>
+				<value>27.25</value> <value>0</value> <value>0</value> <value>0</value> <value>27</value>  	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	 	
+				<value>27.376</value> <value>27</value> <value>26.75</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>28</value> 
+			</list>
+		</property>	
+		
+		<property name="size27">
+			<list>
+				<value>29.25</value> <value>0</value> <value>0</value> <value>0</value> <value>29</value>  	
+				<value>0</value> <value>29.5</value> <value>29.376</value> <value>0</value> <value>0</value>  	 	
+				<value>29.376</value> <value>29</value> <value>28.75</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>30</value> 
+			</list>
+		</property>	
+		
+		<property name="size28">
+			<list>
+				<value>31.25</value> <value>30.624</value> <value>0</value> <value>0</value> <value>31</value>  	
+				<value>0</value> <value>0</value> <value>0.307</value> <value>0.269</value> <value>0.215</value>  	 	
+				<value>31.376</value> <value>31</value> <value>30.75</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>32</value> 
+			</list>
+		</property>	
+		
+		<property name="size29">
+			<list>
+				<value>33.25</value> <value>32.624</value> <value>0</value> <value>0</value> <value>33</value>  	
+				<value>0</value> <value>0</value> <value>0</value> <value>0</value> <value>0</value>  	 	
+				<value>33.376</value> <value>33</value> <value>32.75</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>34</value> 
+			</list>
+		</property>	
+		
+		<property name="size30">
+			<list>
+				<value>35.25</value> <value>34.5</value> <value>0</value> <value>0</value> <value>35</value>  	
+				<value>0</value> <value>0</value> <value>0.307</value> <value>0.269</value> <value>0.215</value>  	 	
+				<value>35.376</value> <value>35</value> <value>34.75</value> <value>0</value> <value>0</value>  	
+				<value>0</value> <value>0</value> <value>36</value> 
+			</list>
+		</property>	
 		
 		<property name="elbow90_1">
 			<list>
