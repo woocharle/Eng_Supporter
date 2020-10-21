@@ -4,42 +4,28 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="size13"/>
+		<item key="selection" value="getTee"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
-			<item value="size13"/>
-			<item value="size2"/>
-			<item value="size3"/>
-			<item value="size1"/>
-			<item value="size"/>
-			<item value="ocf_dry"/>
-			<item value="temp_"/>
-			<item value="${tvo.ltype eq &apos;no&apos;}"/>
-			<item value="type=&quot;number&quot;"/>
-			<item value="&quot;number&quot;"/>
-			<item value="input tpye=&quot;number&quot;"/>
-			<item value="troof"/>
-			<item value="double"/>
-			<item value=", "/>
-			<item value="temp_rad"/>
+			<item value="getBend"/>
+			<item value="bur"/>
+			<item value="liquid"/>
+			<item value="_rev"/>
+			<item value="cal"/>
+			<item value="equval"/>
+			<item value="equ"/>
+			<item value="tank."/>
 		</list>
 		<list key="replacehistory">
+			<item value="getTee"/>
+			<item value="heats."/>
+			<item value="soil_coeff"/>
+			<item value="type=&quot;text&quot; "/>
+			<item value="kcal/"/>
 			<item value="ocf_"/>
 			<item value="heat_"/>
 			<item value="${tvo.ltype eq &apos;yes&apos;}"/>
-			<item value="type=&quot;text&quot;"/>
-			<item value="input tpye=&quot;text&quot;"/>
-			<item value=""/>
-			<item value="="/>
-			<item value="th"/>
-			<item value="double[]"/>
-			<item value="pi"/>
-			<item value="body."/>
-			<item value="1.488164"/>
-			<item value="Thcon"/>
-			<item value="change"/>
-			<item value="Ceff"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

@@ -8,18 +8,91 @@ public class Pipespec {
 					 size11, size12, size13, size14, size15, size16, size17, size18, size19, size20,
 					 size21, size22, size23, size24, size25, size26, size27, size28, size29, size30;
 			
-	private Map<String, Integer> sch;		
+	private Map<String, Integer> sch;	
+
+	// pipe heat 
+	private Map<String, Double> pipe_em;	
+	private Map<String, Double> pipe_shp;	
 	
+	//Fitting
 	private double[] elbow90_1, elbow90_2, elbow90_3, elbow90_4, elbow90_5, elbow90_6, elbow90_7, elbow90_8, elbow90_9;
 	private double[] elbow45_1, elbow45_2, elbow45_3, elbow45_4, bend_1, bend_2, bend_3;
 	private double[] tee_1, tee_2, tee_3, tee_4, tee_5, tee_6, tee_7;
 	private double[] gtvalve, gbvalve, bvalve, cvalve_1, cvalve_2, avalve_1, avalve_2, pvalve_1, pvalve_2, pvalve_3, dvalve;
 			
-		
-	// Reynold no. 구하는 식 추가.
-	
+	//Common
+	private double pi = Math.PI;
 	
 
+	// 메소드 
+
+	// (1) Reynold no.
+	public double calRe(String phase, double den_liq, double vis_liq , double flow_liq,
+				 		double den_vap, double vis_vap, double flow_vap, double dia) {
+		double re = 0;
+		double den_avg, vel_avg, vis_avg; 
+		double vel;
+		
+		switch (phase) {
+			case "liquid": 
+				vel = flow_liq / (pi * Math.pow(dia, 2) / 4) / den_liq / 3600;
+				re = den_liq * vel * dia  / (vis_liq / 1000) ;
+				
+			break;
+			
+			case "vapor": 
+				vel = flow_vap / (pi * Math.pow(dia, 2) / 4) / den_vap / 3600;
+				re = den_vap * vel * dia / (vis_vap / 1000) ;
+			
+			break;
+			
+			case "2phase": 
+				den_avg = (flow_liq + flow_vap)/(flow_liq /den_liq + flow_vap / den_vap);
+				vel_avg = (flow_liq + flow_vap)/(den_avg * pi * Math.pow(dia, 2) / 4);
+				vis_avg = (flow_liq + flow_vap)/(flow_liq /vis_liq * 1000 + flow_vap / vis_vap * 1000);
+				re = 4 * (flow_liq + flow_vap)/(pi * dia * vis_avg);
+			
+			break;
+
+		}
+	
+		return re;
+	}
+	
+	// (2) Equivalent Length
+	public double calEqu_len(String cfactor, double tdia, double re) {
+		double len = 0;
+		
+		
+		return len;
+	}
+	
+	// Getter & Setter
+	
+	//(0) 메소드 이용
+	
+	public double[] getDialist(String dia) {
+		double[] list = new double[18];
+		switch (dia) {
+			case "1/8": list = size1; break; 	case "1/4": list = size2; break; 	case "3/8": list = size3; break;
+			case "1/2": list = size4; break; 	case "3/4": list = size5; break; 	case "1": list = size6; break;
+			case "1 1/4": list = size7; break; 	case "1 1/2": list = size8; break; 	case "2": list = size9; break;
+			case "2 1/2": list = size10; break; case "3": list = size11; break; 	case "3 1/2": list = size12; break;
+			case "4": list = size13; break; 	case "5": list = size14; break; 	case "6": list = size15; break;
+			case "8": list = size16; break; 	case "10": list = size17; break; 	case "12": list = size18; break;
+			case "14": list = size19; break; 	case "16": list = size20; break; 	case "18": list = size21; break;
+			case "20": list = size22; break; 	case "22": list = size23; break; 	case "24": list = size24; break;
+			case "26": list = size25; break; 	case "28": list = size26; break; 	case "30": list = size27; break;
+			case "32": list = size28; break; 	case "34": list = size29; break; 	case "36": list = size30; break;
+
+		}
+		
+		return list;
+	}
+
+	
+	// (1) pipe schedule
+	
 	public String[] getSize() {
 		return size;
 	}
@@ -283,10 +356,31 @@ public class Pipespec {
 	public void setSch(Map<String, Integer> sch) {
 		this.sch = sch;
 	}
+	
+	// (2) pipe heat
+	
 
+
+	public Map<String, Double> getPipe_em() {
+		return pipe_em;
+	}
+
+	public void setPipe_em(Map<String, Double> pipe_em) {
+		this.pipe_em = pipe_em;
+	}
 	
-	// fitting getter, setter
+	public Map<String, Double> getPipe_shp() {
+		return pipe_shp;
+	}
+
+	public void setPipe_shp(Map<String, Double> pipe_shp) {
+		this.pipe_shp = pipe_shp;
+	}
 	
+
+	// (3) fitting getter, setter
+	
+
 	public double[] getElbow90_1() {
 		return elbow90_1;
 	}

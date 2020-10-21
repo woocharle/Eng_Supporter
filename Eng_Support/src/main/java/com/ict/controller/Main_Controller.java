@@ -24,7 +24,7 @@ import com.ict.db.VO3;
 import com.ict.model.Paging;
 import com.ict.model.Pipespec;
 import com.ict.model.Scala;
-import com.ict.model.Tank;
+import com.ict.model.Heats;
 
 @Controller
 public class Main_Controller {
@@ -32,7 +32,7 @@ public class Main_Controller {
 	private Scala scala;
 	private Pipespec pipespec;
 	private Paging paging; 
-	private Tank tank;
+	private Heats heats;
 	
 	@Autowired
 	public void setDao(DAO dao) {
@@ -55,15 +55,12 @@ public class Main_Controller {
 	}
 	
 	@Autowired
-	public void setTank(Tank tank) {
-		this.tank = tank;
+	public void setHeats(Heats heats) {
+		this.heats = heats;
 	}
-	
-	
-	// jsp의 *.do 
-	
 
-
+		
+	
 	@RequestMapping(value="home.do", method=RequestMethod.GET)
 	public ModelAndView home_Cmd() {
 		return new ModelAndView("view_user/1.main");
@@ -129,6 +126,10 @@ public class Main_Controller {
 		int num = 0;
 		int pnum = 0;
 		int pnum2 = 0;
+		
+		double[] dialist;
+		int select_sch;
+		
 		List<HVO> list = null;
 		List<HVO2> hlist = null;
 		
@@ -232,12 +233,19 @@ public class Main_Controller {
 				hvo2 = new HVO2();
 					
 				hvo2.setIdx(String.valueOf(1));
+				hvo2.setEv("bare");
 				hvo2.setPhase("liquid");
+				hvo2.setStype("common");
+				hvo2.setEm(String.valueOf(pipespec.getPipe_em().get(hvo2.getStype())));
 				hvo2.setCfactor("fitting");
-				hvo2.setDout("6");
+				hvo2.setDia("6");
 				hvo2.setDlist(pipespec.getSize());
 				hvo2.setSch("STD");
 				hvo2.setSlist(pipespec.getSchedule());
+				dialist = pipespec.getDialist(hvo2.getDia());
+				select_sch = pipespec.getSch().get(hvo2.getSch());
+				hvo2.setDin(String.valueOf(dialist[select_sch]));
+				hvo2.setDout(String.valueOf(dialist[17]));
 				
 				hlist.add(hvo2);
 		
@@ -249,7 +257,7 @@ public class Main_Controller {
 				tvo = new TVO();
 				
 				tvo.setStype("common");
-				tvo.setEm1(tank.getEm_map().get(tvo.getStype()));
+				tvo.setEm1(heats.getEm_map().get(tvo.getStype()));
 				tvo.setHtype("roof");
 				tvo.setLtype("yes");
 				

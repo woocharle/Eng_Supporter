@@ -58,10 +58,10 @@
 		<div id="list">	
 			<ul id="list1">					
 				<li><a href="mypage.do?page=faq"> FAQ </a></li>
-				<c:if test="${mvo.m_id ne 'admin'}"><li><a href="mypage.do?page=revise"> 개인정보 수정 </a></li></c:if>
-				<c:if test="${mvo.m_id eq 'admin'}"><li><a href="admin_main.do"> 관리자 페이지</a></li></c:if>
-				<c:if test="${mvo.m_id ne 'admin'}"><li><a href="mypage.do?page=revise2"> 비밀번호 수정 </a> </li></c:if>
-				<c:if test="${mvo.m_id ne 'admin'}"><li><a href="mypage.do?page=drop"> 회원탈퇴 </a> </li></c:if>
+				<c:if test="${vo1.m_id ne 'admin'}"><li><a href="mypage.do?page=revise"> 개인정보 수정 </a></li></c:if>
+				<c:if test="${vo1.m_id eq 'admin'}"><li><a href="admin_main.do"> 관리자 페이지</a></li></c:if>
+				<c:if test="${vo1.m_id ne 'admin'}"><li><a href="mypage.do?page=revise2"> 비밀번호 수정 </a> </li></c:if>
+				<c:if test="${vo1.m_id ne 'admin'}"><li><a href="mypage.do?page=drop"> 회원탈퇴 </a> </li></c:if>
 			
 			</ul>
 		

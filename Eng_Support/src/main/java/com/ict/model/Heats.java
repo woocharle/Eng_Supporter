@@ -2,12 +2,11 @@ package com.ict.model;
 
 import java.util.Map;
 
-public class Tank {
+public class Heats {
 	private Map<String, String> em_map;
 	private double pi = Math.PI;
 	private double temp_dry, temp_wet, temp_roof, temp_btm;
 	private double ocf_dry, ocf_wet, ocf_roof, ocf_btm;
-	
 	
 	// cal Area1는 Drywall의 면적
 	public double calArea1(String body, String head, String part, double tdia, double tlen, double wtlen) {
