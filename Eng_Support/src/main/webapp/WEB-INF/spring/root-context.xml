@@ -35,46 +35,27 @@
 	<bean id="scala" class="com.ict.model.Scala">
 		<property name="list1" >
 			<list>
-				<value>mm</value>
-				<value>cm</value>
-				<value>m</value>
-				<value>km</value>
-				<value>in</value>
-				<value>ft</value>			
+				<value>mm</value> <value>cm</value> <value>m</value> <value>km</value> <value>in</value> <value>ft</value>			
 			</list>
 		</property>
 		<property name="list2" >
 			<list>
-				<value>m/s</value>
-				<value>km/h</value>
-				<value>ft/s</value>
-				<value>ft/min</value>
-				<value>mph</value>
+				<value>m/s</value> <value>km/h</value> <value>ft/s</value> <value>ft/min</value> <value>mph</value>
 			</list>
 		</property>
 		<property name="list3" >
 			<list>
-				<value>C˚(Celsius)</value>
-				<value>F˚(Fahrenheit)</value>
-				<value>K(Kelvin)</value>
-				<value>R(Rankine)</value>
+				<value>C˚(Celsius)</value> <value>F˚(Fahrenheit)</value> <value>K(Kelvin)</value> <value>R(Rankine)</value>
 			</list>
 		</property>
 		<property name="list4" >
 			<list>
-				<value>Pa</value>
-				<value>kPa</value>
-				<value>bar</value>
-				<value>atm</value>
+				<value>Pa</value> <value>kPa</value> <value>bar</value> <value>atm</value>
 			</list>
 		</property>
 		<property name="list5" >
 			<list>
-				<value>g</value>
-				<value>kg</value>
-				<value>lb</value>
-				<value>t</value>
-				<value>mg</value>
+				<value>g</value> <value>kg</value> <value>lb</value> <value>t</value> <value>mg</value>
 			</list>
 		</property>	
 		
@@ -630,27 +611,49 @@
 			</list>
 		</property>	
 		
+		<property name="sch">
+			<map>
+				<entry key="STD" value="0"/> <entry key="40" value="1"/> <entry key="80"  value="2"/>
+				<entry key="160" value="3"/> <entry key="XS" value="4"/> <entry key="XXS" value="5"/>
+				<entry key="5S" value="6"/> <entry key="10S" value="7"/> <entry key="40S" value="8"/>
+				<entry key="80S" value="9"/> <entry key="10" value="10"/> <entry key="20" value="11"/>
+				<entry key="30" value="12"/> <entry key="60" value="13"/> <entry key="100" value="14"/>
+				<entry key="120" value="15"/> <entry key="140" value="16"/> <entry key="Out" value="17"/>
+			</map>
+		</property>	
+		
+		<property name="pipe_em">
+			<map>
+				<entry key="common" value="0.8"/> <entry key="roofing" value="0.8"/> 
+				<entry key="alumi1" value="0.12"/> <entry key="alumi2"  value="0.55"/> 
+				<entry key="oxi1" value="0.2"/> <entry key="oxi2" value="0.6"/>
+				<entry key="white" value="0.6"/> 
+			</map>
+		</property>			
+		<!-- pipe heat -->
+		
+		<property name="pipe_shp">
+			<map>
+				<entry key="hcyd" value="1.016"/> <entry key="vcyd" value="1.235"/>
+				<entry key="hplate1"  value="1.394"/> <entry key="hplate2" value="1.79"/>
+				<entry key="vplate" value="0.89"/>
+			</map>
+		</property>	
+				
+				
+		<!-- Fitting  -->  <!--kd  1_단위: K1 2_단위: K 3_단위: mm^0.3 -->
+		
 		<property name="elbow90_1">
-			<list>
-				<value>800</value>	  	<!--kd 단위: K1-->
-				<value>0.14</value>		<!--kd 단위: K-->
-				<value>10.6</value>  	<!--kd 단위: mm^0.3-->
-			</list>
+			<list> <value>800</value> <value>0.14</value><value>10.6</value> </list>
 		</property>
 		
 		<property name="elbow90_2">
-			<list>
-				<value>800</value>	  	<!--kd 단위: K1-->
-				<value>0.071</value>		<!--kd 단위: K-->
-				<value>11.1</value>  	<!--kd 단위: mm^0.3-->
-			</list>
+			<list> <value>800</value> <value>0.071</value> <value>11.1</value> </list>
 		</property>
 		
 		<property name="elbow90_3">
 			<list>
-				<value>800</value>	  	<!--kd 단위: K1-->
-				<value>0.091</value>		<!--kd 단위: K-->
-				<value>10.6</value>  	<!--kd 단위: mm^0.3-->
+				<value>800</value> <value>0.091</value>	<value>10.6</value>  	  	
 			</list>
 		</property>
 		
@@ -905,9 +908,7 @@
 		
 	</bean>
 	
-	<bean id="paging" class="com.ict.model.Paging"></bean>
-
-	<bean id="tank" class="com.ict.model.Tank">
+	<bean id="heats" class="com.ict.model.Heats">
 		<property name="em_map">
 			<map>
 				<entry key="common" value="0.9"/>
@@ -934,6 +935,6 @@
 	
 	</bean>
 		
-	<!-- UnitConverter -->	
+	<bean id="paging" class="com.ict.model.Paging"></bean>
 
 </beans>

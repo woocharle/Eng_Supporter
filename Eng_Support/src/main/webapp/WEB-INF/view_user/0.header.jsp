@@ -90,8 +90,8 @@
 		</div>
 		<div class="member">
 			<c:choose>
-				<c:when test="${mvo.m_name ne null}">
-					<p id="greet"> ${mvo.m_name}님 환영합니다.</p>
+				<c:when test="${vo1.m_name ne null}">
+					<p id="greet"> ${vo1.m_name}님 환영합니다.</p>
 					<button id ="logout" onclick="log_out()">Logout </button> 			
 					<button id ="mypage" onclick="MyPage()">MyPage </button> 
 				</c:when>

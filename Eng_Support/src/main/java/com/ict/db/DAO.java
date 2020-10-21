@@ -43,14 +43,14 @@ public class DAO {
 
 	
 	public VO1 getMonelist(String idx) {
-		VO1 mvo = sqlSessionTemplate.selectOne("monelist", idx);
-		return mvo;
+		VO1 vo1 = sqlSessionTemplate.selectOne("monelist", idx);
+		return vo1;
 	}
 	
 	// login
 	public VO1 getMember(String m_id) {
-		VO1 mvo = sqlSessionTemplate.selectOne("onelist_m", m_id);
-		return mvo;
+		VO1 vo1 = sqlSessionTemplate.selectOne("onelist_m", m_id);
+		return vo1;
 	}
 	
 	public String getCheck(String m_id) {
@@ -70,15 +70,15 @@ public class DAO {
 	}
 	
 	// 회원가입
-	public int getmIDU(VO1 mvo, String mth) {
+	public int getmIDU(VO1 vo1, String mth) {
 		int result = 0;
 		
 		switch (mth) {
-			case "Insert": result = sqlSessionTemplate.insert("minsert", mvo); break;
-			case "Update": result = sqlSessionTemplate.update("mupdate", mvo); break;
-			case "Update2": result = sqlSessionTemplate.update("mupdate2", mvo); break;
-			case "Delete": result = sqlSessionTemplate.delete("mdelete", mvo); break;
-			case "Find": result = sqlSessionTemplate.delete("mfind", mvo); break;
+			case "Insert": result = sqlSessionTemplate.insert("minsert", vo1); break;
+			case "Update": result = sqlSessionTemplate.update("mupdate", vo1); break;
+			case "Update2": result = sqlSessionTemplate.update("mupdate2", vo1); break;
+			case "Delete": result = sqlSessionTemplate.delete("mdelete", vo1); break;
+			case "Find": result = sqlSessionTemplate.delete("mfind", vo1); break;
 		}
 	
 		return result;

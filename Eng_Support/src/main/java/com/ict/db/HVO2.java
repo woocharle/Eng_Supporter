@@ -5,7 +5,7 @@ public class HVO2 {
 	private String idx, lineno, phase, ev, stype, temp_air, temp_liq, temp_vapor, flow, em, wind_vel;
 	private String den_liq, den_vapor, over, season, vis_liq, vis_vapor, vapor_fr, condition, depth;
 	private String heat_liq, heat_vapor, flow_liq, convection, soil, thcon_liq, thcon_vapor, flow_vapor, heat_dia;
-	private String insul_thick, insul_con, cfactor, re, dia, dout, sch, din, pipelen, wall;
+	private String eql_len, pipe_mtl, pipe_thick, pipe_con, insul_mtl, insul_thick, insul_con, cfactor, re, dia, dout, sch, din, pipelen, wall;
 	
 	//fitting
 	private String elbow90_1, elbow90_2, elbow90_3, elbow90_4, elbow90_5, elbow90_6, elbow90_7, elbow90_8, elbow90_9;
@@ -13,7 +13,8 @@ public class HVO2 {
 	private String tee_1, tee_2, tee_3, tee_4, tee_5, tee_6, tee_7;
 	private String gtvalve, gbvalve, bvalve, cvalve_1, cvalve_2, avalve_1, avalve_2, pvalve_1, pvalve_2, pvalve_3;
 	private String dvalve, redd, redth, expd, expth;
-	private String eql_len, g_temp, in_coeff, soil_temp, out_coeff, out_temp, in_coeff_1, sur_temp, in_coeff_2, diff_temp;
+	
+	private String g_temp, in_coeff, soil_coeff, out_coeff, out_temp, in_coeff_1, sur_temp, in_coeff_2, diff_temp, over_coeff, heattrans;
 	
 	
 	private String[] dlist, slist;
@@ -309,6 +310,37 @@ public class HVO2 {
 		this.heat_dia = heat_dia;
 	}
 
+	public String getPipe_mtl() {
+		return pipe_mtl;
+	}
+
+	public void setPipe_mtl(String pipe_mtl) {
+		this.pipe_mtl = pipe_mtl;
+	}
+
+	public String getPipe_thick() {
+		return pipe_thick;
+	}
+
+	public void setPipe_thick(String pipe_thick) {
+		this.pipe_thick = pipe_thick;
+	}
+
+	public String getPipe_con() {
+		return pipe_con;
+	}
+
+	public void setPipe_con(String pipe_con) {
+		this.pipe_con = pipe_con;
+	}
+
+	public String getInsul_mtl() {
+		return insul_mtl;
+	}
+
+	public void setInsul_mtl(String insul_mtl) {
+		this.insul_mtl = insul_mtl;
+	}
 
 	public String getInsul_thick() {
 		return insul_thick;
@@ -819,13 +851,13 @@ public class HVO2 {
 	}
 
 
-	public String getSoil_temp() {
-		return soil_temp;
+	public String getSoil_coeff() {
+		return soil_coeff;
 	}
 
 
-	public void setSoil_temp(String soil_temp) {
-		this.soil_temp = soil_temp;
+	public void setSoil_coeff(String soil_coeff) {
+		this.soil_coeff = soil_coeff;
 	}
 
 
@@ -908,5 +940,22 @@ public class HVO2 {
 		this.slist = slist;
 	}
 
+	public String getOver_coeff() {
+		return over_coeff;
+	}
+
+	public void setOver_coeff(String over_coeff) {
+		this.over_coeff = over_coeff;
+	}
+
+	public String getHeattrans() {
+		return heattrans;
+	}
+
+	public void setHeattrans(String heattrans) {
+		this.heattrans = heattrans;
+	}
+	
+	
 
 }

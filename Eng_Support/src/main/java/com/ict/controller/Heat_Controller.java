@@ -14,12 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ict.db.HVO2;
 import com.ict.db.TVO;
 import com.ict.model.Pipespec;
-import com.ict.model.Tank;
+import com.ict.model.Heats;
 
 @Controller
 public class Heat_Controller {
 	private Pipespec pipespec;
-	private Tank tank;
+	private Heats heats;
+	private double[] dialist;
+	private int select_sch;
+	private double re;
 
 	@Autowired
 	public void setPipespec(Pipespec pipespec) {
@@ -27,8 +30,8 @@ public class Heat_Controller {
 	}
 	
 	@Autowired
-	public void setTank(Tank tank) {
-		this.tank = tank;
+	public void setHeats(Heats heats) {
+		this.heats = heats;
 	}
 	
 	//1.pipe
@@ -38,25 +41,32 @@ public class Heat_Controller {
 		ModelAndView mv = new ModelAndView();
 		String cal = request.getParameter("cal");
 
-		List<HVO2> list0 = (List<HVO2>)request.getSession().getAttribute("list");
-		HVO2[] b_list = list0.toArray(new HVO2[list0.size()]);
-		List<HVO2> list = new ArrayList<HVO2>();
+		List<HVO2> list = (List<HVO2>)request.getSession().getAttribute("list");
+		HVO2[] b_list = list.toArray(new HVO2[list.size()]);
+		list.clear();
 		
 		for (int i = 0; i < b_list.length + 1; i++) {
 			hvo2 = new HVO2();
 	
 			if(i == b_list.length) {
 				hvo2.setIdx(String.valueOf(i+1));
+				hvo2.setEv("bare");
 				hvo2.setPhase("liquid");
+				hvo2.setStype("common");
+				hvo2.setEm(String.valueOf(pipespec.getPipe_em().get(hvo2.getStype())));
 				hvo2.setCfactor("fitting");
-				hvo2.setDout("6");
+				hvo2.setDia("6");
 				hvo2.setDlist(pipespec.getSize());
 				hvo2.setSch("STD");
 				hvo2.setSlist(pipespec.getSchedule());
+				dialist = pipespec.getDialist(hvo2.getDia());
+				select_sch = pipespec.getSch().get(hvo2.getSch());
+				hvo2.setDin(String.valueOf(dialist[select_sch]));
+				hvo2.setDout(String.valueOf(dialist[17]));
+				
 				
 			} else {
 				hvo2.setIdx(String.valueOf(i + 1));
-				System.out.println(hvo2.getIdx());
 				hvo2.setLineno(b_list[i].getLineno());
 				hvo2.setPhase(b_list[i].getPhase());
 				hvo2.setEv(b_list[i].getEv());
@@ -97,12 +107,20 @@ public class Heat_Controller {
 				hvo2.setDlist(pipespec.getSize());
 				hvo2.setDia(b_list[i].getDia());
 				hvo2.setDout(b_list[i].getDout());
-				hvo2.setInsul_thick(b_list[i].getInsul_thick());
+				
 				
 				hvo2.setSch(b_list[i].getSch());
 				hvo2.setSlist(pipespec.getSchedule());
 				hvo2.setPipelen(b_list[i].getPipelen());
+				
+				hvo2.setPipe_mtl(b_list[i].getPipe_mtl());
+				hvo2.setPipe_thick(b_list[i].getPipe_thick());
+				hvo2.setPipe_con(b_list[i].getPipe_con());
+				hvo2.setInsul_mtl(b_list[i].getInsul_mtl());
 				hvo2.setInsul_con(b_list[i].getInsul_con());
+				hvo2.setInsul_thick(b_list[i].getInsul_thick());
+				
+				hvo2.setEql_len(b_list[i].getEql_len());
 				
 				//fitting
 				hvo2.setElbow90_1(b_list[i].getElbow90_1());
@@ -150,8 +168,8 @@ public class Heat_Controller {
 				hvo2.setExpd(b_list[i].getExpd());
 				hvo2.setExpth(b_list[i].getExpth());
 				
-				hvo2.setEql_len(b_list[i].getEql_len());
-				hvo2.setSoil_temp(b_list[i].getSoil_temp());
+				
+				hvo2.setSoil_coeff(b_list[i].getSoil_coeff());
 				hvo2.setIn_coeff(b_list[i].getIn_coeff());
 				hvo2.setG_temp(b_list[i].getG_temp());
 				hvo2.setOut_coeff(b_list[i].getOut_coeff());
@@ -160,6 +178,8 @@ public class Heat_Controller {
 				hvo2.setSur_temp(b_list[i].getSur_temp());
 				hvo2.setIn_coeff_2(b_list[i].getIn_coeff_2());
 				hvo2.setDiff_temp(b_list[i].getDiff_temp());
+				hvo2.setOver_coeff(b_list[i].getOver_coeff());
+				hvo2.setHeattrans(b_list[i].getHeattrans());
 				
 			}
 	
@@ -223,12 +243,19 @@ public class Heat_Controller {
 			k.setDlist(pipespec.getSize());
 			k.setDia(request.getParameter("dia".concat(k.getIdx())));
 			k.setDout(request.getParameter("dout".concat(k.getIdx())));
-			k.setInsul_thick(request.getParameter("insul_thick".concat(k.getIdx())));
-			
+
 			k.setSch(request.getParameter("sch".concat(k.getIdx())));
 			k.setSlist(pipespec.getSchedule());
 			k.setPipelen(request.getParameter("pipelen".concat(k.getIdx())));
+			
+			k.setPipe_mtl(request.getParameter("pipe_mtl".concat(k.getIdx())));
+			k.setPipe_con(request.getParameter("pipe_con".concat(k.getIdx())));
+			k.setPipe_thick(request.getParameter("pipe_thick".concat(k.getIdx())));
+			k.setInsul_mtl(request.getParameter("insul_mtl".concat(k.getIdx())));
 			k.setInsul_con(request.getParameter("insul_con".concat(k.getIdx())));
+			k.setInsul_thick(request.getParameter("insul_thick".concat(k.getIdx())));
+			
+			k.setEql_len(request.getParameter("eql_len".concat(k.getIdx())));
 			
 			//fitting
 			k.setElbow90_1(request.getParameter("elbow90_1".concat(k.getIdx())));
@@ -276,8 +303,8 @@ public class Heat_Controller {
 			k.setExpd(request.getParameter("expd".concat(k.getIdx())));
 			k.setExpth(request.getParameter("expth".concat(k.getIdx())));		
 			
-			k.setEql_len(request.getParameter("eql_len".concat(k.getIdx())));
-			k.setSoil_temp(request.getParameter("soil_temp".concat(k.getIdx())));
+			
+			k.setSoil_coeff(request.getParameter("soil_coeff".concat(k.getIdx())));
 			k.setIn_coeff(request.getParameter("in_coeff".concat(k.getIdx())));
 			k.setG_temp(request.getParameter("g_temp".concat(k.getIdx())));
 			k.setOut_coeff(request.getParameter("out_coeff".concat(k.getIdx())));
@@ -285,13 +312,14 @@ public class Heat_Controller {
 			k.setIn_coeff_1(request.getParameter("out_coeff_1".concat(k.getIdx())));
 			k.setSur_temp(request.getParameter("sur_temp".concat(k.getIdx())));
 			k.setIn_coeff_2(request.getParameter("out_coeff_2".concat(k.getIdx())));
-			k.setDiff_temp(request.getParameter("diff_temp".concat(k.getIdx())));			
+			k.setDiff_temp(request.getParameter("diff_temp".concat(k.getIdx())));
+			k.setOver_coeff(request.getParameter("over_coeff".concat(k.getIdx())));
+			k.setHeattrans(request.getParameter("heattrans".concat(k.getIdx())));
 				
 		}		
 
-		List<HVO2> list0 = (List<HVO2>)request.getSession().getAttribute("list");
 		int idx = Integer.parseInt(request.getParameter("idx"));
-		HVO2[] b_list = list0.toArray(new HVO2[list0.size()]);
+		HVO2[] b_list = list.toArray(new HVO2[list.size()]);
 		int n = 1;
 		list.clear();
 		
@@ -303,7 +331,6 @@ public class Heat_Controller {
 			} else {
 				hvo2.setIdx(String.valueOf(n));
 				hvo2.setLineno(b_list[i].getLineno());
-				System.out.println(hvo2.getIdx());
 				hvo2.setPhase(b_list[i].getPhase());
 				hvo2.setEv(b_list[i].getEv());
 				hvo2.setOver(b_list[i].getOver());
@@ -343,12 +370,19 @@ public class Heat_Controller {
 				hvo2.setDlist(pipespec.getSize());
 				hvo2.setDia(b_list[i].getDia());
 				hvo2.setDout(b_list[i].getDout());
-				hvo2.setInsul_thick(b_list[i].getInsul_thick());
 				
 				hvo2.setSch(b_list[i].getSch());
 				hvo2.setSlist(pipespec.getSchedule());
 				hvo2.setPipelen(b_list[i].getPipelen());
+				
+				hvo2.setPipe_mtl(b_list[i].getPipe_mtl());
+				hvo2.setPipe_thick(b_list[i].getPipe_thick());
+				hvo2.setPipe_con(b_list[i].getPipe_con());
+				hvo2.setInsul_mtl(b_list[i].getInsul_mtl());
 				hvo2.setInsul_con(b_list[i].getInsul_con());
+				hvo2.setInsul_thick(b_list[i].getInsul_thick());
+				
+				hvo2.setEql_len(b_list[i].getEql_len());
 				
 				//fitting
 				hvo2.setElbow90_1(b_list[i].getElbow90_1());
@@ -396,8 +430,8 @@ public class Heat_Controller {
 				hvo2.setExpd(b_list[i].getExpd());
 				hvo2.setExpth(b_list[i].getExpth());
 				
-				hvo2.setEql_len(b_list[i].getEql_len());
-				hvo2.setSoil_temp(b_list[i].getSoil_temp());
+				//Result
+				hvo2.setSoil_coeff(b_list[i].getSoil_coeff());
 				hvo2.setIn_coeff(b_list[i].getIn_coeff());
 				hvo2.setG_temp(b_list[i].getG_temp());
 				hvo2.setOut_coeff(b_list[i].getOut_coeff());
@@ -406,11 +440,12 @@ public class Heat_Controller {
 				hvo2.setSur_temp(b_list[i].getSur_temp());
 				hvo2.setIn_coeff_2(b_list[i].getIn_coeff_2());
 				hvo2.setDiff_temp(b_list[i].getDiff_temp());
+				hvo2.setOver_coeff(b_list[i].getOver_coeff());
+				hvo2.setHeattrans(b_list[i].getHeattrans());
 				
 				n += 1;
-			 
 			}
-			
+
 			list.add(hvo2);
 		}
 		
@@ -428,6 +463,8 @@ public class Heat_Controller {
 		ModelAndView mv = new ModelAndView();
 		String cal = request.getParameter("cal");
 		String idx = request.getParameter("idx");
+		
+		double em;
 	
 		List<HVO2> list = (List<HVO2>)request.getSession().getAttribute("list");
 		
@@ -442,7 +479,7 @@ public class Heat_Controller {
 				k.setTemp_liq(request.getParameter("temp_liq".concat(idx)));
 				k.setTemp_vapor(request.getParameter("temp_vapor".concat(idx)));
 				k.setFlow(request.getParameter("flow".concat(idx)));
-				k.setEm(request.getParameter("em".concat(idx)));
+				k.setEm(String.valueOf(pipespec.getPipe_em().get(k.getStype())));
 				k.setWind_vel(request.getParameter("wind_vel".concat(idx)));
 				
 				k.setDen_liq(request.getParameter("den_liq".concat(idx)));
@@ -466,19 +503,42 @@ public class Heat_Controller {
 				k.setThcon_vapor(request.getParameter("thcon_vapor".concat(idx)));
 				k.setHeat_dia(request.getParameter("heat_dia".concat(idx)));
 				
-				k.setCfactor(request.getParameter("cfactor".concat(idx)));
-				k.setRe(request.getParameter("re".concat(idx)));
-				k.setWall(request.getParameter("wall".concat(idx)));
-				k.setDin(request.getParameter("din".concat(idx)));
-				k.setDlist(pipespec.getSize());
-				k.setDia(request.getParameter("dia".concat(idx)));
-				k.setDout(request.getParameter("dout".concat(idx)));
-				k.setInsul_thick(request.getParameter("insul_thick".concat(idx)));
+				k.setCfactor(request.getParameter("cfactor".concat(k.getIdx())));
 				
-				k.setSch(request.getParameter("sch".concat(idx)));
+				k.setWall(request.getParameter("wall".concat(k.getIdx())));
+				k.setDin(request.getParameter("din".concat(k.getIdx())));
+				k.setDlist(pipespec.getSize());
+				k.setSch(request.getParameter("sch".concat(k.getIdx())));
 				k.setSlist(pipespec.getSchedule());
-				k.setPipelen(request.getParameter("pipelen".concat(idx)));
-				k.setInsul_con(request.getParameter("insul_con".concat(idx)));
+
+				dialist = pipespec.getDialist(k.getDia());
+				select_sch = pipespec.getSch().get(k.getSch());
+				k.setDin(String.valueOf(dialist[select_sch]));
+				k.setDout(String.valueOf(dialist[17]));
+			
+				k.setPipelen(request.getParameter("pipelen".concat(k.getIdx())));
+				
+				k.setPipe_mtl(request.getParameter("pipe_mtl".concat(k.getIdx())));
+				k.setPipe_con(request.getParameter("pipe_con".concat(k.getIdx())));
+				k.setPipe_thick(request.getParameter("pipe_thick".concat(k.getIdx())));
+				k.setInsul_mtl(request.getParameter("insul_mtl".concat(k.getIdx())));
+				k.setInsul_con(request.getParameter("insul_con".concat(k.getIdx())));
+				k.setInsul_thick(request.getParameter("insul_thick".concat(k.getIdx())));
+				
+				double[] fitting_n = new double[38];
+				double[][] fitting_cal = {
+					pipespec.getElbow90_1(), pipespec.getElbow90_2(), pipespec.getElbow90_3(),
+					pipespec.getElbow90_4(), pipespec.getElbow90_5(), pipespec.getElbow90_6(),
+					pipespec.getElbow90_7(), pipespec.getElbow90_8(), pipespec.getElbow90_9(),
+					pipespec.getElbow45_1(), pipespec.getElbow45_2(), pipespec.getElbow45_3(), pipespec.getElbow45_4(),
+					pipespec.getBend_1(), pipespec.getBend_2(), pipespec.getBend_3(), 
+					pipespec.getTee_1(), pipespec.getTee_2(), pipespec.getTee_3(), pipespec.getTee_4(),
+					pipespec.getTee_5(), pipespec.getTee_6(), pipespec.getTee_7(),
+					pipespec.getGtvalve(), pipespec.getGbvalve(), pipespec.getBvalve(), pipespec.getDvalve(),
+					pipespec.getCvalve_1(), pipespec.getCvalve_2(), pipespec.getAvalve_1(), pipespec.getAvalve_2(),
+					pipespec.getPvalve_1(), pipespec.getPvalve_2(), pipespec.getPvalve_3()
+					
+				};
 				
 				//fitting
 				k.setElbow90_1(request.getParameter("elbow90_1".concat(idx)));
@@ -490,6 +550,9 @@ public class Heat_Controller {
 				k.setElbow90_7(request.getParameter("elbow90_7".concat(idx)));
 				k.setElbow90_8(request.getParameter("elbow90_8".concat(idx)));
 				k.setElbow90_9(request.getParameter("elbow90_9".concat(idx)));
+				
+				fitting_n[0] = ((int)change(k.getElbow90_1()) * 10) / 10 ;
+				fitting_n[1] = ((int)change(k.getElbow90_2()) * 10) / 10 ;
 				
 				k.setElbow45_1(request.getParameter("elbow45_1".concat(idx)));
 				k.setElbow45_2(request.getParameter("elbow45_2".concat(idx)));
@@ -526,16 +589,30 @@ public class Heat_Controller {
 				k.setExpd(request.getParameter("expd".concat(idx)));
 				k.setExpth(request.getParameter("expth".concat(idx)));		
 				
-				k.setEql_len(request.getParameter("eql_len".concat(idx)));
-				k.setSoil_temp(request.getParameter("soil_temp".concat(idx)));
-				k.setIn_coeff(request.getParameter("in_coeff".concat(idx)));
-				k.setG_temp(request.getParameter("g_temp".concat(idx)));
-				k.setOut_coeff(request.getParameter("out_coeff".concat(idx)));
-				k.setOut_temp(request.getParameter("out_temp".concat(idx)));
-				k.setIn_coeff_1(request.getParameter("out_coeff_1".concat(idx)));
-				k.setSur_temp(request.getParameter("sur_temp".concat(idx)));
-				k.setIn_coeff_2(request.getParameter("out_coeff_2".concat(idx)));
-				k.setDiff_temp(request.getParameter("diff_temp".concat(idx)));			
+				
+				// Result
+				
+				
+				try {
+					//re = pipespec.
+					
+					k.setRe(request.getParameter("re".concat(k.getIdx())));
+					k.setEql_len(request.getParameter("eql_len".concat(idx)));
+					k.setSoil_coeff(request.getParameter("soil_coeff".concat(idx)));
+					k.setIn_coeff(request.getParameter("in_coeff".concat(idx)));
+					k.setG_temp(request.getParameter("g_temp".concat(idx)));
+					k.setOut_coeff(request.getParameter("out_coeff".concat(idx)));
+					k.setOut_temp(request.getParameter("out_temp".concat(idx)));
+					k.setIn_coeff_1(request.getParameter("out_coeff_1".concat(idx)));
+					k.setSur_temp(request.getParameter("sur_temp".concat(idx)));
+					k.setIn_coeff_2(request.getParameter("out_coeff_2".concat(idx)));
+					k.setDiff_temp(request.getParameter("diff_temp".concat(idx)));	
+					k.setOver_coeff(request.getParameter("over_coeff".concat(k.getIdx())));
+					k.setHeattrans(request.getParameter("heattrans".concat(k.getIdx())));				
+					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 				
 			}
 			
@@ -549,6 +626,10 @@ public class Heat_Controller {
 	}	
 	
 	
+	
+	
+	
+	
 	// 2.Tank 
 	
 	@RequestMapping(value="tankheat_cal.do", method=RequestMethod.POST)
@@ -559,7 +640,7 @@ public class Heat_Controller {
 		tvo.setItemno(request.getParameter("itemno"));
 		tvo.setVel_wind(request.getParameter("vel_wind"));
 		tvo.setStype(request.getParameter("stype"));
-		tvo.setEm1(tank.getEm_map().get(tvo.getStype()));
+		tvo.setEm1(heats.getEm_map().get(tvo.getStype()));
 		tvo.setEm2(request.getParameter("em2"));
 		tvo.setTemp_gr(request.getParameter("temp_gr"));
 		tvo.setCon_gr(request.getParameter("con_gr"));
@@ -677,47 +758,47 @@ public class Heat_Controller {
 		//2. 계산하기
 		try {
 			//면적
-			double area_dry = tank.calArea1(body, head, "dry", tdia, tlen, wtlen) ;
-			double area_wet = tank.calArea1(body, head, "wet", tdia, tlen, wtlen) ;
-			double area_roof = tank.calArea2(tdia, troof);
-			double area_btm = tank.calArea3(tdia);
+			double area_dry = heats.calArea1(body, head, "dry", tdia, tlen, wtlen) ;
+			double area_wet = heats.calArea1(body, head, "wet", tdia, tlen, wtlen) ;
+			double area_roof = heats.calArea2(tdia, troof);
+			double area_btm = heats.calArea3(tdia);
 			
 			tvo.setArea_dry(String.valueOf(area_dry));
 			tvo.setArea_wet(String.valueOf(area_wet));
 			tvo.setArea_roof(String.valueOf(htype.equals("roof") ? area_roof : ""));
 			tvo.setArea_btm(String.valueOf(ltype.equals("no") ? area_btm : ""));
 			
-			double coeff_body = tank.calCoeff_tank(thcon_body, thick_body);
-			double coeff_sinsul = tank.calCoeff_tank(thcon_sinsul, thick_sinsul);
-			double coeff_rinsul = tank.calCoeff_tank(thcon_rinsul, thick_rinsul);
-			double coeff_binsul = tank.calCoeff_tank(thcon_binsul, thick_binsul);
+			double coeff_body = heats.calCoeff_tank(thcon_body, thick_body);
+			double coeff_sinsul = heats.calCoeff_tank(thcon_sinsul, thick_sinsul);
+			double coeff_rinsul = heats.calCoeff_tank(thcon_rinsul, thick_rinsul);
+			double coeff_binsul = heats.calCoeff_tank(thcon_binsul, thick_binsul);
 			
 			//온도 및 총괄 열전달 계수
 			
-			tank.calResult_1(tlen, wtlen, coeff_body, coeff_sinsul, fcoeff_drywall, fcoeff_wetwall,
+			heats.calResult_1(tlen, wtlen, coeff_body, coeff_sinsul, fcoeff_drywall, fcoeff_wetwall,
 							temp_vap, vis_vap, den_vap, ceff_vap, spheat_vap, thm_vap, 
 						    temp_air, vis_air, den_air, ceff_air, spheat_air, thm_air, 
 						    temp_liq, vis_liq, den_liq, ceff_liq, spheat_liq, thm_liq, 
 						    em, vel_wind);
 			
-			tank.calResult_2(tdia, coeff_body, coeff_rinsul, fcoeff_roof, 
+			heats.calResult_2(tdia, coeff_body, coeff_rinsul, fcoeff_roof, 
 						    temp_vap, vis_vap, den_vap, ceff_vap, spheat_vap, thm_vap, 
 						    temp_air, vis_air, den_air, ceff_air, spheat_air, thm_air, 
 						    temp_liq, vis_liq, den_liq, ceff_liq, spheat_liq, thm_liq, 
 						    em, vel_wind);
 					
-			tank.calResult_3(tdia, coeff_body, coeff_binsul, fcoeff_bottom, temp_air, 
+			heats.calResult_3(tdia, coeff_body, coeff_binsul, fcoeff_bottom, temp_air, 
 						    temp_liq, vis_liq, den_liq, ceff_liq, spheat_liq, thm_liq, temp_gr, con_gr);
 			
-			double temp_dry = tank.getTemp_dry();
-			double temp_wet = tank.getTemp_wet();
-			double temp_roof = tank.getTemp_roof();
-			double temp_btm = tank.getTemp_btm();
+			double temp_dry = heats.getTemp_dry();
+			double temp_wet = heats.getTemp_wet();
+			double temp_roof = heats.getTemp_roof();
+			double temp_btm = heats.getTemp_btm();
 			
-			double ocf_dry = tank.getOcf_dry();
-			double ocf_wet = tank.getOcf_wet();
-			double ocf_roof = tank.getOcf_roof();
-			double ocf_btm = tank.getOcf_btm();
+			double ocf_dry = heats.getOcf_dry();
+			double ocf_wet = heats.getOcf_wet();
+			double ocf_roof = heats.getOcf_roof();
+			double ocf_btm = heats.getOcf_btm();
 
 			tvo.setTemp_dry(String.valueOf(((int)(100 * temp_dry))/100.0));
 			tvo.setTemp_wet(String.valueOf(((int)(100 * temp_wet))/100.0));
@@ -771,7 +852,7 @@ public class Heat_Controller {
 		tvo.setItemno(request.getParameter("itemno"));
 		tvo.setVel_wind(request.getParameter("vel_wind"));
 		tvo.setStype(request.getParameter("stype"));
-		tvo.setEm1(tank.getEm_map().get(tvo.getStype()));
+		tvo.setEm1(heats.getEm_map().get(tvo.getStype()));
 		tvo.setEm2(request.getParameter("em2"));
 		tvo.setTemp_gr(request.getParameter("temp_gr"));
 		tvo.setCon_gr(request.getParameter("con_gr"));
