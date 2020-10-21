@@ -674,11 +674,6 @@ public class Heat_Controller {
 		String ltype = tvo.getLtype();
 		String htype = tvo.getHtype();
 		
-		double[] res1 = new double[4]; 
-		double[] res2 = new double[2];
-		double[] res3 = new double[2]; 
-		
-		
 		//2. 계산하기
 		try {
 			//면적
@@ -699,40 +694,40 @@ public class Heat_Controller {
 			
 			//온도 및 총괄 열전달 계수
 			
-			res1 = tank.calResult_1(tlen, wtlen, coeff_body, coeff_sinsul, fcoeff_drywall, fcoeff_wetwall,
-								   temp_vap, vis_vap, den_vap, ceff_vap, spheat_vap, thm_vap, 
-								   temp_air, vis_air, den_air, ceff_air, spheat_air, thm_air, 
-								   temp_liq, vis_liq, den_liq, ceff_liq, spheat_liq, thm_liq, 
-								   em, vel_wind);
+			tank.calResult_1(tlen, wtlen, coeff_body, coeff_sinsul, fcoeff_drywall, fcoeff_wetwall,
+							temp_vap, vis_vap, den_vap, ceff_vap, spheat_vap, thm_vap, 
+						    temp_air, vis_air, den_air, ceff_air, spheat_air, thm_air, 
+						    temp_liq, vis_liq, den_liq, ceff_liq, spheat_liq, thm_liq, 
+						    em, vel_wind);
 			
-			res2 = tank.calResult_2(tdia, coeff_body, coeff_rinsul, fcoeff_roof, 
-								   temp_vap, vis_vap, den_vap, ceff_vap, spheat_vap, thm_vap, 
-								   temp_air, vis_air, den_air, ceff_air, spheat_air, thm_air, 
-								   temp_liq, vis_liq, den_liq, ceff_liq, spheat_liq, thm_liq, 
-								   em, vel_wind);
+			tank.calResult_2(tdia, coeff_body, coeff_rinsul, fcoeff_roof, 
+						    temp_vap, vis_vap, den_vap, ceff_vap, spheat_vap, thm_vap, 
+						    temp_air, vis_air, den_air, ceff_air, spheat_air, thm_air, 
+						    temp_liq, vis_liq, den_liq, ceff_liq, spheat_liq, thm_liq, 
+						    em, vel_wind);
 					
-			res3 = tank.calResult_3(tdia, coeff_body, coeff_binsul, fcoeff_bottom, temp_air, 
-								   temp_liq, vis_liq, den_liq, ceff_liq, spheat_liq, thm_liq, temp_gr, con_gr);
+			tank.calResult_3(tdia, coeff_body, coeff_binsul, fcoeff_bottom, temp_air, 
+						    temp_liq, vis_liq, den_liq, ceff_liq, spheat_liq, thm_liq, temp_gr, con_gr);
 			
-			double temp_dry = ((int)(100 * res1[0]))/100.0;
-			double temp_wet = ((int)(100 * res1[1]))/100.0;
-			double temp_roof = ((int)(100 * res2[0]))/100.0;
-			double temp_btm = ((int)(100 * res3[0]))/100.0;
+			double temp_dry = tank.getTemp_dry();
+			double temp_wet = tank.getTemp_wet();
+			double temp_roof = tank.getTemp_roof();
+			double temp_btm = tank.getTemp_btm();
 			
-			double ocf_dry = ((int)(10000 * res1[2]))/10000.0;
-			double ocf_wet = ((int)(10000 * res1[3]))/10000.0;
-			double ocf_roof = ((int)(10000 * res2[1]))/10000.0;
-			double ocf_btm = ((int)(10000 * res3[1]))/10000.0;
+			double ocf_dry = tank.getOcf_dry();
+			double ocf_wet = tank.getOcf_wet();
+			double ocf_roof = tank.getOcf_roof();
+			double ocf_btm = tank.getOcf_btm();
 
-			tvo.setTemp_dry(String.valueOf(temp_dry));
-			tvo.setTemp_wet(String.valueOf(temp_wet));
-			tvo.setTemp_roof(String.valueOf(htype.equals("roof") ? temp_roof : ""));
-			tvo.setTemp_btm(String.valueOf(ltype.equals("no") ? temp_btm : ""));
+			tvo.setTemp_dry(String.valueOf(((int)(100 * temp_dry))/100.0));
+			tvo.setTemp_wet(String.valueOf(((int)(100 * temp_wet))/100.0));
+			tvo.setTemp_roof(String.valueOf(htype.equals("roof") ? ((int)(100 * temp_roof))/100.0 : ""));
+			tvo.setTemp_btm(String.valueOf(ltype.equals("no") ? ((int)(100 * temp_btm))/100.0 : ""));
 			
-			tvo.setOcf_dry(String.valueOf(ocf_dry));
-			tvo.setOcf_wet(String.valueOf(ocf_wet));
-			tvo.setOcf_roof(String.valueOf(htype.equals("roof") ? ocf_roof : ""));
-			tvo.setOcf_btm(String.valueOf(ltype.equals("no") ? ocf_btm : ""));
+			tvo.setOcf_dry(String.valueOf(((int)(10000 * ocf_dry))/10000.0));
+			tvo.setOcf_wet(String.valueOf(((int)(10000 * ocf_wet))/10000.0));
+			tvo.setOcf_roof(String.valueOf(htype.equals("roof") ? ((int)(10000 * ocf_roof))/10000.0 : ""));
+			tvo.setOcf_btm(String.valueOf(ltype.equals("no") ? ((int)(10000 * ocf_btm))/10000.0 : ""));
 			
 			// 열량
 			
@@ -741,10 +736,10 @@ public class Heat_Controller {
 			temp_air = change(tvo.getTemp_air());  
 			temp_gr = change(tvo.getTemp_gr());
 			
-			double heat_dry = ((int)(100 * area_dry * res1[2] * (temp_vap - temp_air)))/100.0;
-			double heat_wet = ((int)(100 * area_wet * res1[3] * (temp_liq - temp_air)))/100.0;
-			double heat_roof = ((int)(100 * area_roof * res2[1] * (temp_vap - temp_air)))/100.0;
-			double heat_btm = ((int)(100 * area_btm * res3[1] * (temp_liq - temp_gr)))/100.0;
+			double heat_dry = ((int)(100 * area_dry * ocf_dry * (temp_vap - temp_air)))/100.0;
+			double heat_wet = ((int)(100 * area_wet * ocf_wet * (temp_liq - temp_air)))/100.0;
+			double heat_roof = ((int)(100 * area_roof * ocf_roof * (temp_vap - temp_air)))/100.0;
+			double heat_btm = ((int)(100 * area_btm * ocf_btm * (temp_liq - temp_gr)))/100.0;
 			
 			tvo.setHeat_dry(String.valueOf(heat_dry));
 			tvo.setHeat_wet(String.valueOf(heat_wet));
