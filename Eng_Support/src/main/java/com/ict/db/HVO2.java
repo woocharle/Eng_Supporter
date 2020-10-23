@@ -14,7 +14,7 @@ public class HVO2 {
 	private String gtvalve, gbvalve, bvalve, cvalve_1, cvalve_2, avalve_1, avalve_2, pvalve_1, pvalve_2, pvalve_3;
 	private String dvalve, redd, redth, expd, expth;
 	
-	private String g_temp, in_coeff, soil_coeff, out_coeff, out_temp, in_coeff_1, sur_temp, in_coeff_2, diff_temp, over_coeff, heattrans;
+	private String g_temp, in_coeff, soil_coeff, out_coeff, out_temp, out_coeff_1, sur_temp, out_coeff_2, diff_temp, over_coeff, heattrans;
 	
 	
 	private String[] dlist, slist;
@@ -881,13 +881,13 @@ public class HVO2 {
 	}
 
 
-	public String getIn_coeff_1() {
-		return in_coeff_1;
+	public String getOut_coeff_1() {
+		return out_coeff_1;
 	}
 
 
-	public void setIn_coeff_1(String in_coeff_1) {
-		this.in_coeff_1 = in_coeff_1;
+	public void setOut_coeff_1(String out_coeff_1) {
+		this.out_coeff_1 = out_coeff_1;
 	}
 
 
@@ -901,13 +901,13 @@ public class HVO2 {
 	}
 
 
-	public String getIn_coeff_2() {
-		return in_coeff_2;
+	public String getOut_coeff_2() {
+		return out_coeff_2;
 	}
 
 
-	public void setIn_coeff_2(String in_coeff_2) {
-		this.in_coeff_2 = in_coeff_2;
+	public void setOut_coeff_2(String out_coeff_2) {
+		this.out_coeff_2 = out_coeff_2;
 	}
 
 

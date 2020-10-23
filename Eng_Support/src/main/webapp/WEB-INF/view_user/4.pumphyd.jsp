@@ -31,7 +31,7 @@
 		.pspec1{width:120px;}
 		.pspec2{width: 90px;}
 		#combo1{width:100px; font-size: 20px;}
-		#section1{font-size: 18px; margin: 0px auto;}
+		#section{font-size: 18px; margin: 0px auto;}
 		
 	</style>
 
@@ -52,6 +52,7 @@
 		}
 		
 		function del1_go(f) {
+			alert(f.section1.value);
 			if(f.section1.value == 0){
 				alert("section값을 선택하시오.");
 				return;
@@ -64,6 +65,7 @@
 		}
 		
 		function del2_go(f) {
+			alert(f.section2.value);
 			if(f.section2.value == 0){
 				alert("section값을 선택하시오.");
 				return;
@@ -209,7 +211,7 @@
 				<thead>
 					<tr>
 						<td style="height:30px;"> 
-							<select name="section1" id="section1">
+							<select name="section1" id="section">
 								<option value="0">삭제할 section 선택::</option>	
 								<c:forEach var="k" items="${pslist}">
 									<option value="${k.idx}">Section ${k.idx}</option>					
@@ -646,7 +648,7 @@
 				<thead>
 					<tr>
 						<td style="height:30px;"> 
-							<select name="section2" id="section1">
+							<select name="section2" id="section">
 								<option value="0">삭제할 section 선택::</option>	
 								<c:forEach var="k" items="${pdlist}">
 									<option value="${k.idx_d}">Section ${k.idx_d}</option>					

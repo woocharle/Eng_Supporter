@@ -8,6 +8,60 @@ public class Heats {
 	private double temp_dry, temp_wet, temp_roof, temp_btm;
 	private double ocf_dry, ocf_wet, ocf_roof, ocf_btm;
 	
+	private double ts, ifc, ofc1, ofc2;
+	
+	
+	//0.Common
+	
+	//(1) Pr number
+	public double calPr(double cp, double vis, double th) {
+		return 2.42 * vis * cp / th;
+	}
+	
+	public double calCoeff_rad(double tw, double ta, double em) {
+		return 0.1713 * em * Math.pow(10, -8) * (Math.pow((tw + 460), 4) - Math.pow((ta + 460), 4))/ (tw - ta); 
+	}
+	
+	
+	//(2) radiation coeffi
+	
+	//1.pipe 
+	//(1) Surface Temperature (Ts)
+	
+	public void calTs(double temp, double temp_air, double thcon, double din, double dout, double re,
+					double pr, double cnv, double temp_sur, double wind_vel) {
+		
+	}
+		
+	
+	//(2)Inside Flim Coefficient
+	
+	public double calIFC(double thcon, double din, double dout, double re, double pr) {
+		return 0.027 * thcon / (din / 12) * Math.pow(re, 0.8) * Math.pow(pr, 1/3) * (din / dout);
+		
+	}
+	
+	//(3) Convection Surface Coefficient 
+	public double calCSC(double cnv, double dout, double temp_air, double temp_sur, double wind_vel) {
+		double csc = 0;
+		double tavg = Math.abs(temp_air + temp_sur) / 2;
+		double dt = Math.abs(temp_air - temp_sur);
+		
+		if (dout > 24 ) {
+			csc = cnv * Math.pow(1 / 24, 0.2) * Math.pow(1 / tavg, 0.181) * Math.pow(dt, 0.266)
+					 * Math.pow((1 + 1.277 * wind_vel) , 0.5); 			
+		}else {
+			csc = cnv * Math.pow(1 / dout, 0.2) * Math.pow(1 / tavg, 0.181) * Math.pow(dt, 0.266)
+				 * Math.pow((1 + 1.277 * wind_vel) , 0.5); 
+		}
+		
+		return csc;
+	}
+
+	
+	
+	// 2.tank
+	
 	// cal Area1는 Drywall의 면적
 	public double calArea1(String body, String head, String part, double tdia, double tlen, double wtlen) {
 		double res = 0;
@@ -367,9 +421,7 @@ public class Heats {
 				/ Math.pow(2.42 * vis, 2) ; 
 	}
 	
-	public double calPr(double cp, double vis, double th) {
-		return 2.42 * vis * cp / th;
-	}
+
 
 	
 	// k는 thermal conductivity를 의미한다. 
@@ -431,10 +483,6 @@ public class Heats {
 	
 	public double calCoeff_roof2(double gr, double pr, double len, double th) {
 		return 0.14 * th * Math.pow((gr * pr), 0.33) / len;
-	}
-	
-	public double calCoeff_rad(double tw, double ta, double em) {
-		return 0.1713 * em * Math.pow(10, -8) * (Math.pow((tw + 460), 4) - Math.pow((ta + 460), 4))/ (tw - ta); 
 	}
 	
 	public double calCoeff_over(double coeff, double coeff_wall, double coeff_rad, 

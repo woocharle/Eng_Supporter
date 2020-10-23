@@ -45,7 +45,7 @@ public class Pipespec {
 				re = den_vap * vel * dia / (vis_vap / 1000) ;
 			
 			break;
-			
+			/*
 			case "2phase": 
 				den_avg = (flow_liq + flow_vap)/(flow_liq /den_liq + flow_vap / den_vap);
 				vel_avg = (flow_liq + flow_vap)/(den_avg * pi * Math.pow(dia, 2) / 4);
@@ -53,20 +53,111 @@ public class Pipespec {
 				re = 4 * (flow_liq + flow_vap)/(pi * dia * vis_avg);
 			
 			break;
-
+			*/
 		}
 	
 		return re;
 	}
 	
-	// (2) Equivalent Length
-	public double calEqu_len(String cfactor, double tdia, double re) {
-		double len = 0;
+	// (2) friction factor 계산 (2phase 보강 필요.)
+	
+	public double calFfactor_liq(double re, double dia, double wall) {
+		double ffactor = 0;
 		
+		if(re >= 2100) {
 		
-		return len;
+			double a1 = -2 * Math.log10(wall / 1000 / 3.7 + 12 / re);
+			double b1 = -2 * Math.log10(wall / 1000 / 3.7 + 2.51 * a1 / re);
+			double c1 = -2 * Math.log10(wall / 1000 / 3.7 + 2.51 * b1 / re);
+			
+			ffactor = a1 - Math.pow(b1 - a1, 2) / (c1 - 2 * b1 + a1);
+			ffactor = Math.pow(ffactor , -2);
+			
+			double f1 = ffactor;
+			double f2 = 0;
+			
+			do {
+				
+				f2 = 1 / (-2 * Math.log10(wall /1000 / 3.7 / dia + 2.51 / re / Math.pow(f1, 0.5))) ;
+				f2 = Math.pow(f2 ,2);
+				f1 = f2; 
+							
+			}while (Math.abs(f1 - f2) / f2 > 0.00001);
+			
+			ffactor = f2;
+		
+		}else {
+			ffactor = 64 / re;
+		}
+		return ffactor;
+	}
+
+	public double calFfactor_vap(double re, double dia, double wall) {
+		double ffactor = 0;
+		
+		if(re >= 2100) {
+			
+			ffactor = 1 / (2 * Math.log10(3.7 * dia / wall * 1000));
+			ffactor = Math.pow(ffactor , 2);
+			
+			double f1 = ffactor;
+			double f2 = 0;
+			
+			do {
+				
+				f2 = 1 / 0.99 / (2 * Math.log10(re * Math.pow(f1, 0.5) / 2.825)) ;
+				f2 = Math.pow(f2 ,2);
+				f1 = f2; 
+				
+			}while (Math.abs(f1 - f2) / f2 > 0.00001);
+			
+			ffactor = f2;
+			
+		}else {
+			if (dia > 20) {
+				ffactor = 0.032 / Math.pow(dia, 0.333);
+			} else {
+				ffactor = 64 / re;
+			}
+			
+		}
+		return ffactor;
 	}
 	
+	// (3) Expander & Reducer 
+	
+	public double calExpander(double dia_pipe, double dia, double theta) {
+	
+		double beta = Math.pow(dia_pipe, 2) / Math.pow(dia, 2); 
+		double res = 0;
+		
+		if (theta <= 45) {
+			res = 2.6 * Math.sin(theta * pi / 4  /180) * (1 - Math.pow(dia_pipe, 2) / Math.pow(dia, 2));
+			res = res / Math.pow(beta, 2);
+		}else {
+			res = (1 - Math.pow(dia_pipe, 2) / Math.pow(dia, 2)) / Math.pow(beta, 2);
+			res = res / Math.pow(beta, 2);
+		}
+		
+		return res;
+	}
+	
+	public double calReducer(double dia_pipe, double dia, double theta) {
+		double beta = Math.pow(dia, 2) / Math.pow(dia_pipe, 2); 
+		double res = 0;
+		
+		if (theta <= 45) {
+			res = 0.8 * Math.sin(theta * pi / 4  /180) * (1 - Math.pow(dia, 2) / Math.pow(dia_pipe, 2));
+			res = res / Math.pow(beta, 2);
+		}else {
+			res = 0.5 * Math.pow(Math.sin(theta * pi / 4  /180), 0.5) * (1 - Math.pow(dia, 2) / Math.pow(dia_pipe, 2));
+			res = res / Math.pow(beta, 2);
+		}
+		
+		return res;		
+		
+	}
+
 	// Getter & Setter
 	
 	//(0) 메소드 이용

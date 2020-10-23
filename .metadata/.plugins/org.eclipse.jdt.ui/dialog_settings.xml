@@ -66,7 +66,7 @@
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="ClasspathContainerSelectionPage">
-		<item key="index" value="7"/>
+		<item key="index" value="4"/>
 	</section>
 	<section name="JavaSearchPage">
 		<item key="CASE_SENSITIVE" value="false"/>

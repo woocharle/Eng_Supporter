@@ -137,8 +137,7 @@
 				<div id ="inout">
 					<div id="input">
 						<span style="font-size:25px;">Input :&nbsp;&nbsp;</span>
-						<input name="unit1" <c:if test="${idx eq n.idx}"> id="${idx}" </c:if> type ="text"  value="${n.unit1}" onkeyup="trans_go(this.form)">
-					</div>
+						<input name="unit1" <c:if test="${idx eq n.idx}"> id="${idx}" </c:if> type ="text"  value="${n.unit1}" >
 				
 					<div id="Output">
 						<span style="font-size:25px;">Output :&nbsp;&nbsp;</span>
