@@ -77,8 +77,10 @@ public class DAO {
 			case "Insert": result = sqlSessionTemplate.insert("minsert", vo1); break;
 			case "Update": result = sqlSessionTemplate.update("mupdate", vo1); break;
 			case "Update2": result = sqlSessionTemplate.update("mupdate2", vo1); break;
+			case "Update3": result = sqlSessionTemplate.update("mupdate3", vo1); break;
 			case "Delete": result = sqlSessionTemplate.delete("mdelete", vo1); break;
-			case "Find": result = sqlSessionTemplate.delete("mfind", vo1); break;
+			case "Find": result = sqlSessionTemplate.update("mfind", vo1); break;
+			case "Drop": result = sqlSessionTemplate.update("mdrop", vo1); break;
 		}
 	
 		return result;

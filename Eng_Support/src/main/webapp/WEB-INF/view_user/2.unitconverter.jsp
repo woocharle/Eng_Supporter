@@ -134,34 +134,34 @@
 			 		 
 			  	</div>
 				
-				<div id ="inout">
+				<div id="inout">
 					<div id="input">
 						<span style="font-size:25px;">Input :&nbsp;&nbsp;</span>
-						<input name="unit1" <c:if test="${idx eq n.idx}"> id="${idx}" </c:if> type ="text"  value="${n.unit1}" >
-				
+						<input name="unit1" <c:if test="${idx eq n.idx}"> id="${idx}" </c:if> type ="text"  value="${n.unit1}" onchange="trans_go(this.form)">
+					</div>
 					<div id="Output">
 						<span style="font-size:25px;">Output :&nbsp;&nbsp;</span>
 						<input name="unit2" type ="text"  value="${n.unit2}" readonly="readonly">
 					</div>
 				</div>
 
-				<div>
-					<select name="scala1" id="choice1" size="8" onchange="trans_go(this.form)">
-						<c:forEach var="k" items="${n.list}" >
-							
-							<option value="${k}" <c:if test="${k eq n.scala1}"> selected </c:if>>${k}</option>
+		
+				<select name="scala1" id="choice1" size="8" onchange="trans_go(this.form)">
+					<c:forEach var="k" items="${n.list}" >
 						
-						</c:forEach>
-					</select>
+						<option value="${k}" <c:if test="${k eq n.scala1}"> selected </c:if>>${k}</option>
 					
-					<select name="scala2" id="choice2" size="8" onchange="trans_go(this.form)">
-						<c:forEach var="k" items="${n.list}" >
-							
-							<option value="${k}" <c:if test="${k eq n.scala2}"> selected </c:if>>${k}</option>
+					</c:forEach>
+				</select>
+				
+				<select name="scala2" id="choice2" size="8" onchange="trans_go(this.form)">
+					<c:forEach var="k" items="${n.list}" >
 						
-						</c:forEach>
-					</select>
-				</div>
+						<option value="${k}" <c:if test="${k eq n.scala2}"> selected </c:if>>${k}</option>
+					
+					</c:forEach>
+				</select>
+		
 				</form>
 			</div>
 			<br><br><br><br>

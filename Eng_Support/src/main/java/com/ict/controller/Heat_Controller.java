@@ -183,7 +183,7 @@ public class Heat_Controller {
 			list.add(hvo2);
 			
 		}
-	
+		
 		request.setAttribute("cal", cal);
 		request.getSession().setAttribute("list", list);
 		
@@ -201,7 +201,7 @@ public class Heat_Controller {
 		
 		//getPipedata(request, list);
 
-		int idx = Integer.parseInt(request.getParameter("idx"));
+		int idx = Integer.parseInt(request.getParameter("del_line"));
 		HVO2[] b_list = list.toArray(new HVO2[list.size()]);
 		int n = 1;
 		list.clear();

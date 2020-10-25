@@ -7,11 +7,10 @@
 	<meta charset="UTF-8">
 	<title>Engineering Support</title>
 	<style type="text/css">
-		.revise{width: 75%; height: 1400px; position: relative; left: 400px; bottom: 1430px;}
-		.revise h3{position: relative; left: 60px; font-size: 30px; margin-bottom: 50px;}
-		.revise table{position: relative; left: 80px; font-size: 20px; 
-					margin-bottom: 50px; width: 850px;
-					border-collapse:collapse; }	
+		.revise {position: relative; top: 50px; margin: 0px auto; width:1500px; height: 1500px;}
+		.revise p{text-align: center;}
+		.revise h3{font-size: 30px; margin-bottom: 50px;}
+		.revise table{width: 850px; border-collapse:collapse; margin: 0px auto; }	
 		.revise td{height: 35px; border: 1px solid black;}
 		.revise input{font-size: 20px; text-align: center;}
 	
@@ -24,34 +23,39 @@
 	<script type="text/javascript">
 		
 		function revise_ok(f){
-			var chk = confirm("수정할까요?");
-			if(chk){
- 				f.action="revise.do";
-				f.submit(); 
-			} else {
-				return;
+			if (f.m_pass.value == f.m_pw0.value) {
+				var chk = confirm("수정할까요?");
+				if(chk){
+	 				f.action="admin_update.do";
+					f.submit(); 
+				} else {
+					return;
+				}		
+				
+			} else{
+				alert("비밀번호를 다시 확인 하십시오.");
+				f.m_pass.focus();
+				return;				
 			}			
 		}	
 	
 		function reset_ok(f) {
-			f.action="join.do?page="+${page}
+			f.action="admin_page2.do";
 			f.submit(); 
 		}
-	
 	
 	</script>
 </head>
 <body>
 	<c:if test="${finish eq 'ok'}"><jsp:include page="../view_admin/alarm.jsp"/></c:if>
-	<div class="revise">
+	<div class="revise" align="center">
 		<h3>개인정보 및 변경</h3>
-	
 		<form method="post">
 			<table>
 				<tbody>
 					<tr>
 						<td class="tb">이름</td>
-						<td class="ti"><input type="text" id="이름" name="m_name" value="${vo1.m_name}"></td>
+						<td class="ti"><input type="text" id="이름" name="m_name" value="${vo1.m_name}" readonly="readonly"></td>
 					</tr>	
 					<tr>
 						<td class="tb">소속</td>
@@ -69,6 +73,20 @@
 					<tr>
 						<td class="tb">자기소개</td>
 						<td class="ti"><textarea cols="75" rows="10" name="m_content">${vo1.m_content}</textarea></td>
+					</tr>	
+					<tr>
+						<td class="tb">현재 비밀번호</td>
+						<td class="ti"><input type="password" id="비밀번호" name="m_pass">
+							<input type="hidden" id="비밀번호" name="m_pw0" value="${vo1.m_pw}"/>
+						</td>
+					</tr>	
+					<tr>
+						<td class="tb">비밀번호</td>
+						<td  class="ti"><input type="password" id="비밀번호" name="m_pw"></td>
+					</tr>	
+					<tr>
+						<td class="tb">비밀번호 확인</td>
+						<td class="ti"><input type="password" id="비밀번호 확인" name="chk" ></td>
 					</tr>						
 				</tbody>
 				<tfoot>
@@ -85,6 +103,5 @@
 			</table>
 		</form>	
 	</div>
-
 </body>
 </html>

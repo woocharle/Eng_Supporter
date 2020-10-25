@@ -248,7 +248,9 @@ public class Main_Controller {
 				hvo2.setDout(String.valueOf(dialist[17]));
 				
 				hlist.add(hvo2);
-		
+				num = hlist.size();
+				
+				request.setAttribute("num", num);
 				request.getSession().setAttribute("list", hlist);				
 				
 			break;

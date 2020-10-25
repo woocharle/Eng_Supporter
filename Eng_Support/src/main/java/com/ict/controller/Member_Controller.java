@@ -193,7 +193,7 @@ public class Member_Controller {
 		//String m_pw = "";
 		
 		if(m_id.equals("email 없음")) {
-			msg="제출하신 메일주소를 가진 멤버가 없습니다.";
+			msg="제출하신 메일주소를 가진 회원이 없습니다.";
 			
 		}else {
 			/*
@@ -243,6 +243,9 @@ public class Member_Controller {
 		String msg = "개인정보가 변경되었습니다.";
 		
 		int result = dao.getmIDU(vo1, "Update");
+
+		vo1 = dao.getMonelist(vo1.getIdx());
+		request.getSession().setAttribute("vo1", vo1);
 		
 		mv.addObject("msg", msg);
 		mv.addObject("finish", finish);
@@ -262,6 +265,33 @@ public class Member_Controller {
 		
 		int result = dao.getmIDU(vo1, "Update2");
 
+		vo1 = dao.getMonelist(vo1.getIdx());
+		
+		request.getSession().setAttribute("vo1", vo1);
+		
+		mv.addObject("msg", msg);
+		mv.addObject("finish", finish);
+		mv.addObject("page", page);
+		mv.setViewName("view_member/0.mypage");
+		
+		return mv;
+		
+	}
+	
+	@RequestMapping(value="drop.do", method = RequestMethod.POST)
+	public ModelAndView drop_Cmd(VO1 vo1, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		String page = request.getParameter("page");
+		String finish = "ok";
+		String msg = "삭제신청이 완료 되었습니다.";
+		
+		vo1.setReq_del("request");
+		
+		int result = dao.getmIDU(vo1, "Drop");
+		
+		vo1 = dao.getMonelist(vo1.getIdx());
+		request.getSession().setAttribute("vo1", vo1);
+		
 		mv.addObject("msg", msg);
 		mv.addObject("finish", finish);
 		mv.addObject("page", page);

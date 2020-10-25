@@ -7,10 +7,14 @@
 	<meta charset="UTF-8">
 	<title>Engineering Support</title>
 	<style type="text/css">
+		
 		.pipeheat{width: 75%; height: 1400px; position: relative; left: 400px; bottom: 1430px; overflow: auto;}
 		.pipeheat h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 40px;}
 
-		#add_chart1{position: relative; left: 950px; font-size: 20px; height: 30px; width: 100px;}
+		#add_chart{position: relative; left: 820px; font-size: 20px; height: 30px; width: 100px;}
+		#del_chart{position: relative; left: 850px; width:100px; font-size:20px;}
+		#del_line{position: relative; left: 820px; top: 10px; width:230px; font-size:20px;}
+		
 		#pheat{position: relative; left: 50px; overflow: scroll; width: 1000px; height: 450px; border: 1px solid black;}
 		
 		#pheat1{position: relative; left: 50px; margin-top: 40px; margin-bottom: 10px; width:1150px;}
@@ -41,10 +45,8 @@
 		#pheat5 input{width: 100px;font-size: 20px;}
 		
 	</style>
-
     <script type="text/javascript">
 		function rev_go(f) {
-			alert(f.lineno1.value);
 			f.action="pipeheat_rev.do";
 			f.submit(); 
 		}
@@ -53,8 +55,9 @@
 			f.action="pipeheat_add.do";
 			f.submit(); 
 		}
-				
-		function del_go(f) {
+					
+ 		function del_go(f) {
+
 			var chk = confirm("정말 삭제할까요?")
 			if(chk){
 				f.action="pipeheat_del.do";
@@ -64,7 +67,7 @@
 				return;
 			}
 
-		}
+		} 
 		
 		function cal_go(f) {
 			alert("작업중");
@@ -76,9 +79,17 @@
 <body>
 	<div class="pipeheat">
 		<h3> Pipe Heat Transfer </h3>
-	
 		<form method="post">
-			<input id="add_chart1" type="button" value="Add" onclick="add_go(this.form)">
+			<input type="button" id="add_chart" value="Add" onclick="add_go(this.form)">
+			<!-- <input id="add_chart1" type="button" value="Delete" onclick="add_go(this.form)"> -->
+			<input type="button" id="del_chart" value="Delete" onclick="del_go(this.form)">
+			<br>
+			<select name="del_line" id="del_line">
+				<option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::삭제할 line 선택::</option>	
+				<c:forEach var="k" items="${list}">
+					<option value="${k.lineno}">${k.lineno}</option>					
+				</c:forEach>
+			</select>
 			<br><br>
 
 			<c:forEach var="n" items="${list}">	
@@ -115,9 +126,7 @@
 									<input type="text" <c:if test="${idx eq n.idx}"> id="${idx}" </c:if> style="width:200px; font-size:20px;" name="lineno${n.idx}" value="${n.lineno}">
 									<input type="hidden" name="idx" value="${n.idx}"/>
 								</td>
-								<td><input type="button" id="calculation" value="Calculate" onclick="cal_go(this.form)"></td>
-								<td></td>
-								<td><c:if test="${n.idx ne '1'}"><input type="button" id="delete" value="Delete" onclick="del_go(this.form)"></c:if></td>	
+								<td colspan="3"><input type="button" id="calculation" value="Calculate" onclick="cal_go(this.form)"></td>
 								<td colspan="7"></td>
 								<!-- delete 버튼은 기능 설정 쯤 개시 -->
 							</tr>
