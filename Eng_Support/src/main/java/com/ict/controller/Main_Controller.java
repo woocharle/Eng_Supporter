@@ -237,7 +237,11 @@ public class Main_Controller {
 				hvo2.setPhase("liquid");
 				hvo2.setStype("common");
 				hvo2.setEm(String.valueOf(pipespec.getPipe_em().get(hvo2.getStype())));
+				hvo2.setSeason("spring");
 				hvo2.setCfactor("fitting");
+				hvo2.setCondition("hcyd");
+				hvo2.setConvection(pipespec.getPipe_shp().get(hvo2.getCondition()));
+				
 				hvo2.setDia("6");
 				hvo2.setDlist(pipespec.getSize());
 				hvo2.setSch("STD");
@@ -247,8 +251,11 @@ public class Main_Controller {
 				hvo2.setDin(String.valueOf(dialist[select_sch]));
 				hvo2.setDout(String.valueOf(dialist[17]));
 				
+				hvo2.setPipe_thick(String.valueOf((change(hvo2.getDout())-change(hvo2.getDin()))/2));
 				hlist.add(hvo2);
-		
+				num = hlist.size();
+				
+				request.setAttribute("num", num);
 				request.getSession().setAttribute("list", hlist);				
 				
 			break;
@@ -330,7 +337,23 @@ public class Main_Controller {
 		return mv;
 	}
 	
+	//3. option
 	
+	public double change(String sth) {
+		double num = 0;
+		try {
+			if(sth == null || sth.equals(null)) {
+				num = 0;
+			}else {
+				num = Double.parseDouble(sth);
+			}
+		} catch (Exception e) {
+			num = 0;
+		}
+
+		
+		return num;
+	}
 	
 	
 }

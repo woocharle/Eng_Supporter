@@ -1,6 +1,5 @@
 package com.ict.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -65,125 +64,14 @@ public class Heat_Controller {
 				hvo2.setDout(String.valueOf(dialist[17]));
 				
 			} else {
-				
 				hvo2.setIdx(String.valueOf(i + 1));
-				hvo2.setLineno(request.getParameter("lineno".concat(hvo2.getIdx())));
-				hvo2.setPhase(request.getParameter("phase".concat(hvo2.getIdx())));
-				hvo2.setEv(request.getParameter("ev".concat(hvo2.getIdx())));
-				hvo2.setOver(request.getParameter("over".concat(hvo2.getIdx())));
-				hvo2.setStype(request.getParameter("stype".concat(hvo2.getIdx())));
-				hvo2.setTemp_air(request.getParameter("temp_air".concat(hvo2.getIdx())));
-				hvo2.setTemp_liq(request.getParameter("temp_liq".concat(hvo2.getIdx())));
-				hvo2.setTemp_vapor(request.getParameter("temp_vapor".concat(hvo2.getIdx())));
-				hvo2.setFlow(request.getParameter("flow".concat(hvo2.getIdx())));
-				hvo2.setEm(request.getParameter("em".concat(hvo2.getIdx())));
-				hvo2.setWind_vel(request.getParameter("wind_vel".concat(hvo2.getIdx())));
-				
-				hvo2.setDen_liq(request.getParameter("den_liq".concat(hvo2.getIdx())));
-				hvo2.setDen_vapor(request.getParameter("den_vapor".concat(hvo2.getIdx())));
-				//hvo2.setVapor_fr(request.getParameter("vapor_fr".concat(hvo2.getIdx())));
-				hvo2.setSeason(request.getParameter("season".concat(hvo2.getIdx())));
-				
-				hvo2.setVis_liq(request.getParameter("vis_liq".concat(hvo2.getIdx())));
-				hvo2.setVis_vapor(request.getParameter("vis_vapor".concat(hvo2.getIdx())));
-				//hvo2.setFlow_liq(request.getParameter("flow_liq".concat(hvo2.getIdx())));
-				hvo2.setCondition(request.getParameter("condition".concat(hvo2.getIdx())));
-				hvo2.setDepth(request.getParameter("depth".concat(hvo2.getIdx())));
-				
-				hvo2.setHeat_liq(request.getParameter("heat_liq".concat(hvo2.getIdx())));
-				hvo2.setHeat_vapor(request.getParameter("heat_vapor".concat(hvo2.getIdx())));
-				//hvo2.setFlow_vapor(request.getParameter("flow_vapor".concat(hvo2.getIdx())));
-				hvo2.setConvection(request.getParameter("convection".concat(hvo2.getIdx())));
-				hvo2.setSoil(request.getParameter("soil".concat(hvo2.getIdx())));
-				
-				hvo2.setThcon_liq(request.getParameter("thcon_liq".concat(hvo2.getIdx())));
-				hvo2.setThcon_vapor(request.getParameter("thcon_vapor".concat(hvo2.getIdx())));
-				hvo2.setHeat_dia(request.getParameter("heat_dia".concat(hvo2.getIdx())));
-				
-				hvo2.setCfactor(request.getParameter("cfactor".concat(hvo2.getIdx())));
-				hvo2.setRe(request.getParameter("re".concat(hvo2.getIdx())));
-				hvo2.setWall(request.getParameter("wall".concat(hvo2.getIdx())));
-				hvo2.setDin(request.getParameter("din".concat(hvo2.getIdx())));
-				hvo2.setDlist(pipespec.getSize());
-				hvo2.setDia(request.getParameter("dia".concat(hvo2.getIdx())));
-				hvo2.setDout(request.getParameter("dout".concat(hvo2.getIdx())));
-
-				hvo2.setSch(request.getParameter("sch".concat(hvo2.getIdx())));
-				hvo2.setSlist(pipespec.getSchedule());
-				hvo2.setPipelen(request.getParameter("pipelen".concat(hvo2.getIdx())));
-				
-				hvo2.setPipe_mtl(request.getParameter("pipe_mtl".concat(hvo2.getIdx())));
-				hvo2.setPipe_con(request.getParameter("pipe_con".concat(hvo2.getIdx())));
-				hvo2.setPipe_thick(request.getParameter("pipe_thick".concat(hvo2.getIdx())));
-				hvo2.setInsul_mtl(request.getParameter("insul_mtl".concat(hvo2.getIdx())));
-				hvo2.setInsul_con(request.getParameter("insul_con".concat(hvo2.getIdx())));
-				hvo2.setInsul_thick(request.getParameter("insul_thick".concat(hvo2.getIdx())));
-				
-				hvo2.setEql_len(request.getParameter("eql_len".concat(hvo2.getIdx())));
-				
-				//fitting
-				hvo2.setElbow90_1(request.getParameter("elbow90_1".concat(hvo2.getIdx())));
-				hvo2.setElbow90_2(request.getParameter("elbow90_2".concat(hvo2.getIdx())));
-				hvo2.setElbow90_3(request.getParameter("elbow90_3".concat(hvo2.getIdx())));
-				hvo2.setElbow90_4(request.getParameter("elbow90_4".concat(hvo2.getIdx())));
-				hvo2.setElbow90_5(request.getParameter("elbow90_5".concat(hvo2.getIdx())));
-				hvo2.setElbow90_6(request.getParameter("elbow90_6".concat(hvo2.getIdx())));
-				hvo2.setElbow90_7(request.getParameter("elbow90_7".concat(hvo2.getIdx())));
-				hvo2.setElbow90_8(request.getParameter("elbow90_8".concat(hvo2.getIdx())));
-				hvo2.setElbow90_9(request.getParameter("elbow90_9".concat(hvo2.getIdx())));
-				
-				hvo2.setElbow45_1(request.getParameter("elbow45_1".concat(hvo2.getIdx())));
-				hvo2.setElbow45_2(request.getParameter("elbow45_2".concat(hvo2.getIdx())));
-				hvo2.setElbow45_3(request.getParameter("elbow45_3".concat(hvo2.getIdx())));
-				hvo2.setElbow45_4(request.getParameter("elbow45_4".concat(hvo2.getIdx())));
-				
-				hvo2.setBend_1(request.getParameter("bend_1".concat(hvo2.getIdx())));
-				hvo2.setBend_2(request.getParameter("bend_2".concat(hvo2.getIdx())));
-				hvo2.setBend_3(request.getParameter("bend_3".concat(hvo2.getIdx())));
-				
-				hvo2.setTee_1(request.getParameter("tee_1".concat(hvo2.getIdx())));
-				hvo2.setTee_2(request.getParameter("tee_2".concat(hvo2.getIdx())));
-				hvo2.setTee_3(request.getParameter("tee_3".concat(hvo2.getIdx())));
-				hvo2.setTee_4(request.getParameter("tee_4".concat(hvo2.getIdx())));
-				hvo2.setTee_5(request.getParameter("tee_5".concat(hvo2.getIdx())));
-				hvo2.setTee_6(request.getParameter("tee_6".concat(hvo2.getIdx())));
-				hvo2.setTee_7(request.getParameter("tee_7".concat(hvo2.getIdx())));
-				
-				hvo2.setGtvalve(request.getParameter("gtvalve".concat(hvo2.getIdx())));
-				hvo2.setBvalve(request.getParameter("bvalve".concat(hvo2.getIdx())));
-				hvo2.setGbvalve(request.getParameter("gbvalve".concat(hvo2.getIdx())));
-				hvo2.setDvalve(request.getParameter("dvalve".concat(hvo2.getIdx())));
-				hvo2.setAvalve_1(request.getParameter("avalve_1".concat(hvo2.getIdx())));
-				hvo2.setAvalve_2(request.getParameter("avalve_2".concat(hvo2.getIdx())));
-				hvo2.setCvalve_1(request.getParameter("cvalve_1".concat(hvo2.getIdx())));
-				hvo2.setCvalve_2(request.getParameter("cvalve_2".concat(hvo2.getIdx())));
-				hvo2.setPvalve_1(request.getParameter("pvalve_1".concat(hvo2.getIdx())));
-				hvo2.setPvalve_2(request.getParameter("pvalve_2".concat(hvo2.getIdx())));
-				hvo2.setPvalve_3(request.getParameter("pvalve_3".concat(hvo2.getIdx())));
-				
-				hvo2.setRedd(request.getParameter("redd".concat(hvo2.getIdx())));
-				hvo2.setRedth(request.getParameter("redth".concat(hvo2.getIdx())));
-				
-				hvo2.setExpd(request.getParameter("expd".concat(hvo2.getIdx())));
-				hvo2.setExpth(request.getParameter("expth".concat(hvo2.getIdx())));		
-				
-				
-				hvo2.setSoil_coeff(request.getParameter("soil_coeff".concat(hvo2.getIdx())));
-				hvo2.setIn_coeff(request.getParameter("in_coeff".concat(hvo2.getIdx())));
-				hvo2.setG_temp(request.getParameter("g_temp".concat(hvo2.getIdx())));
-				hvo2.setOut_coeff(request.getParameter("out_coeff".concat(hvo2.getIdx())));
-				hvo2.setOut_temp(request.getParameter("out_temp".concat(hvo2.getIdx())));
-				hvo2.setOut_coeff_1(request.getParameter("out_coeff_1".concat(hvo2.getIdx())));
-				hvo2.setSur_temp(request.getParameter("sur_temp".concat(hvo2.getIdx())));
-				hvo2.setOut_coeff_2(request.getParameter("out_coeff_2".concat(hvo2.getIdx())));
-				hvo2.setDiff_temp(request.getParameter("diff_temp".concat(hvo2.getIdx())));
-				hvo2.setOver_coeff(request.getParameter("over_coeff".concat(hvo2.getIdx())));
-				hvo2.setHeattrans(request.getParameter("heattrans".concat(hvo2.getIdx())));
+				getPipedata(request, hvo2);
+			
 			}
 			list.add(hvo2);
 			
 		}
-	
+		
 		request.setAttribute("cal", cal);
 		request.getSession().setAttribute("list", list);
 		
@@ -192,6 +80,7 @@ public class Heat_Controller {
 		return mv;
 	}
 	
+	
 	@RequestMapping(value="pipeheat_del.do", method=RequestMethod.POST)
 	public ModelAndView linedel_Cmd(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
@@ -199,9 +88,11 @@ public class Heat_Controller {
 		
 		List<HVO2> list = (List<HVO2>)request.getSession().getAttribute("list");
 		
-		//getPipedata(request, list);
-
-		int idx = Integer.parseInt(request.getParameter("idx"));
+		for (HVO2 hvo2 : list) {
+			getPipedata(request, hvo2);
+		}
+		
+		String del_line = request.getParameter("del_line");
 		HVO2[] b_list = list.toArray(new HVO2[list.size()]);
 		int n = 1;
 		list.clear();
@@ -209,122 +100,11 @@ public class Heat_Controller {
 		for (int i = 0; i < b_list.length; i++) {
 			HVO2 hvo2 = new HVO2();
 			
-			if (i + 1 == idx) {
+			if (del_line.equals(b_list[i].getLineno())) {
 				continue;
 			} else {
 				hvo2.setIdx(String.valueOf(n));
-				hvo2.setLineno(b_list[i].getLineno());
-				hvo2.setPhase(b_list[i].getPhase());
-				hvo2.setEv(b_list[i].getEv());
-				hvo2.setOver(b_list[i].getOver());
-				hvo2.setStype(b_list[i].getStype());
-				hvo2.setTemp_air(b_list[i].getTemp_air());
-				hvo2.setTemp_liq(b_list[i].getTemp_liq());
-				hvo2.setTemp_vapor(b_list[i].getTemp_vapor());
-				hvo2.setFlow(b_list[i].getFlow());
-				hvo2.setEm(b_list[i].getEm());
-				hvo2.setWind_vel(b_list[i].getWind_vel());
-				
-				hvo2.setDen_liq(b_list[i].getDen_liq());
-				hvo2.setDen_vapor(b_list[i].getDen_vapor());
-				//hvo2.setVapor_fr(b_list[i].getVapor_fr());
-				hvo2.setSeason(b_list[i].getSeason());
-				
-				hvo2.setVis_liq(b_list[i].getVis_liq());
-				hvo2.setVis_vapor(b_list[i].getVis_vapor());
-				//hvo2.setFlow_liq(b_list[i].getFlow_liq());
-				hvo2.setCondition(b_list[i].getCondition());
-				hvo2.setDepth(b_list[i].getDepth());
-				
-				hvo2.setHeat_liq(b_list[i].getHeat_liq());
-				hvo2.setHeat_vapor(b_list[i].getHeat_vapor());
-				//hvo2.setFlow_vapor(b_list[i].getFlow());
-				hvo2.setConvection(b_list[i].getConvection());
-				hvo2.setSoil(b_list[i].getSoil());
-				
-				hvo2.setThcon_liq(b_list[i].getThcon_liq());
-				hvo2.setThcon_vapor(b_list[i].getThcon_vapor());
-				hvo2.setHeat_dia(b_list[i].getHeat_dia());
-				
-				hvo2.setCfactor(b_list[i].getCfactor());
-				hvo2.setRe(b_list[i].getRe());
-				hvo2.setWall(b_list[i].getWall());
-				hvo2.setDin(b_list[i].getDin());
-				hvo2.setDlist(pipespec.getSize());
-				hvo2.setDia(b_list[i].getDia());
-				hvo2.setDout(b_list[i].getDout());
-				
-				hvo2.setSch(b_list[i].getSch());
-				hvo2.setSlist(pipespec.getSchedule());
-				hvo2.setPipelen(b_list[i].getPipelen());
-				
-				hvo2.setPipe_mtl(b_list[i].getPipe_mtl());
-				hvo2.setPipe_thick(b_list[i].getPipe_thick());
-				hvo2.setPipe_con(b_list[i].getPipe_con());
-				hvo2.setInsul_mtl(b_list[i].getInsul_mtl());
-				hvo2.setInsul_con(b_list[i].getInsul_con());
-				hvo2.setInsul_thick(b_list[i].getInsul_thick());
-				
-				hvo2.setEql_len(b_list[i].getEql_len());
-				
-				//fitting
-				hvo2.setElbow90_1(b_list[i].getElbow90_1());
-				hvo2.setElbow90_2(b_list[i].getElbow90_2());
-				hvo2.setElbow90_3(b_list[i].getElbow90_3());
-				hvo2.setElbow90_4(b_list[i].getElbow90_4());
-				hvo2.setElbow90_5(b_list[i].getElbow90_5());
-				hvo2.setElbow90_6(b_list[i].getElbow90_6());
-				hvo2.setElbow90_7(b_list[i].getElbow90_7());
-				hvo2.setElbow90_8(b_list[i].getElbow90_8());
-				hvo2.setElbow90_9(b_list[i].getElbow90_9());
-				
-				hvo2.setElbow45_1(b_list[i].getElbow45_1());
-				hvo2.setElbow45_2(b_list[i].getElbow45_2());
-				hvo2.setElbow45_3(b_list[i].getElbow45_3());
-				hvo2.setElbow45_4(b_list[i].getElbow45_4());
-				
-				hvo2.setBend_1(b_list[i].getBend_1());
-				hvo2.setBend_2(b_list[i].getBend_2());
-				hvo2.setBend_3(b_list[i].getBend_3());
-				
-				hvo2.setTee_1(b_list[i].getTee_1());
-				hvo2.setTee_2(b_list[i].getTee_2());
-				hvo2.setTee_3(b_list[i].getTee_3());
-				hvo2.setTee_4(b_list[i].getTee_4());
-				hvo2.setTee_5(b_list[i].getTee_5());
-				hvo2.setTee_6(b_list[i].getTee_6());
-				hvo2.setTee_7(b_list[i].getTee_7());
-				
-				hvo2.setGtvalve(b_list[i].getGtvalve());
-				hvo2.setBvalve(b_list[i].getBvalve());
-				hvo2.setGbvalve(b_list[i].getGbvalve());
-				hvo2.setDvalve(b_list[i].getDvalve());
-				hvo2.setAvalve_1(b_list[i].getAvalve_1());
-				hvo2.setAvalve_2(b_list[i].getAvalve_2());
-				hvo2.setCvalve_1(b_list[i].getCvalve_1());
-				hvo2.setCvalve_2(b_list[i].getCvalve_2());
-				hvo2.setPvalve_1(b_list[i].getPvalve_1());
-				hvo2.setPvalve_2(b_list[i].getPvalve_2());
-				hvo2.setPvalve_3(b_list[i].getPvalve_3());
-				
-				hvo2.setRedd(b_list[i].getRedd());
-				hvo2.setRedth(b_list[i].getRedth());
-				
-				hvo2.setExpd(b_list[i].getExpd());
-				hvo2.setExpth(b_list[i].getExpth());
-				
-				//Result
-				hvo2.setSoil_coeff(b_list[i].getSoil_coeff());
-				hvo2.setIn_coeff(b_list[i].getIn_coeff());
-				hvo2.setG_temp(b_list[i].getG_temp());
-				hvo2.setOut_coeff(b_list[i].getOut_coeff());
-				hvo2.setOut_temp(b_list[i].getOut_temp());
-				hvo2.setOut_coeff_1(b_list[i].getOut_coeff_1());
-				hvo2.setSur_temp(b_list[i].getSur_temp());
-				hvo2.setOut_coeff_2(b_list[i].getOut_coeff_2());
-				hvo2.setDiff_temp(b_list[i].getDiff_temp());
-				hvo2.setOver_coeff(b_list[i].getOver_coeff());
-				hvo2.setHeattrans(b_list[i].getHeattrans());
+				savePipedata(hvo2, b_list, i);
 				
 				n += 1;
 			}
@@ -341,73 +121,36 @@ public class Heat_Controller {
 		
 	}
 	
-	
 	@RequestMapping(value="pipeheat_rev.do", method=RequestMethod.POST)
 	public ModelAndView linerev_Cmd(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		String cal = request.getParameter("cal");
+		List<HVO2> list = (List<HVO2>)request.getSession().getAttribute("list");
+		
+		for (HVO2 k : list) {
+			getPipedata(request, k);
+		}
+		
+		request.setAttribute("cal", cal);
+		request.getSession().setAttribute("list", list);
+		
+		mv.setViewName("view_user/4.calculator");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="pipeheat_cal.do", method=RequestMethod.POST)
+	public ModelAndView linecal_Cmd(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		String cal = request.getParameter("cal");
 		String idx;
-		double em;
 	
 		List<HVO2> list = (List<HVO2>)request.getSession().getAttribute("list");
 		
 		for (HVO2 k : list) {
-			idx = k.getIdx();
-			k.setLineno(request.getParameter("lineno".concat(idx)));
-			k.setPhase(request.getParameter("phase".concat(idx)));
-			k.setEv(request.getParameter("ev".concat(idx)));
-			k.setOver(request.getParameter("over".concat(idx)));
-			k.setStype(request.getParameter("stype".concat(idx)));
-			k.setTemp_air(request.getParameter("temp_air".concat(idx)));
-			k.setTemp_liq(request.getParameter("temp_liq".concat(idx)));
-			k.setTemp_vapor(request.getParameter("temp_vapor".concat(idx)));
-			k.setFlow(request.getParameter("flow".concat(idx)));
-			k.setEm(String.valueOf(pipespec.getPipe_em().get(k.getStype())));
-			
-			k.setWind_vel(request.getParameter("wind_vel".concat(idx)));
-			k.setDen_liq(request.getParameter("den_liq".concat(idx)));
-			k.setDen_vapor(request.getParameter("den_vapor".concat(idx)));
-			//k.setVapor_fr(request.getParameter("vapor_fr".concat(idx)));
-			k.setSeason(request.getParameter("season".concat(idx)));
-			
-			k.setVis_liq(request.getParameter("vis_liq".concat(idx)));
-			k.setVis_vapor(request.getParameter("vis_vapor".concat(idx)));
-			
-			k.setCondition(request.getParameter("condition".concat(idx)));
-			k.setDepth(request.getParameter("depth".concat(idx)));
-			
-			k.setHeat_liq(request.getParameter("heat_liq".concat(idx)));
-			k.setHeat_vapor(request.getParameter("heat_vapor".concat(idx)));
-			
-			k.setConvection(request.getParameter("convection".concat(idx)));
-			k.setSoil(request.getParameter("soil".concat(idx)));
-			
-			k.setThcon_liq(request.getParameter("thcon_liq".concat(idx)));
-			k.setThcon_vapor(request.getParameter("thcon_vapor".concat(idx)));
-			k.setHeat_dia(request.getParameter("heat_dia".concat(idx)));
-			
-			k.setCfactor(request.getParameter("cfactor".concat(k.getIdx())));
-			
-			k.setWall(request.getParameter("wall".concat(k.getIdx())));
-			k.setDia(request.getParameter("dia".concat(k.getIdx())));
-			k.setDlist(pipespec.getSize());
-			k.setSch(request.getParameter("sch".concat(k.getIdx())));
-			k.setSlist(pipespec.getSchedule());
-
-			dialist = pipespec.getDialist(k.getDia());
-			select_sch = pipespec.getSch().get(k.getSch());
-			k.setDin(String.valueOf(dialist[select_sch]));
-			k.setDout(String.valueOf(dialist[17]));
+	
+			getPipedata(request, k);
 		
-			k.setPipelen(request.getParameter("pipelen".concat(k.getIdx())));
-			
-			k.setPipe_mtl(request.getParameter("pipe_mtl".concat(k.getIdx())));
-			k.setPipe_con(request.getParameter("pipe_con".concat(k.getIdx())));
-			k.setPipe_thick(request.getParameter("pipe_thick".concat(k.getIdx())));
-			k.setInsul_mtl(request.getParameter("insul_mtl".concat(k.getIdx())));
-			k.setInsul_con(request.getParameter("insul_con".concat(k.getIdx())));
-			k.setInsul_thick(request.getParameter("insul_thick".concat(k.getIdx())));
-			
 			double[] fitting_n = new double[38];
 			double[][] fitting_cal = {
 				pipespec.getElbow90_1(), pipespec.getElbow90_2(), pipespec.getElbow90_3(),
@@ -446,7 +189,7 @@ public class Heat_Controller {
 				*/
 				
 				double re = pipespec.calRe(k.getPhase(), den_liq, vis_liq, flow, den_vap, vis_vap, flow, din);
-				k.setRe(request.getParameter("re".concat(k.getIdx())));
+				k.setRe(String.valueOf((int)re));
 				double ffactor = k.getPhase().equals("liquid") ? 
 						pipespec.calFfactor_liq(re, din * 25.4 / 1000, wall) : pipespec.calFfactor_vap(re, din * 25.4 / 1000, wall);
 				
@@ -454,17 +197,7 @@ public class Heat_Controller {
 				double kvalue = 0;
 				
 				if (k.getCfactor().equals("fitting")) {
-					
-					k.setElbow90_1(request.getParameter("elbow90_1".concat(idx)));
-					k.setElbow90_2(request.getParameter("elbow90_2".concat(idx)));
-					k.setElbow90_3(request.getParameter("elbow90_3".concat(idx)));
-					k.setElbow90_4(request.getParameter("elbow90_4".concat(idx)));
-					k.setElbow90_5(request.getParameter("elbow90_5".concat(idx)));
-					k.setElbow90_6(request.getParameter("elbow90_6".concat(idx)));
-					k.setElbow90_7(request.getParameter("elbow90_7".concat(idx)));
-					k.setElbow90_8(request.getParameter("elbow90_8".concat(idx)));
-					k.setElbow90_9(request.getParameter("elbow90_9".concat(idx)));
-					
+										
 					fitting_n[0] = ((int)change(k.getElbow90_1()) * 10) / 10 ;
 					fitting_n[1] = ((int)change(k.getElbow90_2()) * 10) / 10 ;
 					fitting_n[2] = ((int)change(k.getElbow90_3()) * 10) / 10 ;
@@ -474,32 +207,15 @@ public class Heat_Controller {
 					fitting_n[6] = ((int)change(k.getElbow90_7()) * 10) / 10 ;
 					fitting_n[7] = ((int)change(k.getElbow90_8()) * 10) / 10 ;
 					fitting_n[8] = ((int)change(k.getElbow90_9()) * 10) / 10 ;
-					
-					k.setElbow45_1(request.getParameter("elbow45_1".concat(idx)));
-					k.setElbow45_2(request.getParameter("elbow45_2".concat(idx)));
-					k.setElbow45_3(request.getParameter("elbow45_3".concat(idx)));
-					k.setElbow45_4(request.getParameter("elbow45_4".concat(idx)));
 	
 					fitting_n[9] = ((int)change(k.getElbow45_1()) * 10) / 10 ;
 					fitting_n[10] = ((int)change(k.getElbow45_2()) * 10) / 10 ;
 					fitting_n[11] = ((int)change(k.getElbow45_3()) * 10) / 10 ;
 					fitting_n[12] = ((int)change(k.getElbow45_4()) * 10) / 10 ;
-					
-					k.setBend_1(request.getParameter("bend_1".concat(idx)));
-					k.setBend_2(request.getParameter("bend_2".concat(idx)));
-					k.setBend_3(request.getParameter("bend_3".concat(idx)));
-					
+										
 					fitting_n[13] = ((int)change(k.getBend_1()) * 10) / 10 ;
 					fitting_n[14] = ((int)change(k.getBend_2()) * 10) / 10 ;
 					fitting_n[15] = ((int)change(k.getBend_3()) * 10) / 10 ;				
-					
-					k.setTee_1(request.getParameter("tee_1".concat(idx)));
-					k.setTee_2(request.getParameter("tee_2".concat(idx)));
-					k.setTee_3(request.getParameter("tee_3".concat(idx)));
-					k.setTee_4(request.getParameter("tee_4".concat(idx)));
-					k.setTee_5(request.getParameter("tee_5".concat(idx)));
-					k.setTee_6(request.getParameter("tee_6".concat(idx)));
-					k.setTee_7(request.getParameter("tee_7".concat(idx)));
 					
 					fitting_n[16] = ((int)change(k.getTee_1()) * 10) / 10 ;
 					fitting_n[17] = ((int)change(k.getTee_2()) * 10) / 10 ;
@@ -508,18 +224,6 @@ public class Heat_Controller {
 					fitting_n[20] = ((int)change(k.getTee_5()) * 10) / 10 ;
 					fitting_n[21] = ((int)change(k.getTee_6()) * 10) / 10 ;	
 					fitting_n[22] = ((int)change(k.getTee_7()) * 10) / 10 ;	
-					
-					k.setGtvalve(request.getParameter("gtvalve".concat(idx)));
-					k.setBvalve(request.getParameter("bvalve".concat(idx)));
-					k.setGbvalve(request.getParameter("gbvalve".concat(idx)));
-					k.setDvalve(request.getParameter("dvalve".concat(idx)));
-					k.setAvalve_1(request.getParameter("avalve_1".concat(idx)));
-					k.setAvalve_2(request.getParameter("avalve_2".concat(idx)));
-					k.setCvalve_1(request.getParameter("cvalve_1".concat(idx)));
-					k.setCvalve_2(request.getParameter("cvalve_2".concat(idx)));
-					k.setPvalve_1(request.getParameter("pvalve_1".concat(idx)));
-					k.setPvalve_2(request.getParameter("pvalve_2".concat(idx)));
-					k.setPvalve_3(request.getParameter("pvalve_3".concat(idx)));
 					
 					fitting_n[23] = ((int)change(k.getGtvalve()) * 10) / 10 ;				
 					fitting_n[24] = ((int)change(k.getBvalve()) * 10) / 10 ;				
@@ -533,14 +237,8 @@ public class Heat_Controller {
 					fitting_n[32] = ((int)change(k.getPvalve_2()) * 10) / 10 ;				
 					fitting_n[33] = ((int)change(k.getPvalve_3()) * 10) / 10 ;				
 					
-					k.setRedd(request.getParameter("redd".concat(idx)));
-					k.setRedth(request.getParameter("redth".concat(idx)));
-					
 					fitting_n[34] = ((int)change(k.getRedd()) * 10) / 10 ;				
 					fitting_n[35] = ((int)change(k.getRedth()) * 10) / 10 ;				
-					
-					k.setExpd(request.getParameter("expd".concat(idx)));
-					k.setExpth(request.getParameter("expth".concat(idx)));		
 	
 					fitting_n[36] = ((int)change(k.getExpd()) * 10) / 10 ;				
 					fitting_n[37] = ((int)change(k.getExpth()) * 10) / 10 ;		
@@ -587,71 +285,110 @@ public class Heat_Controller {
 		
 					}
 					
-					eqv_len = pipe * eqv_len * 0.3048;
+					eqv_len = pipe * eqv_len;
 					
 				}
 				
+				k.setEql_len(String.valueOf(((int)(eqv_len * 100)) / 100.0));
+				
+
+				// SI => british
+				double temp = k.getPhase().equals("liquid") ? 
+						change(k.getTemp_liq()) : change(k.getTemp_vapor());   
+				temp = temp * 9 / 5 + 32;
+						
+				double temp_air = change(k.getTemp_air()) * 9 / 5 + 32;
+				double g_temp = 0;
+				
+				// 외부 지름.
 				double dout = change(k.getDout());
 				double d_insul = dout + 2 * change(k.getInsul_thick()); 
-				double insul_con = change(k.getInsul_con());
-				double pipe_con = change(k.getPipe_con());
-				double thcon_in = k.getPhase().equals("liquid") ? 
-									change(k.getThcon_liq()) : change(k.getThcon_vapor());    
-				thcon_in = thcon_in / 1.488164;
+				double dsoil = 3 * dout;
 				
+				// conductivity
+				
+				double insul_con = change(k.getInsul_con()) / 1.488164;
+				double pipe_con = change(k.getPipe_con()) / 1.488164;
+				double ksoil = change(k.getSoil()) / 1.488164;
+				double thcon = k.getPhase().equals("liquid") ? 
+									change(k.getThcon_liq()) : change(k.getThcon_vapor());    
+				thcon = thcon / 1.488164;
+				
+				//viscosity 
 				double vis_in = k.getPhase().equals("liquid") ? 
 									change(k.getVis_liq()) : change(k.getVis_vapor());   
 				
+				// Heat capacity
 				double cp_in = k.getPhase().equals("liquid") ? 
 						change(k.getHeat_liq()) : change(k.getHeat_vapor());   
 									
-				double pr = heats.calPr(cp_in, vis_in, thcon_in);
+				double pr = heats.calPr(cp_in, vis_in, thcon);
 				
-			
-				// SI => british
-			
+				double in_coeff = heats.calIFC(thcon, din, dout, re, pr);
 				
+				k.setIn_coeff(String.valueOf((int)(in_coeff * 100)/ 100.0));
 				
-				k.setEql_len(String.valueOf(((int)(eqv_len * 100)) / 100.0));
-				
-				k.setIn_coeff(request.getParameter("in_coeff".concat(idx)));
-				
-				k.setSur_temp(request.getParameter("sur_temp".concat(idx)));
-				k.setOut_temp(request.getParameter("out_temp".concat(idx)));
+				double em = change(k.getEm());
+				double cnv = change(k.getConvection());
+				double wind_vel = change(k.getWind_vel()) /0.44704;
+				double depth = change(k.getDepth());
 				
 				
 				if (k.getEv().equals("bare")) {
 					
-					k.setOut_coeff(request.getParameter("out_coeff".concat(idx)));
-					k.setOut_coeff_1(request.getParameter("out_coeff_1".concat(idx)));
-					k.setOut_coeff_2(request.getParameter("out_coeff_2".concat(idx)));
+					// british => SI
+					heats.calTs(temp, temp_air, thcon, din, dout, re, pr, cnv, wind_vel, em);
 					
-					k.setSoil_coeff("");
+					k.setSur_temp(String.valueOf((int)((heats.getSur_temp() - 32) * 5 / 9 * 100) / 100.0));
+					k.setOut_coeff(String.valueOf((int)(heats.getOut_coeff() * 4.882431 * 100) / 100.0));
+					k.setOut_coeff_1(String.valueOf((int)(heats.getOut_coeff1() * 4.882431 * 100) / 100.0));
+					k.setOut_coeff_2(String.valueOf((int)(heats.getOut_coeff2() * 4.882431 * 100) / 100.0));
+					
 					k.setG_temp("");
 					k.setDiff_temp("");					
 					
 				} else {
 					
-					k.setSoil_coeff(request.getParameter("soil_coeff".concat(idx)));
-					k.setG_temp(request.getParameter("g_temp".concat(idx)));
-					k.setDiff_temp(request.getParameter("diff_temp".concat(idx)));	
+					String season = k.getSeason();
+				
+					double diff_temp = heats.calDiff_temp(season, depth);
 					
+					k.setDiff_temp(String.valueOf((int)((diff_temp - 32) * 5 / 9 * 100) / 100.0));
+					
+					if(temp_air > temp) {
+						g_temp = temp_air - diff_temp;
+					}else {
+						g_temp = temp_air + diff_temp;
+					}
+					
+					k.setG_temp(String.valueOf((int)((g_temp - 32) * 5 / 9 * 100) / 100.0));
+					
+					k.setSur_temp("");
 					k.setOut_coeff("");
 					k.setOut_coeff_1("");
 					k.setOut_coeff_2("");							
 				}
 				
+				String ev = k.getEv();
+				double out_coeff = heats.getOut_coeff();
+				double temp_sur = heats.getSur_temp();
+				double over_coeff = heats.calOVC(ev, d_insul, din, dout, dsoil, pipe_con, insul_con, ksoil, in_coeff, out_coeff);
+				double heat_trans = heats.calHeattrans(ev, over_coeff, din, dout, eqv_len, temp_sur, g_temp, temp_air, temp_sur);
+				double out_temp = temp - heat_trans / (flow / 0.45359) / cp_in; 
 				
-				
-				k.setOver_coeff(request.getParameter("over_coeff".concat(k.getIdx())));
-				k.setHeattrans(request.getParameter("heattrans".concat(k.getIdx())));				
+				k.setOver_coeff(String.valueOf((int)(over_coeff * 4.882431 * 100) / 100.0));
+				k.setHeattrans(String.valueOf((int)(heat_trans / 3.96567 * 100) / 100.0));	
+				k.setOut_temp(String.valueOf((int)((out_temp - 32) * 5 / 9 * 100) / 100.0));
 				
 			} catch (Exception e) {
-				// TODO: handle exception
-			}
+				String finish ="ok"; 
+				String msg = "데이터를 잘못 입력하셨습니다.";
+				mv.addObject("finish", finish);
 				
-			
-			
+				mv.addObject("finish", finish);
+				mv.addObject("msg", msg);
+			}
+
 		}
 		
 		request.setAttribute("cal", cal);
@@ -660,6 +397,241 @@ public class Heat_Controller {
 		mv.setViewName("view_user/4.calculator");
 		return mv;
 	}	
+	
+	public void getPipedata(HttpServletRequest request, HVO2 hvo2){
+		
+		hvo2.setLineno(request.getParameter("lineno".concat(hvo2.getIdx())));
+		hvo2.setPhase(request.getParameter("phase".concat(hvo2.getIdx())));
+		hvo2.setEv(request.getParameter("ev".concat(hvo2.getIdx())));
+		hvo2.setOver(request.getParameter("over".concat(hvo2.getIdx())));
+		hvo2.setStype(request.getParameter("stype".concat(hvo2.getIdx())));
+		hvo2.setTemp_air(request.getParameter("temp_air".concat(hvo2.getIdx())));
+		hvo2.setTemp_liq(request.getParameter("temp_liq".concat(hvo2.getIdx())));
+		hvo2.setTemp_vapor(request.getParameter("temp_vapor".concat(hvo2.getIdx())));
+		hvo2.setFlow(request.getParameter("flow".concat(hvo2.getIdx())));
+		hvo2.setEm(pipespec.getPipe_em().get(hvo2.getStype()));
+		hvo2.setWind_vel(request.getParameter("wind_vel".concat(hvo2.getIdx())));
+		
+		hvo2.setDen_liq(request.getParameter("den_liq".concat(hvo2.getIdx())));
+		hvo2.setDen_vapor(request.getParameter("den_vapor".concat(hvo2.getIdx())));
+		//hvo2.setVapor_fr(request.getParameter("vapor_fr".concat(hvo2.getIdx())));
+		hvo2.setSeason(request.getParameter("season".concat(hvo2.getIdx())));
+		
+		hvo2.setVis_liq(request.getParameter("vis_liq".concat(hvo2.getIdx())));
+		hvo2.setVis_vapor(request.getParameter("vis_vapor".concat(hvo2.getIdx())));
+		//hvo2.setFlow_liq(request.getParameter("flow_liq".concat(hvo2.getIdx())));
+		hvo2.setCondition(request.getParameter("condition".concat(hvo2.getIdx())));
+		hvo2.setDepth(request.getParameter("depth".concat(hvo2.getIdx())));
+		
+		hvo2.setHeat_liq(request.getParameter("heat_liq".concat(hvo2.getIdx())));
+		hvo2.setHeat_vapor(request.getParameter("heat_vapor".concat(hvo2.getIdx())));
+		//hvo2.setFlow_vapor(request.getParameter("flow_vapor".concat(hvo2.getIdx())));
+		hvo2.setConvection(pipespec.getPipe_shp().get(hvo2.getCondition()));
+		hvo2.setSoil(request.getParameter("soil".concat(hvo2.getIdx())));
+		
+		hvo2.setThcon_liq(request.getParameter("thcon_liq".concat(hvo2.getIdx())));
+		hvo2.setThcon_vapor(request.getParameter("thcon_vapor".concat(hvo2.getIdx())));
+		hvo2.setHeat_dia(request.getParameter("heat_dia".concat(hvo2.getIdx())));
+		
+		hvo2.setCfactor(request.getParameter("cfactor".concat(hvo2.getIdx())));
+		hvo2.setRe(request.getParameter("re".concat(hvo2.getIdx())));
+		hvo2.setWall(request.getParameter("wall".concat(hvo2.getIdx())));
+		hvo2.setDlist(pipespec.getSize());
+		hvo2.setDia(request.getParameter("dia".concat(hvo2.getIdx())));
+		hvo2.setSlist(pipespec.getSchedule());
+		hvo2.setSch(request.getParameter("sch".concat(hvo2.getIdx())));
+		
+		dialist = pipespec.getDialist(hvo2.getDia());
+		select_sch = pipespec.getSch().get(hvo2.getSch());
+		hvo2.setDin(String.valueOf(dialist[select_sch]));
+		hvo2.setDout(String.valueOf(dialist[17]));
+	
+		hvo2.setPipelen(request.getParameter("pipelen".concat(hvo2.getIdx())));
+		
+		hvo2.setPipe_mtl(request.getParameter("pipe_mtl".concat(hvo2.getIdx())));
+		hvo2.setPipe_con(request.getParameter("pipe_con".concat(hvo2.getIdx())));
+		
+		hvo2.setPipe_thick(String.valueOf((change(hvo2.getDout())-change(hvo2.getDin()))/2));
+		hvo2.setInsul_mtl(request.getParameter("insul_mtl".concat(hvo2.getIdx())));
+		hvo2.setInsul_con(request.getParameter("insul_con".concat(hvo2.getIdx())));
+		hvo2.setInsul_thick(request.getParameter("insul_thick".concat(hvo2.getIdx())));
+		
+		hvo2.setEql_len(request.getParameter("eql_len".concat(hvo2.getIdx())));
+		
+		//fitting
+		hvo2.setElbow90_1(request.getParameter("elbow90_1".concat(hvo2.getIdx())));
+		hvo2.setElbow90_2(request.getParameter("elbow90_2".concat(hvo2.getIdx())));
+		hvo2.setElbow90_3(request.getParameter("elbow90_3".concat(hvo2.getIdx())));
+		hvo2.setElbow90_4(request.getParameter("elbow90_4".concat(hvo2.getIdx())));
+		hvo2.setElbow90_5(request.getParameter("elbow90_5".concat(hvo2.getIdx())));
+		hvo2.setElbow90_6(request.getParameter("elbow90_6".concat(hvo2.getIdx())));
+		hvo2.setElbow90_7(request.getParameter("elbow90_7".concat(hvo2.getIdx())));
+		hvo2.setElbow90_8(request.getParameter("elbow90_8".concat(hvo2.getIdx())));
+		hvo2.setElbow90_9(request.getParameter("elbow90_9".concat(hvo2.getIdx())));
+		
+		hvo2.setElbow45_1(request.getParameter("elbow45_1".concat(hvo2.getIdx())));
+		hvo2.setElbow45_2(request.getParameter("elbow45_2".concat(hvo2.getIdx())));
+		hvo2.setElbow45_3(request.getParameter("elbow45_3".concat(hvo2.getIdx())));
+		hvo2.setElbow45_4(request.getParameter("elbow45_4".concat(hvo2.getIdx())));
+		
+		hvo2.setBend_1(request.getParameter("bend_1".concat(hvo2.getIdx())));
+		hvo2.setBend_2(request.getParameter("bend_2".concat(hvo2.getIdx())));
+		hvo2.setBend_3(request.getParameter("bend_3".concat(hvo2.getIdx())));
+		
+		hvo2.setTee_1(request.getParameter("tee_1".concat(hvo2.getIdx())));
+		hvo2.setTee_2(request.getParameter("tee_2".concat(hvo2.getIdx())));
+		hvo2.setTee_3(request.getParameter("tee_3".concat(hvo2.getIdx())));
+		hvo2.setTee_4(request.getParameter("tee_4".concat(hvo2.getIdx())));
+		hvo2.setTee_5(request.getParameter("tee_5".concat(hvo2.getIdx())));
+		hvo2.setTee_6(request.getParameter("tee_6".concat(hvo2.getIdx())));
+		hvo2.setTee_7(request.getParameter("tee_7".concat(hvo2.getIdx())));
+		
+		hvo2.setGtvalve(request.getParameter("gtvalve".concat(hvo2.getIdx())));
+		hvo2.setBvalve(request.getParameter("bvalve".concat(hvo2.getIdx())));
+		hvo2.setGbvalve(request.getParameter("gbvalve".concat(hvo2.getIdx())));
+		hvo2.setDvalve(request.getParameter("dvalve".concat(hvo2.getIdx())));
+		hvo2.setAvalve_1(request.getParameter("avalve_1".concat(hvo2.getIdx())));
+		hvo2.setAvalve_2(request.getParameter("avalve_2".concat(hvo2.getIdx())));
+		hvo2.setCvalve_1(request.getParameter("cvalve_1".concat(hvo2.getIdx())));
+		hvo2.setCvalve_2(request.getParameter("cvalve_2".concat(hvo2.getIdx())));
+		hvo2.setPvalve_1(request.getParameter("pvalve_1".concat(hvo2.getIdx())));
+		hvo2.setPvalve_2(request.getParameter("pvalve_2".concat(hvo2.getIdx())));
+		hvo2.setPvalve_3(request.getParameter("pvalve_3".concat(hvo2.getIdx())));
+		
+		hvo2.setRedd(request.getParameter("redd".concat(hvo2.getIdx())));
+		hvo2.setRedth(request.getParameter("redth".concat(hvo2.getIdx())));
+		
+		hvo2.setExpd(request.getParameter("expd".concat(hvo2.getIdx())));
+		hvo2.setExpth(request.getParameter("expth".concat(hvo2.getIdx())));		
+		
+		hvo2.setIn_coeff(request.getParameter("in_coeff".concat(hvo2.getIdx())));
+		hvo2.setG_temp(request.getParameter("g_temp".concat(hvo2.getIdx())));
+		hvo2.setOut_coeff(request.getParameter("out_coeff".concat(hvo2.getIdx())));
+		hvo2.setOut_temp(request.getParameter("out_temp".concat(hvo2.getIdx())));
+		hvo2.setOut_coeff_1(request.getParameter("out_coeff_1".concat(hvo2.getIdx())));
+		hvo2.setSur_temp(request.getParameter("sur_temp".concat(hvo2.getIdx())));
+		hvo2.setOut_coeff_2(request.getParameter("out_coeff_2".concat(hvo2.getIdx())));
+		hvo2.setDiff_temp(request.getParameter("diff_temp".concat(hvo2.getIdx())));
+		hvo2.setOver_coeff(request.getParameter("over_coeff".concat(hvo2.getIdx())));
+		hvo2.setHeattrans(request.getParameter("heattrans".concat(hvo2.getIdx())));		
+	}
+	
+	
+	public void savePipedata(HVO2 hvo2, HVO2[] b_list, int i) {
+		hvo2.setLineno(b_list[i].getLineno());
+		hvo2.setPhase(b_list[i].getPhase());
+		hvo2.setEv(b_list[i].getEv());
+		hvo2.setOver(b_list[i].getOver());
+		hvo2.setStype(b_list[i].getStype());
+		hvo2.setTemp_air(b_list[i].getTemp_air());
+		hvo2.setTemp_liq(b_list[i].getTemp_liq());
+		hvo2.setTemp_vapor(b_list[i].getTemp_vapor());
+		hvo2.setFlow(b_list[i].getFlow());
+		hvo2.setEm(b_list[i].getEm());
+		hvo2.setWind_vel(b_list[i].getWind_vel());
+		
+		hvo2.setDen_liq(b_list[i].getDen_liq());
+		hvo2.setDen_vapor(b_list[i].getDen_vapor());
+		//hvo2.setVapor_fr(b_list[i].getVapor_fr());
+		hvo2.setSeason(b_list[i].getSeason());
+		
+		hvo2.setVis_liq(b_list[i].getVis_liq());
+		hvo2.setVis_vapor(b_list[i].getVis_vapor());
+		//hvo2.setFlow_liq(b_list[i].getFlow_liq());
+		hvo2.setCondition(b_list[i].getCondition());
+		hvo2.setDepth(b_list[i].getDepth());
+		
+		hvo2.setHeat_liq(b_list[i].getHeat_liq());
+		hvo2.setHeat_vapor(b_list[i].getHeat_vapor());
+		//hvo2.setFlow_vapor(b_list[i].getFlow());
+		hvo2.setConvection(b_list[i].getConvection());
+		hvo2.setSoil(b_list[i].getSoil());
+		
+		hvo2.setThcon_liq(b_list[i].getThcon_liq());
+		hvo2.setThcon_vapor(b_list[i].getThcon_vapor());
+		hvo2.setHeat_dia(b_list[i].getHeat_dia());
+		
+		hvo2.setCfactor(b_list[i].getCfactor());
+		hvo2.setRe(b_list[i].getRe());
+		hvo2.setWall(b_list[i].getWall());
+		hvo2.setDin(b_list[i].getDin());
+		hvo2.setDlist(pipespec.getSize());
+		hvo2.setDia(b_list[i].getDia());
+		hvo2.setDout(b_list[i].getDout());
+		
+		
+		hvo2.setSch(b_list[i].getSch());
+		hvo2.setSlist(pipespec.getSchedule());
+		hvo2.setPipelen(b_list[i].getPipelen());
+		
+		hvo2.setPipe_mtl(b_list[i].getPipe_mtl());
+		hvo2.setPipe_thick(b_list[i].getPipe_thick());
+		hvo2.setPipe_con(b_list[i].getPipe_con());
+		hvo2.setInsul_mtl(b_list[i].getInsul_mtl());
+		hvo2.setInsul_con(b_list[i].getInsul_con());
+		hvo2.setInsul_thick(b_list[i].getInsul_thick());
+		
+		hvo2.setEql_len(b_list[i].getEql_len());
+		
+		//fitting
+		hvo2.setElbow90_1(b_list[i].getElbow90_1());
+		hvo2.setElbow90_2(b_list[i].getElbow90_2());
+		hvo2.setElbow90_3(b_list[i].getElbow90_3());
+		hvo2.setElbow90_4(b_list[i].getElbow90_4());
+		hvo2.setElbow90_5(b_list[i].getElbow90_5());
+		hvo2.setElbow90_6(b_list[i].getElbow90_6());
+		hvo2.setElbow90_7(b_list[i].getElbow90_7());
+		hvo2.setElbow90_8(b_list[i].getElbow90_8());
+		hvo2.setElbow90_9(b_list[i].getElbow90_9());
+		
+		hvo2.setElbow45_1(b_list[i].getElbow45_1());
+		hvo2.setElbow45_2(b_list[i].getElbow45_2());
+		hvo2.setElbow45_3(b_list[i].getElbow45_3());
+		hvo2.setElbow45_4(b_list[i].getElbow45_4());
+		
+		hvo2.setBend_1(b_list[i].getBend_1());
+		hvo2.setBend_2(b_list[i].getBend_2());
+		hvo2.setBend_3(b_list[i].getBend_3());
+		
+		hvo2.setTee_1(b_list[i].getTee_1());
+		hvo2.setTee_2(b_list[i].getTee_2());
+		hvo2.setTee_3(b_list[i].getTee_3());
+		hvo2.setTee_4(b_list[i].getTee_4());
+		hvo2.setTee_5(b_list[i].getTee_5());
+		hvo2.setTee_6(b_list[i].getTee_6());
+		hvo2.setTee_7(b_list[i].getTee_7());
+		
+		hvo2.setGtvalve(b_list[i].getGtvalve());
+		hvo2.setBvalve(b_list[i].getBvalve());
+		hvo2.setGbvalve(b_list[i].getGbvalve());
+		hvo2.setDvalve(b_list[i].getDvalve());
+		hvo2.setAvalve_1(b_list[i].getAvalve_1());
+		hvo2.setAvalve_2(b_list[i].getAvalve_2());
+		hvo2.setCvalve_1(b_list[i].getCvalve_1());
+		hvo2.setCvalve_2(b_list[i].getCvalve_2());
+		hvo2.setPvalve_1(b_list[i].getPvalve_1());
+		hvo2.setPvalve_2(b_list[i].getPvalve_2());
+		hvo2.setPvalve_3(b_list[i].getPvalve_3());
+		
+		hvo2.setRedd(b_list[i].getRedd());
+		hvo2.setRedth(b_list[i].getRedth());
+		
+		hvo2.setExpd(b_list[i].getExpd());
+		hvo2.setExpth(b_list[i].getExpth());
+		
+		
+		hvo2.setSoil_coeff(b_list[i].getSoil_coeff());
+		hvo2.setIn_coeff(b_list[i].getIn_coeff());
+		hvo2.setG_temp(b_list[i].getG_temp());
+		hvo2.setOut_coeff(b_list[i].getOut_coeff());
+		hvo2.setOut_temp(b_list[i].getOut_temp());
+		hvo2.setOut_coeff_1(b_list[i].getOut_coeff_1());
+		hvo2.setSur_temp(b_list[i].getSur_temp());
+		hvo2.setOut_coeff_2(b_list[i].getOut_coeff_2());
+		hvo2.setDiff_temp(b_list[i].getDiff_temp());
+		hvo2.setOver_coeff(b_list[i].getOver_coeff());
+		hvo2.setHeattrans(b_list[i].getHeattrans());		
+	}
 	
 	// 2.Tank 
 	
@@ -804,6 +776,7 @@ public class Heat_Controller {
 			tvo.setHeat_total(String.valueOf(heat_total));
 			
 		} catch (Exception e) {
+			
 		}
 		
 		request.setAttribute("cal", cal);
@@ -847,132 +820,6 @@ public class Heat_Controller {
 
 		
 		return num;
-	}
-	
-	public List<HVO2> getPipedata(HttpServletRequest request, int num, HVO2 hvo2) {
-		List<HVO2> plist = new ArrayList<HVO2>();
-		//HVO2 hvo2;
-				
-
-			
-		return plist;
-	}
-	
-	
-	public void savePipedata(HVO2 hvo2, HVO2[] b_list, int i) {
-		hvo2.setLineno(b_list[i].getLineno());
-		hvo2.setPhase(b_list[i].getPhase());
-		hvo2.setEv(b_list[i].getEv());
-		hvo2.setOver(b_list[i].getOver());
-		hvo2.setStype(b_list[i].getStype());
-		hvo2.setTemp_air(b_list[i].getTemp_air());
-		hvo2.setTemp_liq(b_list[i].getTemp_liq());
-		hvo2.setTemp_vapor(b_list[i].getTemp_vapor());
-		hvo2.setFlow(b_list[i].getFlow());
-		hvo2.setEm(b_list[i].getEm());
-		hvo2.setWind_vel(b_list[i].getWind_vel());
-		
-		hvo2.setDen_liq(b_list[i].getDen_liq());
-		hvo2.setDen_vapor(b_list[i].getDen_vapor());
-		//hvo2.setVapor_fr(b_list[i].getVapor_fr());
-		hvo2.setSeason(b_list[i].getSeason());
-		
-		hvo2.setVis_liq(b_list[i].getVis_liq());
-		hvo2.setVis_vapor(b_list[i].getVis_vapor());
-		//hvo2.setFlow_liq(b_list[i].getFlow_liq());
-		hvo2.setCondition(b_list[i].getCondition());
-		hvo2.setDepth(b_list[i].getDepth());
-		
-		hvo2.setHeat_liq(b_list[i].getHeat_liq());
-		hvo2.setHeat_vapor(b_list[i].getHeat_vapor());
-		//hvo2.setFlow_vapor(b_list[i].getFlow());
-		hvo2.setConvection(b_list[i].getConvection());
-		hvo2.setSoil(b_list[i].getSoil());
-		
-		hvo2.setThcon_liq(b_list[i].getThcon_liq());
-		hvo2.setThcon_vapor(b_list[i].getThcon_vapor());
-		hvo2.setHeat_dia(b_list[i].getHeat_dia());
-		
-		hvo2.setCfactor(b_list[i].getCfactor());
-		hvo2.setRe(b_list[i].getRe());
-		hvo2.setWall(b_list[i].getWall());
-		hvo2.setDin(b_list[i].getDin());
-		hvo2.setDlist(pipespec.getSize());
-		hvo2.setDia(b_list[i].getDia());
-		hvo2.setDout(b_list[i].getDout());
-		
-		
-		hvo2.setSch(b_list[i].getSch());
-		hvo2.setSlist(pipespec.getSchedule());
-		hvo2.setPipelen(b_list[i].getPipelen());
-		
-		hvo2.setPipe_mtl(b_list[i].getPipe_mtl());
-		hvo2.setPipe_thick(b_list[i].getPipe_thick());
-		hvo2.setPipe_con(b_list[i].getPipe_con());
-		hvo2.setInsul_mtl(b_list[i].getInsul_mtl());
-		hvo2.setInsul_con(b_list[i].getInsul_con());
-		hvo2.setInsul_thick(b_list[i].getInsul_thick());
-		
-		hvo2.setEql_len(b_list[i].getEql_len());
-		
-		//fitting
-		hvo2.setElbow90_1(b_list[i].getElbow90_1());
-		hvo2.setElbow90_2(b_list[i].getElbow90_2());
-		hvo2.setElbow90_3(b_list[i].getElbow90_3());
-		hvo2.setElbow90_4(b_list[i].getElbow90_4());
-		hvo2.setElbow90_5(b_list[i].getElbow90_5());
-		hvo2.setElbow90_6(b_list[i].getElbow90_6());
-		hvo2.setElbow90_7(b_list[i].getElbow90_7());
-		hvo2.setElbow90_8(b_list[i].getElbow90_8());
-		hvo2.setElbow90_9(b_list[i].getElbow90_9());
-		
-		hvo2.setElbow45_1(b_list[i].getElbow45_1());
-		hvo2.setElbow45_2(b_list[i].getElbow45_2());
-		hvo2.setElbow45_3(b_list[i].getElbow45_3());
-		hvo2.setElbow45_4(b_list[i].getElbow45_4());
-		
-		hvo2.setBend_1(b_list[i].getBend_1());
-		hvo2.setBend_2(b_list[i].getBend_2());
-		hvo2.setBend_3(b_list[i].getBend_3());
-		
-		hvo2.setTee_1(b_list[i].getTee_1());
-		hvo2.setTee_2(b_list[i].getTee_2());
-		hvo2.setTee_3(b_list[i].getTee_3());
-		hvo2.setTee_4(b_list[i].getTee_4());
-		hvo2.setTee_5(b_list[i].getTee_5());
-		hvo2.setTee_6(b_list[i].getTee_6());
-		hvo2.setTee_7(b_list[i].getTee_7());
-		
-		hvo2.setGtvalve(b_list[i].getGtvalve());
-		hvo2.setBvalve(b_list[i].getBvalve());
-		hvo2.setGbvalve(b_list[i].getGbvalve());
-		hvo2.setDvalve(b_list[i].getDvalve());
-		hvo2.setAvalve_1(b_list[i].getAvalve_1());
-		hvo2.setAvalve_2(b_list[i].getAvalve_2());
-		hvo2.setCvalve_1(b_list[i].getCvalve_1());
-		hvo2.setCvalve_2(b_list[i].getCvalve_2());
-		hvo2.setPvalve_1(b_list[i].getPvalve_1());
-		hvo2.setPvalve_2(b_list[i].getPvalve_2());
-		hvo2.setPvalve_3(b_list[i].getPvalve_3());
-		
-		hvo2.setRedd(b_list[i].getRedd());
-		hvo2.setRedth(b_list[i].getRedth());
-		
-		hvo2.setExpd(b_list[i].getExpd());
-		hvo2.setExpth(b_list[i].getExpth());
-		
-		
-		hvo2.setSoil_coeff(b_list[i].getSoil_coeff());
-		hvo2.setIn_coeff(b_list[i].getIn_coeff());
-		hvo2.setG_temp(b_list[i].getG_temp());
-		hvo2.setOut_coeff(b_list[i].getOut_coeff());
-		hvo2.setOut_temp(b_list[i].getOut_temp());
-		hvo2.setOut_coeff_1(b_list[i].getOut_coeff_1());
-		hvo2.setSur_temp(b_list[i].getSur_temp());
-		hvo2.setOut_coeff_2(b_list[i].getOut_coeff_2());
-		hvo2.setDiff_temp(b_list[i].getDiff_temp());
-		hvo2.setOver_coeff(b_list[i].getOver_coeff());
-		hvo2.setHeattrans(b_list[i].getHeattrans());		
 	}
 	
 	

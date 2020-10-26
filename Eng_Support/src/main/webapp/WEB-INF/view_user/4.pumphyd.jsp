@@ -52,7 +52,6 @@
 		}
 		
 		function del1_go(f) {
-			alert(f.section1.value);
 			if(f.section1.value == 0){
 				alert("section값을 선택하시오.");
 				return;
@@ -65,7 +64,6 @@
 		}
 		
 		function del2_go(f) {
-			alert(f.section2.value);
 			if(f.section2.value == 0){
 				alert("section값을 선택하시오.");
 				return;

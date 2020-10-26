@@ -8,7 +8,7 @@ public class Heats {
 	private double temp_dry, temp_wet, temp_roof, temp_btm;
 	private double ocf_dry, ocf_wet, ocf_roof, ocf_btm;
 	
-	private double ts, ifc, ofc1, ofc2;
+	private double sur_temp, out_coeff, out_coeff1, out_coeff2;
 	
 	
 	//0.Common
@@ -29,13 +29,107 @@ public class Heats {
 	//(1) Surface Temperature (Ts)
 	
 	public void calTs(double temp, double temp_air, double thcon, double din, double dout, double re,
-					double pr, double cnv, double temp_sur, double wind_vel) {
+					double pr, double cnv, double wind_vel, double em) {
 		
+		double ts, ts1, ts2, tsm;
+		double ho, hi;					//h는 coefficient를 의미한다.
+		double dq1, dq2, dqm, qin, qout;
+		
+		ts = temp;
+		ts1 = temp;
+		ts2 = temp_air;
+		
+		
+		if (ts > temp_air) {
+			ts1 = ts1 - 0.00001;
+			ts2 = temp_air + 0.00001;
+			
+			
+		} else if (ts < temp_air) {
+			ts1 = ts1 + 0.00001;
+			ts2 = temp_air - 0.00001;
+			
+		} 
+						
+		do {
+			
+			ho = calCSC(cnv, dout, ts1, temp_air, wind_vel) - calCoeff_rad(ts1, temp_air, em);
+			hi = calIFC(thcon, din, dout, re, pr); 
+			
+			qin = hi * (temp - ts1);
+			qout = ho * (ts1 - temp_air);
+			
+			dq1 = qin - qout;
+			
+			ho = calCSC(cnv, dout, ts2, temp_air, wind_vel) - calCoeff_rad(ts2, temp_air, em);
+			hi = calIFC(thcon, din, dout, re, pr); 
+			
+			qin = hi * (temp - ts2);
+			qout = ho * (ts2 - temp_air);
+			
+			dq2 = qin - qout;
+			
+			tsm = (ts1 + ts2) / 2;
+			
+			ho = calCSC(cnv, dout, tsm, temp_air, wind_vel) - calCoeff_rad(tsm, temp_air, em);
+			hi = calIFC(thcon, din, dout, re, pr); 
+			
+			qin = hi * (temp - tsm);
+			qout = ho * (tsm - temp_air);
+			
+			dqm = qin - qout;
+			
+			if (dq1 * dqm < 0) {
+				ts2 = tsm;
+				
+			}else if (dq1 * dqm > 0) {
+				ts1 = tsm;
+			}
+			
+		} while (Math.abs((qin - qout) / qout) > 0.001);
+		
+		sur_temp = tsm;
+		out_coeff1 = calCSC(cnv, dout, temp_air, tsm, wind_vel); 
+		out_coeff2 = calCoeff_rad(tsm, temp_air, em);
+		out_coeff = out_coeff1 + out_coeff2; 
+
 	}
 		
-	
+	public double getSur_temp() {
+		return sur_temp;
+	}
+
+	public void setSur_temp(double sur_temp) {
+		this.sur_temp = sur_temp;
+	}
+
+	public double getOut_coeff() {
+		return out_coeff;
+	}
+
+	public void setOut_coeff(double out_coeff) {
+		this.out_coeff = out_coeff;
+	}
+
+	public double getOut_coeff1() {
+		return out_coeff1;
+	}
+
+	public void setOut_coeff1(double out_coeff1) {
+		this.out_coeff1 = out_coeff1;
+	}
+
+	public double getOut_coeff2() {
+		return out_coeff2;
+	}
+
+	public void setOut_coeff2(double out_coeff2) {
+		this.out_coeff2 = out_coeff2;
+	}	
+
 	//(2)Inside Flim Coefficient
-	
+
+
 	public double calIFC(double thcon, double din, double dout, double re, double pr) {
 		return 0.027 * thcon / (din / 12) * Math.pow(re, 0.8) * Math.pow(pr, 1/3) * (din / dout);
 		
@@ -58,6 +152,62 @@ public class Heats {
 		return csc;
 	}
 
+	//(4) Overall Coefficient
+	
+	public double calOVC(String ev, double dins, double din, double dout, double dsoil, double kpipe, 
+						double kins, double ksoil, double ifc, double ofc) {
+		double ovc=0;
+		
+		if (ev.equals("bare")) {
+			
+			if (kins == 0 || dins == 0) {
+				ovc = dout / (din * ifc) + dout / 24 * ( Math.log(dout/din) / kpipe ) + 1 / ofc;
+				
+			} else {
+				ovc = dout / (din * ifc) + dout / 24 * ( Math.log(dout/din) / kpipe + 
+						Math.log(dins/dout) / kins) + 1 / ofc;
+			}
+			
+		}else {
+			if (kins == 0 || dins == 0) {
+				ovc = 1 / ifc + din / 24 * (Math.log(dout/din) / kpipe  + Math.log(dsoil / dout) / ksoil);
+			}else {
+				ovc = 1 / ifc + din / 24 * (Math.log(dout/din) / kpipe  + Math.log(dins/dout) / kins +
+						Math.log(dsoil / dins) / ksoil);
+			}
+		}
+		
+		ovc = 1 / ovc;
+		
+		return ovc;
+		
+	}
+	
+	//(5) different temperature (ground)
+	public double calDiff_temp(String season, double depth) {
+		double dt = 0;
+		
+		switch (season) {
+			case "spring": 
+				dt = 0.0149 * Math.pow(depth, 3) - 0.3791 * Math.pow(depth, 2) + 4.1373 * depth + 0.5966 ;
+			break;
+			case "summer": 
+				dt = 0.0327 * Math.pow(depth, 3) - 0.7876 * Math.pow(depth, 2) + 7.6961 * depth - 2.8824 ;
+			break;			
+			case "autumn": 
+				dt = 0.0149 * Math.pow(depth, 3) - 0.3791 * Math.pow(depth, 2) + 4.1373 * depth + 0.5966 ;
+			break;
+		}
+		
+		return dt;
+	}
+	
+	//(6) heat loss/gain
+	public double calHeattrans(String ev, double over_coeff, double din, double dout, double eqv_len,
+								double temp_sur, double g_temp, double temp_air, double temp) {
+		return ev.equals("bare") ? over_coeff * (pi * dout / 12) * eqv_len * (temp_sur - temp_air) : 
+								   over_coeff * (pi * din / 12) * eqv_len * (temp - g_temp);	
+	}
 	
 	
 	// 2.tank

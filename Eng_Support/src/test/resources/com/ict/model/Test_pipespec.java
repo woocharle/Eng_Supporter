@@ -15,6 +15,15 @@ public class Test_pipespec {
 	}
 	
 	@Test
+	public void test_re() {
+	
+		double result = pipespec.calRe("liquid", 675.6, 0.358, 45.1 * 675.6, 0, 0, 0, 0.128);
+		System.out.println(Math.PI);
+		System.out.println(45.1 * 675.6 / 3600 / 675.6 / (Math.PI * Math.pow(0.128, 2) /4));
+		System.out.println("결과값: " + result + "\n");
+	}
+	
+	@Test
 	public void test_ffactor() {
 		double result = pipespec.calFfactor_liq(228000, 0.128, 0.046);
 		System.out.println("결과값: " + result + "\n");

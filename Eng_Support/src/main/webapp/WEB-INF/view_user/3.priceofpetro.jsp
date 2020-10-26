@@ -20,12 +20,15 @@
 		.browser{position: relative; left: 60px; }
 		
 		 .intro{width: 75%; height: 1400px; position: relative; left: 400px; bottom: 1430px;}
-		 .intro > h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}
-		
+		 .intro h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}
+		 .intro h4{position: relative; left: 10px; font-size: 25px; margin-bottom: 50px;}
+		 .intro p{position: relative; left: 15px; font-size: 20px; margin-bottom: 50px;}
+		 .intro pre{position: relative; left: 15px; font-size: 20px; margin-bottom: 50px; width:1000px;}
+		 .intro img{position: relative; left: 15px; top: 20px; width: 800px; height: 650px;}
 		 #price{width: 25%; height: 1400px; position: relative; left:10px;}
 		 #price > h3{position: relative; left: 50px; font-size: 30px; margin-bottom: 50px;}
 		 #price ul{list-style-type: none; height:1350px; border-right: 1px dashed black;}
-		 #price li{font-size: 20px; font-weight: bold; margin: 30px 0px 30px 30px;}
+		 #price li{font-size: 25px; font-weight: bold; margin: 30px 0px 30px 30px;}
 		 
 		 #content_s{
 			white-space: pre-wrap; /* CSS3*/
@@ -34,6 +37,11 @@
 			white-space: -o-pre-wrap; /* Opera 7 */
 			word-wrap: break-all; /* Internet Explorer 5.5+ */ 
 		 }
+		 
+		 #content{
+			position: relative; left: 20px; top: 40px; width:1000px; font-size: 18px;
+		 }
+		 		 
 		 
 		 #petro{text-decoration:none;}
 		 #petro:link {color: black;}
@@ -73,7 +81,7 @@
 			<c:choose>
 			<c:when test="${k.unit ne 'Intro'}">
 			<article class="browser">
-				<h3>${k.unit}</h3>
+				<h4>${k.unit}</h4>
 				<pre id="content_s">${k.content_s}</pre>
 			
 			</article>
@@ -81,7 +89,7 @@
 			</c:choose>
 			</c:forEach>
 			<article class="browser">
-				<h3>참고문헌</h3>
+				<h4>참고문헌</h4>
 				<p>
 					한국석유공사 (https://www.knoc.co.kr/)
 				</p>
@@ -93,9 +101,8 @@
 		<div class="intro" >			
 			<h3>${unit}</h3>
 			<article class="browser">
-			<img src="/resources/upload/${vo2.img}" style="width: 150px">
-			
-			<pre id="content">${vo2.content}</pre>
+			<img src="/resources/upload/${vo2.img}" >
+				<p id="content">${vo2.content}</p>
 			</article>
 		</div>
 	</c:otherwise>

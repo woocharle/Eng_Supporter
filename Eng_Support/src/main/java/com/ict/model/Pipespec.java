@@ -11,8 +11,8 @@ public class Pipespec {
 	private Map<String, Integer> sch;	
 
 	// pipe heat 
-	private Map<String, Double> pipe_em;	
-	private Map<String, Double> pipe_shp;	
+	private Map<String, String> pipe_em;	
+	private Map<String, String> pipe_shp;	
 	
 	//Fitting
 	private double[] elbow90_1, elbow90_2, elbow90_3, elbow90_4, elbow90_5, elbow90_6, elbow90_7, elbow90_8, elbow90_9;
@@ -450,24 +450,21 @@ public class Pipespec {
 	
 	// (2) pipe heat
 	
-
-
-	public Map<String, Double> getPipe_em() {
+	public Map<String, String> getPipe_em() {
 		return pipe_em;
 	}
 
-	public void setPipe_em(Map<String, Double> pipe_em) {
+	public void setPipe_em(Map<String, String> pipe_em) {
 		this.pipe_em = pipe_em;
 	}
 	
-	public Map<String, Double> getPipe_shp() {
+	public Map<String, String> getPipe_shp() {
 		return pipe_shp;
 	}
 
-	public void setPipe_shp(Map<String, Double> pipe_shp) {
+	public void setPipe_shp(Map<String, String> pipe_shp) {
 		this.pipe_shp = pipe_shp;
 	}
-	
 
 	// (3) fitting getter, setter
 	

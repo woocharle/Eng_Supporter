@@ -20,15 +20,21 @@
 	<script type="text/javascript">
 		
 		function revise_ok(f){
-	
-			if(f.m_pw.value == f.chk.value){
-				f.action="revise2.do";
-				f.submit();
-			} else {
-				alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
-				f.m_pw.focus();
-				return;
-			}			
+			
+			if (f.m_pass.value == f.m_pw0.value) {
+				if(f.m_pw.value == f.chk.value || f.m_pw.value == null){
+					f.action="revise2.do";
+					f.submit();
+				} else {
+					alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+					f.m_pw.focus();
+					return;
+				}
+			} else{
+				alert("비밀번호를 다시 확인 하십시오.");
+				f.m_pass.focus();
+				return;				
+			}
 		}	
 	
 		function reset_ok(f) {
@@ -53,11 +59,11 @@
 					<tr>
 						<td class="tb">현재 비밀번호</td>
 						<td><input type="password" id="비밀번호" name="m_pass">
-							<input type="hidden" id="비밀번호" name="m_pw0" value="${mvo.m_pw}"/>
+							<input type="hidden" id="비밀번호" name="m_pw0" value="${vo1.m_pw}"/>
 						</td>
 					</tr>	
 					<tr>
-						<td class="tb">현재 비밀번호</td>
+						<td class="tb">변경할 비밀번호</td>
 						<td><input type="password" id="비밀번호" name="m_pw"></td>
 					</tr>	
 					<tr>
@@ -71,7 +77,7 @@
 							<input type="button" value="변경" style="width:100px;" onclick="revise_ok(this.form)">
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="reset" value="취소" style="width:100px;" onclick="reset_ok(this.form)">
-					
+							<input type="hidden" name="idx" value="${vo1.idx}">
 						</td>
 					</tr>
 				</tfoot>

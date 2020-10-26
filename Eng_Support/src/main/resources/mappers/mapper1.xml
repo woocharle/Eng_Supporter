@@ -60,13 +60,26 @@
 		where idx =#{idx}
 	</update>
 
+	<update id="mupdate3" parameterType="com.ict.db.VO1">
+		update member
+		set	m_com=#{m_com}, m_phone=#{m_phone}, m_email=#{m_email}, m_name=#{m_name}, m_content=#{m_content}, m_pw=#{m_pw}
+		where idx =#{idx}
+	</update>
+
 	
-	<!--회원갱신 -->
+	<!--분실 신청 -->
 	<update id="mfind" parameterType="com.ict.db.VO1">
 		update member
 		set	req_find = #{req_find}
 		where m_email = #{m_email}
 	</update>
+	
+	<!--회원탈퇴 신청-->
+	<delete id="mdrop" parameterType="com.ict.db.VO1"> 
+		update member
+		set	req_del = #{req_del}
+		where idx = #{idx}
+	</delete>	
 	
 	<!--회원탈퇴 -->
 	<delete id="mdelete" parameterType="com.ict.db.VO1"> 

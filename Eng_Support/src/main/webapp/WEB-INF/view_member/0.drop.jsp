@@ -20,8 +20,8 @@
 	<script type="text/javascript">
 		
 		function drop_ok(f){
-			if(f.m_pw.value == f.chk.value){
-				f.action="drop2.do";
+			if(f.m_pass.value == f.m_pw0.value){
+				f.action="drop.do";
 				f.submit();
 			} else {
 				alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
@@ -31,8 +31,8 @@
 		}	
 	
 		function reset_ok(f) {
-/* 			f.action="join.do?page="+${page}
-			f.submit(); */
+			f.action="join.do?page="+${page}
+			f.submit();
 		}
 	
 	
@@ -45,7 +45,7 @@
 			<table>
 				<thead>
 					<tr>
-						<th colspan="3"><h2>비밀번호 변경</h2></th>
+						<th colspan="3"><h2>삭제 신청</h2></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -62,7 +62,7 @@
 							<input type="button" value="삭제" style="width:100px;" onclick="drop_ok(this.form)">
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="reset" value="취소" style="width:100px;" onclick="reset_ok(this.form)">
-					
+							<input type="hidden" name="idx" value="${vo1.idx}">
 						</td>
 					</tr>
 				</tfoot>

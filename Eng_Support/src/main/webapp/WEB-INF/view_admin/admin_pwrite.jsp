@@ -44,7 +44,13 @@
 				</tr>	
 				<tr>
 					<td class="tb">자세한 설명</td>
-					<td><textarea rows="20"  name="content"></textarea></td>
+					<td>
+						<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+						 <textarea name="content"></textarea>
+                		 <script >
+                        		CKEDITOR.replace( 'content' );
+                		</script>
+                	</td>
 				</tr>
 			</tbody>
 			<tfoot>

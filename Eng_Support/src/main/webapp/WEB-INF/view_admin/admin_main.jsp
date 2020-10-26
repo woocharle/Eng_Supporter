@@ -51,6 +51,14 @@
 			location.href="plist_go.do";	
 		} 
 		
+		function admin_go() {
+			location.href="admin_page.do";	
+		} 
+		
+		function main_go() {
+			location.href="home.do";	
+		} 
+		
 		
 
 	</script>
@@ -73,8 +81,8 @@
 	<ul>
 		<li><a onclick="member_go()">회원관리</a></li>
 		<li><a onclick="petro_go()">Petroleum 정보</a></li>
-		<li><a onclick="#">관리자 개인정보</a></li>
-		<li><a>공란</a></li>
+		<li><a onclick="admin_go()">관리자 개인정보</a></li>
+		<li><a onclick="main_go()">메인화면으로</a></li>
 	</ul>
 </div>
 </body>

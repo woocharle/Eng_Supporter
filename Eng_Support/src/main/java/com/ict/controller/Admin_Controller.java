@@ -35,14 +35,75 @@ public class Admin_Controller {
 
 
 	// 메인 화면
+	
 	@RequestMapping(value="admin_main.do", method=RequestMethod.GET)
 	public ModelAndView main_Cmd() {
 		return new ModelAndView("view_admin/admin_main");
 	}
 	
 	@RequestMapping(value="logout_admin.do", method=RequestMethod.GET)
-	public ModelAndView logout_Cmd() {
-		return new ModelAndView("view_user/1.main");
+	public ModelAndView logout_Cmd(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		VO1 vo1 = (VO1)request.getSession().getAttribute("vo1");
+		
+		vo1.setIdx(null);
+		vo1.setM_com(null);
+		vo1.setM_name(null);
+		vo1.setM_phone(null);
+		vo1.setM_email(null);
+		vo1.setM_name(null);
+		vo1.setM_pw(null);
+		vo1.setM_content(null);
+		vo1.setReq_del(null);
+		vo1.setReq_find(null);
+		
+		request.setAttribute("vo1", vo1);
+		mv.setViewName("view_user/1.main");		
+		
+		return  mv;
+	}
+	
+	
+	//관리자 페이지
+	
+	@RequestMapping(value="admin_page.do", method = RequestMethod.GET)
+	public ModelAndView adminpage_Cmd() {
+		return new ModelAndView("view_admin/admin_page");
+				
+	}
+	
+	@RequestMapping(value="admin_page2.do", method = RequestMethod.POST)
+	public ModelAndView adminpage2_Cmd() {
+		return new ModelAndView("view_admin/admin_main");
+		
+	}
+	
+	@RequestMapping(value="admin_update.do", method = RequestMethod.POST)
+	public ModelAndView adminrevise_Cmd(VO1 vo1, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		String page = request.getParameter("page");
+		String finish = "ok";
+		String msg = "개인정보가 변경되었습니다.";
+		String pass = request.getParameter("m_pw0");
+		
+		System.out.println(pass);
+		
+		if (vo1.getM_pw() == null || vo1.getM_pw().equals(null)) {
+			vo1.setM_pw(pass);
+		}
+		
+		int result = dao.getmIDU(vo1, "Update3");
+		
+		vo1 = dao.getMonelist(vo1.getIdx());
+		request.getSession().setAttribute("vo1", vo1);
+		
+		mv.addObject("msg", msg);
+		mv.addObject("finish", finish);
+		mv.addObject("page", page);
+		mv.setViewName("view_admin/admin_page");
+		
+		return mv;
+		
 	}
 	
 	//멤버 관리
@@ -50,8 +111,9 @@ public class Admin_Controller {
 	public ModelAndView mlist_Cmd(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 
-		int su = dao.getPcount();
-		paging.setTotalPage(su);
+		int su = dao.getMcount();
+		paging.setTotalRecord(su);
+		
 		
 		if(paging.getTotalRecord() <= paging.getNumPerpage()) {
 			paging.setTotalPage(1);
@@ -113,7 +175,7 @@ public class Admin_Controller {
 		//Paging 적용.
 		
 		int su = dao.getPcount();
-		paging.setTotalPage(su);
+		paging.setTotalRecord(su);
 		
 		if(paging.getTotalRecord() <= paging.getNumPerpage()) {
 			paging.setTotalPage(1);
@@ -248,8 +310,8 @@ public class Admin_Controller {
 			// TODO: handle exception
 		}
 		
-		String cPage = (String) request.getSession().getAttribute("cPage");
-		mv.setViewName("redirect: onelist.do?b_idx="+vo2.getIdx()+"&cPage="+cPage);
+		String cPage = request.getParameter("cPage");
+		mv.setViewName("redirect: ponelist.do?b_idx="+vo2.getIdx()+"&cPage="+cPage);
 
 		return mv;		
 	}
